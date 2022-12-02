@@ -66,3 +66,6 @@ root.mainloop()
 > output
 
 >> ![Screenshot_20221202_022900](https://user-images.githubusercontent.com/93121062/205256131-3c806073-225b-4c4a-971d-35b86fc26a29.png)
+
+
+# pipy for install package -> <a href="https://pypi.org/project/tkchart/"> tkchart </a>

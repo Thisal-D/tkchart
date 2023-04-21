@@ -54,7 +54,9 @@ chart_1.pack()
 line_1 = tkchart.Line(master=chart_1 ,height=4 ,color='#ffffff')
 
 #display values using loop
-values = [x for x in range(2000000+1)]
+values = [x for x in range(2000000+1)]\
+    
+line_1.configure(line_highlight=1,line_highlight_color="#ffffff" ,line_highlight_size=10)
 def loop():
     chart_1.display(line=line_1 ,values=random.choices(values ,k=1))
     root.after(500,loop)
@@ -64,8 +66,7 @@ root.mainloop()
 ```
 
 > output
-
->> ![Screenshot_20221202_022900](https://user-images.githubusercontent.com/93121062/205256131-3c806073-225b-4c4a-971d-35b86fc26a29.png)
+![205255031-aefc7522-a8ba-44ee-b594-c5d2d7132c931](https://user-images.githubusercontent.com/93121062/233741535-5372afdf-9906-410b-be0e-3ff4b65cbf02.png)
 
 
 # pypi for more infomation -> <a href="https://pypi.org/project/tkchart/"> https://pypi.org/project/tkchart </a>

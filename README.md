@@ -6,7 +6,7 @@
 
 
 ## Attrubutes of tkchart
-![Screenshot (46)](https://user-images.githubusercontent.com/93121062/205255031-aefc7522-a8ba-44ee-b594-c5d2d7132c93.png)
+![205255031-aefc7522-a8ba-44ee-b594-c5d2d7132c931](https://user-images.githubusercontent.com/93121062/233741596-6575f82d-e501-433c-9380-5e3ecf68f853.png)
 
 
 > Examples

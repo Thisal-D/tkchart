@@ -9,7 +9,8 @@ class LineChart():
                 ,horizontal_bar_fg = "#404040" ,horizontal_bar_size=2 ,vertical_bar_fg = "#404040" ,vertical_bar_size=2
                 ,text_color = "#ffffff" ,font=None ,values_labels=False ,values_labels_count=10 ,max_value=1000 
                 ,chart_line_len = 30 
-                ,top_space=10 ,bottom_space=10 ,left_space=10 ,right_space=10 ,x_space=40 ,y_space=40) :
+                ,top_space=10 ,bottom_space=10 ,left_space=10 ,right_space=10 ,x_space=40 ,y_space=40
+                ) :
       
       # user input main width & height
       self.main_width = width
@@ -68,17 +69,27 @@ class LineChart():
          self.configure_sections()
       if self.values_labels == True :
          self.configure_values_label()
-      
-               
+         
    def configure_chart_geomatry(self):
-      self.chart_main_background.configure(width=self.main_width ,height=self.main_height)
-      self.chart_values_backgroud.place(width=self.left_space ,y=self.top_space+self.y_space+self.horizontal_bar_size ,height=self.main_height-(self.horizontal_bar_size*2+self.top_space+self.y_space+self.bottom_space ))
-      self.chart_vertical_bar.place(width=self.vertical_bar_size ,x=self.left_space ,y=self.top_space ,height=self.main_height-(self.top_space+self.bottom_space))
-      self.chart_horizontal_bar.place(height=self.horizontal_bar_size ,x=self.left_space ,y=self.main_height-self.bottom_space-self.horizontal_bar_size ,width=self.main_width-(self.left_space+self.right_space))
-      self.chart_canvas_backgroud.place(x=self.left_space+self.vertical_bar_size ,width=self.main_width-(self.left_space+self.vertical_bar_size+self.x_space+self.right_space) ,
-                                        y=self.top_space+self.y_space+self.horizontal_bar_size ,height=self.main_height-(self.horizontal_bar_size*2+self.top_space+self.y_space+self.bottom_space))
-      self.chart_canvas.place(x=0 ,width=self.main_width-5-(self.left_space+self.vertical_bar_size+self.x_space+self.right_space) ,
-                                        y=0,height=self.main_height-(self.horizontal_bar_size*2+self.top_space+self.y_space+self.bottom_space))   
+      self.chart_main_background.configure(width=self.main_width,
+                                           height=self.main_height)
+      self.chart_values_backgroud.place(y=self.top_space+self.y_space+self.horizontal_bar_size)
+      self.chart_vertical_bar.place(x=self.left_space,
+                                    y=self.top_space)
+      self.chart_horizontal_bar.place(x=self.left_space,
+                                      y=self.main_height-self.bottom_space-self.horizontal_bar_size)
+      self.chart_canvas_backgroud.place(x=self.left_space+self.vertical_bar_size,
+                                        y=self.top_space+self.y_space+self.horizontal_bar_size)
+      self.chart_canvas.place(x=0,y=0)   
+      
+      self.chart_values_backgroud.configure(width=self.left_space, height=self.main_height-(self.horizontal_bar_size*2+self.top_space+self.y_space+self.bottom_space ))
+      self.chart_vertical_bar.configure(width=self.vertical_bar_size ,height=self.main_height-(self.top_space+self.bottom_space))
+      self.chart_horizontal_bar.configure(height=self.horizontal_bar_size ,width=self.main_width-(self.left_space+self.right_space))
+      self.chart_canvas_backgroud.configure(width=self.main_width-(self.left_space+self.vertical_bar_size+self.x_space+self.right_space) ,
+                                            height=self.main_height-(self.horizontal_bar_size*2+self.top_space+self.y_space+self.bottom_space))
+      self.chart_canvas.configure(width=self.main_width-5-(self.left_space+self.vertical_bar_size+self.x_space+self.right_space) ,
+                                  height=self.main_height-(self.horizontal_bar_size*2+self.top_space+self.y_space+self.bottom_space))
+      
       self.re_display_chart() 
    def configure_chart_colors(self):
       self.chart_main_background.configure(fg_color=self.chart_bg)
@@ -126,7 +137,8 @@ class LineChart():
                 ,horizontal_bar_fg = None ,horizontal_bar_size=None ,vertical_bar_fg =None ,vertical_bar_size=None
                 ,text_color = None ,font=None ,values_labels=None ,values_labels_count=None ,max_value=None 
                 ,chart_line_len = None 
-                ,top_space=None ,bottom_space=None ,left_space=None ,right_space=None ,x_space=None ,y_space=None) :
+                ,top_space=None ,bottom_space=None ,left_space=None ,right_space=None ,x_space=None ,y_space=None
+                ) :
       
 
       reset_chart_geomatry = False
@@ -270,22 +282,19 @@ class LineChart():
       if chart_line_len != None :
          self.chart_line_len = chart_line_len
          reset_chart_geomatry = True
-      
+   
       if reset_chart_colors == True:
          self.configure_chart_colors()
       if reset_chart_geomatry == True :
          self.configure_chart_geomatry()
          
          
-      
-   
-   
    def place(self ,x=None ,y=None ,rely=None ,relx=None ,anchor=None):
       self.chart_main_background.place(x=x ,y=y ,rely=rely ,relx=relx ,anchor=anchor)
       
    def pack(self ,x=None ,y=None ,pady=None ,padx=None ,before=None ,expand=None ,fill=None ,after=None 
             ,side=None ,ipadx=None ,ipady=None ,anchor=None):
-      self.chart_main_background.pack(x=x ,y=y ,pady=pady ,padx=padx ,before=before , expand=expand ,fill=fill
+      self.chart_main_background.pack(pady=pady ,padx=padx ,before=before , expand=expand ,fill=fill
                                ,after=after ,side=side ,ipadx=ipadx ,ipady=ipady ,anchor=anchor)
       
    def grid(self ,column=None ,columnspan=None ,ipadx=None ,ipady=None , padx=None , pady=None ,row=None 
@@ -298,9 +307,10 @@ class LineChart():
       self.chart_x = 0 
       self.chart_width = self.main_width-5-(self.left_space+self.vertical_bar_size+self.x_space+self.right_space)
       self.chart_height = self.main_height-(self.horizontal_bar_size*2+self.top_space+self.y_space+self.bottom_space)
-      self.chart_canvas.place(x=0 ,width=self.main_width-5-(self.left_space+self.vertical_bar_size+self.x_space+self.right_space) ,
-                                        y=0,height=self.main_height-(self.horizontal_bar_size*2+self.top_space+self.y_space+self.bottom_space))   
+      self.chart_canvas.place(x=0 ,y=0)   
       
+      self.chart_canvas.configure(width=self.main_width-5-(self.left_space+self.vertical_bar_size+self.x_space+self.right_space),
+                                  height=self.main_height-(self.horizontal_bar_size*2+self.top_space+self.y_space+self.bottom_space))
       self.chart_canvas.delete("all")
    
    def set_chart_canvas_info(self):
@@ -339,7 +349,7 @@ class LineChart():
             if len(temp_values) != 0 :
                self.display(values=temp_values ,line=line)
 
-   def display(self ,line=None ,values=None):
+   def display(self ,line=None ,values:list=[]):
       if line not in self.chart_display_lines:
          self.chart_display_lines.append(line)
       
@@ -352,7 +362,9 @@ class LineChart():
          line.y_end = (self.chart_height - (self.chart_height/100)*(value/self.max_value*100) + (line.line_height/2))
          self.chart_canvas.create_line(x_start,y_start,line.x_end,line.y_end
                                             ,fill=line.line_color ,width=line.line_height)
-
+         
+         if line.line_highlight :
+            self.chart_canvas.create_aa_circle(x_start,y_start,radius = line.line_highlight_size ,fill=line.line_highlight_color)
    
          
          if line.x_end > self.chart_width :
@@ -361,13 +373,10 @@ class LineChart():
             if self.chart_width > self.main_width*2 :
                self.re_display_chart()
             else:
-               self.chart_canvas.place(x=self.chart_x ,width=self.chart_width ,
-                                        y=0,height=self.main_height-(self.horizontal_bar_size*2+self.top_space+self.y_space+self.bottom_space))      
+               self.chart_canvas.place(x=self.chart_x,
+                                        y=0)      
+               self.chart_canvas.configure(width=self.chart_width
+                                           ,height=self.main_height-(self.horizontal_bar_size*2+self.top_space+self.y_space+self.bottom_space))
       
          x_start = line.x_end
          y_start = line.y_end
-         
-      
-
-         
-     

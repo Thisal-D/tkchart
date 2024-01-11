@@ -67,7 +67,8 @@ linechart = tkchart.LineChart(master=root,
                             )
 ```
 
-<img src="1.png">
+![1](https://github.com/Thisal-D/tkchart/assets/93121062/9c68422b-c3fd-4d0c-84e2-41ce23e84849)
+
 
 ```
 linechart = tkchart.LineChart(master=root, 

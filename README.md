@@ -17,15 +17,15 @@
 <br>
 
 
-- ## 1 . Create LineChart 
-    - Create a LineChart
+# 1 . Create LineChart 
+Create a LineChart
 
    
 
-    ### ``linechart = tkchart.LineChart()``
+### ``linechart = tkchart.LineChart()``
 
-    - ##  Attributes & Types
-    
+- ##  Attributes & Types
+
     ``master`` : tkinter.widget (Frame, Canvas, Tk)<br>
     ``width`` : int<br>
     ``height`` : int<br>
@@ -35,7 +35,7 @@
     ``x_sections_count`` : int<br>
     ``y_labels_count`` : int<br>
     ``x_labels_count`` : int<br>
-    
+
     ``y_data`` : str ,int, float<br>
     ``x_data`` : str ,int, float<br>
     ``y_data_max`` : int ,float<br>
@@ -51,12 +51,86 @@
     ``bg_color`` : str<br>
     ``chart_color`` : str<br>
     ``bar_color`` : str<br>
-    
+
     ``x_y_data_font`` : tuple<br>
     ``x_y_values_font`` : tuple<br>
 
     ``line_width`` : int<br>
 
+
+- ##  Methods
+    
+    #### ``1. configure``: use to change LineChart attributes
+    ```
+    width 
+    height 
+    bar_size 
+    y_sections_count 
+    x_sections_count 
+    y_labels_count 
+    x_labels_count
+    y_data 
+    x_data 
+    y_data_max 
+    x_data_max 
+    y_values_decimals
+    x_values_decimals
+    sections_color
+    y_values_text_color
+    x_values_text_color 
+    y_data_text_color 
+    x_data_text_color 
+    bg_color
+    chart_color 
+    bar_color 
+    x_y_data_font
+    x_y_values_font
+    line_width
+    ```
+
+    
+    #### ``2. show_data`` : use to display data. <br>
+    support **kwargs
+    ```
+    data
+    line
+    ```
+    
+
+    #### ``3. place`` : use to place <font color="red"> same as tkinter place method..!</font><br>
+    support **kwargs
+    ```
+    x
+    y
+    rely
+    relx
+    anchor
+    ```
+    #### ``4. pack`` : use to pack. <font color="red"> same as tkinter pack method..! </font><br>
+    support **kwargs
+    ```
+    pady
+    padx
+    before
+    after
+    side
+    ipadx
+    ipady
+    ancho
+    ```
+    #### ``5. grid`` : use to grid. <font color="red"> same as tkinter grid method..! </font><br>
+    support **kwargs
+    ```
+    column
+    columnspan
+    ipadx
+    ipady
+    padx
+    pady
+    row
+    rowspan
+    sticky
+    ```
     
 
 ```
@@ -67,7 +141,7 @@ linechart = tkchart.LineChart(master=root,
                             )
 ```
 
-![1](https://github.com/Thisal-D/tkchart/assets/93121062/9c68422b-c3fd-4d0c-84e2-41ce23e84849)
+![1](https://github.com/Thisal-D/tkchart/assets/93121062/866228f8-1d2e-4486-9615-6383582c52ca)
 
 
 ```
@@ -82,7 +156,7 @@ linechart = tkchart.LineChart(master=root,
                             x_labels_count=5
                             )
 ```
-![2](https://github.com/Thisal-D/tkchart/assets/93121062/5be7c60a-aa7c-4cad-8985-ab0c93d7855a)
+![2](https://github.com/Thisal-D/tkchart/assets/93121062/203494d5-7a2a-4435-9f4d-02aa17782fbc)
 
 
 ```
@@ -103,7 +177,8 @@ linechart = tkchart.LineChart(master=root, width=1000,
                             y_values_decimals=5,
                             )
 ```
-![3](https://github.com/Thisal-D/tkchart/assets/93121062/1413e734-f980-4f21-92db-14f080c571e3)
+![3](https://github.com/Thisal-D/tkchart/assets/93121062/f7789d90-250c-4c18-b1ee-dac2eb02ea89)
+
 
 ```
 
@@ -133,8 +208,8 @@ linechart = tkchart.LineChart(master=root, width=1000,
                             bar_color="#909090"
                             )
 ```
-![4](https://github.com/Thisal-D/tkchart/assets/93121062/c854c38a-cab6-4c77-a02a-2b8482b2cb41)
 
+![4](https://github.com/Thisal-D/tkchart/assets/93121062/2844b8d8-b76c-4a9b-8cf9-11220d12d8a5)
 
 ```
 
@@ -169,37 +244,50 @@ linechart = tkchart.LineChart(master=root,
                             )
 ```
 
-![5](https://github.com/Thisal-D/tkchart/assets/93121062/8d9866c9-362e-4b5e-96bf-d923993b1ee4)
+![5](https://github.com/Thisal-D/tkchart/assets/93121062/48cb095a-199d-450d-b50b-26f8e1c7db50)
 
 
+<br>
+<br>
 
-- ## 1 . Create Line 
-    - Create a Line
+# 1 . Create Line 
+Create a Line
 
    
 
-    ### ``line = tkchart.Line()``
+### ``line = tkchart.Line()``
 
-    - ##  Attributes & Types
-    
+- ##  Attributes & Types
+
     ``master`` : tkchart.LineChart<br>
     ``color`` : str<br>
     ``size`` : int<br>
 
+
+- ##  Methods
+    
+    #### ``1. configure``: use to change Line attributes
+    ```
+    size 
+    color 
+    ```
 ```
 line = tkchart.Line(master=linechart,
                 color="#ffff00",
                 size=5)
 
 ```
-![6](https://github.com/Thisal-D/tkchart/assets/93121062/25f73428-2071-4826-9961-b8e78808f698)
+![6](https://github.com/Thisal-D/tkchart/assets/93121062/b8d83e78-e98b-4bfa-8947-206bc53a892e)
 
 
 
 `` line_width `` <font color="Red" >is not a attributes of Line. Its a attribute of LineChart object..! </font>
 
 
-- ## 1 . Display Data
+<br>
+<br>
+
+# 1 . Display Data
 ```
 import tkinter
 import tkchart
@@ -261,4 +349,5 @@ root.mainloop()
 ```
 
 
-https://github.com/Thisal-D/tkchart/assets/93121062/a8a424ed-4871-4322-ac80-1795d6394ef9
+https://github.com/Thisal-D/tkchart/assets/93121062/10b569b0-1b4c-4a92-a000-de5d01c92607
+

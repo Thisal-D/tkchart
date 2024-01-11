@@ -1,74 +1,268 @@
 # tkchart
-
-### Create charts in tkinter & customtkinter windows!
-
 <hr>
+<br>
+
+#### you need to import package first
+
+> import tkchart
+
+## Mainly there are 2 objects. 
+>  - LineChart 
+>  - Line 
+
+## To display data using LineChart you need to do 3 main tasks
+> 1. Create LineChart
+> 2. Create Line
+> 3. Display data
+<br>
 
 
-## Attrubutes of tkchart
-![205255031-aefc7522-a8ba-44ee-b594-c5d2d7132c931](https://user-images.githubusercontent.com/93121062/233741596-6575f82d-e501-433c-9380-5e3ecf68f853.png)
+- ## 1 . Create LineChart 
+    - Create a LineChart
 
+   
 
-> Examples
-![Screenshot 2022-12-02 142902](https://user-images.githubusercontent.com/93121062/205255962-8904f155-5254-4b21-b0d1-9350bc14fd73.png)
+    ### ``linechart = tkchart.LineChart()``
 
+    - ##  Attributes & Types
+    
+    ``master`` : tkinter.widget (Frame, Canvas, Tk)<br>
+    ``width`` : int<br>
+    ``height`` : int<br>
+    ``bar_size`` : int<br>
 
+    ``y_sections_count`` : int<br>
+    ``x_sections_count`` : int<br>
+    ``y_labels_count`` : int<br>
+    ``x_labels_count`` : int<br>
+    
+    ``y_data`` : str ,int, float<br>
+    ``x_data`` : str ,int, float<br>
+    ``y_data_max`` : int ,float<br>
+    ``x_data_max`` : int ,float<br>
+    ``y_values_decimals`` : int<br>
+    ``x_values_decimals`` : int<br>
 
->> ![123](https://user-images.githubusercontent.com/93121062/204732876-1d3f7526-93ea-4e5e-905b-b768020fd572.png)
+    ``sections_color`` : str<br>
+    ``y_values_text_color`` : str<br>
+    ``x_values_text_color`` : str<br>
+    ``y_data_text_color`` : str<br>
+    ``x_data_text_color`` : str<br>
+    ``bg_color`` : str<br>
+    ``chart_color`` : str<br>
+    ``bar_color`` : str<br>
+    
+    ``x_y_data_font`` : tuple<br>
+    ``x_y_values_font`` : tuple<br>
 
->> ![2022-11-30 12-48-43](https://user-images.githubusercontent.com/93121062/204732953-440646dd-2ef6-4fbb-9da3-640d72faa799.gif)
+    ``line_width`` : int<br>
 
-
->> ![2022-11-30 12-23-55](https://user-images.githubusercontent.com/93121062/204729605-44027b37-c9f5-4588-a316-1205e5917ae2.gif)
-
-
-
-
-> Code Example for create and display values on it
+    
 
 ```
-#import packages
+linechart = tkchart.LineChart(master=root,
+                            width=1000, 
+                            height=600,
+                            bar_size=5
+                            )
+```
+
+<img src="1.png">
+
+```
+linechart = tkchart.LineChart(master=root, 
+                            width=1000, 
+                            height=600,
+                            bar_size=5,
+
+                            y_sections_count=5,
+                            x_sections_count=5,
+                            y_labels_count=5,
+                            x_labels_count=5
+                            )
+```
+<img src="2.png">
+
+```
+linechart = tkchart.LineChart(master=root, width=1000, 
+                            height=600,
+                            bar_size=5,
+                            
+                            y_sections_count=5,
+                            x_sections_count=5,
+                            y_labels_count=5,
+                            x_labels_count=5,
+                            
+                            y_data="GB",
+                            x_data="S",
+                            x_data_max=60,
+                            y_data_max=1000,
+                            x_values_decimals=4,
+                            y_values_decimals=5,
+                            )
+```
+<img src="3.png">
+
+```
+
+linechart = tkchart.LineChart(master=root, width=1000, 
+                            height=600,
+                            bar_size=5,
+                            
+                            y_sections_count=5,
+                            x_sections_count=5,
+                            y_labels_count=5,
+                            x_labels_count=5,
+                            
+                            y_data="GB",
+                            x_data="S",
+                            x_data_max=60,
+                            y_data_max=1000,
+                            x_values_decimals=4,
+                            y_values_decimals=5,
+                            
+                            sections_color="#ffffff",
+                            y_values_text_color="#ffffff",
+                            x_values_text_color="#ffffff",
+                            x_data_text_color="#00ffff",
+                            y_data_text_color="#ff00ff",
+                            bg_color="#202020",
+                            chart_color="#101010",
+                            bar_color="#909090"
+                            )
+```
+<img src="4.png">
+
+```
+
+linechart = tkchart.LineChart(master=root, 
+                            width=1000, 
+                            height=600,
+                            bar_size=5,
+                            
+                            y_sections_count=5,
+                            x_sections_count=5,
+                            y_labels_count=5,
+                            x_labels_count=5,
+                            
+                            y_data="GB",
+                            x_data="S",
+                            x_data_max=60,
+                            y_data_max=1000,
+                            x_values_decimals=4,
+                            y_values_decimals=5,
+                            
+                            sections_color="#505050",
+                            y_values_text_color="#bbbbbb",
+                            x_values_text_color="#bbbbbb",
+                            x_data_color="#00ffff",
+                            y_data_color="#ff00ff",
+                            bg_color="#202020",
+                            chart_color="#101010",
+                            bar_color="#cccccc",
+                            
+                            x_y_data_font = ("Arial", 15,"bold"),
+                            x_y_values_font = ("Arial", 10,"bold")
+                            )
+```
+
+<img src="5.png">
+
+
+- ## 1 . Create Line 
+    - Create a Line
+
+   
+
+    ### ``line = tkchart.Line()``
+
+    - ##  Attributes & Types
+    
+    ``master`` : tkchart.LineChart<br>
+    ``color`` : str<br>
+    ``size`` : int<br>
+
+```
+line = tkchart.Line(master=linechart,
+                color="#ffff00",
+                size=5)
+
+```
+<img src="6.png">
+
+
+`` line_width `` <font color="Red" >is not a attributes of Line. Its a attribute of LineChart object..! </font>
+
+
+- ## 1 . Display Data
+```
+import tkinter
 import tkchart
-import customtkinter as ctk
-import random
+import random #for get random value
 
 #create root 
-root = ctk.CTk()
+root = tkinter.Tk()
+root.minsize(1200,500)
 
-#create line chart
-chart_1 = tkchart.LineChart(master=root 
-                            ,width=1280 ,height=720 
-                            ,chart_fg='#101010'
-                            ,horizontal_bar_size=10 ,horizontal_bar_fg="#444444"
-                            ,vertical_bar_size=10 ,vertical_bar_fg="#444444"
-                            ,sections=True ,sections_fg="#444444" ,sections_count=10 
-                            ,max_value=2000000 
-                            ,values_labels=True ,values_labels_count=10
-                            ,chart_line_len=100
-                            ,text_color='#00ff00' ,font=('arial',10,'bold') 
-                            ,left_space=10 ,right_space=10 ,bottom_space=40 ,top_space=40
-                            ,x_space=00 ,y_space=10)
-chart_1.pack()
+#create LineChart
+linechart = tkchart.LineChart(master=root, 
+                            width=1000, 
+                            height=400,
+                            bar_size=5,
+                            
+                            y_sections_count=5,
+                            x_sections_count=5,
+                            y_labels_count=5,
+                            x_labels_count=5,
+                            
+                            y_data="GB",
+                            x_data="S",
+                            x_data_max=60,
+                            y_data_max=1000,
+                            x_values_decimals=4,
+                            y_values_decimals=5,
+                            
+                            sections_color="#707070",
+                            y_values_text_color="#bbbbbb",
+                            x_values_text_color="#bbbbbb",
+                            x_data_color="#00ff00",
+                            y_data_color="#00ff00",
+                            bg_color="#202020",
+                            chart_color="#101010",
+                            bar_color="#cccccc",
+                            
+                            x_y_data_font = ("Arial", 15,"bold"),
+                            x_y_values_font = ("Arial", 10,"bold"),
+                            
+                            line_width=100)
+#place LineChart
+linechart.place(x=0 ,y=0)
 
-#create line for line chart
-line_1 = tkchart.Line(master=chart_1 ,height=4 ,color='#ffffff')
 
-#display values using loop
-values = [x for x in range(2000000+1)]\
-    
-line_1.configure(line_highlight=1,line_highlight_color="#ffffff" ,line_highlight_size=10)
+#Create Line
+line = tkchart.Line(master=linechart,
+                color="#cccccc",
+                size=3)
+
+data = [0,100,200,300,400,500,600,700,800,900,1000]
 def loop():
-    chart_1.display(line=line_1 ,values=random.choices(values ,k=1))
-    root.after(500,loop)
+    linechart.show_data(data=[random.choice(data)], line=line)
+    root.after(250,loop)
+
+#calling to loop
 loop()
 
 root.mainloop()
 ```
 
-> output
-![205255031-aefc7522-a8ba-44ee-b594-c5d2d7132c931](https://user-images.githubusercontent.com/93121062/233741535-5372afdf-9906-410b-be0e-3ff4b65cbf02.png)
 
 
-# pypi for more infomation -> <a href="https://pypi.org/project/tkchart/"> https://pypi.org/project/tkchart </a>
+    
 
-# instal package ->  pip install tkchart
+
+    
+
+
+    
+
+    

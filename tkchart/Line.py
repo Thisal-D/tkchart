@@ -1,33 +1,27 @@
          
 class Line():
-   def __init__(self ,*arg ,master=None ,color="#ffffff" ,height=1 ,
-                line_highlight=False ,line_highlight_size=0,line_highlight_color="#ffffff"):
+   def __init__(self ,*args ,master=None ,color="#909090" ,size=1):
       try :
-         chart = arg[0]
+         self.__chart = args[0]
       except:
-         chart = master
+         self.__chart = master
 
-      self.line_color = color
-      self.line_height = height
-      self.y_end = 0
-      self.x_end  = chart.chart_line_len*-1
-      self.values = []
-      self.line_highlight = line_highlight
-      self.line_highlight_size = line_highlight_size
-      self.line_highlight_color = line_highlight_color
+      self.__color = color
+      self.__size = size
+      self.__y_end = 0
+      self.__x_end  = self.__chart._LineChart__line_width* -1
+      self.__data = []
+      self.__temp_data = []
    
-   def configure(self , color=None ,height=None ,line_highlight=None ,line_highlight_size=None ,line_highlight_color=None) :
+  
+   
+   def configure(self , color=None ,size=None) :
       if color != None:
-         self.line_color = color
-      if height != None:
-         self.line_height = height
-         
-      if line_highlight != None :
-         self.line_highlight = line_highlight
-        
-      if line_highlight_size != None:
-         self.line_highlight_size = line_highlight_size
-           
-      if line_highlight_color != None:
-         self.line_highlight_color = line_highlight_color
- 
+         self.__color = color
+      if size != None:
+         self.__size = size
+   
+   def __reset(self):
+      self.__y_end = 0
+      self.__x_end  = self.__chart._LineChart__line_width* -1
+      self.__data = []

@@ -11,8 +11,8 @@ class LineChart():
                 sections_color="#909090",
                 x_values_decimals=1, y_values_decimals=1,
                 y_labels_count=5, x_labels_count=5,
-                y_data="", y_data_max=1, y_sections_count=0, y_values_text_color="#909090", y_data_color="#909090",
-                x_data="", x_data_max=1, x_sections_count=0, x_values_text_color="#909090", x_data_color="#909090",
+                y_data="", y_data_max=1, y_sections_count=0, y_values_color="#909090", y_data_color="#909090",
+                x_data="", x_data_max=1, x_sections_count=0, x_values_color="#909090", x_data_color="#909090",
                 x_y_data_font=("arial", 9, "normal"),
                 x_y_values_font=("arial", 9, "normal"),
                 line_width=None, *args):
@@ -31,9 +31,9 @@ class LineChart():
       
       self.__bg_color = bg_color
       self.__chart_color = chart_color
-      self.__y_values_text_color = y_values_text_color
+      self.__y_values_color = y_values_color
       self.__y_data_color = y_data_color
-      self.__x_values_text_color = x_values_text_color
+      self.__x_values_color = x_values_color
       self.__x_data_color = x_data_color
       
       self.__sections_color = sections_color
@@ -112,12 +112,12 @@ class LineChart():
       self.__y_data_text.configure(bg=self.__bg_color, fg=self.__y_data_color)
       for label in self.__x_values.winfo_children() :
          if type(label) == tkinter.Label:
-            label.configure(bg=self.__bg_color, fg=self.__x_values_text_color)
+            label.configure(bg=self.__bg_color, fg=self.__x_values_color)
       
       self.__x_data_text.configure(bg=self.__bg_color, fg=self.__x_data_color)
       for label in self.__y_values.winfo_children():
          if type(label) == tkinter.Label:
-            label.configure(bg=self.__bg_color, fg=self.__y_values_text_color)
+            label.configure(bg=self.__bg_color, fg=self.__y_values_color)
             
       for section_frame in self.__output_frame.winfo_children():
          if type(section_frame) == tkinter.Frame:
@@ -235,7 +235,7 @@ class LineChart():
                  x_values_decimals=False, y_values_decimals=False,
                  x_data=False, x_y_data_font=False, x_y_values_font=False,
                  bg_color=False, bar_color=False, chart_color=False,
-                 y_values_text_color=False, x_values_text_color=False,
+                 y_values_color=False, x_values_color=False,
                  y_data_color=False, x_data_color=False,
                  y_data=False, y_labels_count=False, x_labels_count=False,
                  y_sections_count=False, x_sections_count=False,sections_color=False,
@@ -310,14 +310,14 @@ class LineChart():
             self.__bg_color = bg_color
             chart_color_change_req = True
             
-      if y_values_text_color:
-         if y_values_text_color != self.__y_values_text_color:
-            self.__y_values_text_color = y_values_text_color
+      if y_values_color:
+         if y_values_color != self.__y_values_color:
+            self.__y_values_color = y_values_color
             chart_color_change_req = True
             
-      if x_values_text_color:
-         if x_values_text_color != self.__x_values_text_color:
-            self.__x_values_text_color = x_values_text_color
+      if x_values_color:
+         if x_values_color != self.__x_values_color:
+            self.__x_values_color = x_values_color
             chart_color_change_req = True
             
       if y_data_color:

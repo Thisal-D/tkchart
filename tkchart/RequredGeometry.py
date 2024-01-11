@@ -1,15 +1,14 @@
-import tkinter as tk
+import tkinter
 
 def RequredWidth(text="" ,font=None):
     requred_width = 0
-    label = tk.Label(font=font)
-    label.config(text=str(text) +"      ")
-    requred_width = label.winfo_reqwidth()
-    return requred_width
+    label = tkinter.Label(font=font)
+    label.config(text=str(text) +"")
+    return label.winfo_reqwidth()
+
 
 def RequredHeight(text="" ,font=None):
     requred_height = 0
-    label = tk.Label(font=font)
-    label.config(text=str(text) +"      ")
-    requred_height = label.winfo_reqheight()
-    return requred_height
+    label = tkinter.Label(font=font)
+    label.config(text=str(text) +"")
+    return label.winfo_reqheight()

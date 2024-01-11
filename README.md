@@ -261,13 +261,4 @@ root.mainloop()
 ```
 
 
-
-    
-
-
-    
-
-
-    
-
-    
+https://github.com/Thisal-D/tkchart/assets/93121062/a8a424ed-4871-4322-ac80-1795d6394ef9

@@ -238,8 +238,8 @@ class LineChart():
                  y_values_text_color=False, x_values_text_color=False,
                  y_data_color=False, x_data_color=False,
                  y_data=False, y_labels_count=False, x_labels_count=False,
-                 y_sections_count=False, x_sections_count=False,sections_color=False
-                 ):  
+                 y_sections_count=False, x_sections_count=False,sections_color=False,
+                 line_width=False):  
       
       chart_reset_req = False
       chart_color_change_req = False
@@ -372,6 +372,11 @@ class LineChart():
          if x_values_decimals != self.__x_values_decimals:
             self.__x_values_decimals = x_values_decimals
             self.__set_text()
+            
+      if line_width:
+         if line_width != self.__line_width:
+            self.__line_width = line_width
+            self.__re_show_data()
       
       if chart_reset_req :
          self.__destroy_y_labels()
@@ -390,7 +395,6 @@ class LineChart():
          self.__force_to_stop_show_data = True
          while  self.___show_data_working:
             pass
-         print("Called")
          self.__force_to_stop_show_data = False
          self.__re_show_data()
          
@@ -430,11 +434,8 @@ class LineChart():
       
       maximum_data = max([len(line._Line__data) for line in  self.__lines])
       max_support = int(self.__real_width/self.__line_width)+1
-      """print("\n\n-----------------------------------")
-      print("max support : ",max_support)
-      print("max data : ",maximum_data)"""
+      
       for line in  self.__lines:
-         #print("total : ", len(line._Line__data))
          if maximum_data>max_support:
             line._Line__temp_data = line._Line__data[maximum_data-(max_support)::]
          else:
@@ -442,14 +443,12 @@ class LineChart():
          line._Line__reset()
         
          
-         #print("--------------------------------------")
-         #print("get : ",len(line._Line__data))
-      #print("----------------------------------\n\n")
+         
       lines = self.__lines
       self.lines =[]
       
       for line in lines:
-         """print(line._Line__temp_data)"""
+         
          self.show_data(line=line, data=line._Line__temp_data)
    
    def show_data(self, line:Line, data:list)->None:
@@ -464,22 +463,18 @@ class LineChart():
             x_start = line._Line__x_end
             y_start = line._Line__y_end
       
-            """"print("\n############################################\n")"""
+            
             line._Line__x_end += self.__line_width
             line._Line__y_end = (self.__real_height - (self.__real_height/100)*(d/self.__y_data_max*100) + (line._Line__size/2))
             
-            """print("x start :",x_start)
-            print("x end :",line._Line__x_end)
             
-            print("y start :",y_start)
-            print("y end :",line._Line__y_end)"""
             
             if line._Line__x_end > self.__real_width and self.__real_width < 20000:
                self.__place_x -= self.__line_width
                
                self.__output.place(x=self.__place_x,
                                  width=self.__real_width+self.__line_width)
-               #print(self.__output.place_info()["width"] ,self.__output.place_info()["x"])
+               
                self.__real_width += self.__line_width;
             
             elif self.__real_width > 6000:
@@ -493,8 +488,7 @@ class LineChart():
          else:
             break
                
-      """print("\n###########################################")
-      print("############################################\n")"""
+      
       if re_show_data:
          self.__re_show_data()
       self.___show_data_working = False

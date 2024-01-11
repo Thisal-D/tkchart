@@ -82,7 +82,8 @@ linechart = tkchart.LineChart(master=root,
                             x_labels_count=5
                             )
 ```
-<img src="2.png">
+![2](https://github.com/Thisal-D/tkchart/assets/93121062/5be7c60a-aa7c-4cad-8985-ab0c93d7855a)
+
 
 ```
 linechart = tkchart.LineChart(master=root, width=1000, 
@@ -102,7 +103,7 @@ linechart = tkchart.LineChart(master=root, width=1000,
                             y_values_decimals=5,
                             )
 ```
-<img src="3.png">
+![3](https://github.com/Thisal-D/tkchart/assets/93121062/1413e734-f980-4f21-92db-14f080c571e3)
 
 ```
 
@@ -132,7 +133,8 @@ linechart = tkchart.LineChart(master=root, width=1000,
                             bar_color="#909090"
                             )
 ```
-<img src="4.png">
+![4](https://github.com/Thisal-D/tkchart/assets/93121062/c854c38a-cab6-4c77-a02a-2b8482b2cb41)
+
 
 ```
 
@@ -167,7 +169,8 @@ linechart = tkchart.LineChart(master=root,
                             )
 ```
 
-<img src="5.png">
+![5](https://github.com/Thisal-D/tkchart/assets/93121062/8d9866c9-362e-4b5e-96bf-d923993b1ee4)
+
 
 
 - ## 1 . Create Line 
@@ -189,7 +192,8 @@ line = tkchart.Line(master=linechart,
                 size=5)
 
 ```
-<img src="6.png">
+![6](https://github.com/Thisal-D/tkchart/assets/93121062/25f73428-2071-4826-9961-b8e78808f698)
+
 
 
 `` line_width `` <font color="Red" >is not a attributes of Line. Its a attribute of LineChart object..! </font>

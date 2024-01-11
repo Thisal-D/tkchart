@@ -44,10 +44,10 @@ Create a LineChart
     ``x_values_decimals`` : int<br>
 
     ``sections_color`` : str<br>
-    ``y_values_text_color`` : str<br>
-    ``x_values_text_color`` : str<br>
-    ``y_data_text_color`` : str<br>
-    ``x_data_text_color`` : str<br>
+    ``y_values_color`` : str<br>
+    ``x_values_color`` : str<br>
+    ``y_data_color`` : str<br>
+    ``x_data_color`` : str<br>
     ``bg_color`` : str<br>
     ``chart_color`` : str<br>
     ``bar_color`` : str<br>
@@ -76,10 +76,10 @@ Create a LineChart
     y_values_decimals
     x_values_decimals
     sections_color
-    y_values_text_color
-    x_values_text_color 
-    y_data_text_color 
-    x_data_text_color 
+    y_values_color
+    x_values_color 
+    y_data_color 
+    x_data_color 
     bg_color
     chart_color 
     bar_color 
@@ -199,10 +199,10 @@ linechart = tkchart.LineChart(master=root, width=1000,
                             y_values_decimals=5,
                             
                             sections_color="#ffffff",
-                            y_values_text_color="#ffffff",
-                            x_values_text_color="#ffffff",
-                            x_data_text_color="#00ffff",
-                            y_data_text_color="#ff00ff",
+                            y_values_color="#ffffff",
+                            x_values_color="#ffffff",
+                            x_data_color="#00ffff",
+                            y_data_color="#ff00ff",
                             bg_color="#202020",
                             chart_color="#101010",
                             bar_color="#909090"
@@ -231,8 +231,8 @@ linechart = tkchart.LineChart(master=root,
                             y_values_decimals=5,
                             
                             sections_color="#505050",
-                            y_values_text_color="#bbbbbb",
-                            x_values_text_color="#bbbbbb",
+                            y_values_color="#bbbbbb",
+                            x_values_color="#bbbbbb",
                             x_data_color="#00ffff",
                             y_data_color="#ff00ff",
                             bg_color="#202020",
@@ -316,8 +316,8 @@ linechart = tkchart.LineChart(master=root,
                             y_values_decimals=5,
                             
                             sections_color="#707070",
-                            y_values_text_color="#bbbbbb",
-                            x_values_text_color="#bbbbbb",
+                            y_values_color="#bbbbbb",
+                            x_values_color="#bbbbbb",
                             x_data_color="#00ff00",
                             y_data_color="#00ff00",
                             bg_color="#202020",

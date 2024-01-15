@@ -141,7 +141,10 @@ linechart = tkchart.LineChart(master=root,
                             bar_size=5
                             )
 ```
+
 ![Example Image](https://drive.google.com/uc?export=view&id=10xbpwAUI5vNxfUMM9rUbd4B6va56Zmj6)
+
+
 
 
 ```
@@ -156,6 +159,10 @@ linechart = tkchart.LineChart(master=root,
                             x_labels_count=5
                             )
 ```
+
+![Example Image](https://drive.google.com/uc?export=view&id=1jt8JeAIU9HqimmCsL-3sodXmjlNYhbYg)
+
+
 
 
 ```
@@ -177,9 +184,12 @@ linechart = tkchart.LineChart(master=root, width=1000,
                             )
 ```
 
+![Example Image](https://drive.google.com/uc?export=view&id=1WOYWlDMJKIF5_HDzocOPdl6oQZJLuY0H)
+
+
+
 
 ```
-
 linechart = tkchart.LineChart(master=root, width=1000, 
                             height=600,
                             bar_size=5,
@@ -207,8 +217,12 @@ linechart = tkchart.LineChart(master=root, width=1000,
                             )
 ```
 
-```
+![Example Image](https://drive.google.com/uc?export=view&id=11TMakOOD9XXbrRXGAdxscmPhEeRARXLz)
 
+
+
+
+```
 linechart = tkchart.LineChart(master=root, 
                             width=1000, 
                             height=600,
@@ -240,6 +254,7 @@ linechart = tkchart.LineChart(master=root,
                             )
 ```
 
+![Example Image](https://drive.google.com/uc?export=view&id=1zPR4mIfZmcP6zyA8Sd2JCmHdgbilv7Fe)
 
 
 <br>

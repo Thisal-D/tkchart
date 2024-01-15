@@ -39,22 +39,22 @@ Create a LineChart
     ``y_data`` : str ,int, float<br>
     ``x_data`` : str ,int, float<br>
     ``y_data_max`` : int ,float<br>
-    ``x_data_max`` : int ,float<br>
+    ``x_data_min_max`` : touple(min ,max) <br>
     ``y_values_decimals`` : int<br>
     ``x_values_decimals`` : int<br>
 
     ``sections_color`` : str<br>
-    ``y_values_color`` : str<br>
-    ``x_values_color`` : str<br>
-    ``y_data_color`` : str<br>
-    ``x_data_color`` : str<br>
+    ``y_values_text_color`` : str<br>
+    ``x_values_text_color`` : str<br>
+    ``y_data_text_color`` : str<br>
+    ``x_data_text_color`` : str<br>
     ``bg_color`` : str<br>
     ``chart_color`` : str<br>
     ``bar_color`` : str<br>
 
     ``x_y_data_font`` : tuple<br>
     ``x_y_values_font`` : tuple<br>
-
+    ``line_width_auto`` : bool<br>
     ``line_width`` : int<br>
 
 
@@ -72,19 +72,20 @@ Create a LineChart
     y_data 
     x_data 
     y_data_max 
-    x_data_max 
+    x_data_min_max 
     y_values_decimals
     x_values_decimals
     sections_color
-    y_values_color
-    x_values_color 
-    y_data_color 
-    x_data_color 
+    y_values_text_color
+    x_values_text_color 
+    y_data_text_color 
+    x_data_text_color 
     bg_color
     chart_color 
     bar_color 
     x_y_data_font
     x_y_values_font
+    line_width_auto
     line_width
     ```
 
@@ -141,7 +142,8 @@ linechart = tkchart.LineChart(master=root,
                             )
 ```
 
-![1](https://github.com/Thisal-D/tkchart/assets/93121062/866228f8-1d2e-4486-9615-6383582c52ca)
+
+<iframe src="https://drive.google.com/file/d/10xbpwAUI5vNxfUMM9rUbd4B6va56Zmj6/preview" width="640" height="480" allow="autoplay"></iframe>
 
 
 ```
@@ -156,7 +158,6 @@ linechart = tkchart.LineChart(master=root,
                             x_labels_count=5
                             )
 ```
-![2](https://github.com/Thisal-D/tkchart/assets/93121062/203494d5-7a2a-4435-9f4d-02aa17782fbc)
 
 
 ```
@@ -171,13 +172,12 @@ linechart = tkchart.LineChart(master=root, width=1000,
                             
                             y_data="GB",
                             x_data="S",
-                            x_data_max=60,
+                            x_data_min_max=(20,60),
                             y_data_max=1000,
                             x_values_decimals=4,
                             y_values_decimals=5,
                             )
 ```
-![3](https://github.com/Thisal-D/tkchart/assets/93121062/f7789d90-250c-4c18-b1ee-dac2eb02ea89)
 
 
 ```
@@ -193,23 +193,21 @@ linechart = tkchart.LineChart(master=root, width=1000,
                             
                             y_data="GB",
                             x_data="S",
-                            x_data_max=60,
+                            x_data_min_max=(20,60),
                             y_data_max=1000,
                             x_values_decimals=4,
                             y_values_decimals=5,
                             
                             sections_color="#ffffff",
-                            y_values_color="#ffffff",
-                            x_values_color="#ffffff",
-                            x_data_color="#00ffff",
-                            y_data_color="#ff00ff",
+                            y_values_text_color="#ffffff",
+                            x_values_text_color="#ffffff",
+                            x_data_text_color="#00ffff",
+                            y_data_text_color="#ff00ff",
                             bg_color="#202020",
                             chart_color="#101010",
                             bar_color="#909090"
                             )
 ```
-
-![4](https://github.com/Thisal-D/tkchart/assets/93121062/2844b8d8-b76c-4a9b-8cf9-11220d12d8a5)
 
 ```
 
@@ -225,14 +223,14 @@ linechart = tkchart.LineChart(master=root,
                             
                             y_data="GB",
                             x_data="S",
-                            x_data_max=60,
+                            x_data_min_max=(20,60),
                             y_data_max=1000,
                             x_values_decimals=4,
                             y_values_decimals=5,
                             
                             sections_color="#505050",
-                            y_values_color="#bbbbbb",
-                            x_values_color="#bbbbbb",
+                            y_values_text_color="#bbbbbb",
+                            x_values_text_color="#bbbbbb",
                             x_data_color="#00ffff",
                             y_data_color="#ff00ff",
                             bg_color="#202020",
@@ -244,7 +242,6 @@ linechart = tkchart.LineChart(master=root,
                             )
 ```
 
-![5](https://github.com/Thisal-D/tkchart/assets/93121062/48cb095a-199d-450d-b50b-26f8e1c7db50)
 
 
 <br>
@@ -277,7 +274,6 @@ line = tkchart.Line(master=linechart,
                 size=5)
 
 ```
-![6](https://github.com/Thisal-D/tkchart/assets/93121062/b8d83e78-e98b-4bfa-8947-206bc53a892e)
 
 
 
@@ -310,14 +306,14 @@ linechart = tkchart.LineChart(master=root,
                             
                             y_data="GB",
                             x_data="S",
-                            x_data_max=60,
+                            x_data_min_max=(20,60),
                             y_data_max=1000,
                             x_values_decimals=4,
                             y_values_decimals=5,
                             
                             sections_color="#707070",
-                            y_values_color="#bbbbbb",
-                            x_values_color="#bbbbbb",
+                            y_values_text_color="#bbbbbb",
+                            x_values_text_color="#bbbbbb",
                             x_data_color="#00ff00",
                             y_data_color="#00ff00",
                             bg_color="#202020",
@@ -348,6 +344,11 @@ loop()
 root.mainloop()
 ```
 
+## For more details 
 
-https://github.com/Thisal-D/tkchart/assets/93121062/10b569b0-1b4c-4a92-a000-de5d01c92607
+##  GitHub   :   <a href="https://github.com/Thisal-D/tkchart"><i>tkchart<i></a>
+
+<video src="https://private-user-images.githubusercontent.com/93121062/296057913-10b569b0-1b4c-4a92-a000-de5d01c92607.mov?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDUwMTkwNzEsIm5iZiI6MTcwNTAxODc3MSwicGF0aCI6Ii85MzEyMTA2Mi8yOTYwNTc5MTMtMTBiNTY5YjAtMWI0Yy00YTkyLWEwMDAtZGU1ZDAxYzkyNjA3Lm1vdj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAxMTIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMTEyVDAwMTkzMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTJjMzBjYTFhZTNjMTYyMDFjNmExN2Y4MmM0OWY3ODBhYTg0N2EzYmQ3NDg2MmYyM2ViYjdkNmY0ZGRhYmZiMTcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.CJf6vJ3T1_Vb09xqkcpHATjfOPudzktpMxdssatyGlA" controls>
+
+
 

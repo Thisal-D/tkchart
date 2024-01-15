@@ -12,10 +12,10 @@ class LineChart():
                 x_values_decimals=1, y_values_decimals=1,
                 y_labels_count=5, x_labels_count=5,
                 y_data="", y_data_max=1, y_sections_count=0, y_values_color="#909090", y_data_color="#909090",
-                x_data="", x_data_max=1, x_sections_count=0, x_values_color="#909090", x_data_color="#909090",
+                x_data="", x_data_min_max=(0,10) ,x_sections_count=0, x_values_color="#909090", x_data_color="#909090",
                 x_y_data_font=("arial", 9, "normal"),
                 x_y_values_font=("arial", 9, "normal"),
-                line_width=None, *args):
+                line_width=None, line_width_auto=True, *args):
       
       if master != None:
          self.master = master
@@ -28,6 +28,10 @@ class LineChart():
       
       self.__lines = []
       self.__line_width = line_width
+      self.__line_width_auto=True
+      if line_width != None:
+         self.__line_width_auto=False
+      
       
       self.__bg_color = bg_color
       self.__chart_color = chart_color
@@ -50,9 +54,12 @@ class LineChart():
       
       self.__y_data = y_data
       self.__x_data = x_data
-      self.__y_data_max = y_data_max
-      self.__x_data_max = x_data_max
       
+      self.__y_data_max = y_data_max
+      self.__x_data_min = x_data_min_max[0]
+      self.__x_data_max = x_data_min_max[1]
+      self.__x_data_min_max = x_data_min_max
+   
       self.__x_y_data_font = x_y_data_font
       self.__x_values_decimals = x_values_decimals
       self.__y_values_decimals = y_values_decimals
@@ -61,7 +68,6 @@ class LineChart():
    
       self.__main_frame = tkinter.Frame(master=master)
       
-      #bar
       self.__y_bar = tkinter.Frame(master=self.__main_frame)
       self.__x_bar = tkinter.Frame(master=self.__main_frame)
       
@@ -80,6 +86,7 @@ class LineChart():
       self.__get_required_widget_size()
       self.__set_widget_geomatry()
       self.__place_widget()
+      self.__get_line_width()
       self.__create_y_labels()
       self.__create_x_labels()
       self.__create_y_sections()
@@ -148,10 +155,16 @@ class LineChart():
          label.configure(text=value)
       
       self.__x_data_text.configure(text=self.__x_data)
+      #old vesion 1.0.0
+      '''for i,label in enumerate(self.__x_values.winfo_children()):
+         value = (self.__x_data_max - ((self.__x_data_max)/self.__x_labels_count)*i)
+         value = self.__add_decimals(value,self.__x_values_decimals)
+         label.configure(text=value)'''
       for i,label in enumerate(self.__x_values.winfo_children()):
-         value = (self.__x_data_max - (self.__x_data_max/self.__x_labels_count)*i)
+         value = self.__x_data_max- (((self.__x_data_max-self.__x_data_min)/self.__x_labels_count)*i)
          value = self.__add_decimals(value,self.__x_values_decimals)
          label.configure(text=value)
+      
       
       
    def __place_widget(self):
@@ -169,12 +182,15 @@ class LineChart():
       self.__real_height = self.height - (self.__y_data_req_space+self.__bar_size+self.__x_value_req_space*1.5)
       self.__output.place(y=0, x=0, height=self.__real_height, width=self.__real_width)
       
-      if self.__line_width==None :
-         if  self.__x_sections_count!=0:
-            self.__line_width = int(self.__real_width/self.__x_sections_count)
-         else:
-            self.__line_width = int(self.__real_width/20)
       
+   
+   def __get_line_width(self):
+      if self.__line_width_auto==True:
+         if (self.__x_data_max>self.__x_data_min):
+            self.__line_width = self.__real_width / (self.__x_data_max - self.__x_data_min)
+         else:
+            self.__line_width = self.__real_width / (self.__x_data_min - self.__x_data_max)
+    
       
    def __get_required_widget_size(self):
       self.__y_data_req_space = RequredHeight(text=self.__y_data, font=self.__x_y_data_font)
@@ -201,9 +217,10 @@ class LineChart():
    def __create_x_labels(self):
       self.__x_values.place(x=0, rely=1, y=-self.__x_value_req_space)
       x = self.width - self.__x_data_req_space*2 - self.__x_value_req_width
-      for i in range(self.__x_labels_count):
+      for i in range(self.__x_labels_count + 1):
          tkinter.Label(master=self.__x_values).place(rely=1, y=-self.__x_value_req_space, x=x, anchor="n")
          x -= (self.width - (self.__x_data_req_space*2 + self.__y_value_req_space + self.__bar_size + self.__x_value_req_width) ) / self.__x_labels_count
+         
          
    def __destroy_x_labels(self):
       for x_value in self.__x_values.winfo_children():
@@ -214,7 +231,7 @@ class LineChart():
    def __create_y_sections(self):
       y = 0
       for i in range(self.__y_sections_count):
-         tkinter.Frame(master=self.__output_frame, height=1, width=self.width, bg="#707070").place(y=y, anchor="w")
+         tkinter.Frame(master=self.__output_frame, height=1, width=self.width, bg=self.__sections_color).place(y=y, anchor="w")
          y += (self.height - (self.__y_data_req_space*1.5 + self.__x_value_req_space + self.__bar_size ) ) / self.__y_sections_count 
          
    def __destroy_y_x_sections(self):
@@ -227,11 +244,11 @@ class LineChart():
       if self.__x_sections_count != 0:
          x = (self.width - (self.__x_data_req_space*2+self.__y_value_req_space+self.__bar_size + self.__x_value_req_width)  ) / self.__x_sections_count - 1
       for i in range(self.__x_sections_count):
-         tkinter.Frame(master=self.__output_frame, height=self.height, width=1,bg="#707070").place(x=x, anchor="n")
+         tkinter.Frame(master=self.__output_frame, height=self.height, width=1,bg=self.__sections_color).place(x=x, anchor="n")
          x += (self.width - (self.__x_data_req_space*2+self.__y_value_req_space+self.__bar_size + self.__x_value_req_width)  ) / self.__x_sections_count
          
          
-   def configure(self, width=False, height=False, y_data_max=False, x_data_max=False, bar_size=False,
+   def configure(self, width=False, height=False, y_data_max=False, x_data_min_max=False, bar_size=False,
                  x_values_decimals=False, y_values_decimals=False,
                  x_data=False, x_y_data_font=False, x_y_values_font=False,
                  bg_color=False, bar_color=False, chart_color=False,
@@ -239,7 +256,7 @@ class LineChart():
                  y_data_color=False, x_data_color=False,
                  y_data=False, y_labels_count=False, x_labels_count=False,
                  y_sections_count=False, x_sections_count=False,sections_color=False,
-                 line_width=False):  
+                 line_width=False,line_width_auto=None):  
       
       chart_reset_req = False
       chart_color_change_req = False
@@ -363,9 +380,11 @@ class LineChart():
             self.__y_data = y_data
             self.__set_text()
             
-      if x_data_max:
-         if x_data_max != self.__x_data_max:
-            self.__x_data_max = x_data_max
+      if x_data_min_max:
+         if x_data_min_max != self.__x_data_min_max:
+            self.__x_data_min_max = x_data_min_max
+            self.__x_data_min = x_data_min_max[0]
+            self.__x_data_max = x_data_min_max[1]
             self.__set_text()
       
       if type(x_values_decimals) != bool:
@@ -373,10 +392,18 @@ class LineChart():
             self.__x_values_decimals = x_values_decimals
             self.__set_text()
             
-      if line_width:
+      if line_width_auto!=None and line_width==False:
+         if line_width_auto != self.__line_width_auto:
+            self.__line_width_auto = line_width_auto
+            self.__get_line_width()
+            self.__re_show_data()
+      
+      if line_width and line_width_auto==None:
          if line_width != self.__line_width:
             self.__line_width = line_width
+            self.__line_width_auto = False
             self.__re_show_data()
+            
       
       if chart_reset_req :
          self.__destroy_y_labels()
@@ -430,26 +457,25 @@ class LineChart():
       
       
    def __re_show_data(self):
-      self.__reset_chart_info()
-      
-      maximum_data = max([len(line._Line__data) for line in  self.__lines])
-      max_support = int(self.__real_width/self.__line_width)+1
-      
-      for line in  self.__lines:
-         if maximum_data>max_support:
-            line._Line__temp_data = line._Line__data[maximum_data-(max_support)::]
-         else:
-            line._Line__temp_data = line._Line__data
-         line._Line__reset()
-        
+      lines_values = [len(line._Line__data) for line in  self.__lines]
+      if len(lines_values) > 0:
+         self.__reset_chart_info()
          
+         maximum_data = max(lines_values)
+         max_support = int(self.__real_width/self.__line_width)+1
          
-      lines = self.__lines
-      self.lines =[]
-      
-      for line in lines:
+         for line in  self.__lines:
+            if maximum_data>max_support:
+               line._Line__temp_data = line._Line__data[maximum_data-(max_support)::]
+            else:
+               line._Line__temp_data = line._Line__data
+            line._Line__reset()
          
-         self.show_data(line=line, data=line._Line__temp_data)
+         lines = self.__lines
+         self.lines =[]
+         
+         for line in lines:
+            self.show_data(line=line, data=line._Line__temp_data)
    
    def show_data(self, line:Line, data:list)->None:
       re_show_data = False
@@ -494,7 +520,6 @@ class LineChart():
       self.___show_data_working = False
       
       
-         
    def place(self, x=None, y=None, rely=None, relx=None, anchor=None):
       self.__main_frame.place(x=x, y=y, rely=rely, relx=relx, anchor=anchor)
       

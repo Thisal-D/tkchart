@@ -366,7 +366,10 @@ root.mainloop()
 
 
 ### output
-https://github.com/Thisal-D/tkchart/assets/93121062/6f5ac36c-c605-426f-848b-045afc3d0cef
+https://github.com/Thisal-D/tkchart/assets/93121062/327c328f-9eff-43ee-8fe9-6a7755a7c676
+
+
+
 <br>
 <br>
 

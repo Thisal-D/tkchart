@@ -364,9 +364,8 @@ loop()
 root.mainloop()
 ```
 
-![Output](https://drive.google.com/uc?export=view&id=12v_AfcRtgb-yUbPZGifEeeBusG-Q9b_d)
-
+[![Watch the video](https://drive.google.com/uc?export=view&id=1LiXpuSRQpgl6yNe3ZcFCKNNJfWgZEKBc)](https://drive.google.com/uc?export=view&id=12v_AfcRtgb-yUbPZGifEeeBusG-Q9b_d)
 
 ## For more details 
 
-##  Pypi.org   :   <a href="https://pypi.org/project/tkchart/"><i>tkchart Packege<i></a>
+##  GitHub   :   <a href="https://github.com/Thisal-D/tkchart"><i>tkchart<i></a>

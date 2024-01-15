@@ -375,4 +375,4 @@ https://github.com/Thisal-D/tkchart/assets/93121062/327c328f-9eff-43ee-8fe9-6a77
 
 ## For more details 
 
-##  GitHub   :   <a href="https://pypi.org/project/tkchart/">Pypip.org - <i>tkchart</i></a>
+##  Pypi.org   :   <a href="https://pypi.org/project/tkchart/"><i>tkchart</i></a>

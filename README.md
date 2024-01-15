@@ -144,6 +144,8 @@ linechart = tkchart.LineChart(master=root,
 
 ![Example Image](https://drive.google.com/file/d/1ZvjEkmt_L-l2Pi1GzdmS9vuMujb1tLH5/view?usp=sharing)
 
+![Example Image](https://drive.google.com/uc?export=view&id=1ZvjEkmt_L-l2Pi1GzdmS9vuMujb1tLH5)
+
 
 ```
 linechart = tkchart.LineChart(master=root, 

@@ -141,10 +141,7 @@ linechart = tkchart.LineChart(master=root,
                             bar_size=5
                             )
 ```
-
-![Example Image](https://drive.google.com/file/d/1ZvjEkmt_L-l2Pi1GzdmS9vuMujb1tLH5/view?usp=sharing)
-
-![Example Image](https://drive.google.com/uc?export=view&id=1ZvjEkmt_L-l2Pi1GzdmS9vuMujb1tLH5)
+![Example Image](https://drive.google.com/uc?export=view&id=10xbpwAUI5vNxfUMM9rUbd4B6va56Zmj6)
 
 
 ```

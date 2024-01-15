@@ -148,22 +148,24 @@ class LineChart():
    
    def __set_text(self):
       self.__y_data_text.configure(text=self.__y_data)
-    
-      for i,label in enumerate(self.__y_values.winfo_children()):
-         value = (self.__y_data_max - (self.__y_data_max/self.__y_labels_count)*i)
-         value = self.__add_decimals(value,self.__y_values_decimals)
-         label.configure(text=value)
       
+      if self.__y_labels_count>0:
+         for i,label in enumerate(self.__y_values.winfo_children()):
+            value = (self.__y_data_max - (self.__y_data_max/self.__y_labels_count)*i)
+            value = self.__add_decimals(value,self.__y_values_decimals)
+            label.configure(text=value)
+         
       self.__x_data_text.configure(text=self.__x_data)
       #old vesion 1.0.0
       '''for i,label in enumerate(self.__x_values.winfo_children()):
          value = (self.__x_data_max - ((self.__x_data_max)/self.__x_labels_count)*i)
          value = self.__add_decimals(value,self.__x_values_decimals)
          label.configure(text=value)'''
-      for i,label in enumerate(self.__x_values.winfo_children()):
-         value = self.__x_data_max- (((self.__x_data_max-self.__x_data_min)/self.__x_labels_count)*i)
-         value = self.__add_decimals(value,self.__x_values_decimals)
-         label.configure(text=value)
+      if self.__x_labels_count>0:
+         for i,label in enumerate(self.__x_values.winfo_children()):
+            value = self.__x_data_max- (((self.__x_data_max-self.__x_data_min)/self.__x_labels_count)*i)
+            value = self.__add_decimals(value,self.__x_values_decimals)
+            label.configure(text=value)
       
       
       
@@ -202,12 +204,13 @@ class LineChart():
       self.__x_value_req_width = RequredWidth(text=self.__add_decimals(self.__x_data_max, self.__x_values_decimals), font=self.__x_y_values_font) 
       
    def __create_y_labels(self):
-      self.__y_values.place(x=0, y=1)
-      y = self.__y_data_req_space*1.5
-      for i in range(self.__y_labels_count):
-         tkinter.Label(master=self.__y_values, justify="right" ).place(y=y, x=0, anchor="w" ,width=self.__y_value_req_space)
-         
-         y += (self.height - (self.__y_data_req_space*1.5 + self.__x_value_req_space + self.__bar_size ) ) / self.__y_labels_count 
+      if self.__y_labels_count >0:
+         self.__y_values.place(x=0, y=1)
+         y = self.__y_data_req_space*1.5
+         for i in range(self.__y_labels_count):
+            tkinter.Label(master=self.__y_values, justify="right" ).place(y=y, x=0, anchor="w" ,width=self.__y_value_req_space)
+            
+            y += (self.height - (self.__y_data_req_space*1.5 + self.__x_value_req_space + self.__bar_size ) ) / self.__y_labels_count 
    
    def __destroy_y_labels(self):
       for y_value in self.__y_values.winfo_children():
@@ -215,12 +218,13 @@ class LineChart():
          y_value.destroy()
          
    def __create_x_labels(self):
-      self.__x_values.place(x=0, rely=1, y=-self.__x_value_req_space)
-      x = self.width - self.__x_data_req_space*2 - self.__x_value_req_width
-      for i in range(self.__x_labels_count + 1):
-         tkinter.Label(master=self.__x_values).place(rely=1, y=-self.__x_value_req_space, x=x, anchor="n")
-         x -= (self.width - (self.__x_data_req_space*2 + self.__y_value_req_space + self.__bar_size + self.__x_value_req_width) ) / self.__x_labels_count
-         
+      if self.__x_labels_count >0:
+         self.__x_values.place(x=0, rely=1, y=-self.__x_value_req_space)
+         x = self.width - self.__x_data_req_space*2 - self.__x_value_req_width
+         for i in range(self.__x_labels_count + 1):
+            tkinter.Label(master=self.__x_values).place(rely=1, y=-self.__x_value_req_space, x=x, anchor="n")
+            x -= (self.width - (self.__x_data_req_space*2 + self.__y_value_req_space + self.__bar_size + self.__x_value_req_width) ) / self.__x_labels_count
+            
          
    def __destroy_x_labels(self):
       for x_value in self.__x_values.winfo_children():
@@ -254,8 +258,8 @@ class LineChart():
                  bg_color=False, bar_color=False, chart_color=False,
                  y_values_color=False, x_values_color=False,
                  y_data_color=False, x_data_color=False,
-                 y_data=False, y_labels_count=False, x_labels_count=False,
-                 y_sections_count=False, x_sections_count=False,sections_color=False,
+                 y_data=False, y_labels_count=None, x_labels_count=None,
+                 y_sections_count=None, x_sections_count=None,sections_color=False,
                  line_width=False,line_width_auto=None):  
       
       chart_reset_req = False
@@ -353,22 +357,23 @@ class LineChart():
             chart_color_change_req = True
             
             
-      if y_labels_count:
+      if y_labels_count!=None:
          if y_labels_count != self.__y_labels_count:
             self.__y_labels_count = y_labels_count
             chart_y_values_change_req = True
-            
-      if x_labels_count:
+      
+  
+      if x_labels_count!=None:
          if x_labels_count != self.__x_labels_count:
             self.__x_labels_count = x_labels_count
             chart_x_values_change_req = True
       
-      if x_sections_count:
+      if x_sections_count!=None:
          if x_sections_count != self.__x_sections_count:
             self.__x_sections_count = x_sections_count
             chart_sections_change_req = True
             
-      if y_sections_count:
+      if y_sections_count!=None:
          if y_sections_count != self.__y_sections_count:
             self.__y_sections_count = y_sections_count
             chart_sections_change_req = True
@@ -382,10 +387,19 @@ class LineChart():
             
       if x_data_min_max:
          if x_data_min_max != self.__x_data_min_max:
-            self.__x_data_min_max = x_data_min_max
-            self.__x_data_min = x_data_min_max[0]
-            self.__x_data_max = x_data_min_max[1]
-            self.__set_text()
+            if ((self.__x_data_min_max[1]-self.__x_data_min_max[0]) != (x_data_min_max[1]-x_data_min_max[0]) ):
+               self.__x_data_min_max = x_data_min_max
+               self.__x_data_min = x_data_min_max[0]
+               self.__x_data_max = x_data_min_max[1]
+               self.__get_line_width()
+               self.__set_text()
+               self.__re_show_data()
+            else:
+               self.__x_data_min_max = x_data_min_max
+               self.__x_data_min = x_data_min_max[0]
+               self.__x_data_max = x_data_min_max[1]
+               self.__set_text()
+               
       
       if type(x_values_decimals) != bool:
          if x_values_decimals != self.__x_values_decimals:
@@ -412,6 +426,7 @@ class LineChart():
          self.__get_required_widget_size()
          self.__set_widget_geomatry()
          self.__place_widget()
+         self.__get_line_width()
          self.__create_y_labels()
          self.__create_x_labels()
          self.__set_widget_colors()

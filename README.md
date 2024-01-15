@@ -44,8 +44,8 @@ Create a LineChart
     ``x_values_decimals`` : int<br>
 
     ``sections_color`` : str<br>
-    ``y_values_text_color`` : str<br>
-    ``x_values_text_color`` : str<br>
+    ``y_values_color`` : str<br>
+    ``x_values_color`` : str<br>
     ``y_data_text_color`` : str<br>
     ``x_data_text_color`` : str<br>
     ``bg_color`` : str<br>
@@ -76,8 +76,8 @@ Create a LineChart
     y_values_decimals
     x_values_decimals
     sections_color
-    y_values_text_color
-    x_values_text_color 
+    y_values_color
+    x_values_color 
     y_data_text_color 
     x_data_text_color 
     bg_color
@@ -207,8 +207,8 @@ linechart = tkchart.LineChart(master=root, width=1000,
                             y_values_decimals=5,
                             
                             sections_color="#ffffff",
-                            y_values_text_color="#ffffff",
-                            x_values_text_color="#ffffff",
+                            y_values_color="#ffffff",
+                            x_values_color="#ffffff",
                             x_data_text_color="#00ffff",
                             y_data_text_color="#ff00ff",
                             bg_color="#202020",
@@ -218,8 +218,6 @@ linechart = tkchart.LineChart(master=root, width=1000,
 ```
 
 ![Example Image](https://drive.google.com/uc?export=view&id=11TMakOOD9XXbrRXGAdxscmPhEeRARXLz)
-
-
 
 
 ```
@@ -241,8 +239,8 @@ linechart = tkchart.LineChart(master=root,
                             y_values_decimals=5,
                             
                             sections_color="#505050",
-                            y_values_text_color="#bbbbbb",
-                            x_values_text_color="#bbbbbb",
+                            y_values_color="#bbbbbb",
+                            x_values_color="#bbbbbb",
                             x_data_color="#00ffff",
                             y_data_color="#ff00ff",
                             bg_color="#202020",
@@ -253,8 +251,8 @@ linechart = tkchart.LineChart(master=root,
                             x_y_values_font = ("Arial", 10,"bold")
                             )
 ```
+![Example Image](https://drive.google.com/uc?export=view&id=1ZvjEkmt_L-l2Pi1GzdmS9vuMujb1tLH5)
 
-![Example Image](https://drive.google.com/uc?export=view&id=1zPR4mIfZmcP6zyA8Sd2JCmHdgbilv7Fe)
 
 
 <br>
@@ -288,6 +286,8 @@ line = tkchart.Line(master=linechart,
 
 ```
 
+![Example Image](https://drive.google.com/uc?export=view&id=1zPR4mIfZmcP6zyA8Sd2JCmHdgbilv7Fe)
+
 
 
 `` line_width `` <font color="Red" >is not a attributes of Line. Its a attribute of LineChart object..! </font>
@@ -304,7 +304,7 @@ import random #for get random value
 
 #create root 
 root = tkinter.Tk()
-root.minsize(1200,500)
+root.minsize(1200,800)
 
 #create LineChart
 linechart = tkchart.LineChart(master=root, 
@@ -325,8 +325,8 @@ linechart = tkchart.LineChart(master=root,
                             y_values_decimals=5,
                             
                             sections_color="#707070",
-                            y_values_text_color="#bbbbbb",
-                            x_values_text_color="#bbbbbb",
+                            y_values_color="#bbbbbb",
+                            x_values_color="#bbbbbb",
                             x_data_color="#00ff00",
                             y_data_color="#00ff00",
                             bg_color="#202020",
@@ -335,10 +335,9 @@ linechart = tkchart.LineChart(master=root,
                             
                             x_y_data_font = ("Arial", 15,"bold"),
                             x_y_values_font = ("Arial", 10,"bold"),
-                            
-                            line_width=100)
+                            )
 #place LineChart
-linechart.place(x=0 ,y=0)
+linechart.place(x=50 ,y=150)
 
 
 #Create Line
@@ -346,22 +345,28 @@ line = tkchart.Line(master=linechart,
                 color="#cccccc",
                 size=3)
 
+displayed = 0
+max_support = 50 #60-50
 data = [0,100,200,300,400,500,600,700,800,900,1000]
+start = (20,60)
 def loop():
+    global displayed
+    global start
     linechart.show_data(data=[random.choice(data)], line=line)
+    displayed+=1
+    if displayed>40:
+        start = (start[0]+1,start[1]+1)
+        linechart.configure(x_data_min_max=((start[0],start[1])))
     root.after(250,loop)
-
 #calling to loop
 loop()
 
 root.mainloop()
 ```
 
+![Output](https://drive.google.com/uc?export=view&id=12v_AfcRtgb-yUbPZGifEeeBusG-Q9b_d)
+
+
 ## For more details 
 
-##  GitHub   :   <a href="https://github.com/Thisal-D/tkchart"><i>tkchart<i></a>
-
-<video src="https://private-user-images.githubusercontent.com/93121062/296057913-10b569b0-1b4c-4a92-a000-de5d01c92607.mov?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDUwMTkwNzEsIm5iZiI6MTcwNTAxODc3MSwicGF0aCI6Ii85MzEyMTA2Mi8yOTYwNTc5MTMtMTBiNTY5YjAtMWI0Yy00YTkyLWEwMDAtZGU1ZDAxYzkyNjA3Lm1vdj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAxMTIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMTEyVDAwMTkzMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTJjMzBjYTFhZTNjMTYyMDFjNmExN2Y4MmM0OWY3ODBhYTg0N2EzYmQ3NDg2MmYyM2ViYjdkNmY0ZGRhYmZiMTcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.CJf6vJ3T1_Vb09xqkcpHATjfOPudzktpMxdssatyGlA" controls>
-
-
-
+##  Pypi.org   :   <a href="https://pypi.org/project/tkchart/"><i>tkchart Packege<i></a>

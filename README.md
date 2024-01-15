@@ -364,7 +364,9 @@ loop()
 root.mainloop()
 ```
 
-[![Watch the video](https://drive.google.com/uc?export=view&id=1LiXpuSRQpgl6yNe3ZcFCKNNJfWgZEKBc)](https://drive.google.com/uc?export=view&id=12v_AfcRtgb-yUbPZGifEeeBusG-Q9b_d)
+
+##click to play
+[![Watch the video](https://drive.google.com/uc?export=view&id=1LiXpuSRQpgl6yNe3ZcFCKNNJfWgZEKBc)](https://drive.google.com/file/d/12v_AfcRtgb-yUbPZGifEeeBusG-Q9b_d/view?usp=drive_link)
 
 ## For more details 
 

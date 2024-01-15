@@ -142,8 +142,7 @@ linechart = tkchart.LineChart(master=root,
                             )
 ```
 
-
-<iframe src="https://drive.google.com/file/d/10xbpwAUI5vNxfUMM9rUbd4B6va56Zmj6/preview" width="640" height="480" allow="autoplay"></iframe>
+![Example Image](https://drive.google.com/file/d/1ZvjEkmt_L-l2Pi1GzdmS9vuMujb1tLH5/view?usp=sharing)
 
 
 ```

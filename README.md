@@ -365,9 +365,11 @@ root.mainloop()
 ```
 
 
-##click to play
-[![Watch the video](https://drive.google.com/uc?export=view&id=1LiXpuSRQpgl6yNe3ZcFCKNNJfWgZEKBc)](https://drive.google.com/file/d/12v_AfcRtgb-yUbPZGifEeeBusG-Q9b_d/view?usp=drive_link)
+### output
+https://github.com/Thisal-D/tkchart/assets/93121062/6f5ac36c-c605-426f-848b-045afc3d0cef
+<br>
+<br>
 
 ## For more details 
 
-##  GitHub   :   <a href="https://github.com/Thisal-D/tkchart"><i>tkchart<i></a>
+##  GitHub   :   <a href="https://pypi.org/project/tkchart/">Pypip.org - <i>tkchart</i></a>

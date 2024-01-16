@@ -376,6 +376,11 @@ loop()
 
 root.mainloop()
 ```
+output:
+
+https://github.com/Thisal-D/tkchart/assets/93121062/70d53841-86aa-48fa-9e89-6d2359d550a5
+
+
 
 <br>
 <br>

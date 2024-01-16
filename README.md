@@ -39,7 +39,7 @@ Create a LineChart
     ``y_data`` : str ,int, float<br>
     ``x_data`` : str ,int, float<br>
     ``y_data_max`` : int ,float<br>
-    ``x_data_min_max`` : touple(min ,max) <br>
+    ``x_data_min_max`` : touple(min:int ,max:int) <br>
     ``y_values_decimals`` : int<br>
     ``x_values_decimals`` : int<br>
 

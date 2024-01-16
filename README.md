@@ -140,10 +140,16 @@ Create a LineChart
     #### ``9. place_back`` : use to place chart in the old location after place forget<br>
     #### ``10. pack_back`` : use to pack chart in the old location after pack forget<br>
     #### ``11. grid_back`` : use to grid chart in the old location after grid forget<br>
-    #### ``12. hide`` : use to hide chart<br>
+    #### ``12. hide_all`` : use to hide all the lines<br>
     support **kwargs
     ```
     state: Bool
+    ```
+    #### ``12. hide`` : use hide an specific line<br>
+    support **kwargs
+    ```
+    line: tkchart.Line
+    state: bool
     ```
     
 

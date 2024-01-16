@@ -398,4 +398,4 @@ https://github.com/Thisal-D/tkchart/assets/93121062/70d53841-86aa-48fa-9e89-6d23
 <br>
 <br>
 
-####Special thanks to <a href="https://github.com/childeyouyu" target="_blank">childeyouyu</a> for valuable ideas and support in the development of this project. 
+### Special thanks to <a href="https://github.com/childeyouyu" target="_blank">childeyouyu</a> for valuable ideas and support in the development of this project. 

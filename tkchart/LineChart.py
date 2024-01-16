@@ -83,6 +83,39 @@ class LineChart():
       self.__force_to_stop_show_data = False
       self.___show_data_working = False
       
+      
+      self.__place_x = 0
+      self.__real_height = 0
+      self.__real_width = 0
+      self.__chart_hide = False
+      
+      
+      self.__place_info_x = 0
+      self.__place_info_y = 0
+      self.__place_info_rely = 0
+      self.__place_info_relx = 0
+      self.__place_info_anchor = 0
+      
+      self.__pack_info_pady = 0
+      self.__pack_info_padx = 0
+      self.__pack_info_before = 0
+      self.__pack_info_after = 0
+      self.__pack_info_side = 0
+      self.__pack_info_ipadx = 0
+      self.__pack_info_ipady = 0
+      self.__pack_info_anchor = 0
+      
+      self.__grid_info_column = 0
+      self.__grid_info_columnspan = 0
+      self.__grid_info_ipadx = 0
+      self.__grid_info_ipady = 0
+      self.__grid_info_padx = 0
+      self.__grid_info_pady = 0
+      self.__grid_info_row = 0
+      self.__grid_info_rowspan = 0
+      self.__grid_info_sticky = 0
+      
+      
       self.__get_required_widget_size()
       self.__set_widget_geomatry()
       self.__place_widget()
@@ -503,18 +536,16 @@ class LineChart():
          if not self.__force_to_stop_show_data:
             x_start = line._Line__x_end
             y_start = line._Line__y_end
-      
-            
+   
             line._Line__x_end += self.__line_width
             line._Line__y_end = (self.__real_height - (self.__real_height/100)*(d/self.__y_data_max*100) + (line._Line__size/2))
-            
-            
             
             if line._Line__x_end > self.__real_width and self.__real_width < 20000:
                self.__place_x -= self.__line_width
                
-               self.__output.place(x=self.__place_x,
-                                 width=self.__real_width+self.__line_width)
+               if not self.__chart_hide:
+                  self.__output.place(x=self.__place_x,
+                                    width=self.__real_width+self.__line_width)
                
                self.__real_width += self.__line_width;
             
@@ -524,7 +555,6 @@ class LineChart():
             if not re_show_data:
                self.__output.create_line(x_start, y_start, line._Line__x_end, line._Line__y_end
                                                    ,fill=line._Line__color ,width=line._Line__size)
-
             
          else:
             break
@@ -537,13 +567,67 @@ class LineChart():
       
    def place(self, x=None, y=None, rely=None, relx=None, anchor=None):
       self.__main_frame.place(x=x, y=y, rely=rely, relx=relx, anchor=anchor)
+      self.__place_info_x = x
+      self.__place_info_y = y
+      self.__place_info_rely = rely
+      self.__place_info_relx = relx
+      self.__place_info_anchor = anchor
       
    def pack(self, pady=None, padx=None, before=None, after=None,
             side=None, ipadx=None, ipady=None, anchor=None):
       self.__main_frame.pack(pady=pady, padx=padx, before=before, 
                 after=after, side=side, ipadx=ipadx, ipady=ipady, anchor=anchor)
+      self.__pack_info_pady = pady
+      self.__pack_info_padx = padx
+      self.__pack_info_before = before
+      self.__pack_info_after = after
+      self.__pack_info_side = side
+      self.__pack_info_ipadx = ipadx
+      self.__pack_info_ipady = ipady
+      self.__pack_info_anchor = anchor
       
    def grid(self, column=None, columnspan=None, ipadx=None, ipady=None,  padx=None,  pady=None, row=None, 
             rowspan=None, sticky=None):
       self.__main_frame.grid(column=column, columnspan=columnspan, ipadx=ipadx, ipady=ipady, 
                padx=padx,  pady=pady, row=row, rowspan=rowspan, sticky=sticky)
+      self.__grid_info_column = column
+      self.__grid_info_columnspan = columnspan
+      self.__grid_info_ipadx = ipadx
+      self.__grid_info_ipady = ipady
+      self.__grid_info_padx = padx
+      self.__grid_info_pady = pady
+      self.__grid_info_row = row
+      self.__grid_info_rowspan = rowspan
+      self.__grid_info_sticky = sticky
+      
+      
+   def place_forget(self):
+      self.__main_frame.place_forget()
+   def pack_forget(self):
+      self.__main_frame.pack_forget()
+   def grid_forget(self):
+      self.__main_frame.grid_forget()
+      
+   def place_back(self):
+      self.__main_frame.place(x=self.__place_info_x, y=self.__place_info_y,
+                              rely=self.__place_info_rely, relx=self.__place_info_relx,
+                              anchor=self.__place_info_anchor)
+   def pack_back(self):
+      self.__main_frame.pack(pady=self.__pack_info_pady, padx=self.__pack_info_padx,
+                             before=self.__pack_info_before, after=self.__pack_info_after,
+                             side=self.__pack_info_side, 
+                             ipadx=self.__pack_info_ipadx, ipady=self.__pack_info_ipady,
+                             anchor=self.__pack_info_anchor)
+   def grid_back(self):
+      self.__main_frame.grid(column=self.__grid_info_column, columnspan=self.__grid_info_columnspan, 
+                           ipadx=self.__grid_info_ipadx, ipady=self.__grid_info_ipady, 
+                           padx=self.__grid_info_padx,  pady=self.__grid_info_pady,
+                           row=self.__grid_info_row, rowspan=self.__grid_info_rowspan, sticky=self.__grid_info_sticky)
+      
+   def hide(self,state:bool):
+      if state == True:
+         self.__chart_hide = True
+         self.__output.place_forget()
+      elif state == False:
+         self.__chart_hide = False
+         self.__output.place(x=self.__place_x, width=self.__real_width, height=self.__real_height)

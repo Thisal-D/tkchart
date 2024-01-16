@@ -1,4 +1,4 @@
-# tkchart - 1.0.2
+# tkchart - 1.0.3
 <hr>
 <br>
 

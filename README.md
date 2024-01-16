@@ -1,4 +1,4 @@
-# tkchart - 1.0.3
+# tkchart - 1.0.4
 <hr>
 <br>
 
@@ -145,7 +145,7 @@ Create a LineChart
     ```
     state: Bool
     ```
-    #### ``12. hide`` : use hide an specific line<br>
+    #### ``13. hide`` : use hide a specific line<br>
     support **kwargs
     ```
     line: tkchart.Line

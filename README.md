@@ -2,8 +2,10 @@
 <hr>
 <br>
 
-#### you need to import package first
+#### you need to install package first
+> pip install tkchart
 
+#### you need to import package 
 > import tkchart
 
 ## Mainly there are 2 objects. 

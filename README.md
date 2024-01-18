@@ -1,5 +1,5 @@
 <img src="https://drive.google.com/uc?export=view&id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo" style="margin-left: auto;margin-right: auto;display: block; max-width:100%">
-<img src="https://drive.google.com/uc?export=view&id=1YqYcKm0ear9j2NB2BtOlWTvajubi6ZTH" style="margin-left: auto;margin-right: auto;display: block;  max-width:40%">
+<img src="https://drive.google.com/uc?export=view&id=1YqYcKm0ear9j2NB2BtOlWTvajubi6ZTH" style="margin-left: auto;margin-right: auto;display: block;  max-width:100%">
 
 <hr>
 

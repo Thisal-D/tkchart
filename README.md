@@ -1,10 +1,5 @@
-
-![Example Image](https://drive.google.com/uc?export=view&id=1hsA0XvPP3G1EebcfODHbJUwB5j5V-tXP)
-
-
-   
+![Example Image](https://drive.google.com/uc?export=view&id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo)
 ![Example Image](https://drive.google.com/uc?export=view&id=1kMVifs_1oLZPyQkX4mHGyPWThbqj8nNU)
-
 
 <hr>
 

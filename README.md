@@ -1,14 +1,11 @@
-<div style="width:1920px">
-   
+
 ![Example Image](https://drive.google.com/uc?export=view&id=1hsA0XvPP3G1EebcfODHbJUwB5j5V-tXP)
 
-</div>
-<br>
-<div style="width:400px">
+
    
 ![Example Image](https://drive.google.com/uc?export=view&id=1kMVifs_1oLZPyQkX4mHGyPWThbqj8nNU)
 
-</div>
+
 <hr>
 
 # tkchart - 1.0.4

@@ -3,7 +3,7 @@
 
 <hr>
 
-# tkchart - 1.0.4
+# tkchart - 1.0.5
 <hr>
 <br>
 

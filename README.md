@@ -316,7 +316,7 @@ line = tkchart.Line(master=linechart,
 
 
 
-`` line_width `` <font color="Red" >is not a attributes of Line. Its a attribute of LineChart object..! </font>
+`` line_width `` <label style="color:#ff0000"> is not a attributes of Line. Its a attribute of LineChart object..! </label>
 
 
 <br>

@@ -420,5 +420,5 @@ root.mainloop()
 
 
 
-## go to pypi
+## go to PyPi
 >  Github.com   :   <a href="https://pypi.org/project/tkchart"><i>tkchart<i></a>

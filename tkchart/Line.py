@@ -1,37 +1,36 @@
-         
-class Line():
-   def __init__(self ,*args ,master=None ,color="#909090" ,size=1, mode="line", mode_style=(10,5)):
+         class Line():
+   def __init__(self ,*args ,master=None ,color="#909090" ,size=1, style="line", style_type=(10,5)):
       try :
-         self.__chart = args[0]
+         self.__master = args[0]
       except:
-         self.__chart = master
+         self.__master = master
 
       self.__color = color
       self.__size = size
       self.__y_end = 0
-      self.__x_end  = self.__chart._LineChart__line_width* -1
+      self.__x_end  = self.__master._LineChart__line_width* -1
       self.__data = []
       self.__temp_data = []
       self.__hide_state = False
       
       
-      self.__mode = mode
-      self.__mode_style = mode_style
+      self.__style = style
+      self.__style_type = style_type
  
 
-   def configure(self , color=None ,size=None, mode=None, mode_style=None) :
+   def configure(self , color=None ,size=None, style=None, style_type=None) :
       if color != None:
          self.__color = color
       if size != None:
          self.__size = size
          
-      if mode != None:
-         self.__mode = mode
-      if mode_style != None:
-         self.__mode_style = mode_style
+      if style != None:
+         self.__style = style
+      if style_type != None:
+         self.__style_type = style_type
    
    
    def __reset(self):
       self.__y_end = 0
-      self.__x_end  = self.__chart._LineChart__line_width* -1
+      self.__x_end  = self.__master._LineChart__line_width* -1
       self.__data = []

@@ -1,9 +1,11 @@
+
 <div align="center"><h1> tkchart </h1> </div>
 
 <div align="center">
 <img src="https://drive.google.com/uc?export=view&id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo">
 <img src="https://drive.google.com/uc?export=view&id=1kMVifs_1oLZPyQkX4mHGyPWThbqj8nNU">
 </div>
+
 
 ### <li>tkchart Library is a Python library that simplifies the process of creating line charts in tkinter and customtkinter GUI applications.</li>
 
@@ -15,7 +17,7 @@
 
 ## tkchart - 1.2.0
 
-### you need to install & import package first
+### You need to install & import package first
 * installation
     * ``` 
         pip install tkchart 
@@ -25,18 +27,18 @@
     * ```
         import tkchart
         ```
-      
+
 ## objects
 * LineChart 
 * Line 
 
 ## To display data using LineChart you need to do 3 main tasks
-1. Create LineChart
-2. Create Line
-3. Display data
+1. Creating a LineChart
+2. Creating a Line
+3. Display of data
 <br>
 
-# 1 . Create LineChart 
+# 1 . Creating a LineChart
  
 ```
 linechart = tkchart.LineChart()
@@ -155,6 +157,8 @@ linechart = tkchart.LineChart()
         Support parameters
         - line : ``tkchart.Line``
         - state : ``bool``
+
+    
 
 ```
 linechart = tkchart.LineChart(master=root,
@@ -342,11 +346,12 @@ linechart.pack()
 ```
 <div align="center"><img src="https://drive.google.com/uc?export=view&id=1kNoJalW6aLx79wxcmrUaAS_D8XsldL3h"></div>
 
+
 <br>
 <hr>
 <br>
 
-# 2 . Create Line 
+# 2 . Creating a Line
 
 ```
 line = tkchart.Line()
@@ -389,7 +394,7 @@ line = tkchart.Line(master=linechart,
 <hr>
 <br>
 
-# 3 . Display Data
+# 3 . Display of Data
 ```
 import customtkinter 
 import tkchart

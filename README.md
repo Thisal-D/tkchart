@@ -481,4 +481,4 @@ https://github.com/Thisal-D/tkchart/assets/93121062/ec29a3f4-7eba-40c5-9f5c-cc70
 <br>
 
 ### go to PyPi
-- #  PyPi.org   :   <a href="https://pypi.org/project/tkchart"><i>tkchart<i></a>
+- #  PyPi.org   :   <a href="https://pypi.org/project/tkchart" target="_blank"><i>tkchart<i></a>

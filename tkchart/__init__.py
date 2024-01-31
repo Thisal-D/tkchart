@@ -1,4 +1,4 @@
 from .LineChart import *
 from .Line import *
 
-__version__ = '1.0.6'
+__version__ = '1.2.0'

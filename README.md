@@ -53,7 +53,7 @@ linechart = tkchart.LineChart()
     - y_axis_data : ``str | int | float``
     - x_axis_data : ``str | int | float``
     - y_axis_max_value : ``int | float``
-    - x_axis_values : ``List(str | float| str)`` 
+    - x_axis_values : ``List(str | float| int)`` 
         - ["2020 Year", "2021 Year", "2022 Year", "2023 Year", "2024 Year"]
     - y_axis_precision : ``int``
     - section_color : ``str``

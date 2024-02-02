@@ -37,13 +37,16 @@
 3. Display of data
 <br>
 
+# Attributes
+   <div align="center"><img src="https://drive.google.com/uc?export=view&id=1EfsmPk2fCGn4MNZi8RZEKUootrgcDNOU"></div>
+
+
 # 1 . Creating a LineChart
  
 ```
 linechart = tkchart.LineChart()
 ```
 - ##  Attributes & Types & Values
-    - <div align="center"><img src="https://drive.google.com/uc?export=view&id=1EfsmPk2fCGn4MNZi8RZEKUootrgcDNOU"></div>
     - master : ``tkinter | customtkinter (Frame | Canvas | Tk)``
     - width : ``int``
     - height : ``int``

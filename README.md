@@ -130,7 +130,7 @@ linechart = tkchart.LineChart()
         - before
         - after
         - side
-        - ancho
+        - anchor
         
     - ### grid : ``use to grid LineChart``
         Support parameters

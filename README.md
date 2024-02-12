@@ -1,6 +1,6 @@
 <div align="center"><h1> tkchart </h1> </div>
 
-<div align="center"><img src="https://drive.google.com/thumbnail?id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo&sz=w900">
+<div align="center"><img src="https://drive.google.com/thumbnail?id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo">
    
 <img src="https://drive.google.com/thumbnail?id=1kMVifs_1oLZPyQkX4mHGyPWThbqj8nNU&sz=w350"></div> 
 

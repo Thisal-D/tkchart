@@ -7,7 +7,7 @@
 ### <li>tkchart Library is a Python library that simplifies the process of creating line charts in tkinter and customtkinter GUI applications.</li>
 
 ## Examples
-<div align="center"><img src="https://drive.google.com/thumbnail?id=1F_elYaMgKzVMNLgDjBN6B7P4EX9X43YV&sz=w600"></div> 
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1F_elYaMgKzVMNLgDjBN6B7P4EX9X43YV&sz=w900"></div> 
 
 <br>
 <br>

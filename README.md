@@ -3,6 +3,7 @@
 <div align="center">
 <img src="https://drive.google.com/uc?export=view&id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo">
 <img src="https://drive.google.com/uc?export=view&id=1kMVifs_1oLZPyQkX4mHGyPWThbqj8nNU">
+<img src="https://drive.google.com/file/d/1kMVifs_1oLZPyQkX4mHGyPWThbqj8nNU/view?usp=drive_link">
 </div>
 
 

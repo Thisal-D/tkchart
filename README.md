@@ -1,6 +1,6 @@
 <div align="center"><h1> tkchart </h1> </div>
 
-<div align="center"><img src="https://drive.google.com/thumbnail?id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo&sz="></div> 
+<div align="center"><img src="https://drive.google.com/thumbnail?id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo&sz=w700"></div> 
 z
 
 ### <li>tkchart Library is a Python library that simplifies the process of creating line charts in tkinter and customtkinter GUI applications.</li>

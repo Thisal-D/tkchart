@@ -36,7 +36,7 @@
 <br>
 
 # Attributes
-   <div align="center"><img src="https://drive.google.com/uc?export=view&id=1EfsmPk2fCGn4MNZi8RZEKUootrgcDNOU"></div>
+   <div align="center"><img src="https://drive.google.com/thumbnail?id=1EfsmPk2fCGn4MNZi8RZEKUootrgcDNOU"></div>
 
 
 # 1 . Creating a LineChart

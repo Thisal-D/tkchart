@@ -156,7 +156,7 @@ linechart = tkchart.LineChart()
         Support parameters
         - state : ``bool``
         
-    - ### hide : ``use hide a specific line``
+    - ### hide : ``use to hide a specific line``
         Support parameters
         - line : ``tkchart.Line``
         - state : ``bool``

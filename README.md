@@ -168,8 +168,7 @@ linechart = tkchart.LineChart(master=root,
                         )
 ```
 
-<div align="center"><img src="https://drive.google.com/uc?export=view&id=1UnGHJ-tLrki3HegDs7WM1TVUIkMAbWVS"></div>
-<div align="center"><img src="https://drive.google.com/thumbnail?id=1F_elYaMgKzVMNLgDjBN6B7P4EX9X43YV&sz=w900"></div> 
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1UnGHJ-tLrki3HegDs7WM1TVUIkMAbWVS&sz=w900"></div> 
 <br>
 <br>
 
@@ -184,8 +183,7 @@ linechart = tkchart.LineChart(master=root,
                             y_axis_label_count=5,
                         )
 ```
-<div align="center"><img src="https://drive.google.com/uc?export=view&id=1FPzXc0NVyY50TOKIbBC_bXellnVUTY6l"></div>
-<div align="center"><img src="https://drive.google.com/thumbnail?id=1F_elYaMgKzVMNLgDjBN6B7P4EX9X43YV&sz=w900"></div> 
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1FPzXc0NVyY50TOKIbBC_bXellnVUTY6l&sz=w900"></div> 
 <br>
 <br>
 
@@ -206,8 +204,7 @@ linechart = tkchart.LineChart(master=root,
                             y_axis_precision=5
                         )
 ```
-<div align="center"><img src="https://drive.google.com/uc?export=view&id=1F8fZdWwA4q-f3cL3Oejvey0rU0yEBF6j"></div>
-<div align="center"><img src="https://drive.google.com/thumbnail?id=1F_elYaMgKzVMNLgDjBN6B7P4EX9X43YV&sz=w900"></div> 
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1F8fZdWwA4q-f3cL3Oejvey0rU0yEBF6j&sz=w900"></div> 
 <br>
 <br>
 
@@ -237,8 +234,7 @@ linechart = tkchart.LineChart(master=root,
                             axis_color="#707070"
                         )
 ```
-<div align="center"><img src="https://drive.google.com/uc?export=view&id=1A1FAprrNkbWjZAyaoL3NvdPu5RASIq5Q"></div>
-<div align="center"><img src="https://drive.google.com/thumbnail?id=1F_elYaMgKzVMNLgDjBN6B7P4EX9X43YV&sz=w900"></div> 
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1A1FAprrNkbWjZAyaoL3NvdPu5RASIq5Q&sz=w900"></div> 
 <br>
 <br>
 
@@ -271,8 +267,7 @@ linechart = tkchart.LineChart(master=root,
                             axis_font_style=("Arial", 10,"bold")
                         )
 ```
-<div align="center"><img src="https://drive.google.com/uc?export=view&id=1qIk805dmi9wpBUSv2UmnD7gQFSQB5RPF"></div>
-<div align="center"><img src="https://drive.google.com/thumbnail?id=1F_elYaMgKzVMNLgDjBN6B7P4EX9X43YV&sz=w900"></div> 
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1qIk805dmi9wpBUSv2UmnD7gQFSQB5RPF&sz=w900"></div> 
 <br>
 <br>
 
@@ -308,8 +303,7 @@ linechart = tkchart.LineChart(master=root,
                             y_space=20
                         )
 ```
-<div align="center"><img src="https://drive.google.com/uc?export=view&id=1W8P7wXlNLymaE0sexSSfltv0fX5t7XXD"></div>
-<div align="center"><img src="https://drive.google.com/thumbnail?id=1F_elYaMgKzVMNLgDjBN6B7P4EX9X43YV&sz=w900"></div> 
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1W8P7wXlNLymaE0sexSSfltv0fX5t7XXD&sz=w900"></div> 
 <br>
 <br>
 
@@ -350,8 +344,7 @@ linechart = tkchart.LineChart(master=root,
 
 linechart.pack()
 ```
-<div align="center"><img src="https://drive.google.com/uc?export=view&id=1kNoJalW6aLx79wxcmrUaAS_D8XsldL3h"></div>
-<div align="center"><img src="https://drive.google.com/thumbnail?id=1F_elYaMgKzVMNLgDjBN6B7P4EX9X43YV&sz=w900"></div> 
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1kNoJalW6aLx79wxcmrUaAS_D8XsldL3h&sz=w900"></div> 
 
 
 <br>
@@ -395,8 +388,7 @@ line = tkchart.Line(master=linechart,
                 style_type=(4,10))
 
 ```
-<div align="center"><img src="https://drive.google.com/uc?export=view&id=1PDKdRPfjhzUkAlY-ktFhE70MsYCKeFn5"></div>
-<div align="center"><img src="https://drive.google.com/thumbnail?id=1F_elYaMgKzVMNLgDjBN6B7P4EX9X43YV&sz=w900"></div> 
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1PDKdRPfjhzUkAlY-ktFhE70MsYCKeFn5&sz=w900"></div> 
 
 <br>
 <hr>

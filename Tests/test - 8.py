@@ -21,9 +21,9 @@ def barsize5():
     chart.configure(axis_size=5)
     
 def ylabelcount20():
-    chart.configure(y_axis_labels_count=20)
+    chart.configure(y_axis_label_count=20)
 def ylabelcount10():
-    chart.configure(y_axis_labels_count=10)
+    chart.configure(y_axis_label_count=10)
     
     
 def ysectionscount20():
@@ -40,8 +40,18 @@ def ydecimals4():
     chart.configure(y_axis_precision=4)
 def ydecimals0():
     chart.configure(y_axis_precision=0)
-    
 
+def ymaxvalue2000():
+    chart.configure(y_axis_max_value=2000)
+
+def ymaxvalue1000():
+    chart.configure(y_axis_max_value=1000)
+
+
+def xlabels10():
+    chart.configure(x_axis_label_count=10)
+def xlabels5():
+    chart.configure(x_axis_label_count=5)
     
 tk.Button(text="Width to 1400", command=width1400).place(x=1) 
 tk.Button(text="Width to  700", command=width700).place(x=150)
@@ -49,8 +59,8 @@ tk.Button(text="Width to  700", command=width700).place(x=150)
 tk.Button(text="height to 1000", command=height900).place(x=1, y=30)
 tk.Button(text="height to 500",command=height500).place(x=150, y=30) 
 
-tk.Button(text="bar size to 10",command=barsize10).place(x=1, y=60)
-tk.Button(text="bar size to 5",command=barsize5).place(x=150, y=60) 
+tk.Button(text="axis size to 10",command=barsize10).place(x=1, y=60)
+tk.Button(text="axis size to 5",command=barsize5).place(x=150, y=60) 
 
 tk.Button(text="y_labels to 10",command=ylabelcount10).place(x=1, y=90)
 tk.Button(text="y_labels to 20",command=ylabelcount20).place(x=150, y=90) 
@@ -64,6 +74,14 @@ tk.Button(text="x_sections to 20",command=xsectionscount20).place(x=150, y=180)
 
 tk.Button(text="y decimals to 4",command=ydecimals4).place(x=1, y=210)
 tk.Button(text="y decimals to 0",command=ydecimals0).place(x=150, y=210) 
+
+
+tk.Button(text="y maxvalue to 2000",command=ymaxvalue2000).place(x=1, y=240)
+tk.Button(text="y maxvalue to 1000",command=ymaxvalue1000).place(x=150, y=240) 
+
+
+tk.Button(text="x labels 10",command=xlabels10).place(x=1, y=270)
+tk.Button(text="x labels 5",command=xlabels5).place(x=150, y=270) 
 
 
 ## check this out this

@@ -4,6 +4,7 @@
    
 <img src="https://drive.google.com/thumbnail?id=1kMVifs_1oLZPyQkX4mHGyPWThbqj8nNU&sz=w200"></div> 
 
+
 ### <li>tkchart Library is a Python library that simplifies the process of creating line charts in tkinter and customtkinter GUI applications.</li>
 
 ## Examples
@@ -454,7 +455,7 @@ root.mainloop()
 ```
 
 <div align="center">
-   
+
 https://github.com/Thisal-D/tkchart/assets/93121062/ec29a3f4-7eba-40c5-9f5c-cc7071ff40ff
 
 </div>

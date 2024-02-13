@@ -1,6 +1,6 @@
 import tkinter
-from .RequredGeometry import RequredWidth
-from .RequredGeometry import RequredHeight
+from .RequiredSize import RequiredWidth
+from .RequiredSize import RequiredHeight
 from .Line import *
 
 class LineChart():
@@ -256,7 +256,7 @@ class LineChart():
    def __get_max_required_label_width(self, data, font)->int:
       max_required_width = 0
       for d in data:
-         required_width = RequredWidth(text=d, font=font)
+         required_width = RequiredWidth(text=d, font=font)
          if max_required_width<required_width:
             max_required_width=required_width
       return max_required_width
@@ -265,7 +265,7 @@ class LineChart():
    def __get_max_required_label_height(self, data, font)->int:
       max_required_height = 0
       for d in data:
-         required_height = RequredHeight(text=d, font=font)
+         required_height = RequiredHeight(text=d, font=font)
          if max_required_height<required_height:
             max_required_height=required_height
       return max_required_height
@@ -273,30 +273,30 @@ class LineChart():
    def __get_required_widget_size(self)->None:
       self.__x_axis_data_req_width_space_top = 0
       self.__x_axis_data_req_height_space_side = 0
-      self.__x_axis_data_req_height = RequredHeight(text=self.__x_axis_data, font=self.__data_font_style)
-      self.__x_axis_data_req_width = RequredWidth(text=self.__x_axis_data, font=self.__data_font_style)
+      self.__x_axis_data_req_height = RequiredHeight(text=self.__x_axis_data, font=self.__data_font_style)
+      self.__x_axis_data_req_width = RequiredWidth(text=self.__x_axis_data, font=self.__data_font_style)
       self.__x_special_width_space = 0
       if self.__x_axis_data_position == "top":
          self.__x_special_width_space = 30
-         self.__x_axis_data_req_width_space_top = RequredWidth(text=self.__x_axis_data, font=self.__data_font_style)
+         self.__x_axis_data_req_width_space_top = RequiredWidth(text=self.__x_axis_data, font=self.__data_font_style)
       else:
-         self.__x_axis_data_req_height_space_side = RequredHeight(text=self.__x_axis_data, font=self.__data_font_style)
+         self.__x_axis_data_req_height_space_side = RequiredHeight(text=self.__x_axis_data, font=self.__data_font_style)
       
       self.__y_axis_data_req_height_space_top = 0
-      self.__y_axis_data_req_height = RequredHeight(text=self.__y_axis_data, font=self.__data_font_style)
-      self.__y_axis_data_req_width = RequredWidth(text=self.__y_axis_data, font=self.__data_font_style)
+      self.__y_axis_data_req_height = RequiredHeight(text=self.__y_axis_data, font=self.__data_font_style)
+      self.__y_axis_data_req_width = RequiredWidth(text=self.__y_axis_data, font=self.__data_font_style)
       self.__y_special_height_space = 0
       self.__y_axis_data_req_width_space_side = 0
       if self.__y_axis_data_position == "top":
          self.__y_special_height_space = 30
-         self.__y_axis_data_req_height_space_top = RequredHeight(text=self.__y_axis_data[0], font=self.__data_font_style)
+         self.__y_axis_data_req_height_space_top = RequiredHeight(text=self.__y_axis_data[0], font=self.__data_font_style)
       else:
-         self.__y_axis_data_req_width_space_side = RequredWidth(text=self.__y_axis_data[0], font=self.__data_font_style)
+         self.__y_axis_data_req_width_space_side = RequiredWidth(text=self.__y_axis_data[0], font=self.__data_font_style)
       
-      self.__y_value_req_height_space = RequredHeight(text=self.__add_decimal_points(self.__y_axis_max_value, self.__y_axis_precision), font=self.__axis_values_font)
-      self.__y_value_req_width_space = RequredWidth(text=self.__add_decimal_points(self.__y_axis_max_value, self.__y_axis_precision), font=self.__axis_values_font) 
-      self.__x_value_req_height_space = RequredHeight(text=self.__x_axis_values[0], font=self.__axis_values_font)
-      #self.__x_value_req_width_space = RequredWidth(text=self.__add_decimal_points(self.__x_axis_data_max, self.__x_values_decimals), font=self.__axis_values_font) 
+      self.__y_value_req_height_space = RequiredHeight(text=self.__add_decimal_points(self.__y_axis_max_value, self.__y_axis_precision), font=self.__axis_values_font)
+      self.__y_value_req_width_space = RequiredWidth(text=self.__add_decimal_points(self.__y_axis_max_value, self.__y_axis_precision), font=self.__axis_values_font) 
+      self.__x_value_req_height_space = RequiredHeight(text=self.__x_axis_values[0], font=self.__axis_values_font)
+      #self.__x_value_req_width_space = RequiredWidth(text=self.__add_decimal_points(self.__x_axis_data_max, self.__x_values_decimals), font=self.__axis_values_font) 
       self.__x_value_req_width_space = self.__get_max_required_label_width(data=self.__x_axis_values, font=self.__axis_values_font)
       
       self.__real_width = self.__width - (self.__y_value_req_width_space+self.__axis_size+self.__x_axis_data_req_width_space_top+self.__y_axis_data_req_width_space_side+\

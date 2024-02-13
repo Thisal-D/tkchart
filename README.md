@@ -12,7 +12,7 @@
 <br>
 <br>
 
-## tkchart - 1.2.0
+## tkchart - 1.2.1
 
 ### You need to install & import package first
 * installation

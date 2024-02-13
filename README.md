@@ -1,8 +1,8 @@
 <div align="center"><h1> tkchart </h1> </div>
 <div align="center"> 
+   
 [![Downloads](https://static.pepy.tech/badge/tkchart)](https://pepy.tech/project/tkchart)
-   [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart)
-   [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
+
 </div>
 <div align="center">
 

@@ -51,6 +51,7 @@ linechart = tkchart.LineChart()
     - y_axis_section_count : ``int``
     - x_axis_section_count : ``int``
     - y_axis_label_count : ``int``
+    - x_axis_label_count : ``int``
     - y_axis_data : ``str | int | float``
     - x_axis_data : ``str | int | float``
     - y_axis_max_value : ``int | float``
@@ -90,6 +91,7 @@ linechart = tkchart.LineChart()
         - y_axis_section_count
         - x_axis_section_count
         - y_axis_label_count
+        - x_axis_label_count
         - y_axis_data
         - x_axis_data
         - y_axis_max_value
@@ -196,6 +198,7 @@ linechart = tkchart.LineChart(master=root,
                             y_axis_section_count=5,
                             x_axis_section_count=5,
                             y_axis_label_count=5,
+                            x_axis_label_count=10,
                             
                             y_axis_data="GB",
                             x_axis_data="S",
@@ -217,6 +220,7 @@ linechart = tkchart.LineChart(master=root,
                             y_axis_section_count=5,
                             x_axis_section_count=5,
                             y_axis_label_count=5,
+                            x_axis_label_count=10,
                             
                             y_axis_data="GB",
                             x_axis_data="S",
@@ -247,6 +251,7 @@ linechart = tkchart.LineChart(master=root,
                             y_axis_section_count=5,
                             x_axis_section_count=5,
                             y_axis_label_count=5,
+                            x_axis_label_count=10,
                             
                             y_axis_data="GB",
                             x_axis_data="S",
@@ -280,6 +285,7 @@ linechart = tkchart.LineChart(master=root,
                             y_axis_section_count=5,
                             x_axis_section_count=5,
                             y_axis_label_count=5,
+                            x_axis_label_count=10,
                             
                             y_axis_data="GB",
                             x_axis_data="S",
@@ -316,6 +322,7 @@ linechart = tkchart.LineChart(master=root,
                             y_axis_section_count=5,
                             x_axis_section_count=5,
                             y_axis_label_count=5,
+                            x_axis_label_count=10,
                             
                             y_axis_data="GB",
                             x_axis_data="S",
@@ -410,6 +417,7 @@ linechart = tkchart.LineChart(master=root,
                             y_axis_section_count=5,
                             x_axis_section_count=5,
                             y_axis_label_count=5,
+                            x_axis_label_count=10,
                             
                             y_axis_data="GB",
                             x_axis_data="S",

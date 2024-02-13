@@ -2,7 +2,7 @@
 
 <div align="center"><img src="https://drive.google.com/thumbnail?id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo&sz=w900">
    
-<div align="center"><img src="https://drive.google.com/thumbnail?id=1Dt_RukkwaqTMvRisLaDh2pUEPgMivzOE&sz=w100"></div>
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1Dt_RukkwaqTMvRisLaDh2pUEPgMivzOE&sz=w180"></div>
 
 ### <li>tkchart Library is a Python library that simplifies the process of creating line charts in tkinter and customtkinter GUI applications.</li>
 

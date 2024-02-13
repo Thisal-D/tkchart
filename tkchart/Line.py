@@ -18,7 +18,7 @@ class Line():
       self.__style_type = style_type
  
 
-   def configure(self , color=None ,size=None, style=None, style_type=None):
+   def configure(self , color=None ,size=None, style=None, style_type=None) :
       if color != None:
          self.__color = color
       if size != None:

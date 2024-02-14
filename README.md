@@ -22,7 +22,7 @@
 <br>
 <br>
 
-## tkchart - 1.3.0
+## tkchart - 1.3.1
 
 ### You need to install & import package first
 * installation
@@ -169,9 +169,9 @@ linechart = tkchart.LineChart()
         Support parameters
         - line : ``tkchart.Line``
         - state : ``bool``
+    - ### reset : ``use to reset chart``
 
     
-
 ```
 linechart = tkchart.LineChart(master=root,
                             width=800, 

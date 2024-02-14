@@ -49,7 +49,7 @@
    <div align="center"><img src="https://drive.google.com/thumbnail?id=1EfsmPk2fCGn4MNZi8RZEKUootrgcDNOU&sz=w900"></div> 
 
 ```diff
-   -Please refer to the "tests/Main-test.py" file for better understanding...!
+Please refer to the "tests/Main-test.py" file for better understanding...!
 ```
 # 1 . Creating a LineChart
  

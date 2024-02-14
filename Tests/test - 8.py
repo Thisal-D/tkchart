@@ -53,6 +53,10 @@ def xlabels10():
 def xlabels5():
     chart.configure(x_axis_label_count=5)
     
+    
+def reset():
+    chart.reset()
+    
 tk.Button(text="Width to 1400", command=width1400).place(x=1) 
 tk.Button(text="Width to  700", command=width700).place(x=150)
 
@@ -82,6 +86,8 @@ tk.Button(text="y maxvalue to 1000",command=ymaxvalue1000).place(x=150, y=240)
 
 tk.Button(text="x labels 10",command=xlabels10).place(x=1, y=270)
 tk.Button(text="x labels 5",command=xlabels5).place(x=150, y=270) 
+
+tk.Button(text="Reset", command=reset).place(x=1, y=300) 
 
 
 ## check this out this

@@ -9,8 +9,7 @@
 <div align="center">
 
 <img src="https://drive.google.com/thumbnail?id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo&sz=w900">
-<img src="https://drive.google.com/thumbnail?id=1yPe45nAGH0KgwQ2e57KubvMLyQkOV7XX&sz=w180">
-
+<img src="https://drive.google.com/thumbnail?id=1YH8qrj3vG2q3Z6d3xa4DUC690bH5IeR-&sz=w180">
 
 </div>
 

@@ -266,7 +266,7 @@ class LineChart():
          self.__line_width = int(self.__real_width / len(self.__x_axis_values))
       else:
          self.__line_width = self.__line_width
-      print("Line Width :",self.__line_width)
+      #print("Line Width :",self.__line_width)
      
      
    def __get_max_required_label_width(self, data, font)->int:
@@ -325,7 +325,7 @@ class LineChart():
       
       self.__const_real_height = self.__real_height
       
-      print("Real Width : ",self.__const_real_width)
+      #print("Real Width : ",self.__const_real_width)
    
    
    def __set_widget_text(self)->None:

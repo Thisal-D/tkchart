@@ -28,12 +28,18 @@ class LineChart():
                   x_axis_label_count=None,
                   x_axis_values:list=[1, 2, 3, 4, 5],
                   x_axis_section_count=0,
+                  x_axis_display_values_indices:list = None,
                   x_axis_font_color="#909090",
                   x_axis_data_font_color="#cccccc",
                   x_axis_data_position="top",
                   
                   line_width="auto",
                   y_space=0, x_space=0,
+                  
+                  pointer_state="disabled",
+                  pointing_callback_function=None,
+                  pointer_color="#606060",
+                  pointing_values_precision=1,
                   *args)->None:
       
       if master != None:
@@ -61,11 +67,9 @@ class LineChart():
       self.__x_axis_section_count = x_axis_section_count
       self.__y_axis_section_count = y_axis_section_count
       self.__y_axis_label_count = y_axis_label_count
-      
-      if x_axis_label_count == None:
-         self.__x_axis_label_count = len(x_axis_values)
-      else:
-         self.__x_axis_label_count = x_axis_label_count
+   
+      self.__x_axis_label_count = x_axis_label_count
+      self.__x_axis_display_values_indices = x_axis_display_values_indices
          
       self.__x_labels_values_index_change = 0
       
@@ -129,18 +133,33 @@ class LineChart():
       self.__grid_info_rowspan = 0
       self.__grid_info_sticky = 0
       
+      
+      ################################special requirement################################
+      self.__pointer = tkinter.Frame(master=self.__output_canvas, width=1)
+      self.__pointer_state = pointer_state
+      self.__pointing_callback_function = pointing_callback_function
+      self.__pointer_color = pointer_color
+      self.__pointing_values_precision = pointing_values_precision
+      
+      ###################################################################################
+      
       self.__get_required_widget_size()
       self.__fix_x_axis_label_count()
       self.__place_widget()
       self.__get_line_width()
       self.__create_y_axis_labels()
-      self.__create_x_axis_labels()
+      if self.__x_axis_display_values_indices != None :
+         self.__create_x_axis_labels_using_indices()
+         self.__set_x_axis_values_using_indices()
+      else:
+         self.__create_x_axis_labels_using_label_count()
+         self.__set_x_axis_values_using_label_count()
       self.__create_y_sections()
       self.__create_x_sections()
       self.__set_widget_colors()
       self.__set_widget_font()
       self.__set_widget_text()
-      self.__set_x_axis_values()
+      self.__set_pointer_state()
       self.__reset_chart_info()
    
       
@@ -177,6 +196,8 @@ class LineChart():
          if type(section_frame) == tkinter.Frame:
             section_frame.configure(bg=self.__section_color)
       
+      self.__pointer.configure(bg=self.__pointer_color)
+      
    
    def __set_widget_font(self)->None:
       self.__y_axis_data_label.configure(font=self.__data_font_style)
@@ -184,28 +205,8 @@ class LineChart():
       
       for label in self.__x_axis_values_frame.winfo_children() + self.__y_axis_values_frame.winfo_children() :
          if type(label) == tkinter.Label:
-            label.configure(font = self.__axis_values_font)
-   
-   
-   def __set_widget_text(self)->None:
-      if self.__y_axis_data_position=="top":
-         self.__y_axis_data_label.configure(text=self.__y_axis_data)
-      else:
-         self.__y_axis_data_label.configure(text="\n".join(self.__y_axis_data))
-      
-      if self.__y_axis_label_count>0:
-         for i,label in enumerate(self.__y_axis_values_frame.winfo_children()):
-            value = (self.__y_axis_max_value - (self.__y_axis_max_value/self.__y_axis_label_count)*i)
-            value = self.__add_decimal_points(value,self.__y_axis_precision)
-            label.configure(text=value)
-      self.__x_axis_data_label.configure(text=self.__x_axis_data)
-   
-   def __set_x_axis_values(self)->None:
-      index = -1
-      for label in (self.__x_axis_values_frame.winfo_children()):
-         value = self.__x_axis_values[index]
-         index -= self.__x_labels_values_index_change
-         label.configure(text=value)
+            label.configure(font=self.__axis_values_font)
+            
             
    def __place_widget(self)->None:
       self.__main_frame.configure(width=self.__width, height=self.__height)
@@ -244,13 +245,28 @@ class LineChart():
       
       self.__y_axis_values_frame.place(x=self.__y_axis_data_req_width_space_side, width=self.__y_value_req_width_space, height=self.__height)
       self.__x_axis_values_frame.place(x=0, rely=1, y=-self.__x_value_req_height_space+-self.__x_axis_data_req_height_space_side, height=self.__x_value_req_height_space, width=self.__width)
-
+      
+      
+       ################################special requirement################################
+      self.__pointer.config(height=self.__const_real_height)
+      
+      ###################################################################################
+  
+   def __set_pointer_state(self):
+      if self.__pointer_state == "enabled":
+         self.__output_canvas.bind("<Leave>",self.__hide_pointer)
+         self.__output_canvas.bind("<Motion>",self.__get_pointed_values)
+      elif self.__pointer_state == "disabled":
+         self.__output_canvas.unbind("<Leave>")
+         self.__output_canvas.unbind("<Motion>")
+         
   
    def __get_line_width(self)->None:
       if self.__line_width== "auto":
          self.__line_width = int(self.__real_width / len(self.__x_axis_values))
       else:
          self.__line_width = self.__line_width
+      print("Line Width :",self.__line_width)
      
      
    def __get_max_required_label_width(self, data, font)->int:
@@ -307,9 +323,25 @@ class LineChart():
                                           (self.__y_value_req_height_space/2)+self.__y_special_height_space+self.__y_space)
       self.__real_height = self.__real_height  
       
-      self.__const_real_height = self.__real_height 
+      self.__const_real_height = self.__real_height
       
+      print("Real Width : ",self.__const_real_width)
+   
+   
+   def __set_widget_text(self)->None:
+      if self.__y_axis_data_position=="top":
+         self.__y_axis_data_label.configure(text=self.__y_axis_data)
+      else:
+         self.__y_axis_data_label.configure(text="\n".join(self.__y_axis_data))
       
+      if self.__y_axis_label_count>0:
+         for i,label in enumerate(self.__y_axis_values_frame.winfo_children()):
+            value = (self.__y_axis_max_value - (self.__y_axis_max_value/self.__y_axis_label_count)*i)
+            value = self.__add_decimal_points(value,self.__y_axis_precision)
+            label.configure(text=value)
+      self.__x_axis_data_label.configure(text=self.__x_axis_data)
+   
+   
    def __create_y_axis_labels(self)->None:
       if self.__y_axis_label_count>0:
          y = self.__y_axis_data_req_height_space_top+(self.__y_value_req_height_space/2)+self.__y_special_height_space+self.__y_space
@@ -324,11 +356,37 @@ class LineChart():
          y_value.place_forget()
          y_value.destroy()
          
+   
+   def __set_x_axis_values_using_label_count(self)->None:
+      index = -1
+      for label in (self.__x_axis_values_frame.winfo_children()):
+         value = self.__x_axis_values[index]
+         index -= self.__x_labels_values_index_change
+         #print("index :",index)
+         label.configure(text=value)
          
-   def __create_x_axis_labels(self)->None:
+         
+   def __set_x_axis_values_using_indices(self)->None:
+      index = -1
+      for label in (self.__x_axis_values_frame.winfo_children()):
+         value =  self.__x_axis_values[self.__x_axis_display_values_indices[index]]
+         index -= 1
+         label.configure(text=value)
+         
+         
+   def __create_x_axis_labels_using_label_count(self)->None:
       x = self.__width - self.__x_axis_data_req_width_space_top-(self.__x_value_req_width_space/2)-self.__x_special_width_space - self.__x_space
       for i in range(self.__x_axis_label_count):
          tkinter.Label(master=self.__x_axis_values_frame).place(rely=1, y=-self.__x_value_req_height_space, x=x, anchor="n")
+         x -= self.__const_real_width / self.__x_axis_label_count
+         
+         
+   def __create_x_axis_labels_using_indices(self):
+      x = self.__width - self.__x_axis_data_req_width_space_top-(self.__x_value_req_width_space/2)-self.__x_special_width_space - self.__x_space
+      for i in range(self.__x_axis_label_count):
+         #print(self.__x_axis_label_count-(i+1))
+         if  (self.__x_axis_label_count-(i+1)) in  self.__x_axis_display_values_indices:
+            tkinter.Label(master=self.__x_axis_values_frame).place(rely=1, y=-self.__x_value_req_height_space, x=x, anchor="n")
          x -= self.__const_real_width / self.__x_axis_label_count
          
             
@@ -339,6 +397,14 @@ class LineChart():
          
       
    def __fix_x_axis_label_count(self)->None:
+      if self.__x_axis_display_values_indices != None:
+         self.__x_axis_display_values_indices.sort()
+         self.__x_axis_label_count = len(self.__x_axis_values)
+         return 
+      if self.__x_axis_label_count==None:
+         self.__x_axis_label_count=len(self.__x_axis_values)
+      
+      
       if self.__x_axis_label_count==0:return
       x_axis_real_label_count = len(self.__x_axis_values)
       if self.__x_axis_label_count > x_axis_real_label_count:
@@ -346,7 +412,7 @@ class LineChart():
       while x_axis_real_label_count%self.__x_axis_label_count != 0:
          self.__x_axis_label_count+=1
       self.__x_labels_values_index_change = int(x_axis_real_label_count/self.__x_axis_label_count)
-
+      #print("self.__x_axis_label_count :",self.__x_axis_label_count)
             
    def __create_y_sections(self)->None:
       y = 0
@@ -377,12 +443,14 @@ class LineChart():
                   y_axis_data_font_color=False, x_axis_data_font_color=False,
                   y_axis_data=False, y_axis_label_count=None, x_axis_label_count=None,
                   y_axis_section_count=None, x_axis_section_count=None, section_color=False,
-                  line_width=False,
+                  line_width=False, x_axis_display_values_indices=None,
                   x_axis_data_position=None, y_axis_data_position=None,
-                  y_space=None, x_space=None)->None:  
+                  y_space=None, x_space=None ,
+                  pointer_state=None,
+                  pointing_values_precision=None, pointer_color=None, pointing_callback_function=None )->None:  
          
       chart_reset_req = False
-      fg_color_change_req = False
+      widget_color_change_req = False
       chart_y_values_change_req = False
       chart_x_values_change_req = False
       chart_sections_change_req = False
@@ -446,47 +514,47 @@ class LineChart():
       if bg_color:
          if bg_color != self.__bg_color:
             self.__bg_color = bg_color
-            fg_color_change_req = True
+            widget_color_change_req = True
             
       if axis_color:
          if axis_color != self.__axis_color:
             self.__axis_color = axis_color
-            fg_color_change_req = True
+            widget_color_change_req = True
             
       if fg_color:
          if fg_color != self.__fg_color:
             self.__fg_color = fg_color
-            fg_color_change_req = True
+            widget_color_change_req = True
             
       if bg_color:
          if bg_color != self.__bg_color:
             self.__bg_color = bg_color
-            fg_color_change_req = True
+            widget_color_change_req = True
             
       if y_axis_font_color:
          if y_axis_font_color != self.__y_axis_font_color:
             self.__y_axis_font_color = y_axis_font_color
-            fg_color_change_req = True
+            widget_color_change_req = True
             
       if x_axis_font_color:
          if x_axis_font_color != self.__x_axis_font_color:
             self.__x_axis_font_color = x_axis_font_color
-            fg_color_change_req = True
+            widget_color_change_req = True
             
       if y_axis_data_font_color:
          if y_axis_data_font_color != self.__y_axis_data_font_color:
             self.__y_axis_data_font_color = y_axis_data_font_color
-            fg_color_change_req = True
+            widget_color_change_req = True
             
       if x_axis_data_font_color:
          if x_axis_data_font_color != self.__x_axis_data_font_color:
             self.__x_axis_data_font_color = x_axis_data_font_color
-            fg_color_change_req = True
+            widget_color_change_req = True
 
       if section_color:
          if section_color != self.__section_color:
             self.__section_color = section_color
-            fg_color_change_req = True
+            widget_color_change_req = True
             
       if y_axis_label_count!=None:
          if y_axis_label_count != self.__y_axis_label_count:
@@ -498,10 +566,17 @@ class LineChart():
             self.__x_axis_label_count = x_axis_label_count
             chart_x_values_change_req = True
       
+      if x_axis_display_values_indices!=None:
+         x_axis_display_values_indices.sort()
+         if x_axis_display_values_indices != self.__x_axis_display_values_indices:
+            self.__x_axis_display_values_indices = x_axis_display_values_indices
+            chart_x_values_change_req = True
+      
       if x_axis_section_count!=None:
          if x_axis_section_count != self.__x_axis_section_count:
             self.__x_axis_section_count = x_axis_section_count
             chart_sections_change_req = True
+         
             
       if y_axis_section_count!=None:
          if y_axis_section_count != self.__y_axis_section_count:
@@ -530,10 +605,23 @@ class LineChart():
             elif self.__get_max_required_label_width(x_axis_values,self.__axis_values_font)!=self.__x_value_req_width_space:
                chart_reset_req = True 
             else:
-               self.__x_axis_values = x_axis_values
-               self.__set_x_axis_values()
+               chart_x_values_change_req = True
             self.__x_axis_values = x_axis_values
          
+      if pointer_color!=None:
+         self.__pointer_color = pointer_color
+         widget_color_change_req = True
+      
+      if pointing_callback_function != None:
+         self.__pointing_callback_function = pointing_callback_function
+         
+      if pointing_values_precision != None:
+         self.__pointing_values_precision = pointing_values_precision
+      
+      if pointer_state!=None:
+         self.__pointer_state = pointer_state
+         self.__set_pointer_state()
+
       if line_width :
          if line_width != self.__line_width:
             self.__line_width = line_width
@@ -544,40 +632,82 @@ class LineChart():
          self.__destroy_y_axis_labels()
          self.__destroy_x_axis_labels()
          self.__destroy_y_x_sections()
-         
          self.__line_width = "auto"
          self.__get_required_widget_size()
          self.__place_widget()
          self.__get_line_width()
          self.__create_y_axis_labels()
-         self.__create_x_axis_labels()
          self.__create_y_sections()
          self.__create_x_sections()
+         
+
+         if x_axis_display_values_indices != None :
+            self.__x_axis_label_count = None
+            self.__fix_x_axis_label_count()
+            self.__create_x_axis_labels_using_indices()
+            self.__set_x_axis_values_using_indices()
+         elif x_axis_label_count !=None:
+            self.__x_axis_display_values_indices = None
+            self.__fix_x_axis_label_count()
+            self.__create_x_axis_labels_using_label_count()
+            self.__set_x_axis_values_using_label_count()
+         else:
+            if self.__x_axis_display_values_indices != None:
+               self.__x_axis_label_count = None
+               self.__fix_x_axis_label_count()
+               self.__create_x_axis_labels_using_indices()
+               self.__set_x_axis_values_using_indices()
+            else:
+               self.__x_axis_display_values_indices = None
+               self.__fix_x_axis_label_count()
+               self.__create_x_axis_labels_using_label_count()
+               self.__set_x_axis_values_using_label_count()
+               
          self.__set_widget_colors()
          self.__set_widget_font()
          self.__set_widget_text()
-         self.__set_x_axis_values()
          self.__reset_chart_info()
-   
          self.__call_to_re_show_data()
          
-      if fg_color_change_req :
+      elif widget_color_change_req :
          self.__set_widget_colors()
+         
       if chart_y_values_change_req:
          self.__destroy_y_axis_labels()
          self.__create_y_axis_labels()
          self.__set_widget_colors()
          self.__set_widget_font()
          self.__set_widget_text()
-         self.__set_x_axis_values()
+         
       if chart_x_values_change_req:
-         self.__fix_x_axis_label_count()
          self.__destroy_x_axis_labels()
-         self.__create_x_axis_labels()
+         if x_axis_display_values_indices != None :
+            self.__x_axis_label_count = None
+            self.__fix_x_axis_label_count()
+            self.__create_x_axis_labels_using_indices()
+            self.__set_x_axis_values_using_indices()
+         elif x_axis_label_count !=None:
+            self.__x_axis_display_values_indices = None
+            self.__fix_x_axis_label_count()
+            #print("Called Here")
+            self.__create_x_axis_labels_using_label_count()
+            self.__set_x_axis_values_using_label_count()
+         else:
+            if self.__x_axis_display_values_indices != None:
+               self.__x_axis_label_count = None
+               self.__fix_x_axis_label_count()
+               self.__create_x_axis_labels_using_indices()
+               self.__set_x_axis_values_using_indices()
+            else:
+               self.__x_axis_display_values_indices = None
+               self.__fix_x_axis_label_count()
+               self.__create_x_axis_labels_using_label_count()
+               self.__set_x_axis_values_using_label_count()
+         
          self.__set_widget_colors()
          self.__set_widget_font()
          self.__set_widget_text()
-         self.__set_x_axis_values()
+         
       if chart_sections_change_req:
          self.__destroy_y_x_sections()
          self.__create_y_sections()
@@ -646,10 +776,12 @@ class LineChart():
             if not self.__force_to_stop_data_showing:
                x_start = line._Line__x_end
                y_start = line._Line__y_end
-      
+               
                line._Line__x_end += self.__line_width
                line._Line__y_end = (self.__real_height - (self.__real_height/100)*(d/self.__y_axis_max_value*100))  + (line._Line__size)
                
+               #next feature for this u can enable it removing comment
+               #tkinter.Label(master=self.__output_canvas, text=d, bg=self.__fg_color, fg="#707070").place(x=line._Line__x_end,y=line._Line__y_end-30, anchor="n")
                if line._Line__x_end > self.__real_width and self.__real_width < 20000:
                   self.__place_x -= self.__line_width
                   
@@ -740,8 +872,43 @@ class LineChart():
          if re_show_data:
             self.__re_show_data()
          self.__is_data_showing_working = False
+   
+   
+   def __hide_pointer(self, event):
+      self.__pointer.place_forget()
       
       
+   def __get_pointed_values(self, event):
+      self.__pointer.place(x=event.x ,y=0)
+      max_sup= int((self.__const_real_width / self.__line_width))
+      max_view = max_sup + 1
+      values = []
+      try:
+         max_data = max([len(line._Line__data) for line in self.__lines])
+         for line in self.__lines:
+            line._Line__ret_data = line._Line__data + (max_data-len(line._Line__data))  * [None]
+            line._Line__ret_data = line._Line__ret_data[-(max_view)::] 
+            line._Line__ret_data = line._Line__ret_data + ((max_view) - len(line._Line__ret_data)) * [None]
+         
+         #print(line._Line__ret_data)
+         for line in self.__lines:
+            if self.__const_real_width >= self.__real_width:
+               event_x = event.x
+            else:
+               event_x = event.x-(self.__line_width*(len(line._Line__data)-max_view))
+            index = (event_x/self.__const_real_width*max_sup)
+            
+            try:
+               value = line._Line__ret_data[int(index)]
+               value = value  + (((line._Line__ret_data[int(index+1)] - value) * (index - int(index))))
+               values.append(self.__add_decimal_points(float(value),self.__pointing_values_precision ))
+            except:
+               values.append("null")
+      except:
+         pass
+      if self.__pointing_callback_function != None:
+         self.__pointing_callback_function(*(values))
+
    def place(self, x=None, y=None, rely=None, relx=None, anchor=None)->None:
       self.__main_frame.place(x=x, y=y, rely=rely, relx=relx, anchor=anchor)
       self.__place_info_x = x
@@ -824,7 +991,7 @@ class LineChart():
       self.__force_to_stop_data_showing = False
       self.__re_show_data()
    
+   
    def reset(self):
       self.__reset_chart_info()
       self.__reset_lines_info()
-      

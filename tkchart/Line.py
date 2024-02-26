@@ -11,6 +11,7 @@ class Line():
       self.__x_end  = self.__master._LineChart__line_width* -1
       self.__data = []
       self.__temp_data = []
+      self.__ret_data = []
       self.__hide_state = False
       
       

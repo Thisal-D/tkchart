@@ -16,7 +16,7 @@ linechart = tkchart.LineChart(master=root,
                             
                             y_axis_data="GB",
                             x_axis_data="S",
-                            x_axis_values=[1,2,3,4,5,6,7,8,9,10],
+                            x_axis_values=["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
                             y_axis_max_value=1000,
                             y_axis_precision=5,
                             
@@ -36,7 +36,8 @@ linechart = tkchart.LineChart(master=root,
                             y_space=20,
                             
                             x_axis_data_position="side",
-                            y_axis_data_position="size"
+                            y_axis_data_position="size",
+                            x_axis_label_count=10
                         )
 
 linechart.pack()

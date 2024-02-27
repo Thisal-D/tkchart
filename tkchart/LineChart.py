@@ -680,33 +680,10 @@ class LineChart():
          self.__set_widget_text()
          
       if chart_x_values_change_req:
-         self.__destroy_x_axis_labels()
-         if x_axis_display_values_indices != None :
-            self.__x_axis_label_count = None
-            self.__fix_x_axis_label_count()
-            self.__create_x_axis_labels_using_indices()
+         if self.__x_axis_display_values_indices != None:
             self.__set_x_axis_values_using_indices()
-         elif x_axis_label_count !=None:
-            self.__x_axis_display_values_indices = None
-            self.__fix_x_axis_label_count()
-            #print("Called Here")
-            self.__create_x_axis_labels_using_label_count()
-            self.__set_x_axis_values_using_label_count()
          else:
-            if self.__x_axis_display_values_indices != None:
-               self.__x_axis_label_count = None
-               self.__fix_x_axis_label_count()
-               self.__create_x_axis_labels_using_indices()
-               self.__set_x_axis_values_using_indices()
-            else:
-               self.__x_axis_display_values_indices = None
-               self.__fix_x_axis_label_count()
-               self.__create_x_axis_labels_using_label_count()
-               self.__set_x_axis_values_using_label_count()
-         
-         self.__set_widget_colors()
-         self.__set_widget_font()
-         self.__set_widget_text()
+            self.__set_x_axis_values_using_label_count()
          
       if chart_sections_change_req:
          self.__destroy_y_x_sections()

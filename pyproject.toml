@@ -1,18 +1,28 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "tkchart"
-version = "1.3.9"
+version = "1.3.10"
 authors = [
-  { name="Thisal-D"},
+  { name = "Thisal-D" }
 ]
+dependencies = ["tk"]
+license = { file = "LICENSE" }
+
 description = "tkchart Library is a Python library that simplifies the process of creating line charts in tkinter and customtkinter GUI applications."
 readme = "README.md"
 requires-python = ">=3.0"
 classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Development Status :: 4 - Beta",
 ]
+keywords = ["tkchart", "linechart", "tkinter", "customtkinter", "line chart in tkinter", "line chart in customtkinter"]
 
 [project.urls]
-Homepage = "https://github.com/Thisal-D/tkchart"
-Issues = "https://github.com/Thisal-D/tkchart/issues"
+homepage = "https://github.com/Thisal-D/tkchart"
+repository = "https://github.com/Thisal-D/tkchart"
+issues = "https://github.com/Thisal-D/tkchart/issues"

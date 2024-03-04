@@ -25,7 +25,7 @@ Please adhere to the [Code of Conduct](CODE_OF_CONDUCT.md) to maintain a respect
 
 ## Issues and Discussions
 
-If you encounter issues or have questions, please check the [issue tracker](https://github.com/Thisal-D/tkchart/issues) or start a discussion in the [GitHub Discussions](https://github.com/username/tkchart/discussions) section.
+If you encounter issues or have questions, please check the [issue tracker](https://github.com/Thisal-D/tkchart/issues) or start a discussion in the [GitHub Discussions](https://github.com/Thisal-D/tkchart/discussions) section.
 
 ## License
 

@@ -2,7 +2,6 @@ from .FontStyle import *
 from .Exceptions import *
 import tkinter
 
-
 class Validate:
 
     def _error_font(value):

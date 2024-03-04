@@ -1020,7 +1020,7 @@ class LineChart():
          self.__reset_chart_info()
          
          maximum_data = max(lines_values)
-         max_support = int(self.__real_width/self.__line_width)+1
+         max_support = int(self.__const_real_width/self.__line_width)+1
          
          for line in  self.__lines:
             if maximum_data>max_support:
@@ -1060,7 +1060,7 @@ class LineChart():
                   line._Line__y_end = ((d)/self.__y_axis_values_gap * self.__const_real_height)
                line._Line__y_end += ((line._Line__size)/2)
 
-               if line._Line__x_end > self.__real_width and self.__real_width < 20000:
+               if round(line._Line__x_end) > round(self.__real_width) and self.__real_width < 15000:
                   self.__place_x -= self.__line_width
                   
                   self.__output_canvas.place(x=self.__place_x,

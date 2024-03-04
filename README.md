@@ -547,6 +547,12 @@ loop()
 root.mainloop()
 ```
 
+<div align="center">
+
+https://github.com/Thisal-D/tkchart/assets/93121062/ec29a3f4-7eba-40c5-9f5c-cc7071ff40ff
+
+</div>
+
 <br>
 <hr>
 <br>

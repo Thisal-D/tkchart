@@ -27,7 +27,7 @@
 <br>
 <br>
 
-## tkchart - 1.3.10
+## tkchart - 1.3.12
 
 ### You need to install & import package first
 * installation

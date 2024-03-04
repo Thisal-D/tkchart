@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tkchart"
-version = "1.3.10"
+version = "1.3.12"
 authors = [
   { name = "Thisal-D" }
 ]
-dependencies = ["tk"]
+
 license = { file = "LICENSE" }
 
 description = "tkchart Library is a Python library that simplifies the process of creating line charts in tkinter and customtkinter GUI applications."

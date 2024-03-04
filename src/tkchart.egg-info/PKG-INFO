@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: tkchart
-Version: 1.3.10
+Version: 1.3.12
 Summary: tkchart Library is a Python library that simplifies the process of creating line charts in tkinter and customtkinter GUI applications.
 Author: Thisal-D
 License: Copyright (c) 2024 The Python Packaging Authority
@@ -33,7 +33,10 @@ Classifier: Development Status :: 4 - Beta
 Requires-Python: >=3.0
 Description-Content-Type: text/markdown
 License-File: LICENSE
-Requires-Dist: tk
+
+<a href="#contributing">Contributing to tkchart</a>
+
+<div id="top">
 
 <div align="center">
 
@@ -60,7 +63,7 @@ Requires-Dist: tk
 <br>
 <br>
 
-## tkchart - 1.3.10
+## tkchart - 1.3.12
 
 ### You need to install & import package first
 * installation
@@ -597,6 +600,8 @@ root.mainloop()
 
 - <div align="center"><img src="https://drive.google.com/thumbnail?id=1_vTP7DIsEdd4gU5hQOYeWF5FVYfilCvG&sz=w900"></div> 
 
+</div>
+
 <br>
 <hr>
 <br>
@@ -607,10 +612,16 @@ root.mainloop()
 ### go to GitHub
 - # GitHub.com   :  <a href="https://github.com/Thisal-D/tkchart" target="_blank" ><i>tkchart</i></a>
 
+
+</div>
 <br>
 <br>
 <br>
 <br>
+ 
+
+<div id="contributing">
+<a href="#top"> Go to top </a>
 
 # Contributing to tkchart
 
@@ -643,6 +654,8 @@ If you encounter issues or have questions, please check the [issue tracker](http
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the project's [LICENSE](https://github.com/Thisal-D/tkchart/blob/main/LICENSE).
+By contributing, you agree that your contributions will be licensed under the project's [LICENSE](LICENSE).
 
 Thank you for your contribution!
+
+</div>

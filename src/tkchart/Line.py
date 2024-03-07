@@ -9,7 +9,7 @@ class Line():
                style_type: tuple[int, int] = (10,5),
                point_highlight: str = "disabled",
                point_highlight_size: int = 0,
-               point_highlight_color: str = "909090",
+               point_highlight_color: str = "#909090",
                *args: any
                ) -> None:
       

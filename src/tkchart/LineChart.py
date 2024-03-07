@@ -109,8 +109,6 @@ class LineChart():
             print(FontStyle._fontStyle("Use", "red", "black", "underline") 
                   + FontStyle._fontStyle(" y_axis_values ", "green", "black", "italic") 
                   + FontStyle._fontStyle("instead.", "red", "black", "underline"))
-            
-
          else:
             Validate._isValidYAxisValues(y_axis_values, "y_axis_values")
       elif y_axis_values == (None, None):
@@ -406,7 +404,7 @@ class LineChart():
       self.__y_axis_values_frame.place(x=self.__y_axis_data_req_width_space_side, width=self.__y_value_req_width_space, height=self.__height)
       self.__x_axis_values_frame.place(x=0, rely=1, y=-self.__x_value_req_height_space+-self.__x_axis_data_req_height_space_side, height=self.__x_value_req_height_space, width=self.__width)
 
-  
+
    def __configure_line_width(self) -> None:
       if self.__line_width_handle_by== "auto":
          self.__line_width = (self.__real_width / len(self.__x_axis_values))
@@ -437,15 +435,17 @@ class LineChart():
       else:
          self.__y_axis_data_req_width_space_side = Utils._RequiredWidth(text=self.__y_axis_data[0], font=self.__data_font_style)
       
-      
-      if len(Utils._format_float_with_precision(self.__y_axis_max_value, self.__y_axis_precision)) > len(Utils._format_float_with_precision(self.__y_axis_min_value, self.__y_axis_precision)) :
-         y_value_temp = self.__y_axis_max_value
+      if self.__y_axis_label_count == 0:
+         self.__y_value_req_height_space = 1
+         self.__y_value_req_width_space = 1
       else:
-         y_value_temp = self.__y_axis_min_value
-      
-      self.__y_value_req_height_space = Utils._RequiredHeight(text=Utils._format_float_with_precision(y_value_temp, self.__y_axis_precision), font=self.__axis_font_style)
-      self.__y_value_req_width_space = Utils._RequiredWidth(text=Utils._format_float_with_precision(y_value_temp, self.__y_axis_precision), font=self.__axis_font_style)
-      
+         if len(Utils._format_float_with_precision(self.__y_axis_max_value, self.__y_axis_precision)) > len(Utils._format_float_with_precision(self.__y_axis_min_value, self.__y_axis_precision)) :
+            y_value_temp = self.__y_axis_max_value
+         else:
+            y_value_temp = self.__y_axis_min_value
+         self.__y_value_req_height_space = Utils._RequiredHeight(text=Utils._format_float_with_precision(y_value_temp, self.__y_axis_precision), font=self.__axis_font_style)
+         self.__y_value_req_width_space = Utils._RequiredWidth(text=Utils._format_float_with_precision(y_value_temp, self.__y_axis_precision), font=self.__axis_font_style)
+         
       self.__x_value_req_height_space = Utils._RequiredHeight(text=self.__x_axis_values[0], font=self.__axis_font_style)
       #self.__x_value_req_width_space = RequiredWidth(text=format_float_with_precision(self.__x_axis_data_max, self.__x_values_decimals), font=self.__axis_font_style) 
       self.__x_value_req_width_space = Utils._get_max_required_label_width(data=self.__x_axis_values, font=self.__axis_font_style)
@@ -808,6 +808,8 @@ class LineChart():
       if y_axis_label_count!=None:
          Validate._isInt(y_axis_label_count, "y_axis_label_count")
          if y_axis_label_count != self.__y_axis_label_count:
+            if y_axis_label_count == 0 or self.__y_axis_label_count == 0:
+               chart_reset_req = True
             self.__y_axis_label_count = y_axis_label_count
             chart_y_labels_change_req = True
             widget_color_change_req = True
@@ -1137,9 +1139,20 @@ class LineChart():
                                                    fill=line._Line__color, outline=line._Line__color )
                         x_start += circle_change_x + space_change_x
                         y_start += circle_change_y + space_change_y
+                        
                elif line._Line__style=="normal":
                   self.__output_canvas.create_line(x_start, y_start, line._Line__x_end, line._Line__y_end
                                                       ,fill=line._Line__color ,width=line._Line__size)
+               
+               if line._Line__style=="dashed" or line._Line__style=="normal":
+                  if line._Line__point_highlight == "enabled" and line._Line__point_highlight_size > 0 : 
+                     highlight_size =  line._Line__point_highlight_size /2 
+                     self.__output_canvas.create_oval(line._Line__x_end - highlight_size,
+                                                         line._Line__y_end - highlight_size,
+                                                         line._Line__x_end + highlight_size,
+                                                         line._Line__y_end + highlight_size,
+                                                         fill=line._Line__point_highlight_color
+                                                      )
             else:
                break
          

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tkchart"
-version = "1.3.12"
+version = "1.4.0"
 authors = [
   { name = "Thisal-D" }
 ]

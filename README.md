@@ -1,16 +1,19 @@
-<a href="#contributing">Contributing to tkchart</a>
-
 <div id="top">
 
+### <a href="#contributing">Contributing to tkchart</a>
+### <a href="#whatsnew">Whats New ?</a>
+
+# Read Me
+
 <div align="center">
- 
+
 <img src="https://drive.google.com/thumbnail?id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo&sz=w900">
 
 [![Downloads](https://static.pepy.tech/badge/tkchart)](https://pepy.tech/project/tkchart)
 [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart)
 [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
-<img src="https://drive.google.com/thumbnail?id=16YbIN9EHUsYmElg1wkVRPij8qtBN2V3o&sz=w180">
+<img src="https://drive.google.com/thumbnail?id=1YxLGG88z1EyPR7SUgJhqtmD0uthRYgNp&sz=w180">
 
 </div>
 
@@ -27,7 +30,7 @@
 <br>
 <br>
 
-## tkchart - 1.3.12
+## tkchart - 1.4.0
 
 ### You need to install & import package first
 * installation
@@ -462,6 +465,11 @@ line = tkchart.Line()
     - style_type : ``tuple(int, int)``
         - (5,10)
         - (10,5)
+    - point_highlight: ``str``
+        - "disabled"
+        - "enabled"
+    - point_highlight_size: ``int`` 
+    - point_highlight_color: ``str``
 
 
 - ##  Methods
@@ -471,6 +479,9 @@ line = tkchart.Line()
         - color 
         - style
         - style_type
+        - point_highlight
+        - point_highlight_size
+        - point_highlight_color
 
 ```
 line = tkchart.Line(master=linechart,
@@ -548,6 +559,7 @@ root.mainloop()
 ```
 
 <div align="center">
+click to play
 
 https://github.com/Thisal-D/tkchart/assets/93121062/ec29a3f4-7eba-40c5-9f5c-cc7071ff40ff
 
@@ -586,12 +598,12 @@ https://github.com/Thisal-D/tkchart/assets/93121062/ec29a3f4-7eba-40c5-9f5c-cc70
 </div>
 <br>
 <br>
-<br>
-<br>
  
 
 <div id="contributing">
-<a href="#top"> Go to top </a>
+
+### <a href="#whatsnew">Whats New ?</a>
+### <a href="#top"> Go to top </a>
 
 # Contributing to tkchart
 
@@ -627,5 +639,36 @@ If you encounter issues or have questions, please check the [issue tracker](http
 By contributing, you agree that your contributions will be licensed under the project's [LICENSE](LICENSE).
 
 Thank you for your contribution!
+
+</div>
+
+<br>
+<br>
+
+<div id="whatsnew">
+
+### <a href="#contributing">Contributing to tkchart</a>
+### <a href="#top"> Go to top </a>
+
+# Whats New
+
+Added new parameters to Line object
+
+Try on :
+<a href="https://github.com/Thisal-D/tkchart/blob/main/Tests/Main%20-%20Test.py"> Tests/Main - Test.py </a>
+
+- point_highlight: ``str``
+- point_highlight_size: ``int`` 
+- point_highlight_color: ``str``
+
+:: before
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1gamwp1fyXbwVFUduohPFH5nZydDYBDlZ&sz=w900"></div>
+
+:: after
+- point_highlight = "enabled"
+- point_highlight_size = 10
+- point_highlight_color = "#00FFFF"
+
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1uhnCAKUHyCFytpxwImWPx0ubwd_4mTxA&sz=w900"></div>
 
 </div>

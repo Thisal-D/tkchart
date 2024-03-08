@@ -6,7 +6,7 @@ from .Line import Line
 
 class LineChart():
    def __init__(self,
-                  master: any= None,
+                  master: any = None,
                   width: int = 700,
                   height: int = 400,
                   axis_size: int = 2,

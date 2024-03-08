@@ -1,11 +1,12 @@
 import tkinter
-from .Line import *
 from .Utils import *
 from .Validate import *
 from .FontStyle import *
+from .Line import Line
 
 class LineChart():
-   def __init__(self, master=None,
+   def __init__(self,
+                  master: any= None,
                   width: int = 700,
                   height: int = 400,
                   axis_size: int = 2,
@@ -149,12 +150,13 @@ class LineChart():
             Validate._isValidColor(y_axis_section_color, "y_axis_section_color")
       ####################################################REMOVE  2024.3.30####################################################
 
-
       if master != None:
          self.master = master
-      if len(args) > 0:
+      elif len(args) != 0:
          self.master = args[0]
-      
+      else:
+         self.master = master
+   
       self.__height = height
       self.__width = width
       self.__axis_size = axis_size
@@ -1038,11 +1040,14 @@ class LineChart():
             self.show_data(line=line, data=line._Line__temp_data)
    
    
-   def show_data(self, line:Line, data:tuple) -> None:
+   def show_data(self, line: Line, data: list) -> None:
+      Validate._isValidLine(line, "line")
+      Validate._isValidData(data, "data")
+      
       re_show_data = False
       if line not in self.__lines:
          self.__lines.append(line)
-      line._Line__data += list(data)
+      line._Line__data += (data)
       
       if line._Line__hide_state != True :
          for d in data:
@@ -1155,7 +1160,7 @@ class LineChart():
                                                       )
             else:
                break
-         
+   
          if re_show_data:
             self.__reshow_data()
          self.__is_data_showing_working = False
@@ -1303,14 +1308,17 @@ class LineChart():
                            padx=self.__grid_info_padx,  pady=self.__grid_info_pady,
                            row=self.__grid_info_row, rowspan=self.__grid_info_rowspan, sticky=self.__grid_info_sticky)
       
-      
+   
    def hide(self, line: Line, state: bool) -> None:
+      Validate._isValidLine(state, "line")
+      Validate._isBool(state, "state")
       if line._Line__hide_state != state:
          line._Line__hide_state = state
          self.__reshow_data()
       
       
    def hide_all(self, state: bool) -> None:
+      Validate._isBool(state, "state")
       if state == True:
          self.__output_canvas.place_forget()
       self.__force_to_stop_data_showing = True

@@ -1,8 +1,10 @@
 from .Validate import *
+from .FontStyle import FontStyle
 
 class Line():
+   
    def __init__(self,
-               master = None,
+               master: any = None,
                color: str = "#909090",
                size: int = 1,
                style: str = "normal", 
@@ -20,12 +22,14 @@ class Line():
       Validate._isValidLineHighlight(point_highlight, "point_highlight")
       Validate._isInt(point_highlight_size, "point_highlight_size")
       Validate._isValidColor(point_highlight_color, "point_highlight_color")
+      if master == None:
+         if len(args) != 0:
+            master = args[0]
+         else:
+            raise ValueError(f'''{FontStyle._fontStyle("master","green", "black", "italic")} {FontStyle._fontStyle("parameter value is not provided", "red", "black", "underline")}''')
+      Validate._isValidLineChart(master, "master")
       
-      try :
-         self.__master = args[0]
-      except:
-         self.__master = master
-
+      self.__master = master
       self.__color = color
       self.__size = size
       self.__y_end = 0

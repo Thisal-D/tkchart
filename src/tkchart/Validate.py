@@ -1,5 +1,4 @@
 from .FontStyle import *
-from .Exceptions import *
 import tkinter
 
 class Validate:
@@ -15,11 +14,23 @@ class Validate:
             raise TypeError(
                 f"{Validate._var_font(var)} {Validate._error_font('must be tuple.')}"
             )
+            
+    def _isList(value: any, var: str) -> None:
+        if type(value) != list:
+            raise TypeError(
+                f"{Validate._var_font(var)} {Validate._error_font('must be list.')}"
+            )
 
     def _isInt(value: any, var: str) -> None:
         if type(value) != int:
             raise TypeError(
                 f"{Validate._var_font(var)} {Validate._error_font('must be int.')}"
+            )
+    
+    def _isBool(value: any, var: str) -> None:
+        if type(value) != bool:
+            raise TypeError(
+                f"{Validate._var_font(var)} {Validate._error_font('must be bool.')}"
             )
 
     def _isFloat(value: any, var: str) -> None:
@@ -47,7 +58,7 @@ class Validate:
         try:
             tkinter.Label(fg=value)
         except:
-            raise ColorError(
+            raise ValueError(
                 f'''{Validate._var_font(var)} {Validate._error_font("must be valid color. eg:- '#ff0000'/ 'red'")}'''
             )
 
@@ -56,22 +67,23 @@ class Validate:
         try:
             tkinter.Label(font=value)
         except:
-            raise FontError(
+            raise ValueError(
                 f'''{Validate._var_font(var)} {Validate._error_font("must be valid font. eg:- ('arial',10,'bold')")}'''
             )
 
     def _isValidFunction(value: any, var: str) -> None:
         if not callable(value) and value != None:
-            raise FunctionError(
+            raise TypeError(
                 f'''{Validate._var_font(var)} {Validate._error_font("must be function with two parameters or *args.")}'''
             )
 
     def _isValidXAxisIndices(values: tuple, indices: tuple, var: str) -> None:
         if indices != None:
             Validate._isTuple(indices, var)
+            Validate._isValidIndices(indices, var)
             for index in indices:
                 if index >= len(values):
-                    raise IndexError(
+                    raise ValueError(
                         f'''{Validate._var_font(var)} {Validate._error_font("values must be lower than length of x_axis_values.")}'''
                     )
 
@@ -89,7 +101,7 @@ class Validate:
                     f'''{Validate._var_font(var)} {Validate._error_font("values must be integers.")}'''
                 )
         else:
-            raise LengthError(
+            raise ValueError(
                 f'''{Validate._var_font(var)} {Validate._error_font("length must be two.")}'''
             )
 
@@ -138,7 +150,7 @@ class Validate:
             raise ValueError(
                 f'''{Validate._var_font(var)} {Validate._error_font("must be 'disabled' or 'enabled'.")}'''
             )
-            
+              
     def _isValidLineHighlight(value: any, var: str) -> None:
         Validate._isStr(value, var)
         if value == "disabled" or value == "enabled":
@@ -148,7 +160,6 @@ class Validate:
                 f'''{Validate._var_font(var)} {Validate._error_font("must be 'disabled' or 'enabled'.")}'''
             )
             
-
     def _isValidYAxisValues(value: any, var: str) -> None:
         Validate._isTuple(value, var)
         if len(value) == 2:
@@ -165,7 +176,7 @@ class Validate:
                     f'''{Validate._var_font(var)} {Validate._error_font("values must be integer or float.")}'''
                 )
         else:
-            raise LengthError(
+            raise ValueError(
                 f'''{Validate._var_font(var)} {Validate._error_font("length must be two.")}'''
             )
 
@@ -174,4 +185,37 @@ class Validate:
         if value == 0:
             raise TypeError(
                 f'''{Validate._var_font(var)} {Validate._error_font("must be less than 0 or bigger than 0")}'''
+            )
+    
+    def _isValidLine(value: any, var: str) -> None:
+        from .Line import Line
+        if type(value) != Line:
+            raise TypeError(
+                f'''{Validate._var_font(var)} {Validate._error_font("type must be tkchart.Line")}'''   
+            )
+            
+    def _isValidLineChart(value: any, var: str) -> None:
+        from .LineChart import LineChart
+        if type(value) != LineChart:
+            raise TypeError(
+                f'''{Validate._var_font(var)} {Validate._error_font("type must be tkchart.LineChart")}'''   
+            )
+            
+            
+    def _isValidData(value: any, var: str) -> None:
+        Validate._isList(value, var)
+        if all(isinstance(value, (int, float)) for value in value):
+            ...
+        else:
+            raise TypeError(
+                f'''{Validate._var_font(var)} {Validate._error_font("all values in the list should be either int or float.")}'''
+            )
+
+    
+    def _isValidIndices(value: any, var: str) -> None:
+        if all(isinstance(value, (int)) for value in value):
+            ...
+        else:
+            raise TypeError(
+                f'''{Validate._var_font(var)} {Validate._error_font("all values should be int.")}'''
             )

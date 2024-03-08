@@ -1,8 +1,7 @@
 from .Validate import *
 from .FontStyle import FontStyle
 
-class Line():
-   
+class Line():   
    def __init__(self,
                master: any = None,
                color: str = "#909090",
@@ -88,5 +87,3 @@ class Line():
       self.__y_end = 0
       self.__x_end  = self.__master._LineChart__line_width* -1
       self.__data = []
-
-

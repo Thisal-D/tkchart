@@ -223,13 +223,13 @@ linechart = tkchart.LineChart()
         
     - ### grid : ``use to grid LineChart``
         Support parameters
-        - column ``int``
-        - columnspan ``int``
-        - padx ``int``
-        - pady ``int``
-        - row ``int``
-        - rowspan ``int``
-        - sticky ``str``
+        - column : ``int``
+        - columnspan : ``int``
+        - padx : ``int``
+        - pady : ``int``
+        - row : ``int``
+        - rowspan : ``int``
+        - sticky : ``str``
 
     - ### place_forget : ``use to place forget the chart``
     - ### pack_forget : ``use to pack forget the chart``

@@ -584,22 +584,12 @@ https://github.com/Thisal-D/tkchart/assets/93121062/ec29a3f4-7eba-40c5-9f5c-cc70
 
 </div>
 
-<br>
 <hr>
-<br>
-
-### go to PyPi
-- # PyPi.org   :   <a href="https://pypi.org/project/tkchart" target="_blank" ><i>tkchart</i></a>
-
-### go to GitHub
-- # GitHub.com   :  <a href="https://github.com/Thisal-D/tkchart" target="_blank" ><i>tkchart</i></a>
-
 
 </div>
-<br>
+
 <br>
  
-
 <div id="contributing">
 
 ### <a href="#whatsnew">Whats New ?</a>
@@ -672,3 +662,14 @@ Try on :
 <div align="center"><img src="https://drive.google.com/thumbnail?id=1uhnCAKUHyCFytpxwImWPx0ubwd_4mTxA&sz=w900"></div>
 
 </div>
+
+<br>
+
+<hr>
+
+### go to PyPi
+- # PyPi.org   :   <a href="https://pypi.org/project/tkchart" target="_blank" ><i>tkchart</i></a>
+
+### go to GitHub
+- # GitHub.com   :  <a href="https://github.com/Thisal-D/tkchart" target="_blank" ><i>tkchart</i></a>
+

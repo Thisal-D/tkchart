@@ -1,12 +1,13 @@
-from .FontStyle import *
+from typing import Tuple
+from .FontStyle import FontStyle
 import tkinter
 
 class Validate:
 
-    def _error_font(value):
+    def _error_font(value: str) -> str:
         return FontStyle._fontStyle(value, "red", "black", "underline")
 
-    def _var_font(value):
+    def _var_font(value:str) -> str:
         return FontStyle._fontStyle(value, "green", "black", "italic")
 
     def _isTuple(value: any, var: str) -> None:
@@ -45,7 +46,7 @@ class Validate:
                 f"{Validate._var_font(var)} {Validate._error_font('must be str.')}"
             )
 
-    def _isNumeric(value: int, var: str) -> None:
+    def _isNumeric(value: any, var: str) -> None:
         if type(value) == int or type(value) == float:
             ...
         else:
@@ -77,7 +78,7 @@ class Validate:
                 f'''{Validate._var_font(var)} {Validate._error_font("must be function with two parameters or *args.")}'''
             )
 
-    def _isValidXAxisIndices(values: tuple, indices: tuple, var: str) -> None:
+    def _isValidXAxisIndices(values: Tuple[int, ...], indices: any, var: str) -> None:
         if indices != None:
             Validate._isTuple(indices, var)
             Validate._isValidIndices(indices, var)

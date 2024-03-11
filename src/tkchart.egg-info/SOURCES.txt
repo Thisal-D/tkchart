@@ -1,7 +1,6 @@
 LICENSE
 README.md
 pyproject.toml
-src/tkchart/Exceptions.py
 src/tkchart/FontStyle.py
 src/tkchart/Line.py
 src/tkchart/LineChart.py

@@ -23,10 +23,10 @@ line = tkchart.Line(master=line_chart, style="dashed", style_type=(10,5), size=1
 
 def loop():
     line_chart.show_data(line=line ,data=[random.choice(data)])
-    root.after(400, loop)
+    root.after(500, loop)
 loop()
 
-frame = ctk.CTkScrollableFrame(master=root, width=1000, height=900, fg_color="#151515")
+frame = ctk.CTkScrollableFrame(master=root, width=1000, height=900, fg_color=("#FFFFFF","#151515"))
 frame.pack(pady=100)
 
 def line_chart_configure(**kwrgs):
@@ -37,63 +37,63 @@ def line_configure(**kwrgs):
 
 
 row = 1
-ctk.CTkLabel(master=frame, text="Line Chart Attributes : ", font=("Arial",25,"bold")).grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Line Chart Attributes : ", font=("Arial",25,"bold")).grid(row=row, column=1)
 row += 1
-ctk.CTkLabel(master=frame, text="Width : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Width : ").grid(row=row, column=1)
 column = 2
 for width in range(900,1600,100):
     ctk.CTkButton(master=frame, text="{}".format(width), width=90, height=30, command=lambda width_=width: line_chart_configure(width=width_)).grid(row=row, column=column, padx=10, pady=2)
     column += 1
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Height : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Height : ").grid(row=row, column=1)
 column = 2
 for height in range(350,900,50):
     ctk.CTkButton(master=frame, text="{}".format(height), width=90, height=30, command=lambda height_=height: line_chart_configure(height=height_)).grid(row=row, column=column, padx=10, pady=2)
     column += 1
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Axis Size : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Axis Size : ").grid(row=row, column=1)
 column = 2
 for axis_size in range(1,9,1):
     ctk.CTkButton(master=frame, text="{}".format(axis_size), width=90, height=30, command=lambda axis_size_=axis_size: line_chart_configure(axis_size=axis_size_)).grid(row=row, column=column, padx=10, pady=2)
     column += 1
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Y Axis Labels : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Y Axis Labels : ").grid(row=row, column=1)
 column = 2
 for y_axis_label_count in range(0,14,2):
     ctk.CTkButton(master=frame, text="{}".format(y_axis_label_count), width=90, height=30, command=lambda y_axis_label_count_=y_axis_label_count: line_chart_configure(y_axis_label_count=y_axis_label_count_)).grid(row=row, column=column, padx=10, pady=2)
     column += 1   
        
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="X Axis Labels : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="X Axis Labels : ").grid(row=row, column=1)
 column = 2
 for x_axis_label_count in [0, 1, 2, 4, 5, 10, 20]:
     ctk.CTkButton(master=frame, text="{}".format(x_axis_label_count), width=90, height=30, command=lambda x_axis_label_count_=x_axis_label_count: line_chart_configure(x_axis_label_count=x_axis_label_count_)).grid(row=row, column=column, padx=10, pady=2)
     column += 1 
     
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Y Axis Precision : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Y Axis Precision : ").grid(row=row, column=1)
 column = 2
 for y_axis_precision in range(0,9,1):
     ctk.CTkButton(master=frame, text="{}".format(y_axis_precision), width=90, height=30, command=lambda y_axis_precision_=y_axis_precision: line_chart_configure(y_axis_precision=y_axis_precision_)).grid(row=row, column=column, padx=10, pady=2)
     column += 1  
     
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Y Axis values : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Y Axis values : ").grid(row=row, column=1)
 column = 2
 values = [(-1000, 1000), (0, 1000), (-2000, 1000), (0, 2000), (-5000,2000)]
 for i in range(5):
@@ -101,36 +101,36 @@ for i in range(5):
     column += 1 
     
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="X Axis Values : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="X Axis Values : ").grid(row=row, column=1)
 column = 2
 for x_axis_values in range(1, 90, 10):
     ctk.CTkButton(master=frame, text="range({},{})".format(x_axis_values,x_axis_values+20), width=90, height=30, command=lambda x_axis_values_=[x for x in range(x_axis_values,x_axis_values+20)]: line_chart_configure(x_axis_values=tuple(x_axis_values_))).grid(row=row, column=column, padx=10, pady=2)
     column += 1 
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Y Axis Sections : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Y Axis Sections : ").grid(row=row, column=1)
 column = 2
 for y_axis_section_count in range(0, 14, 2):
     ctk.CTkButton(master=frame, text="{}".format(y_axis_section_count), width=90, height=30, command=lambda y_axis_section_count_=y_axis_section_count: line_chart_configure(y_axis_section_count=y_axis_section_count_)).grid(row=row, column=column, padx=10, pady=2)
     column += 1   
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="X Axis Sections : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="X Axis Sections : ").grid(row=row, column=1)
 column = 2
 for x_axis_section_count in range(0, 14, 2):
     ctk.CTkButton(master=frame, text="{}".format(x_axis_section_count), width=90, height=30, command=lambda x_axis_section_count_=x_axis_section_count: line_chart_configure(x_axis_section_count=x_axis_section_count_)).grid(row=row, column=column, padx=10, pady=2)
     column += 1   
     
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Line Width : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Line Width : ").grid(row=row, column=1)
 ctk.CTkButton(master=frame, text="{}".format("Auto"), width=90, height=30, command=lambda : line_chart_configure(line_width="auto")).grid(row=row, column=2, padx=10, pady=2)
 column = 3
 for line_width in range(10, 40, 5):
@@ -138,63 +138,63 @@ for line_width in range(10, 40, 5):
     column += 1
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Y Space : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Y Space : ").grid(row=row, column=1)
 column = 2
 for y_space in range(0, 90, 10):
     ctk.CTkButton(master=frame, text="{}".format(y_space), width=90, height=30, command=lambda y_space_=y_space: line_chart_configure(y_space=y_space_)).grid(row=row, column=column, padx=10, pady=2)
     column += 1
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="X Space : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="X Space : ").grid(row=row, column=1)
 column = 2
 for x_space in range(0, 90, 10):
     ctk.CTkButton(master=frame, text="{}".format(x_space), width=90, height=30, command=lambda x_space_=x_space: line_chart_configure(x_space=x_space_)).grid(row=row, column=column, padx=10, pady=2)
     column += 1  
     
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Y Axis Data : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Y Axis Data : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("Y"), width=90, height=30, command=lambda:line_chart_configure(y_axis_data="Y")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
 ctk.CTkButton(master=frame, text="{}".format("Y-AXIS"), width=90, height=30, command=lambda:line_chart_configure(y_axis_data="Y-AXIS")).grid(row=row, column=column, padx=10, pady=2)
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="X Axis Data : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="X Axis Data : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("X"), width=90, height=30, command=lambda:line_chart_configure(x_axis_data="X")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
 ctk.CTkButton(master=frame, text="{}".format("X-AXIS"), width=90, height=30, command=lambda:line_chart_configure(x_axis_data="X-AXIS")).grid(row=row, column=column, padx=10, pady=2)
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="X Axis Data Position : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="X Axis Data Position : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("top"), width=90, height=30, command=lambda:line_chart_configure(x_axis_data_position="top")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
 ctk.CTkButton(master=frame, text="{}".format("side"), width=90, height=30, command=lambda:line_chart_configure(x_axis_data_position="side")).grid(row=row, column=column, padx=10, pady=2)
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Y Axis Data Position : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Y Axis Data Position : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("top"), width=90, height=30, command=lambda:line_chart_configure(y_axis_data_position="top")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
 ctk.CTkButton(master=frame, text="{}".format("side"), width=90, height=30, command=lambda:line_chart_configure(y_axis_data_position="side")).grid(row=row, column=column, padx=10, pady=2)
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Data Font Style : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Data Font Style : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("('arial',10,'normal')"), width=90, height=30, command=lambda:line_chart_configure(data_font_style=("arial",10,"normal"))).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -205,9 +205,9 @@ column += 1
 ctk.CTkButton(master=frame, text="{}".format("('arial',15,'bold')"), width=90, height=30, command=lambda:line_chart_configure(data_font_style=("arial",15,"bold"))).grid(row=row, column=column, padx=10, pady=2)
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Axis Font Style : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Axis Font Style : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("('arial',10,'normal')"), width=90, height=30, command=lambda:line_chart_configure(axis_font_style=("arial",10,"normal"))).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -218,9 +218,9 @@ column += 1
 ctk.CTkButton(master=frame, text="{}".format("('arial',12,'bold')"), width=90, height=30, command=lambda:line_chart_configure(axis_font_style=("arial",12,"bold"))).grid(row=row, column=column, padx=10, pady=2)
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="X Section Color : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="X Section Color : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("#000000"), width=90, height=30, command=lambda:line_chart_configure(x_axis_section_color="#000000")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -237,9 +237,9 @@ column += 1
 
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Y Section Color : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Y Section Color : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("#000000"), width=90, height=30, command=lambda:line_chart_configure(y_axis_section_color="#000000")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -256,9 +256,9 @@ column += 1
 
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="X Axis Section Style : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="X Axis Section Style : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("normal"), width=90, height=30, command=lambda:line_chart_configure(x_axis_section_style="normal")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -266,9 +266,9 @@ ctk.CTkButton(master=frame, text="{}".format("dashed"), width=90, height=30, com
 column += 1
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="X Axis Style Type : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="X Axis Style Type : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("(10, 5)"), width=90, height=30, command=lambda:line_chart_configure(x_axis_section_style_type=(10, 5))).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -284,9 +284,9 @@ ctk.CTkButton(master=frame, text="{}".format("(20, 20)"), width=90, height=30, c
 column += 1
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Y Axis Section Style : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Y Axis Section Style : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("normal"), width=90, height=30, command=lambda:line_chart_configure(y_axis_section_style="normal")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -294,9 +294,9 @@ ctk.CTkButton(master=frame, text="{}".format("dashed"), width=90, height=30, com
 column += 1
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Y Axis Style Type : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Y Axis Style Type : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("(10, 5)"), width=90, height=30, command=lambda:line_chart_configure(y_axis_section_style_type=(10, 5))).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -313,9 +313,9 @@ column += 1
 
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Axis Color : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Axis Color : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("#000000"), width=90, height=30, command=lambda:line_chart_configure(axis_color="#000000")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -331,9 +331,9 @@ ctk.CTkButton(master=frame, text="{}".format("#FFFFFF"), width=90, height=30, co
 column += 1
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="BG Color : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="BG Color : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("#000000"), width=90, height=30, command=lambda:line_chart_configure(bg_color="#000000")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -349,9 +349,9 @@ ctk.CTkButton(master=frame, text="{}".format("#FFFFFF"), width=90, height=30, co
 column += 1
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="FG Color : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="FG Color : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("#000000"), width=90, height=30, command=lambda:line_chart_configure(fg_color="#000000")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -367,9 +367,9 @@ ctk.CTkButton(master=frame, text="{}".format("#FFFFFF"), width=90, height=30, co
 column += 1
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Y Axis Font Color : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Y Axis Font Color : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("#000000"), width=90, height=30, command=lambda:line_chart_configure(y_axis_font_color="#000000")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -385,9 +385,9 @@ ctk.CTkButton(master=frame, text="{}".format("#FFFFFF"), width=90, height=30, co
 column += 1
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="X Axis Font Color : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="X Axis Font Color : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("#000000"), width=90, height=30, command=lambda:line_chart_configure(x_axis_font_color="#000000")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -403,9 +403,9 @@ ctk.CTkButton(master=frame, text="{}".format("#FFFFFF"), width=90, height=30, co
 column += 1
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Y Axis Data Font Color : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Y Axis Data Font Color : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("#000000"), width=90, height=30, command=lambda:line_chart_configure(y_axis_data_font_color="#000000")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -421,9 +421,9 @@ ctk.CTkButton(master=frame, text="{}".format("#FFFFFF"), width=90, height=30, co
 column += 1
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="X Axis Data Font Color : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="X Axis Data Font Color : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("#000000"), width=90, height=30, command=lambda:line_chart_configure(x_axis_data_font_color="#000000")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -439,15 +439,15 @@ ctk.CTkButton(master=frame, text="{}".format("#FFFFFF"), width=90, height=30, co
 column += 1
 
 row += 1
-ctk.CTkFrame(master=frame ,height=10, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=10, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 
 row += 1
-ctk.CTkLabel(master=frame, text="Line Attributes : ", font=("Arial",25,"bold")).grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Line Attributes : ", font=("Arial",25,"bold")).grid(row=row, column=1)
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Size : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Size : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format(1), width=90, height=30, command=lambda:line_configure(size=1)).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -456,9 +456,9 @@ column += 1
 ctk.CTkButton(master=frame, text="{}".format(4), width=90, height=30, command=lambda:line_configure(size=4)).grid(row=row, column=column, padx=10, pady=2)
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Style : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Style : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("line"), width=90, height=30, command=lambda:line_configure(style="normal")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -468,9 +468,9 @@ ctk.CTkButton(master=frame, text="{}".format("dotted"), width=90, height=30, com
 
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Style Type : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Style Type : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("(5,10)"), width=90, height=30, command=lambda:line_configure(style_type=(5,10))).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -485,9 +485,9 @@ ctk.CTkButton(master=frame, text="{}".format("(1,1)"), width=90, height=30, comm
 
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Color : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Color : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("#FF0000"), width=90, height=30, command=lambda:line_configure(color="#FF0000")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -502,9 +502,9 @@ ctk.CTkButton(master=frame, text="{}".format("#00FFFF"), width=90, height=30, co
 
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Point Hightlight : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Point Hightlight : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("enabled"), width=90, height=30, command=lambda:line_configure(point_highlight="enabled")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -514,9 +514,9 @@ column += 1
 
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Point Hightlight Size : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Point Hightlight Size : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("5"), width=90, height=30, command=lambda:line_configure(point_highlight_size=5)).grid(row=row, column=column, padx=10, pady=2)
 column += 1
@@ -531,9 +531,9 @@ ctk.CTkButton(master=frame, text="{}".format("25"), width=90, height=30, command
 
 
 row += 1
-ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(master=frame, text="Point Hightlight Color : ").grid(row=row, column=1)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Point Hightlight Color : ").grid(row=row, column=1)
 column = 2
 ctk.CTkButton(master=frame, text="{}".format("#FF0000"), width=90, height=30, command=lambda:line_configure(point_highlight_color="#FF0000")).grid(row=row, column=column, padx=10, pady=2)
 column += 1

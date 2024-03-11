@@ -7,6 +7,7 @@ import time
 root = customtkinter.CTk()
 root.geometry("1280x720")
 
+
 # values for chart x axis
 x_axis_values = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 #create line chart

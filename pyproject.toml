@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tkchart"
-version = "1.4.0"
+version = "1.4.2"
 authors = [
   { name = "Thisal-D" }
 ]
 
 license = { file = "LICENSE" }
 
-description = "tkchart Library is a Python library that simplifies the process of creating line charts in tkinter and customtkinter GUI applications."
+description = "tkchart Library is a Python library that simplifies the process of creating line charts in tkinter GUI applications."
 readme = "README.md"
 requires-python = ">=3.0"
 classifiers = [

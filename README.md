@@ -20,7 +20,7 @@
 
 [![Downloads](https://static.pepy.tech/badge/tkchart)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
-<img src="https://drive.google.com/thumbnail?id=1rMILz6ODw-1UY4YhlYAFiRCFUluNcVpI&sz=w180">
+<img src="https://drive.google.com/thumbnail?id=1asMd-U3BmmVEl8YpdRssj679n6jRdflC&sz=w180">
 
 </div>
 
@@ -172,16 +172,16 @@ line = tkchart.Line()
 
 | Parameter Name          | Required / Optional | Description                    | Types                              | Example Value(s)  |
 |-------------------------|---------------------|--------------------------------|------------------------------------|-------------------|
-| master                  | Required            | Master of the line             | tkchart.Line                       | LineChart obj     |
-| <a href="#line_color_size">color</a>                   | Optional            | Color of the line              | str                                | "#768df1"         |
-| <a href="#line_color_size">size</a>                    | Optional            | Size of the line               | int                                | 1<=               |
-| <a href="#line_style">style</a>                   | Optional            | Style of the line              | str ("normal", "dashed", "dotted") | "normal"          |
-| <a href="#line_style_type">style_type</a>              | Optional            | Style type for the line        | tuple[int, int]                    | (10, 5),...       |
-| <a href="#point_highlight">point_highlight</a>         | Optional            | State of point highlighting    | str ("enabled", "disabled")        | "disabled"        |
-| <a href="#point_highlight">point_highlight_size</a>    | Optional            | Size of the highlighted point  | int                                | 1<=               |
-| <a href="#point_highlight">point_highlight_color</a>   | Optional            | Color of the highlighted point | str                                | "#768df1"         |
-| <a href="#fill">fill</a>                    | Optional            | State of filling               | str ("enabled", "disabled")        | "disabled"        |
-| <a href="#fill">fill_color</a>             | Optional            | Color of the fill              | str                                | "#5d6db6"         |
+| master                  | Required            | Master of the line             | ``tkchart.Line``                       | LineChart obj     |
+| <a href="#line_color_size">color</a>                   | Optional            | Color of the line              | ``str``                               | "#768df1"         |
+| <a href="#line_color_size">size</a>                    | Optional            | Size of the line               | ``int``                                | 1<=               |
+| <a href="#line_style">style</a>                   | Optional            | Style of the line              | ``str`` ("normal", "dashed", "dotted") | "normal"          |
+| <a href="#line_style_type">style_type</a>              | Optional            | Style type for the line        | ``tuple[int, int]``                    | (10, 5),...       |
+| <a href="#point_highlight">point_highlight</a>         | Optional            | State of point highlighting    | ``str`` ("enabled", "disabled")        | "disabled"        |
+| <a href="#point_highlight">point_highlight_size</a>    | Optional            | Size of the highlighted point  | ``int``                                | 1<=               |
+| <a href="#point_highlight">point_highlight_color</a>   | Optional            | Color of the highlighted point | ``str``                                | "#768df1"         |
+| <a href="#fill">fill</a>                    | Optional            | State of filling               | ``str`` ("enabled", "disabled")        | "disabled"        |
+| <a href="#fill">fill_color</a>             | Optional            | Color of the fill              | ``str``                                | "#5d6db6"         |
 
 <br>
 

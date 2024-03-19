@@ -18,7 +18,7 @@
 
 [![Downloads](https://static.pepy.tech/badge/tkchart)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
-<img src="https://drive.google.com/thumbnail?id=1rMILz6ODw-1UY4YhlYAFiRCFUluNcVpI&sz=w180">
+<img src="https://drive.google.com/thumbnail?id=1asMd-U3BmmVEl8YpdRssj679n6jRdflC&sz=w180">
 
 </div>
 
@@ -167,16 +167,16 @@ line = tkchart.Line()
 
 | 参数名称                                             | 必备参数 / 可选参数 | 描述                         | 数据类型                           | 示例值        |
 | ---------------------------------------------------- | ------------------- | ---------------------------- | ---------------------------------- | ------------- |
-| master                                               | 必须                | Master                       | tkchart.Line                       | LineChart obj |
-| <a href="#line_color_size">color</a>                 | 可选                | 折线的颜色                   | str                                | "#768df1"     |
-| <a href="#line_color_size">size</a>                  | 可选                | Size of the line             | int                                | 1<=           |
-| <a href="#line_style">style</a>                      | 可选                | 折线风格（直线、虚线、点线） | str ("normal", "dashed", "dotted") | "normal"      |
-| <a href="#line_style_type">style_type</a>            | 可选                | 实线与虚线的尺寸             | tuple[int, int]                    | (10, 5),...   |
-| <a href="#point_highlight">point_highlight</a>       | 可选                | 端点高亮状态                 | str ("enabled", "disabled")        | "disabled"    |
-| <a href="#point_highlight">point_highlight_size</a>  | 可选                | 高亮点的大小                 | int                                | 1<=           |
-| <a href="#point_highlight">point_highlight_color</a> | 可选                | 高亮点的颜色                 | str                                | "#768df1"     |
-| <a href="#fill">fill</a>                             | 可选                | 是否启用填充                 | str ("enabled", "disabled")        | "disabled"    |
-| <a href="#fill">fill_color</a>                       | 可选                | 填充部分的颜​​色             | str                                | "#5d6db6"     |
+| master                                               | 必须                | Master                       | ``tkchart.Line``                       | LineChart obj |
+| <a href="#line_color_size">color</a>                 | 可选                | 折线的颜色                   | ``str``                                | "#768df1"     |
+| <a href="#line_color_size">size</a>                  | 可选                | Size of the line             | ``int``                                | 1<=           |
+| <a href="#line_style">style</a>                      | 可选                | 折线风格（直线、虚线、点线） | ``str`` ("normal", "dashed", "dotted") | "normal"      |
+| <a href="#line_style_type">style_type</a>            | 可选                | 实线与虚线的尺寸             | ``tuple[int, int]``                    | (10, 5),...   |
+| <a href="#point_highlight">point_highlight</a>       | 可选                | 端点高亮状态                 | ``str`` ("enabled", "disabled")        | "disabled"    |
+| <a href="#point_highlight">point_highlight_size</a>  | 可选                | 高亮点的大小                 | ``int``                                | 1<=           |
+| <a href="#point_highlight">point_highlight_color</a> | 可选                | 高亮点的颜色                 | ``str``                                | "#768df1"     |
+| <a href="#fill">fill</a>                             | 可选                | 是否启用填充                 | ``str`` ("enabled", "disabled")        | "disabled"    |
+| <a href="#fill">fill_color</a>                       | 可选                | 填充部分的颜​​色             | ``str``                                | "#5d6db6"     |
 
 <br>
 
@@ -225,7 +225,7 @@ loop()
 root.mainloop()
 ```
 <div align="center">
-    
+
 https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b00a6f5518
 
 </div>

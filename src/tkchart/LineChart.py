@@ -119,7 +119,7 @@ class LineChart():
       self.__y_axis_section_style_type = y_axis_section_style_type
       self.__y_axis_section_count = y_axis_section_count
       self.__y_axis_label_count = y_axis_label_count
-      self.__y_axis_data = y_axis_data
+      self.__y_axis_data = str(y_axis_data)
       self.__y_axis_data_position = y_axis_data_position
       self.__y_axis_values = y_axis_values
       self.__y_axis_min_value = y_axis_values[0]
@@ -135,7 +135,7 @@ class LineChart():
       self.__x_axis_label_count = x_axis_label_count
       self.__x_axis_display_values_indices = x_axis_display_values_indices
       self.__x_labels_values_index_change = 1
-      self.__x_axis_data = x_axis_data
+      self.__x_axis_data = str(x_axis_data)
       self.__x_axis_data_position = x_axis_data_position
       self.__x_axis_values = x_axis_values
       self.__x_axis_values_handle_by = "auto"
@@ -318,23 +318,25 @@ class LineChart():
    def __configure_required_widget_size(self) -> None:
       self.__x_axis_data_req_width_space_top = 0
       self.__x_axis_data_req_height_space_side = 0
+      self.__x_special_width_space = 0
+      
       self.__x_axis_data_req_height = Utils._RequiredHeight(text=self.__x_axis_data, font=self.__data_font_style)
       self.__x_axis_data_req_width = Utils._RequiredWidth(text=self.__x_axis_data, font=self.__data_font_style)
-      self.__x_special_width_space = 0
       if self.__x_axis_data_position == "top":
-         self.__x_special_width_space = 30
+         self.__x_special_width_space = 15
          self.__x_axis_data_req_width_space_top = Utils._RequiredWidth(text=self.__x_axis_data, font=self.__data_font_style)
       else:
          self.__x_axis_data_req_height_space_side = Utils._RequiredHeight(text=self.__x_axis_data, font=self.__data_font_style)
       
       self.__y_axis_data_req_height_space_top = 0
-      self.__y_axis_data_req_height = Utils._RequiredHeight(text=self.__y_axis_data, font=self.__data_font_style)
-      self.__y_axis_data_req_width = Utils._RequiredWidth(text=self.__y_axis_data, font=self.__data_font_style)
-      self.__y_special_height_space = 0
       self.__y_axis_data_req_width_space_side = 0
+      self.__y_special_height_space = 0
+      
+      #self.__y_axis_data_req_height = Utils._RequiredHeight(text=self.__y_axis_data, font=self.__data_font_style)
+      #self.__y_axis_data_req_width = Utils._RequiredWidth(text=self.__y_axis_data, font=self.__data_font_style)
       if self.__y_axis_data_position == "top":
-         self.__y_special_height_space = 30
-         self.__y_axis_data_req_height_space_top = Utils._RequiredHeight(text=self.__y_axis_data[0], font=self.__data_font_style)
+         self.__y_special_height_space = 15
+         self.__y_axis_data_req_height_space_top = Utils._RequiredHeight(text=self.__y_axis_data, font=self.__data_font_style)
       else:
          self.__y_axis_data_req_width_space_side = Utils._RequiredWidth(text=self.__y_axis_data[0], font=self.__data_font_style)
       

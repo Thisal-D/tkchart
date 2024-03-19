@@ -1,7 +1,7 @@
 Metadata-Version: 2.1
 Name: tkchart
-Version: 2.0.0
-Summary: tkchart Library is a Python library that simplifies the process of creating line charts in tkinter GUI applications.
+Version: 2.0.1
+Summary: tkchart is a Python library for creating live updating line charts in Tkinter.
 Author: Thisal-D
 License: Copyright (c) 2024 The Python Packaging Authority
         
@@ -42,7 +42,7 @@ License-File: LICENSE
 
 [![Downloads](https://static.pepy.tech/badge/tkchart)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
-<img src="https://drive.google.com/thumbnail?id=1rMILz6ODw-1UY4YhlYAFiRCFUluNcVpI&sz=w180">
+<img src="https://drive.google.com/thumbnail?id=1asMd-U3BmmVEl8YpdRssj679n6jRdflC&sz=w180">
 
 </div>
 

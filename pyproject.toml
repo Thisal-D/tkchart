@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tkchart"
-version = "1.4.2"
+version = "2.0.0"
 authors = [
   { name = "Thisal-D" }
 ]
@@ -18,7 +18,7 @@ classifiers = [
   "Programming Language :: Python :: 3",
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
-  "Development Status :: 4 - Beta",
+  "Development Status ::  5 - Production/Stable",
 ]
 keywords = ["tkchart", "linechart", "tkinter", "customtkinter", "line chart in tkinter", "line chart in customtkinter"]
 

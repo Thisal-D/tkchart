@@ -132,7 +132,7 @@ linechart = tkchart.LineChart()
 | 方法               | 描述                                   | 支持的参数 / 必须的参数                                                                                                          |
 | ------------------ | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | configure          | 更改 LineChart（折线图）属性           | 所有属性，除了 master                                                                                                            |
-| show_data          | 显示数据                               | data: ``list``<br> line: ``tkchart.Line``                                                                                        |
+|<a href="#display-data">show_data</a>          | 显示数据                               | data: ``list``<br> line: ``tkchart.Line``                                                                                        |
 | place              | 放置 (place) 折线图                    | x: ``int``<br>y: ``int``<br>rely: ``float or int``<br>relx: ``float or int``<br>anchor: ``str``                                  |
 | pack               | 放置 (pack) 折线图                     | pady: ``int``<br>padx: ``int``<br> before: ``widget``<br> after: ``widget``<br>side: ``str``<br>anchor: ``str``                  |
 | grid               | 放置 (grid) 折线图                     | column: ``int``<br>columnspan: ``int``<br>padx: ``int``<br>pady: ``int``<br> row: ``int``<br>rowspan: ``int``<br>sticky: ``str`` |

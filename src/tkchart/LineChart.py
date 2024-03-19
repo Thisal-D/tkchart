@@ -1,48 +1,48 @@
 import tkinter
 from typing import Union, Tuple, List
 from .Utils import Utils
-from .Validate import Validate
-from .FontStyle import FontStyle
 from .Line import Line
+from .Validate import Validate
+
 
 class LineChart():
    def __init__(self,
                   master: any = None,
                   width: int = 700,
                   height: int = 400,
-                  axis_size: int = 2,
+                  axis_size: int = 1,
                   
-                  axis_color: str = "#909090",
-                  bg_color: str = "#303030",
-                  fg_color: str = "#252525",
-                  data_font_style: Tuple[str, int, str] = ("arial", 9, "normal"),
-                  axis_font_style: Tuple[str, int, str] = ("arial", 9, "normal"),
+                  axis_color: str = "#2C2C2C",
+                  bg_color: str = "#191919",
+                  fg_color: str = "#191919",
+                  data_font_style: Tuple[str, int, str] = ("arial", 9, "bold"),
+                  axis_font_style: Tuple[str, int, str] = ("arial", 8, "normal"),
                   
-                  y_axis_precision: int = 1,
+                  y_axis_precision: int = 0,
                   y_axis_data: any = "Y",
-                  y_axis_label_count: int = 5,
-                  y_axis_values: Tuple[Union[int, float], Union[int, float]] = (None, None),
-                  y_axis_font_color: str = "#909090",
-                  y_axis_data_font_color: str = "#909090",
+                  y_axis_label_count: int = 1,
+                  y_axis_values: Tuple[Union[int, float], Union[int, float]] =  (None, None),
+                  y_axis_font_color: str = "#606060",
+                  y_axis_data_font_color: str = "#707070",
                   y_axis_data_position: str = "top",
                   y_axis_section_count: int = 0,
                   y_axis_section_style: str = "normal",
                   y_axis_section_style_type: Tuple[int, int] = (100, 50),
-                  y_axis_section_color: str = None,
+                  y_axis_section_color: str = "#2C2C2C",
                   
                   x_axis_data: str = "X",
                   x_axis_label_count: int = None,
-                  x_axis_values: Tuple[any, ...] = (1, 2, 3, 4, 5),
+                  x_axis_values: Tuple[any, ...] = (None, "None", None, "None"),
                   x_axis_display_values_indices: Tuple[int, ...] = None,
-                  x_axis_font_color: str = "#909090",
-                  x_axis_data_font_color: str = "#cccccc",
+                  x_axis_font_color: str = "#606060",
+                  x_axis_data_font_color: str = "#707070",
                   x_axis_data_position: str = "top",
-                  x_axis_section_count: int=0,
+                  x_axis_section_count: int = 0,
                   x_axis_section_style: str = "normal",
                   x_axis_section_style_type: Tuple[int, int] = (100, 50),
-                  x_axis_section_color: str = None,
+                  x_axis_section_color: str = "#2C2C2C",
                   
-                  line_width: Union[int, str] = "auto",
+                  x_axis_point_spacing: Union[int, str] = "auto",
                   y_space: int = 0, 
                   x_space: int = 0,
                   
@@ -51,13 +51,9 @@ class LineChart():
                   pointer_color: str = "#606060",
                   pointing_values_precision: int = 1,
                   pointer_lock: str = "disabled",
-                  pointer_size: int = 4,
-                  *args: any,
+                  pointer_size: int = 1,
                   
-                  ########DEPRECATED#########
-                  y_axis_max_value:int = None,
-                  section_color:str = None,
-                  ###########################
+                  *args: any,
                   ) -> None:
       
       Validate._isInt(height, "height")
@@ -71,12 +67,10 @@ class LineChart():
       Validate._isInt(x_axis_section_count, "x_axis_section_count")
       Validate._isInt(pointing_values_precision, "pointing_values_precision")
       Validate._isInt(pointer_size, "pointer_size")
-      Validate._isTuple(x_axis_values, "x_axis_values")
-      ####################################################ENABLE  2024.3.30####################################################
-      #Validate._isValidYAxisValues(y_axis_values, "y_axis_values")
-      #Validate._isValidColor(y_axis_section_color, "y_axis_section_color")
-      #Validate._isValidColor(x_axis_section_color, "x_axis_section_color")
-      ####################################################ENABLE  2024.3.30####################################################
+      Validate._isValidXAxisValues(x_axis_values, "x_axis_values")
+      Validate._isValidYAxisValues(y_axis_values, "y_axis_values")
+      Validate._isValidColor(y_axis_section_color, "y_axis_section_color")
+      Validate._isValidColor(x_axis_section_color, "x_axis_section_color")
       Validate._isValidColor(axis_color, "axis_color")
       Validate._isValidColor(bg_color, "bg_color")
       Validate._isValidColor(fg_color, "fg_color")
@@ -93,88 +87,34 @@ class LineChart():
       Validate._isValidStyleType(x_axis_section_style_type, "x_axis_section_style_type")
       Validate._isValidSectionStyle(y_axis_section_style, "y_axis_section_style")
       Validate._isValidSectionStyle(x_axis_section_style, "x_axis_section_style")
-      Validate._isValidLineWidth(line_width, "line_width")
+      Validate._isValidXAxisPointSpacing(x_axis_point_spacing, "x_axis_point_spacing")
       Validate._isValidPointerState_Lock(pointer_state, "pointer_state")
       Validate._isValidPointerState_Lock(pointer_lock, "pointer_lock")
       Validate._isValidFunction(pointing_callback_function, "pointing_callback_function")
       Validate._isValidXAxisIndices(x_axis_values, x_axis_display_values_indices, "x_axis_display_values_indices")
       Validate._isValidXAxisLabelCount(x_axis_label_count, "x_axis_label_count")
-      
-      ####################################################REMOVE  2024.3.30####################################################
-      y_axis_values_set_using = "y_axis_values"
-      if y_axis_max_value  != None:
-         if y_axis_values == (None, None):
-            y_axis_values_set_using = "y_axis_max_value"
-            Validate._isValidYAxisMaxValue(y_axis_max_value, "y_axis_max_value")
-            print(FontStyle._fontStyle("\ny_axis_max_value : ", "red", "black", "normal"), end = "") 
-            print(FontStyle._fontStyle("Parameter is deprecated & not support to configure, it will be removed soon.", "red", "black", "underline"))
-            print(FontStyle._fontStyle("Use", "red", "black", "underline") 
-                  + FontStyle._fontStyle(" y_axis_values ", "green", "black", "italic") 
-                  + FontStyle._fontStyle("instead.", "red", "black", "underline"))
-         else:
-            Validate._isValidYAxisValues(y_axis_values, "y_axis_values")
-      elif y_axis_values == (None, None):
-            y_axis_values = (-10,10)
-      else:
-         Validate._isValidYAxisValues(y_axis_values, "y_axis_values")
-      
-      section_color_set_using = "y_x_axis_section_color"
-      if section_color != None:
-         if x_axis_section_color == None and y_axis_section_color == None:
-            section_color_set_using = "section_color"
-            Validate._isValidColor(section_color, "section_color")
-            print(FontStyle._fontStyle("\nsection_color : ", "red", "black", "normal"), end = "") 
-            print(FontStyle._fontStyle("Parameter is deprecated & not support to configure, it will be removed soon.", "red", "black", "underline"))
-            print(FontStyle._fontStyle("Use", "red", "black", "underline") + FontStyle._fontStyle(" y_axis_section_color ", "green", "black", "italic") 
-                  + FontStyle._fontStyle("&", "red", "black", "underline")
-                  + FontStyle._fontStyle(" x_axis_section_color ", "green", "black", "italic") 
-                  + FontStyle._fontStyle("instead.", "red", "black", "underline"))
-         else:
-            if x_axis_section_color != None:
-               Validate._isValidColor(x_axis_section_color, "x_axis_section_color")
-            else:
-               x_axis_section_color = "#909090"
-   
-            if y_axis_section_color != None:
-               Validate._isValidColor(y_axis_section_color, "y_axis_section_color") 
-            else:
-               y_axis_section_color = "#909090"
-      else:
-         if x_axis_section_color == None:
-            x_axis_section_color = "#909090"
-         else :
-            Validate._isValidColor(x_axis_section_color, "x_axis_section_color")
-            
-         if y_axis_section_color == None:
-            y_axis_section_color = "#909090"
-         else:
-            Validate._isValidColor(y_axis_section_color, "y_axis_section_color")
-      ####################################################REMOVE  2024.3.30####################################################
 
       if master != None:
-         self.master = master
+         self.__master = master
       elif len(args) != 0:
-         self.master = args[0]
+         self.__master = args[0]
       else:
-         self.master = master
+         self.__master = master
    
       self.__height = height
       self.__width = width
       self.__axis_size = axis_size
       self.__axis_color = axis_color   
-      self.__line_width = line_width
-      self.__line_width_handle_by = "auto"
+      self.__x_axis_point_spacing = x_axis_point_spacing
+      self.__x_axis_point_spacing_handle_by = "auto"
       self.__data_font_style = data_font_style
       self.__axis_font_style = axis_font_style
       self.__lines = []
-      
       self.__bg_color = bg_color
       self.__fg_color = fg_color
       self.__y_axis_font_color = y_axis_font_color
       self.__y_axis_data_font_color = y_axis_data_font_color
-      ####################################################ENABLE  2024.3.30####################################################
-      #self.__y_axis_section_color = y_axis_section_color
-      ####################################################ENABLE  2024.3.30####################################################
+      self.__y_axis_section_color = y_axis_section_color
       self.__y_axis_section_style = y_axis_section_style
       self.__y_axis_section_style_type = y_axis_section_style_type
       self.__y_axis_section_count = y_axis_section_count
@@ -182,40 +122,13 @@ class LineChart():
       self.__y_axis_data = y_axis_data
       self.__y_axis_data_position = y_axis_data_position
       self.__y_axis_values = y_axis_values
-      
-      ####################################################ENABLE  2024.3.30####################################################
-      #self.__y_axis_min_value = y_axis_values[0]
-      #self.__y_axis_max_value = y_axis_values[1]
-      ####################################################ENABLE  2024.3.30####################################################
-      
-      ####################################################REMOVE  2024.3.30####################################################
-      if y_axis_values_set_using == "y_axis_values" :
-         self.__y_axis_min_value = y_axis_values[0]
-         self.__y_axis_max_value = y_axis_values[1]
-      else:
-         if y_axis_max_value>0:
-            self.__y_axis_min_value = 0
-            self.__y_axis_max_value = y_axis_max_value
-         elif y_axis_max_value <0:
-            self.__y_axis_max_value = 0
-            self.__y_axis_min_value = y_axis_max_value
-            
-      if section_color_set_using == "section_color":
-         self.__y_axis_section_color = section_color
-         self.__x_axis_section_color = section_color
-      else:
-         self.__y_axis_section_color = y_axis_section_color
-         self.__x_axis_section_color = x_axis_section_color
-      ####################################################REMOVE  2024.3.30####################################################
-         
+      self.__y_axis_min_value = y_axis_values[0]
+      self.__y_axis_max_value = y_axis_values[1]
       self.__y_axis_precision = y_axis_precision
       self.__y_space = y_space
-      
       self.__x_axis_font_color = x_axis_font_color
       self.__x_axis_data_font_color = x_axis_data_font_color
-      ####################################################ENABLE  2024.3.30####################################################
-      #self.__x_axis_section_color = x_axis_section_color
-      ####################################################ENABLE  2024.3.30####################################################
+      self.__x_axis_section_color = x_axis_section_color
       self.__x_axis_section_style = x_axis_section_style
       self.__x_axis_section_style_type = x_axis_section_style_type
       self.__x_axis_section_count = x_axis_section_count
@@ -227,17 +140,15 @@ class LineChart():
       self.__x_axis_values = x_axis_values
       self.__x_axis_values_handle_by = "auto"
       self.__x_space = x_space
-        	
       self.__force_to_stop_data_showing = False
       self.__is_data_showing_working = False
-      
       self.__pointer_state = pointer_state
       self.__pointing_callback_function = pointing_callback_function
       self.__pointing_values_precision = pointing_values_precision
       self.__pointer_lock = pointer_lock
       self.__pointer_size = pointer_size
       self.__pointer_color = pointer_color
-
+      
       self.__place_x = 0
       self.__real_height = 0
       self.__real_width = 0
@@ -265,11 +176,10 @@ class LineChart():
       self.__grid_info_rowspan = 0
       self.__grid_info_sticky = 0
       
-      
-      if self.__line_width == "auto":
-         self.__line_width_handle_by = "auto"
+      if self.__x_axis_point_spacing == "auto":
+         self.__x_axis_point_spacing_handle_by = "auto"
       else:
-         self.__line_width_handle_by = "manual"
+         self.__x_axis_point_spacing_handle_by = "manual"
       
       if  self.__x_axis_display_values_indices != None :
          self.__x_axis_display_values_indices = Utils._sort_tuple(self.__x_axis_display_values_indices)
@@ -279,35 +189,27 @@ class LineChart():
       else:
          self.__x_axis_values_handle_by = "auto"
       
-
       self.__create_widgets()
-      
       self.__configure_required_widget_size()
       self.__configure_x_axis_labels_info()
-      self.__configure_line_width()
-      
+      self.__configure_x_axis_point_spacing()
       self.__create_x_axis_labels()
       self.__set_x_axis_values()
-      
       self.__create_y_axis_labels()
       self.__set_y_axis_values()
-         
       self.__create_y_axis_sections()
       self.__create_x_axis_sections()
-      
       self.__set_x_y_axis_data_texts()
-      
       self.__set_pointer_state()
       self.__set_pointer_size()
-   
       self.__set_widgets_fonts()
       self.__set_widgets_colors()
-      
       self.__place_widgets()
       self.__reset_chart_info()
       
+      
    def __create_widgets(self) -> None:
-      self.__main_frame = tkinter.Frame(master=self.master)
+      self.__main_frame = tkinter.Frame(master=self.__master)
       self.__y_axis_frame = tkinter.Frame(master=self.__main_frame)
       self.__x_axis_frame = tkinter.Frame(master=self.__main_frame)
       self.__x_axis_values_frame = tkinter.Frame(master=self.__main_frame)
@@ -317,6 +219,7 @@ class LineChart():
       self.__output_frame = tkinter.Frame(master=self.__main_frame)
       self.__output_canvas = tkinter.Canvas(master=self.__output_frame, highlightthickness=0)
       self.__pointer = tkinter.Frame(master=self.__output_canvas)
+   
    
    def __set_pointer_state(self) -> None:
       if self.__pointer_state == "enabled":
@@ -332,7 +235,6 @@ class LineChart():
       self.__x_axis_frame.configure(bg=self.__axis_color)
       self.__y_axis_values_frame.configure(bg=self.__bg_color)
       self.__x_axis_values_frame.configure(bg=self.__bg_color)
-      
       
       self.__main_frame.configure(bg=self.__bg_color)
       self.__output_frame.configure(bg=self.__fg_color)
@@ -387,7 +289,6 @@ class LineChart():
       self.__y_axis_frame.configure(width=self.__axis_size)
       self.__x_axis_frame.configure(height=self.__axis_size)
       
-
       self.__y_axis_frame.place(x=self.__y_value_req_width_space+self.__y_axis_data_req_width_space_side,
                          y=float(self.__y_axis_data_req_height_space_top+(self.__y_value_req_height_space/2)+self.__y_special_height_space),
                          height=self.__const_real_height+self.__y_space+self.__axis_size)
@@ -401,18 +302,17 @@ class LineChart():
                                 height=self.__const_real_height,
                                 y=float(self.__y_axis_data_req_height_space_top+(self.__y_value_req_height_space/2)+self.__y_special_height_space+self.__y_space))
       
-      
       self.__output_canvas.place(y=0, x=0, height=self.__const_real_height, width=self.__const_real_width)
       
       self.__y_axis_values_frame.place(x=self.__y_axis_data_req_width_space_side, width=self.__y_value_req_width_space, height=self.__height)
       self.__x_axis_values_frame.place(x=0, rely=1, y=-self.__x_value_req_height_space+-self.__x_axis_data_req_height_space_side, height=self.__x_value_req_height_space, width=self.__width)
 
 
-   def __configure_line_width(self) -> None:
-      if self.__line_width_handle_by== "auto":
-         self.__line_width = (self.__real_width / len(self.__x_axis_values))
-      elif self.__line_width_handle_by== "manual":
-         self.__line_width = self.__line_width
+   def __configure_x_axis_point_spacing(self) -> None:
+      if self.__x_axis_point_spacing_handle_by== "auto":
+         self.__x_axis_point_spacing = (self.__real_width / len(self.__x_axis_values))
+      elif self.__x_axis_point_spacing_handle_by== "manual":
+         self.__x_axis_point_spacing = self.__x_axis_point_spacing
      
       
    def __configure_required_widget_size(self) -> None:
@@ -482,6 +382,7 @@ class LineChart():
                value = 0
             value = Utils._format_float_with_precision(value,self.__y_axis_precision)
             label.configure(text=value)
+            
             
    def __create_y_axis_labels(self) -> None:
       if self.__y_axis_label_count>0:
@@ -613,7 +514,7 @@ class LineChart():
                   width: int = None,
                   height: int = None,
                   axis_size: int = None,
-                  line_width: Union[int, str] = None, 
+                  x_axis_point_spacing: Union[int, str] = None, 
                   
                   bg_color: str = None,
                   axis_color: str = None,
@@ -848,7 +749,7 @@ class LineChart():
             
       if x_axis_values != None:
          if x_axis_values != self.__x_axis_values:
-            Validate._isTuple(x_axis_values, "x_axis_values")
+            Validate._isValidXAxisValues(x_axis_values, "x_axis_values")
             if self.__x_axis_values_handle_by == "label_indices":
                if x_axis_display_values_indices != None :
                   Validate._isValidXAxisIndices(x_axis_values, x_axis_display_values_indices, "x_axis_display_values_indices")
@@ -909,46 +810,36 @@ class LineChart():
          self.__pointer_size = pointer_size
          pointer_size_change_req = True
          
-      if line_width != None:
-         Validate._isValidLineWidth(line_width, "line_width")
-         if line_width != self.__line_width:
-            if line_width == "auto":
-               self.__line_width_handle_by = "auto"
+      if x_axis_point_spacing != None:
+         Validate._isValidXAxisPointSpacing(x_axis_point_spacing, "x_axis_point_spacing")
+         if x_axis_point_spacing != self.__x_axis_point_spacing:
+            if x_axis_point_spacing == "auto":
+               self.__x_axis_point_spacing_handle_by = "auto"
             else:
-               self.__line_width_handle_by = "manual"
-            self.__line_width = line_width
+               self.__x_axis_point_spacing_handle_by = "manual"
+            self.__x_axis_point_spacing = x_axis_point_spacing
             reshow_data_req = True
       
       if chart_reset_req :
          self.__destroy_x_axis_labels()
          self.__destroy_y_axis_labels()
-   
          self.__destroy_x_y_sections()
-         
          self.__configure_required_widget_size()
-         self.__configure_line_width()
-         
+         self.__configure_x_axis_point_spacing()
          self.__configure_x_axis_labels_info()
          self.__create_x_axis_labels()
          self.__set_x_axis_values()
-         
          self.__create_y_axis_labels()
-         self.__set_y_axis_values()
-            
+         self.__set_y_axis_values() 
          self.__create_y_axis_sections()
          self.__create_x_axis_sections()
-         
          self.__set_x_y_axis_data_texts()
-         
          self.__set_pointer_state()
          self.__set_pointer_size()
-      
          self.__set_widgets_fonts()
          self.__set_widgets_colors()
-         
          self.__place_widgets()
          self.__reset_chart_info()
-      
          self.__call_reshow_data()
       
       if chart_x_labels_change_req:
@@ -977,7 +868,7 @@ class LineChart():
          self.__set_pointer_size()
          
       if reshow_data_req:
-         self.__configure_line_width()
+         self.__configure_x_axis_point_spacing()
          self.__call_reshow_data()
       
       if pointer_size_change_req:
@@ -1025,7 +916,7 @@ class LineChart():
          self.__reset_chart_info()
          
          maximum_data = max(lines_values)
-         max_support = int(self.__const_real_width/self.__line_width)+1
+         max_support = int(self.__const_real_width/self.__x_axis_point_spacing)+1
          
          for line in  self.__lines:
             if maximum_data>max_support:
@@ -1058,7 +949,7 @@ class LineChart():
                x_start = line._Line__x_end
                y_start = line._Line__y_end
                
-               line._Line__x_end += self.__line_width
+               line._Line__x_end += self.__x_axis_point_spacing
          
                if d >=0 :
                   d = d - self.__y_axis_min_value
@@ -1069,23 +960,31 @@ class LineChart():
                line._Line__y_end += ((line._Line__size)/2)
 
                if round(line._Line__x_end) > round(self.__real_width) and self.__real_width < 15000:
-                  self.__place_x -= self.__line_width
+                  self.__place_x -= self.__x_axis_point_spacing
                   
                   self.__output_canvas.place(x=self.__place_x,
-                                    width=self.__real_width+self.__line_width)
+                                    width=self.__real_width+self.__x_axis_point_spacing)
                   
-                  self.__real_width += self.__line_width;
+                  self.__real_width += self.__x_axis_point_spacing;
                
                elif self.__real_width > 15000:
                   re_show_data = True
                   break;
                
+               if line._Line__fill == "enabled":
+                  points_of_polygon = [x_start, y_start, 
+                             line._Line__x_end, line._Line__y_end,
+                             line._Line__x_end, self.__const_real_height,
+                             x_start, self.__const_real_height]
+                  self.__output_canvas.create_polygon(points_of_polygon,
+                                                      fill=line._Line__fill_color)
+                  
                if line._Line__style  == "dashed" :
                   dash_width = line._Line__style_type[0]
                   space_width = line._Line__style_type[1]
                   total_width = dash_width+space_width
-                  real_line_width = ((abs(y_start - line._Line__y_end)**2) + (self.__line_width**2)) ** (1/2)
-                  dash_count = real_line_width /( dash_width + space_width)
+                  real_x_axis_point_spacing = ((abs(y_start - line._Line__y_end)**2) + (self.__x_axis_point_spacing**2)) ** (1/2)
+                  dash_count = real_x_axis_point_spacing /( dash_width + space_width)
                   total_change_x = (line._Line__x_end - x_start)
                   total_change_y = (line._Line__y_end - y_start)
                   dash_change_percentage = dash_width/total_width
@@ -1096,29 +995,30 @@ class LineChart():
                   dash_change_y = change_y*dash_change_percentage
                   space_change_x = change_x*space_change_percentage
                   space_change_y = change_y*space_change_percentage
+                  dashed_x_start = x_start
+                  dashed_y_start = y_start
                   if y_start >  line._Line__y_end: line_going = "to_up"
                   else : line_going = "to_down"
-                  
-                  while (line._Line__x_end>x_start):
-                     x_end = x_start+dash_change_x
-                     y_end = y_start+dash_change_y
-                     if x_end>line._Line__x_end:
-                           x_end = x_end - (x_end-line._Line__x_end)
-                     if y_end<=line._Line__y_end and line_going=="to_up":
-                           y_end = y_end - (y_end-line._Line__y_end)
-                     if y_end>line._Line__y_end and  line_going=="to_down":
-                           y_end = y_end - (y_end-line._Line__y_end)
-                     self.__output_canvas.create_line(x_start, y_start, x_end, y_end
+                  while (line._Line__x_end>dashed_x_start):
+                     dashed_x_end = dashed_x_start+dash_change_x
+                     dashed_y_end = dashed_y_start+dash_change_y
+                     if dashed_x_end>line._Line__x_end:
+                           dashed_x_end = dashed_x_end - (dashed_x_end-line._Line__x_end)
+                     if dashed_y_end<=line._Line__y_end and line_going=="to_up":
+                           dashed_y_end = dashed_y_end - (dashed_y_end-line._Line__y_end)
+                     if dashed_y_end>line._Line__y_end and  line_going=="to_down":
+                           dashed_y_end = dashed_y_end - (dashed_y_end-line._Line__y_end)
+                     self.__output_canvas.create_line(dashed_x_start, dashed_y_start, dashed_x_end, dashed_y_end
                                                       ,fill=line._Line__color ,width=line._Line__size)
-                     x_start += dash_change_x + space_change_x
-                     y_start += dash_change_y + space_change_y
+                     dashed_x_start += dash_change_x + space_change_x
+                     dashed_y_start += dash_change_y + space_change_y                        
                         
                elif line._Line__style == "dotted":
                   circle_size = line._Line__style_type[0]
                   space_width = line._Line__style_type[1]
                   total_width = circle_size+space_width
-                  real_line_width = ((abs(y_start - line._Line__y_end)**2) + (self.__line_width**2)) ** (1/2)
-                  circle_count = real_line_width /( circle_size + space_width)
+                  real_x_axis_point_spacing = ((abs(y_start - line._Line__y_end)**2) + (self.__x_axis_point_spacing**2)) ** (1/2)
+                  circle_count = real_x_axis_point_spacing /( circle_size + space_width)
                   total_change_x = (line._Line__x_end - x_start)
                   total_change_y = (line._Line__y_end - y_start)
                   circle_change_percentage = circle_size/total_width*100
@@ -1127,39 +1027,46 @@ class LineChart():
                   circle_change_y = (total_change_y/circle_count)/100*circle_change_percentage
                   space_change_x = (total_change_x/circle_count)/100*space_change_percentage
                   space_change_y = (total_change_y/circle_count)/100*space_change_percentage
+                  dotted_x_start = x_start
+                  dotted_y_start = y_start
                   if y_start >  line._Line__y_end: line_going = "to_up"
                   else : line_going = "to_down"
-                  while (line._Line__x_end>x_start):
-                        x_end = x_start+circle_change_x
-                        y_end = y_start+circle_change_y
+                  while (line._Line__x_end>dotted_x_start):
+                        x_end = dotted_x_start+circle_change_x
+                        y_end = dotted_y_start+circle_change_y
                         if x_end>line._Line__x_end:
                            x_end = x_end - (x_end-line._Line__x_end)
                         if y_end<=line._Line__y_end and line_going=="to_up":
                            y_end = y_end - (y_end-line._Line__y_end)
                         if y_end>line._Line__y_end and  line_going=="to_down":
                            y_end = y_end - (y_end-line._Line__y_end)
-                        self.__output_canvas.create_oval(x_start-circle_size/2,
-                                                   y_start-circle_size/2,
-                                                   x_start+circle_size-circle_size/2,
-                                                   y_start+circle_size-circle_size/2,
+                        self.__output_canvas.create_oval(dotted_x_start-circle_size/2,
+                                                   dotted_y_start-circle_size/2,
+                                                   dotted_x_start+circle_size-circle_size/2,
+                                                   dotted_y_start+circle_size-circle_size/2,
                                                    fill=line._Line__color, outline=line._Line__color )
-                        x_start += circle_change_x + space_change_x
-                        y_start += circle_change_y + space_change_y
+                        dotted_x_start += circle_change_x + space_change_x
+                        dotted_y_start += circle_change_y + space_change_y
                         
                elif line._Line__style=="normal":
                   self.__output_canvas.create_line(x_start, y_start, line._Line__x_end, line._Line__y_end
                                                       ,fill=line._Line__color ,width=line._Line__size)
                
-               if line._Line__style=="dashed" or line._Line__style=="normal":
-                  if line._Line__point_highlight == "enabled" and line._Line__point_highlight_size > 0 : 
-                     highlight_size =  line._Line__point_highlight_size /2 
-                     self.__output_canvas.create_oval(line._Line__x_end - highlight_size,
-                                                      line._Line__y_end - highlight_size,
-                                                      line._Line__x_end + highlight_size,
-                                                      line._Line__y_end + highlight_size,
-                                                      fill=line._Line__point_highlight_color,
-                                                      outline=line._Line__point_highlight_color,
-                                                      )
+               if line._Line__point_highlight == "enabled" and line._Line__point_highlight_size > 0 : 
+                  highlight_size =  line._Line__point_highlight_size /2 
+                  self.__output_canvas.create_oval(line._Line__x_end - highlight_size,
+                                                   line._Line__y_end - highlight_size,
+                                                   line._Line__x_end + highlight_size,
+                                                   line._Line__y_end + highlight_size,
+                                                   fill=line._Line__point_highlight_color,
+                                                   outline=line._Line__point_highlight_color)
+                  
+                  self.__output_canvas.create_oval(x_start - highlight_size,
+                                                   y_start - highlight_size,
+                                                   x_start + highlight_size,
+                                                   y_start + highlight_size,
+                                                   fill=line._Line__point_highlight_color,
+                                                   outline=line._Line__point_highlight_color)
             else:
                break
    
@@ -1174,11 +1081,11 @@ class LineChart():
      
    def __return_pointed_values(self, event: tkinter.Event):
       def round_x(x):
-         x_ = (x//self.__line_width)*self.__line_width
-         if x%self.__line_width >= self.__line_width/2:
-            x_ += self.__line_width
+         x_ = (x//self.__x_axis_point_spacing)*self.__x_axis_point_spacing
+         if x%self.__x_axis_point_spacing >= self.__x_axis_point_spacing/2:
+            x_ += self.__x_axis_point_spacing
          return x_
-      max_sup= int(self.__const_real_width/self.__line_width)
+      max_sup= int(self.__const_real_width/self.__x_axis_point_spacing)
       max_view = max_sup + 1
       values = []
       try:
@@ -1190,8 +1097,8 @@ class LineChart():
          if self.__const_real_width >= self.__real_width:
             event_x_converted = event_x
          else:
-            event_x_converted = event_x-(self.__line_width*(max_data-max_view))
-         width_x = self.__const_real_width - (self.__const_real_width - (self.__line_width*max_sup))
+            event_x_converted = event_x-(self.__x_axis_point_spacing*(max_data-max_view))
+         width_x = self.__const_real_width - (self.__const_real_width - (self.__x_axis_point_spacing*max_sup))
          index_float = ((event_x_converted/width_x)*max_sup)
          index_round_float = round(index_float)
          if event_x == self.__real_width :
@@ -1250,8 +1157,8 @@ class LineChart():
             side: str = None,
             anchor: str = None
             ) -> None:
-      self.__main_frame.pack(pady=pady, padx=padx, before=before, 
-                after=after, side=side, anchor=anchor)
+      self.__main_frame.pack(pady=pady, padx=padx, before=before,
+                             after=after, side=side, anchor=anchor)
       self.__pack_info_pady = pady
       self.__pack_info_padx = padx
       self.__pack_info_before = before
@@ -1270,7 +1177,8 @@ class LineChart():
             sticky: str = None
             ) -> None:
       self.__main_frame.grid(column=column, columnspan=columnspan, 
-               padx=padx,  pady=pady, row=row, rowspan=rowspan, sticky=sticky)
+                             padx=padx, pady=pady, row=row,
+                             rowspan=rowspan, sticky=sticky)
       self.__grid_info_column = column
       self.__grid_info_columnspan = columnspan
       self.__grid_info_padx = padx
@@ -1335,3 +1243,86 @@ class LineChart():
    def reset(self) -> None:
       self.__reset_chart_info()
       self.__reset_lines_info()
+      
+      
+   def apply_line_changes(self) -> None :
+      self.__call_reshow_data()
+      
+   
+   def cget(self, attribute_name: str) -> any :
+      if attribute_name == "axis_color": return self.__axis_color
+      if attribute_name == "bg_color": return self.__bg_color
+      if attribute_name == "fg_color": return self.__fg_color
+      if attribute_name == "data_font_style": return self.__data_font_style
+      if attribute_name == "axis_font_style": return self.__axis_font_style
+      if attribute_name == "y_axis_precision": return self.__y_axis_precision
+      if attribute_name == "y_axis_data": return self.__y_axis_data
+      if attribute_name == "y_axis_label_count": return self.__y_axis_label_count
+      if attribute_name == "y_axis_values": return self.__y_axis_values
+      if attribute_name == "y_axis_font_color": return self.__y_axis_font_color
+      if attribute_name == "y_axis_data_font_color": return self.__y_axis_data_font_color
+      if attribute_name == "y_axis_data_position": return self.__y_axis_data_position
+      if attribute_name == "y_axis_section_count": return self.__y_axis_section_count
+      if attribute_name == "y_axis_section_style": return self.__y_axis_section_style
+      if attribute_name == "y_axis_section_style_type": return self.__y_axis_section_style_type
+      if attribute_name == "y_axis_section_color": return self.__y_axis_section_color
+      if attribute_name == "x_axis_data": return self.__x_axis_data
+      if attribute_name == "x_axis_label_count": return self.__x_axis_label_count
+      if attribute_name == "x_axis_values": return self.__x_axis_values
+      if attribute_name == "x_axis_display_values_indices": return self.__x_axis_display_values_indices
+      if attribute_name == "x_axis_font_color": return self.__x_axis_font_color
+      if attribute_name == "x_axis_data_font_color": return self.__x_axis_data_font_color
+      if attribute_name == "x_axis_data_position": return self.__x_axis_data_position
+      if attribute_name == "x_axis_section_count": return self.__x_axis_section_count
+      if attribute_name == "x_axis_section_style": return self.__x_axis_section_style
+      if attribute_name == "x_axis_section_style_type": return self.__x_axis_section_style_type
+      if attribute_name == "x_axis_section_color": return self.__x_axis_section_color
+      if attribute_name == "x_axis_point_spacing": return self.__x_axis_point_spacing
+      if attribute_name == "y_space": return self.__y_space
+      if attribute_name == "x_space": return self.__x_space
+      if attribute_name == "pointer_state": return self.__pointer_state
+      if attribute_name == "pointing_callback_function": return self.__pointing_callback_function
+      if attribute_name == "pointer_color": return self.__pointer_color
+      if attribute_name == "pointing_values_precision": return self.__pointing_values_precision
+      if attribute_name == "pointer_lock": return self.__pointer_lock
+      if attribute_name == "pointer_size": return self.__pointer_size
+      
+      if attribute_name == "__all__":
+         return {
+            "axis_color" : self.__axis_color,
+            "bg_color" : self.__bg_color,
+            "fg_color" : self.__fg_color,
+            "data_font_style" : self.__data_font_style,
+            "axis_font_style" : self.__axis_font_style,
+            "y_axis_precision" : self.__y_axis_precision,
+            "y_axis_data" : self.__y_axis_data,
+            "y_axis_label_count" : self.__y_axis_label_count,
+            "y_axis_values" : self.__y_axis_values,
+            "y_axis_font_color" : self.__y_axis_font_color,
+            "y_axis_data_font_color" : self.__y_axis_data_font_color,
+            "y_axis_data_position" : self.__y_axis_data_position,
+            "y_axis_section_count" : self.__y_axis_section_count,
+            "y_axis_section_style" : self.__y_axis_section_style,
+            "y_axis_section_style_type" : self.__y_axis_section_style_type,
+            "y_axis_section_color" : self.__y_axis_section_color,
+            "x_axis_data" : self.__x_axis_data,
+            "x_axis_label_count" : self.__x_axis_label_count,
+            "x_axis_values" : self.__x_axis_values,
+            "x_axis_display_values_indices" : self.__x_axis_display_values_indices,
+            "x_axis_font_color" : self.__x_axis_font_color,
+            "x_axis_data_font_color" : self.__x_axis_data_font_color,
+            "x_axis_data_position" : self.__x_axis_data_position,
+            "x_axis_section_count" : self.__x_axis_section_count,
+            "x_axis_section_style" : self.__x_axis_section_style,
+            "x_axis_section_style_type" : self.__x_axis_section_style_type,
+            "x_axis_section_color" : self.__x_axis_section_color,
+            "x_axis_point_spacing" : self.__x_axis_point_spacing,
+            "y_space" : self.__y_space,
+            "x_space" : self.__x_space,
+            "pointer_state" : self.__pointer_state,
+            "pointing_callback_function" : self.__pointing_callback_function,
+            "pointer_color" : self.__pointer_color,
+            "pointing_values_precision" : self.__pointing_values_precision,
+            "pointer_lock" : self.__pointer_lock,
+            "pointer_size" : self.__pointer_size
+            }

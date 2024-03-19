@@ -758,9 +758,8 @@ https://github.com/Thisal-D/mark-down-test/assets/93121062/732c52ed-ac5d-41f5-b5
             <br>
         - <a href="#point_highlight">point_highlight_color</a>: ``str``
             Sets the color for the highlighted points.
-    <br>
+          
     - Line Filling
-
         - <a href="#fill">fill</a>: ``str``
             Controls the enablement or disablement of line fill.
             <br>

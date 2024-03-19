@@ -28,9 +28,6 @@ chart = tkchart.LineChart(master=root,
                           x_axis_data="Seconds\n(s)",
                           x_axis_data_position="side",
                           y_axis_data_position="top",
-                          y_axis_data="Upload/Down\load Speed\n(mbps)\n(MegaBits Per Seconds)\n(WiFI)\n(192.2.2.2)\n(4E::)"
-                          
-                        
                           )         
 chart.pack()
 

@@ -232,7 +232,7 @@ root.mainloop()
 ```
 <div align="center">
 
-https://github.com/Thisal-D/mark-down-test/assets/93121062/732c52ed-ac5d-41f5-b565-85eb3f18b6ee
+https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b00a6f5518
 
 </div>
 

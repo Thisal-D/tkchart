@@ -748,17 +748,13 @@ https://github.com/Thisal-D/mark-down-test/assets/93121062/732c52ed-ac5d-41f5-b5
     - Point Highlighting
         - <a href="#point_highlight">point_highlight</a>: ``str``
             指定端点高亮显示是启用还是禁用。
-            <br>
         - <a href="#point_highlight">point_highlight_size</a>: ``int`` 
             确定高亮点的大小。
-            <br>
         - <a href="#point_highlight">point_highlight_color</a>: ``str``
             设置高亮点的颜色。
-
     - Line Filling
         - <a href="#fill">fill</a>: ``str``
             控制启用或禁用线条填充。
-            <br>
         - <a href="#fill">fill_color</a>: ``str``
            指定线条填充的颜色。
 
@@ -774,7 +770,7 @@ https://github.com/Thisal-D/mark-down-test/assets/93121062/732c52ed-ac5d-41f5-b5
 
 <br>
 
-## 翻译学分
+## 翻译贡献
 
 **翻译支持** : [有语](https://github.com/childeyouyu)
 

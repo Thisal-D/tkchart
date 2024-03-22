@@ -18,7 +18,7 @@
 
 [![Downloads](https://static.pepy.tech/badge/tkchart)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
-<img src="https://drive.google.com/thumbnail?id=1asMd-U3BmmVEl8YpdRssj679n6jRdflC&sz=w180">
+<img src="https://drive.google.com/thumbnail?id=1jOltT5qBvLmKAdSU6zb9wjh3GYa6jRvD&sz=w180">
 
 </div>
 
@@ -145,8 +145,7 @@ linechart = tkchart.LineChart()
 | hide_all           | 隐藏所有折线                           | state:  ``bool``                                                                                                                 |
 | hide               | 隐藏特定折线                           | line:  ``tkchart.Line``<br> state:  ``bool``                                                                                     |
 | reset              | 重置折线图                             | -                                                                                                                                |
-| cget               | 获取指定参数的值。                     | attribute_name:  ``str`` \| "\_\_全部\_\_"                                                                                       |
-| apply_line_changes | 应用对 Line 对象所做的更改。           | -                                                                                                                                |
+| cget               | 获取指定参数的值。                     | attribute_name:  ``str`` \| "\_\_all\_\_"                                                                                       |
 
 
 </div>
@@ -186,6 +185,8 @@ line = tkchart.Line()
 | --------- | ---------------- | ---------------------------------------- |
 | configure | 更改折线图属性   | 所有属性，除了 master                    |
 | cget      | 获取指定参数的值 | attribute_name: ``str`` \| "\_\_all\_\_" |
+|reset      | 重置线对象       | -                                       |
+
 
 </div>
 <br>

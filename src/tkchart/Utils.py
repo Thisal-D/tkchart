@@ -13,6 +13,7 @@ class Utils:
         label.config(text=str(text) +"")
         return label.winfo_reqheight()
 
+
     def _format_float_with_precision(float_val: Union[int, float], decimals: int) -> str:
         if decimals:
             float_val = round(float(float_val),decimals)
@@ -20,6 +21,7 @@ class Utils:
             return float_val
         else:
             return str(int(float_val))
+
 
     def _get_max_required_label_width(data: any, font: Tuple[str, int, str]) -> int:
         max_required_width = 0
@@ -43,6 +45,7 @@ class Utils:
         values_list = list(set(values))
         values_list.sort()
         return tuple(values_list)
+    
     
     def _toInt(value: Union[int, str]) -> int:
         #return math.ceil(value)

@@ -11,4 +11,6 @@ DOTTED: str  = "dotted"
 TOP: str = "top"
 SIDE: str = "side"
 
-__version__ = "2.0.2"
+AUTO: str = "auto"
+
+__version__ = "2.0.3"

@@ -1,4 +1,4 @@
-from typing import Union, Tuple
+from typing import Union, Tuple, Literal
 from .Validate import Validate
 from .FontStyle import FontStyle
 
@@ -8,12 +8,12 @@ class Line():
                master: any = None,
                color: str = "#768df1",
                size: int = 1,
-               style: str = "normal", 
+               style: Literal["normal", "dashed", "dotted"] = "normal", 
                style_type: Tuple[int, int] = (4,4),
-               point_highlight: str = "disabled",
+               point_highlight: Literal["enabled", "disabled"] = "disabled",
                point_highlight_size: int = 4,
                point_highlight_color: str = "#768df1",
-               fill: str = "disabled",
+               fill: Literal["enabled", "disabled"] = "disabled",
                fill_color: str = "#5d6db6",
                *args: any
                ) -> None:
@@ -58,7 +58,7 @@ class Line():
       self.__data = []
       self.__temp_data = []
       self.__ret_data = []
-      self.__hide_state = False
+      self.__visibility = self.__master._LineChart__visibility
       self.__style = style
       self.__style_type = style_type
       self.__point_highlight = point_highlight
@@ -66,17 +66,19 @@ class Line():
       self.__point_highlight_color = point_highlight_color
       self.__fill = fill
       self.__fill_color = fill_color
+      
+      self.__master._LineChart__lines.append(self)
 
 
    def configure(self, 
                   color: str = None, 
                   size: int = None,
-                  style: str = None,
+                  style: Literal["normal", "dashed", "dotted"] = None,
                   style_type: Tuple[int, int] = None,
-                  point_highlight: str = None,
+                  point_highlight: Literal["enabled", "disabled"] = None,
                   point_highlight_size: int = None,
                   point_highlight_color: str = None,
-                  fill: str = None,
+                  fill: Literal["enabled", "disabled"] = None,
                   fill_color:str = None,
                  ) -> None:
       """
@@ -160,8 +162,23 @@ class Line():
       self.__reset()
       self.__master._LineChart__call_reshow_data()
 
-      
-   def cget(self, attribute_name: str) -> any:
+   
+   def set_visible(self, state: bool) -> None:
+      """
+      Set the visibility of the line.
+
+         Args:
+               state (bool): True if the line should be visible, False otherwise.
+      """
+      Validate._isBool(state, "state")
+      if self.__visibility != state:
+         self.__visibility = state
+         self.__master._LineChart__call_reshow_data()
+         
+         
+   def cget(self, attribute_name:  Literal["master", "color", "size", "style", "style_type",
+                                          "point_highlight", "point_highlight_size", "point_highlight_color",
+                                          "fill", "fill_color", "__all__"]) -> any:
       """
       Get the value of a Line attribute.
 
@@ -196,4 +213,15 @@ class Line():
          "fill" : self.__fill,
          "fill_color" : self.__fill_color
          }
+         
       Validate._invalidCget(attribute_name)
+      
+      
+   def get_visibility(self) -> bool:
+      """
+      Get the visibility of the line.
+
+      Returns:
+         bool: True if the line is visible, False otherwise.
+      """
+      return self.__visibility

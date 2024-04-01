@@ -28,6 +28,8 @@ chart = tkchart.LineChart(master=root,
                           x_axis_data="Seconds\n(s)",
                           x_axis_data_position="side",
                           y_axis_data_position="top",
+                          
+                        
                           )         
 chart.pack()
 

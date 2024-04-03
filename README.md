@@ -56,7 +56,7 @@ Your support means a lot and inspires me to do better with each update. Thank yo
 
 - **Simple**
 
-    https://github.com/Thisal-D/mark-down-test/assets/93121062/ff372720-f097-44dd-a2cf-eade22ed5767 
+    https://github.com/Thisal-D/ctkchart/assets/93121062/6f1e844f-d51c-467a-a3dc-ee03fea78fc9
     
     ```
     import tkinter as tk  # Importing the tkinter library as tk
@@ -100,7 +100,7 @@ Your support means a lot and inspires me to do better with each update. Thank yo
 
 - **Simple style**
 
-    https://github.com/Thisal-D/mark-down-test/assets/93121062/c1d8f56c-e6be-461b-b4ee-63b17e183027
+    https://github.com/Thisal-D/ctkchart/assets/93121062/afe56452-68c3-44f0-9c67-2ab6f6910f6e
     
     ```
     import tkinter as tk  # Importing the tkinter library as tk
@@ -151,7 +151,7 @@ Your support means a lot and inspires me to do better with each update. Thank yo
 
 - **2 lines with different line styles**
 
-    https://github.com/Thisal-D/mark-down-test/assets/93121062/b47d6da6-519b-42fe-9b42-f41c061c1019
+    https://github.com/Thisal-D/ctkchart/assets/93121062/9bc35a39-a8ca-4942-9fc7-a1c89d1bd1bc
     
     ```
     import tkinter as tk  # Importing the tkinter library as tk
@@ -218,7 +218,7 @@ Your support means a lot and inspires me to do better with each update. Thank yo
 
 - **3 lines with different line styles**
 
-    https://github.com/Thisal-D/mark-down-test/assets/93121062/03e7e091-e595-4a9b-9e37-09f30b9bdac8
+    https://github.com/Thisal-D/ctkchart/assets/93121062/6d568b70-2ceb-42d0-b93c-0096f2745134
     
     ```
     import tkinter as tk  # Importing the tkinter library as tk
@@ -297,7 +297,7 @@ Your support means a lot and inspires me to do better with each update. Thank yo
 
 - **Advance** (Actually not, Just Two More Attributes Added)
  
-    https://github.com/Thisal-D/mark-down-test/assets/93121062/3165b8c7-70e8-44a2-ab4f-2643b05687b2
+    https://github.com/Thisal-D/ctkchart/assets/93121062/c2838fd6-3a0f-45be-bb39-9953d007067d
     
     ```
     import tkinter as tk  # Importing the tkinter library as tk

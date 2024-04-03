@@ -190,8 +190,6 @@ class LineChart():
       self.__x_axis_values = x_axis_values
       self.__x_axis_values_handle_by = "label_count"
       self.__x_space = x_space
-      self.__force_to_stop_data_showing = False
-      self.__is_data_showing_working = False
       self.__pointer_state = pointer_state
       self.__pointing_callback_function = pointing_callback_function
       self.__pointing_values_precision = pointing_values_precision
@@ -386,7 +384,7 @@ class LineChart():
             self.__x_axis_data_label.place(rely=1, relx=1, x=-self.__x_axis_data_req_width, y=-self.__x_axis_data_req_height)
          else:
             self.__x_axis_data_label.place(rely=1, y=-self.__x_axis_data_req_height,relx=0, anchor="n",
-                                    x=(self.__real_width/2)+self.__y_axis_data_req_width_space_side+self.__y_value_req_width_space+self.__axis_size+self.__x_axis_data_req_width_space_top+self.__x_special_width_space)
+                                    x=(self.__const_real_width/2)+self.__y_axis_data_req_width_space_side+self.__y_value_req_width_space+self.__axis_size+self.__x_axis_data_req_width_space_top+self.__x_special_width_space)
          
       self.__y_axis_frame.configure(width=self.__axis_size)
       self.__x_axis_frame.configure(height=self.__axis_size)
@@ -428,7 +426,7 @@ class LineChart():
       """
    
       if self.__x_axis_point_spacing_handle_by== "auto":
-         self.__x_axis_point_spacing = (self.__real_width / len(self.__x_axis_values))
+         self.__x_axis_point_spacing = (self.__const_real_width / len(self.__x_axis_values))
       elif self.__x_axis_point_spacing_handle_by== "manual":
          self.__x_axis_point_spacing = self.__x_axis_point_spacing
      
@@ -708,6 +706,8 @@ class LineChart():
       elif self.__x_axis_values_handle_by=="label_count":
          if self.__x_axis_label_count == 0:
             return
+         if self.__x_axis_label_count == None:
+            self.__x_axis_label_count = len(self.__x_axis_values)
          x_axis_real_label_count = len(self.__x_axis_values)
          if self.__x_axis_label_count > x_axis_real_label_count:
             self.__x_axis_label_count = x_axis_real_label_count
@@ -1133,13 +1133,14 @@ class LineChart():
          
       if x_axis_point_spacing != None:
          Validate._isValidXAxisPointSpacing(x_axis_point_spacing, "x_axis_point_spacing")
-         if x_axis_point_spacing != self.__x_axis_point_spacing:
-            if x_axis_point_spacing == "auto":
+         if x_axis_point_spacing == "auto" :
+            if self.__x_axis_point_spacing_handle_by != "auto":
                self.__x_axis_point_spacing_handle_by = "auto"
-            else:
+               reshow_data_req = True
+         elif self.__x_axis_point_spacing != x_axis_point_spacing:
                self.__x_axis_point_spacing_handle_by = "manual"
-            self.__x_axis_point_spacing = x_axis_point_spacing
-            reshow_data_req = True
+               self.__x_axis_point_spacing = x_axis_point_spacing
+               reshow_data_req = True
       
       if chart_reset_req :
          self.__destroy_x_axis_labels()
@@ -1161,7 +1162,7 @@ class LineChart():
          self.__set_widgets_colors()
          self.__place_widgets()
          self.__reset_chart_info()
-         self.__call_reshow_data()
+         self.__reshow_data()
       
       if chart_x_labels_change_req:
          self.__configure_x_axis_labels_info()
@@ -1190,7 +1191,7 @@ class LineChart():
          
       if reshow_data_req:
          self.__configure_x_axis_point_spacing()
-         self.__call_reshow_data()
+         self.__reshow_data()
       
       if pointer_size_change_req:
          self.__set_pointer_size()
@@ -1235,7 +1236,7 @@ class LineChart():
          line._Line__reset()
    
    
-   def __call_reshow_data(self) -> None:
+   #def __call_reshow_data(self) -> None:
       """
       Call the method to re-show data on the chart.
 
@@ -1243,11 +1244,11 @@ class LineChart():
          and then triggers the re-showing of data.
       """
 
-      self.__force_to_stop_data_showing = True
-      while  self.__is_data_showing_working:
-         pass
-      self.__force_to_stop_data_showing = False
-      self.__reshow_data()
+   #   self.__force_to_stop_data_showing = True
+   #   while  self.__is_data_showing_working:
+   #      pass
+   #   self.__force_to_stop_data_showing = False
+   #   self.__reshow_data()
       
       
    def __reshow_data(self) -> None:
@@ -1305,139 +1306,136 @@ class LineChart():
       line._Line__data += data
       
       if  line._Line__visibility:
-         for d in data:
-            self.__is_data_showing_working = True
-            
-            if not self.__force_to_stop_data_showing:
-               x_start = line._Line__x_end
-               y_start = line._Line__y_end
-               
-               line._Line__x_end += self.__x_axis_point_spacing
          
-               if d >=0 :
-                  d = d - self.__y_axis_min_value
-                  line._Line__y_end = self.__const_real_height - ((d )/self.__y_axis_values_gap * self.__const_real_height)
-               else:
-                  d = abs(d) +self.__y_axis_max_value
-                  line._Line__y_end = ((d)/self.__y_axis_values_gap * self.__const_real_height)
-               line._Line__y_end += ((line._Line__size)/2)
-
-               if round(line._Line__x_end) > round(self.__real_width) and self.__real_width < 15000:
-                  self.__place_x -= self.__x_axis_point_spacing
-                  
-                  self.__output_canvas.place(x=self.__place_x,
-                                    width=self.__real_width+self.__x_axis_point_spacing)
-                  
-                  self.__real_width += self.__x_axis_point_spacing;
-               
-               elif self.__real_width > 15000:
-                  re_show_data = True
-                  break;
-               
-               if line._Line__fill == "enabled":
-                  points_of_polygon = [x_start, y_start, 
-                             line._Line__x_end, line._Line__y_end,
-                             line._Line__x_end, self.__const_real_height,
-                             x_start, self.__const_real_height]
-                  self.__output_canvas.create_polygon(points_of_polygon,
-                                                      fill=line._Line__fill_color)
-                  
-               if line._Line__style  == "dashed" :
-                  dash_width = line._Line__style_type[0]
-                  space_width = line._Line__style_type[1]
-                  total_width = dash_width+space_width
-                  real_x_axis_point_spacing = ((abs(y_start - line._Line__y_end)**2) + (self.__x_axis_point_spacing**2)) ** (1/2)
-                  dash_count = real_x_axis_point_spacing /( dash_width + space_width)
-                  total_change_x = (line._Line__x_end - x_start)
-                  total_change_y = (line._Line__y_end - y_start)
-                  dash_change_percentage = dash_width/total_width
-                  space_change_percentage = space_width/total_width
-                  change_x = (total_change_x/dash_count)
-                  change_y = (total_change_y/dash_count)
-                  dash_change_x = change_x*dash_change_percentage
-                  dash_change_y = change_y*dash_change_percentage
-                  space_change_x = change_x*space_change_percentage
-                  space_change_y = change_y*space_change_percentage
-                  dashed_x_start = x_start
-                  dashed_y_start = y_start
-                  if y_start >  line._Line__y_end: line_going = "to_up"
-                  else : line_going = "to_down"
-                  while (line._Line__x_end>dashed_x_start):
-                     dashed_x_end = dashed_x_start+dash_change_x
-                     dashed_y_end = dashed_y_start+dash_change_y
-                     if dashed_x_end>line._Line__x_end:
-                           dashed_x_end = dashed_x_end - (dashed_x_end-line._Line__x_end)
-                     if dashed_y_end<=line._Line__y_end and line_going=="to_up":
-                           dashed_y_end = dashed_y_end - (dashed_y_end-line._Line__y_end)
-                     if dashed_y_end>line._Line__y_end and  line_going=="to_down":
-                           dashed_y_end = dashed_y_end - (dashed_y_end-line._Line__y_end)
-                     self.__output_canvas.create_line(dashed_x_start, dashed_y_start, dashed_x_end, dashed_y_end
-                                                      ,fill=line._Line__color ,width=line._Line__size)
-                     dashed_x_start += dash_change_x + space_change_x
-                     dashed_y_start += dash_change_y + space_change_y                        
-                        
-               elif line._Line__style == "dotted":
-                  circle_size = line._Line__style_type[0]
-                  space_width = line._Line__style_type[1]
-                  total_width = circle_size+space_width
-                  real_x_axis_point_spacing = ((abs(y_start - line._Line__y_end)**2) + (self.__x_axis_point_spacing**2)) ** (1/2)
-                  circle_count = real_x_axis_point_spacing /( circle_size + space_width)
-                  total_change_x = (line._Line__x_end - x_start)
-                  total_change_y = (line._Line__y_end - y_start)
-                  circle_change_percentage = circle_size/total_width*100
-                  space_change_percentage = space_width/total_width*100
-                  circle_change_x = (total_change_x/circle_count)/100*circle_change_percentage
-                  circle_change_y = (total_change_y/circle_count)/100*circle_change_percentage
-                  space_change_x = (total_change_x/circle_count)/100*space_change_percentage
-                  space_change_y = (total_change_y/circle_count)/100*space_change_percentage
-                  dotted_x_start = x_start
-                  dotted_y_start = y_start
-                  if y_start >  line._Line__y_end: line_going = "to_up"
-                  else : line_going = "to_down"
-                  while (line._Line__x_end>dotted_x_start):
-                        x_end = dotted_x_start+circle_change_x
-                        y_end = dotted_y_start+circle_change_y
-                        if x_end>line._Line__x_end:
-                           x_end = x_end - (x_end-line._Line__x_end)
-                        if y_end<=line._Line__y_end and line_going=="to_up":
-                           y_end = y_end - (y_end-line._Line__y_end)
-                        if y_end>line._Line__y_end and  line_going=="to_down":
-                           y_end = y_end - (y_end-line._Line__y_end)
-                        self.__output_canvas.create_oval(dotted_x_start-circle_size/2,
-                                                   dotted_y_start-circle_size/2,
-                                                   dotted_x_start+circle_size-circle_size/2,
-                                                   dotted_y_start+circle_size-circle_size/2,
-                                                   fill=line._Line__color, outline=line._Line__color )
-                        dotted_x_start += circle_change_x + space_change_x
-                        dotted_y_start += circle_change_y + space_change_y
-                        
-               elif line._Line__style=="normal":
-                  self.__output_canvas.create_line(x_start, y_start, line._Line__x_end, line._Line__y_end
-                                                      ,fill=line._Line__color ,width=line._Line__size)
-               
-               if line._Line__point_highlight == "enabled" and line._Line__point_highlight_size > 0 : 
-                  highlight_size =  line._Line__point_highlight_size /2 
-                  self.__output_canvas.create_oval(line._Line__x_end - highlight_size,
-                                                   line._Line__y_end - highlight_size,
-                                                   line._Line__x_end + highlight_size,
-                                                   line._Line__y_end + highlight_size,
-                                                   fill=line._Line__point_highlight_color,
-                                                   outline=line._Line__point_highlight_color)
-                  
-                  self.__output_canvas.create_oval(x_start - highlight_size,
-                                                   y_start - highlight_size,
-                                                   x_start + highlight_size,
-                                                   y_start + highlight_size,
-                                                   fill=line._Line__point_highlight_color,
-                                                   outline=line._Line__point_highlight_color)
+         for d in data:
+           
+            x_start = line._Line__x_end
+            y_start = line._Line__y_end
+            
+            line._Line__x_end += self.__x_axis_point_spacing
+      
+            if d >=0 :
+               d = d - self.__y_axis_min_value
+               line._Line__y_end = self.__const_real_height - ((d )/self.__y_axis_values_gap * self.__const_real_height)
             else:
-               break
+               d = abs(d) +self.__y_axis_max_value
+               line._Line__y_end = ((d)/self.__y_axis_values_gap * self.__const_real_height)
+            line._Line__y_end += ((line._Line__size)/2)
+
+            if round(line._Line__x_end) > round(self.__real_width) and self.__real_width < self.__width*5:
+               self.__place_x -= self.__x_axis_point_spacing
+               
+               self.__output_canvas.place(x=self.__place_x,
+                                 width=self.__real_width+self.__x_axis_point_spacing)
+               
+               self.__real_width += self.__x_axis_point_spacing;
+            
+            elif self.__real_width > self.__width*5:
+               re_show_data = True
+               break;
+            
+            if line._Line__fill == "enabled":
+               points_of_polygon = [x_start, y_start, 
+                           line._Line__x_end, line._Line__y_end,
+                           line._Line__x_end, self.__const_real_height,
+                           x_start, self.__const_real_height]
+               self.__output_canvas.create_polygon(points_of_polygon,
+                                                   fill=line._Line__fill_color)
+               
+            if line._Line__style  == "dashed" :
+               dash_width = line._Line__style_type[0]
+               space_width = line._Line__style_type[1]
+               total_width = dash_width+space_width
+               real_x_axis_point_spacing = ((abs(y_start - line._Line__y_end)**2) + (self.__x_axis_point_spacing**2)) ** (1/2)
+               dash_count = real_x_axis_point_spacing /( dash_width + space_width)
+               total_change_x = (line._Line__x_end - x_start)
+               total_change_y = (line._Line__y_end - y_start)
+               dash_change_percentage = dash_width/total_width
+               space_change_percentage = space_width/total_width
+               change_x = (total_change_x/dash_count)
+               change_y = (total_change_y/dash_count)
+               dash_change_x = change_x*dash_change_percentage
+               dash_change_y = change_y*dash_change_percentage
+               space_change_x = change_x*space_change_percentage
+               space_change_y = change_y*space_change_percentage
+               dashed_x_start = x_start
+               dashed_y_start = y_start
+               if y_start >  line._Line__y_end: line_going = "to_up"
+               else : line_going = "to_down"
+               while (line._Line__x_end>dashed_x_start):
+                  dashed_x_end = dashed_x_start+dash_change_x
+                  dashed_y_end = dashed_y_start+dash_change_y
+                  if dashed_x_end>line._Line__x_end:
+                        dashed_x_end = dashed_x_end - (dashed_x_end-line._Line__x_end)
+                  if dashed_y_end<=line._Line__y_end and line_going=="to_up":
+                        dashed_y_end = dashed_y_end - (dashed_y_end-line._Line__y_end)
+                  if dashed_y_end>line._Line__y_end and  line_going=="to_down":
+                        dashed_y_end = dashed_y_end - (dashed_y_end-line._Line__y_end)
+                  self.__output_canvas.create_line(dashed_x_start, dashed_y_start, dashed_x_end, dashed_y_end
+                                                   ,fill=line._Line__color ,width=line._Line__size)
+                  dashed_x_start += dash_change_x + space_change_x
+                  dashed_y_start += dash_change_y + space_change_y                        
+                     
+            elif line._Line__style == "dotted":
+               circle_size = line._Line__style_type[0]
+               space_width = line._Line__style_type[1]
+               total_width = circle_size+space_width
+               real_x_axis_point_spacing = ((abs(y_start - line._Line__y_end)**2) + (self.__x_axis_point_spacing**2)) ** (1/2)
+               circle_count = real_x_axis_point_spacing /( circle_size + space_width)
+               total_change_x = (line._Line__x_end - x_start)
+               total_change_y = (line._Line__y_end - y_start)
+               circle_change_percentage = circle_size/total_width*100
+               space_change_percentage = space_width/total_width*100
+               circle_change_x = (total_change_x/circle_count)/100*circle_change_percentage
+               circle_change_y = (total_change_y/circle_count)/100*circle_change_percentage
+               space_change_x = (total_change_x/circle_count)/100*space_change_percentage
+               space_change_y = (total_change_y/circle_count)/100*space_change_percentage
+               dotted_x_start = x_start
+               dotted_y_start = y_start
+               if y_start >  line._Line__y_end: line_going = "to_up"
+               else : line_going = "to_down"
+               while (line._Line__x_end>dotted_x_start):
+                     x_end = dotted_x_start+circle_change_x
+                     y_end = dotted_y_start+circle_change_y
+                     if x_end>line._Line__x_end:
+                        x_end = x_end - (x_end-line._Line__x_end)
+                     if y_end<=line._Line__y_end and line_going=="to_up":
+                        y_end = y_end - (y_end-line._Line__y_end)
+                     if y_end>line._Line__y_end and  line_going=="to_down":
+                        y_end = y_end - (y_end-line._Line__y_end)
+                     self.__output_canvas.create_oval(dotted_x_start-circle_size/2,
+                                                dotted_y_start-circle_size/2,
+                                                dotted_x_start+circle_size-circle_size/2,
+                                                dotted_y_start+circle_size-circle_size/2,
+                                                fill=line._Line__color, outline=line._Line__color )
+                     dotted_x_start += circle_change_x + space_change_x
+                     dotted_y_start += circle_change_y + space_change_y
+                     
+            elif line._Line__style=="normal":
+               self.__output_canvas.create_line(x_start, y_start, line._Line__x_end, line._Line__y_end
+                                                   ,fill=line._Line__color ,width=line._Line__size)
+            
+            if line._Line__point_highlight == "enabled" and line._Line__point_highlight_size > 0 : 
+               highlight_size =  line._Line__point_highlight_size /2 
+               self.__output_canvas.create_oval(line._Line__x_end - highlight_size,
+                                                line._Line__y_end - highlight_size,
+                                                line._Line__x_end + highlight_size,
+                                                line._Line__y_end + highlight_size,
+                                                fill=line._Line__point_highlight_color,
+                                                outline=line._Line__point_highlight_color)
+               
+               self.__output_canvas.create_oval(x_start - highlight_size,
+                                                y_start - highlight_size,
+                                                x_start + highlight_size,
+                                                y_start + highlight_size,
+                                                fill=line._Line__point_highlight_color,
+                                                outline=line._Line__point_highlight_color)
+            
    
          if re_show_data:
             self.__reshow_data()
-         self.__is_data_showing_working = False
-   
-   
+         
+         
    def __hide_pointer(self, event: tkinter.Event) -> None:
       """
       Hides the pointer widget from the GUI canvas.
@@ -1665,7 +1663,7 @@ class LineChart():
       Validate._isBool(state, "state")
       if line._Line__visibility != state or self.__visibility != state:
          line._Line__visibility = state
-         self.__call_reshow_data()
+         self.__reshow_data()
       
       
    def set_lines_visibility(self, state: bool) -> None:
@@ -1682,7 +1680,7 @@ class LineChart():
          self.__output_canvas.place_forget()
       for line in self.__lines:
          line._Line__visibility = state
-      self.__call_reshow_data()
+      self.__reshow_data()
    
    
    def reset(self) -> None:
@@ -1699,7 +1697,7 @@ class LineChart():
       Apply changes to the lines and redraw the chart.
       """
       
-      self.__call_reshow_data()
+      self.__reshow_data()
       
    
    def cget(self, attribute_name: Literal[

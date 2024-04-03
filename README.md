@@ -41,6 +41,42 @@ Your support means a lot and inspires me to do better with each update. Thank yo
     ```
     import tkchart
     ```
+
+<hr>
+
+### Simple Guide
+- **import package**
+    ```
+    import tkchart
+    ```
+
+- **Create Line Chart and place the chart**
+    ```
+    chart = tkchart.LineChart(master=root,
+                                x_axis_values=("a", "b", "c", "d", "e", "f"),
+                                y_axis_values=(100, 900))
+    chart.place(x=10, y=10)
+    ```
+
+- **Create Line**
+    ```
+    line = tkchart.Line(master=chart)
+    ```
+
+- **Display Data**
+    display data using a loop
+    ```
+
+    def loop():
+        while True:
+            random_data = random.choice(range(100, 900))
+            chart.show_data(line=line, data=[random_data])
+            time.sleep(1)
+    
+    #call the loop as thead
+    theading.Thread(target=loop).start()
+    ```
+
 <hr>
 
 ### Links

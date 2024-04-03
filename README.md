@@ -10,8 +10,7 @@ Your support means a lot and inspires me to do better with each update. Thank yo
 
 [![Downloads](https://static.pepy.tech/badge/tkchart)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
-<img src="https://drive.google.com/thumbnail?id=1cHrsFILHJ7a2bgMXvk-PWlnLZx1vCnVR&sz=w180">
-
+<img src="https://drive.google.com/thumbnail?id=15_FnGTdixNdKNsHdyeRsHMDQWSj9-Z9p&sz=w180">
 
 </div>
 

@@ -364,8 +364,6 @@ Your support means a lot and inspires me to do better with each update. Thank yo
 
 <hr>
 
-<hr>
-
 **Explore customizable features such as colors, fonts, and more in the documentation.**
 
 #### Please refer to the full documentation

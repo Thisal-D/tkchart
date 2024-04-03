@@ -27,7 +27,7 @@
 <br>
 <br>
 
-## Removed Methods in Line Chart Object
+## Removed Methods in LineChart Object
 
 | Method Name | Description          | Parameters                                   | Return Type |
 |-------------|----------------------|----------------------------------------------|-------------|

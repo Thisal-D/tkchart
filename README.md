@@ -2,6 +2,8 @@
 
 Your support means a lot and inspires me to do better with each update. Thank you for taking the time to check out this project!🥰
 
+<hr>
+
 <div align="center">
 
 [![tkchart](https://snyk.io/advisor/python/tkchart/badge.svg)](https://snyk.io/advisor/python/tkchart)

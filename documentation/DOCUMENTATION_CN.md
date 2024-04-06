@@ -22,7 +22,7 @@ pip install tkchart
 import tkchart 
 ``` 
 
-<hr
+<hr>
 
 <div id="parameter_img"> 
 
@@ -39,7 +39,7 @@ import tkchart
 
 </div> 
 
-<hr
+<hr>
 
 ### 要使用 tkchart 显示数据，您需要执行以下三步： 
 1. <a href="#create-line-chart">**创建折线图**</a> 
@@ -512,8 +512,9 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     x_axis_section_style_type 参数是一个包含两个整数值的元组，指定当 x_axis_section_style 设置为“dashed”时使用的破折号样式。<br> 
     例如:<br> 
     - 如果将 x_axis_section_style_type 设置为 (20, 10)，则意味着： 
-    - 每个破折号的宽度为 20 像素。 
-    - 破折号之间的间距为 10 像素。<br><br> 
+        - 每个破折号的宽度为 20 像素。 
+        - 破折号之间的间距为 10 像素。<br>
+     
 
     这些值确定用于表示沿 x 轴的部分的虚线或标记的视觉外观。通过调整这些值，您可以根据您的偏好或可视化要求自定义虚线部分的外观。 
 
@@ -744,7 +745,6 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 <hr>
 
 <div id="example"> 
-
 
 <a href="#top">**回到顶部**</a> | <a href="#howtouse">**使用指南**</a> | <a href="#parameter_explanation">**参数说明**</a> | <a href="#whatsnew">**查看新功能**</a> 
 

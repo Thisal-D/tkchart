@@ -352,12 +352,23 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 <div id="data_position"> 
 
 - #### x_axis_data_position 
-    The x_axis_data_position parameter determines the position of the x data label. It has two supported values: "top", "side" , <br> 
+    The x_axis_data_position parameter determines the position of the x data label. It has two 
+    
+    supported values: 
+    - "top"
+    - "side"
+
     **Note:"top" is the default position** 
 
 - #### y_axis_data_position 
-    The y_axis_data_position parameter determines the position of the x data label. It has two supported values: "top", "side". <br> 
+    The y_axis_data_position parameter determines the position of the x data label. It has two 
+    
+    supported values:
+    - "top"
+    - "side"
+
     **Note: "top" is the default position**<br> 
+
     Choosing between "top" and "side" determines whether the data labels are placed horizontally above the data points or vertically beside them, respectively. This parameter allows you to customize the layout of your chart according to your preferences and available space. 
 
     <picture> 

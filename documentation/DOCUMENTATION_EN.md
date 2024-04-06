@@ -491,8 +491,8 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     x_axis_section_style parameter allows you to define the visual style of the sections along the x-axis in a chart. 
 
     - Supported styles: 
-    - "dashed": When you set x_axis_section_style to "dashed", the sections along the x-axis are displayed using dashed lines. 
-    - "normal": Conversely, when x_axis_section_style is set to "normal", the sections along the x-axis are displayed using solid lines.<br><br> 
+        - "dashed": When you set x_axis_section_style to "dashed", the sections along the x-axis are displayed using dashed lines. 
+        - "normal": Conversely, when x_axis_section_style is set to "normal", the sections along the x-axis are displayed using solid lines.<br><br> 
 
     **Note: "normal" is default style.** 
 
@@ -620,9 +620,9 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     style parameter allows you to define the visual style of the line. 
     <br> 
     - supported styles: 
-    - "dashed": When you set style to "dashed", the line is displayed as dashed line. 
-    - "dotted": When you set style to "dotted", the line is displayed as dotted line. 
-    - "normal": When you set style to "normal", the line is displayed as solid line.<br> 
+        - "dashed": When you set style to "dashed", the line is displayed as dashed line. 
+        - "dotted": When you set style to "dotted", the line is displayed as dotted line. 
+        - "normal": When you set style to "normal", the line is displayed as solid line.<br> 
     **Note: "normal" is the default style.** 
 
     <picture> 
@@ -677,8 +677,8 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     The point_highlight parameter is used to control point highlight, enabling or disabling it. 
     <br> 
     - Supported values: 
-    - "enabled": Enable point highlight. 
-    - "disabled": Disable point highlight. 
+        - "enabled": Enable point highlight. 
+        - "disabled": Disable point highlight. 
 
 - #### point_highlight_size 
     The point_highlight_size is used to set size of the highlight. 
@@ -710,8 +710,8 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     The fill parameter is utilized to control whether line fill is enabled or disabled. 
     <br> 
     - Supported Values: 
-    - "enabled": Enable line fill. 
-    - "disabled": Disable line fill. 
+        - "enabled": Enable line fill. 
+        - "disabled": Disable line fill. 
 
 - #### fill_color 
     The fill_color parameter is used to specify the color for the fill. 

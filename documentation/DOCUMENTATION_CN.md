@@ -356,13 +356,23 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 <div id="data_position"> 
 
 - #### x_axis_data_position 
-    x_axis_data_position 参数确定 x_axis_data 的文字布局。它有两个支持的值："top"、"side"。<br> 
+    x_axis_data_position 参数确定 x_axis_data 的文字布局。
+    
+    它有两个支持的值：
+    - "top"
+    - "side"
+    
     **注意：“top”是默认位置** 
 
 - #### y_axis_data_position 
-    y_axis_data_position 参数确定 y_axis_data 的文字布局。它有两个受支持的值："top"、"side"。 <br> 
+    y_axis_data_position 参数确定 y_axis_data 的文字布局。
+    
+    它有两个受支持的值：
+    - "top"
+    - "side"
 
-    **注意：“顶部”是默认位置**<br> 
+    **注意：“顶部”是默认位置**
+    
     在"top"、"side"之间进行选择分别确定 x/y_axis_data 是水平放置在数据点上方还是垂直放置在数据点旁边。此参数允许您根据您的喜好和可用空间自定义折线图的布局。 
 
     <picture> 

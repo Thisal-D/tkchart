@@ -1,6 +1,6 @@
 <div id="top"></div> 
 
-[English README](README.md) 
+[English README](DOCUMENTATION_EN.md) 
 
 </div>
 
@@ -797,6 +797,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 </div> 
 
 <hr>
+ 
 
 ## 链接 
 

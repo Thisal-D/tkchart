@@ -299,9 +299,9 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     **注意：len(<a href="#x_y_axis_values">x_axis_values</a>) 是默认值。**<br> 
     换句话说，调整 x_axis_label_count 可以让您控制 x 轴上显示的标签数量，使您的可视化更清晰、更易于理解。 
     <br> 
-    -**如果有 9 个标签，您可以将其限制为：3、1。** 
-    -**如果有 20 个标签，您可以将其限制为：10, 5, 4, 2, 1。** 
-    -**如果有 15 个标签，您可以将其限制为：5、3、1。** 
+    - **如果有 9 个标签，您可以将其限制为：3、1。** 
+    - **如果有 20 个标签，您可以将其限制为：10, 5, 4, 2, 1。** 
+    - **如果有 15 个标签，您可以将其限制为：5、3、1。** 
 
     #### 在某些情况下，使用 x_axis_label_count 参数可能不足以满足您的需求。在这种情况下，您可以利用 <a href="#indices_view">x_axis_display_values_indices</a> 参数来精确控制 x 轴上显示的值。 
 
@@ -495,8 +495,9 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     x_axis_section_style 参数允许您定义折线图中沿 x 轴的部分的视觉样式。 
 
     - 支持的样式： 
-    - "dashed": 当您将 x_axis_section_style 设置为“dashed”时，沿 x 轴的剖面将使用虚线显示。 
-    - "normal": 相反，当 x_axis_section_style 设置为“正常”时，沿 x 轴的截面将使用实线显示。<br><br> 
+        - "dashed": 当您将 x_axis_section_style 设置为“dashed”时，沿 x 轴的剖面将使用虚线显示。 
+        - "normal": 相反，当 x_axis_section_style 设置为“正常”时，沿 x 轴的截面将使用实线显示。
+        <br> 
 
     **注意："normal"是默认样式。** 
 
@@ -629,9 +630,9 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     style 参数允许您定义线条的视觉样式。 
     <br> 
     - 支持的样式： 
-    - "dashed": 当样式设置为"dashed"时，折线条显示为虚线。 
-    - "dotted": 当样式设置为"dotted"时，折线显示为点虚线。 
-    - "normal": 当样式设置为"normal"时，线条显示为实线。<br> 
+        - "dashed": 当样式设置为"dashed"时，折线条显示为虚线。 
+        - "dotted": 当样式设置为"dotted"时，折线显示为点虚线。 
+        - "normal": 当样式设置为"normal"时，线条显示为实线。<br> 
     **注意："normal"是默认样式。** 
 
     <picture> 
@@ -686,8 +687,8 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     point_highlight 参数用于控制点高亮。 
     <br> 
     - 支持的值： 
-    - "enabled": 启用点高亮显示。 
-    - "disabled": 禁用点高亮显示。 
+        - "enabled": 启用点高亮显示。 
+        - "disabled": 禁用点高亮显示。 
 
 - #### point_highlight_size 
     point_highlight_size 用于设置高亮点的大小。 
@@ -719,8 +720,8 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     fill 参数用于控制是否启用或禁用行填充。 
     <br> 
     - 支持的值： 
-    - "enabled": 启用线条填充。 
-    - "disabled": 禁用线条填充。
+        - "enabled": 启用线条填充。 
+        - "disabled": 禁用线条填充。
     
 - #### fill_color 
     fill_color 参数用于指定填充的颜色。 
@@ -796,7 +797,6 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 </div> 
 
 <hr>
- 
 
 ## 链接 
 

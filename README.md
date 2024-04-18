@@ -52,7 +52,7 @@ Your support means a lot and inspires me to do better with each update. Thank yo
     ```
 
 - **Create Line Chart and place the chart**
-    ```
+    ```python
     chart = tkchart.LineChart(master=root,
                                 x_axis_values=("a", "b", "c", "d", "e", "f"),
                                 y_axis_values=(100, 900))

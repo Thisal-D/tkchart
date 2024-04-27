@@ -10,13 +10,12 @@ Your support means a lot and inspires me to do better with each update. Thank yo
 
 [![Downloads](https://static.pepy.tech/badge/tkchart)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
-<img src="https://drive.google.com/thumbnail?id=15_FnGTdixNdKNsHdyeRsHMDQWSj9-Z9p&sz=w180">
-
+<img src="https://drive.google.com/thumbnail?id=1uZJAjUZPIt79V0FMZ6KpF_x1ln7LFNmg&sz=w180">
 </div>
 
 **<li>tkchart is a Python library for creating live updating line charts in tkinter.</li>**
 
-<hr>
+---
 
 ### Features
 
@@ -26,7 +25,7 @@ Your support means a lot and inspires me to do better with each update. Thank yo
 - **Font Customization**: Adjust fonts for text elements to enhance readability.
 - **Dimension Customization**: Customize chart dimensions to fit various display sizes and layouts.
 
-<hr>
+---
 
 ### Importing & Installation
 * **Installation**
@@ -39,7 +38,7 @@ Your support means a lot and inspires me to do better with each update. Thank yo
     import tkchart
     ```
 
-<hr>
+---
 
 ### Simple Guide
 - **import package**
@@ -75,7 +74,7 @@ Your support means a lot and inspires me to do better with each update. Thank yo
     theading.Thread(target=loop).start()
     ```
 
-<hr>
+---
 
 ### Links
 
@@ -84,7 +83,7 @@ Your support means a lot and inspires me to do better with each update. Thank yo
     - [Chinese doc.](documentation/DOCUMENTATION_CN.md)
 - **Python official :** [tkchart](https://pypi.org/project/tkchart/)
 
-<hr>
+---
 
 ### What You Can Accomplish
 
@@ -129,7 +128,7 @@ Your support means a lot and inspires me to do better with each update. Thank yo
     # Start the main event loop
     root.mainloop()
     ```
-    <hr>
+    ---
 
 - **Simple style**
 
@@ -177,7 +176,7 @@ Your support means a lot and inspires me to do better with each update. Thank yo
     # Start the main event loop
     root.mainloop()
     ```
-    <hr>
+    ---
 
 - **2 lines with different line styles**
 
@@ -237,7 +236,7 @@ Your support means a lot and inspires me to do better with each update. Thank yo
     root.mainloop()
     ```
 
-    <hr>
+    ---
 
 - **3 lines with different line styles**
 
@@ -306,7 +305,7 @@ Your support means a lot and inspires me to do better with each update. Thank yo
     root.mainloop()
     ```
 
-    <hr>
+    ---
 
 - **Advance** (Actually not, Just Two More Attributes Added)
  
@@ -368,10 +367,15 @@ Your support means a lot and inspires me to do better with each update. Thank yo
     root.mainloop()
     ```
 
-<hr>
+---
 
 **Explore customizable features such as colors, fonts, and more in the documentation.**
 
 #### Please refer to the full documentation
 - [**English doc.**](documentation/DOCUMENTATION_EN.md)
 - [**Chinese doc.**](documentation/DOCUMENTATION_CN.md)
+
+---
+
+#### Contributors
+- [<img src="https://github.com/childeyouyu.png?size=25" width="25">](https://github.com/childeyouyu) [youyu](https://github.com/childeyouyu)

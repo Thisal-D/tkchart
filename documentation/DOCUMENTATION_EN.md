@@ -2,7 +2,7 @@
 
 [中文说明 Doc.](DOCUMENTATION_CN.md) | [Chinese Doc.](DOCUMENTATION_CN.md) 
 
-<hr> 
+--- 
 
 </div> 
 
@@ -23,7 +23,7 @@ import tkchart
 
 <div id="parameter_img"> 
 
-<hr> 
+--- 
 
 ### Parameter Overview 
 
@@ -43,7 +43,7 @@ import tkchart
 2. <a href="#create-line">**Creating a Line**</a> 
 3. <a href="#display-data">**Display of data**</a> 
 
-<hr>  
+---  
 
 <div id="create-line-chart"> 
 
@@ -100,7 +100,7 @@ linechart = tkchart.LineChart()
 | pointer_size                                                | ***Optional***      | Size of the pointer                        | ``int``                         | 1<=                                 | 
 
 
-<hr>  
+---  
 
 ### Methods 
 
@@ -125,7 +125,7 @@ linechart = tkchart.LineChart()
 
 </div> 
 
-<hr> 
+--- 
 
 <div id="create-line"> 
 
@@ -152,7 +152,7 @@ line = tkchart.Line()
 | <a href="#fill">fill</a>                             | Optional            | State of filling               | ``str`` ("enabled", "disabled")        | "disabled"       | 
 | <a href="#fill">fill_color</a>                       | Optional            | Color of the fill              | ``str``                                | "#5d6db6"        | 
 
-<hr>  
+---  
 
 ### Methods 
 
@@ -165,7 +165,7 @@ line = tkchart.Line()
 | get_visibility | get the visibility of the line           | -                                        | ``bool``    | 
 </div> 
 
-<hr> 
+--- 
 
 <div id="display-data"> 
 
@@ -210,7 +210,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 
 </div> 
 
-<hr>
+---
 
 </div> 
 
@@ -243,7 +243,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
         y_axis_values=(-100, 100) 
     ) 
     ``` 
-<hr>
+---
 </div> 
 
 <div id="x_y_data"> 
@@ -283,7 +283,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -322,7 +322,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
     
-<hr>
+---
 
 </div> 
 
@@ -349,7 +349,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -390,7 +390,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -424,7 +424,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -455,7 +455,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -497,7 +497,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -555,7 +555,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -600,7 +600,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -655,7 +655,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ```
     
-<hr>
+---
 
 </div> 
 
@@ -685,7 +685,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -718,7 +718,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -747,7 +747,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -779,7 +779,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 
 </div> 
 
-<hr> 
+--- 
 
 <div id="whatsnew"> 
 
@@ -805,7 +805,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 
 </div> 
 
-<hr>
+---
 
 ## Links 
 

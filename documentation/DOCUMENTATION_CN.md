@@ -4,7 +4,7 @@
 
 </div>
 
-<hr>
+---
 
 <div id="howtouse"> 
 
@@ -23,7 +23,7 @@ import tkchart
 
 </div>
 
-<hr>
+---
 
 <div id="parameter_img"> 
 
@@ -40,7 +40,7 @@ import tkchart
 
 </div> 
 
-<hr>
+---
 
 ### 要使用 tkchart 显示数据，您需要执行以下三步： 
 1. <a href="#create-line-chart">**创建折线图**</a> 
@@ -48,7 +48,7 @@ import tkchart
 3. <a href="#display-data">**数据显示**</a> 
 
 
-<hr>
+---
 
 <div id="create-line-chart"> 
 
@@ -105,7 +105,7 @@ linechart = tkchart.LineChart()
 | pointer_size                                                | ***可选***    | 鼠标显示线的宽度           | ``int``                         | 1<=                                 | 
 
 
-<hr>
+---
 
 ### 方法 
 
@@ -130,7 +130,7 @@ linechart = tkchart.LineChart()
 
 </div> 
 
-<hr>
+---
 
 <div id="create-line"> 
 
@@ -158,7 +158,7 @@ line = tkchart.Line()
 | [fill_color](#fill)                       | 可选          | 填充颜色           | ``str``                                | "#5d6db6"    | 
 
 
-<hr> 
+--- 
 
 ### 方法 
 
@@ -172,7 +172,7 @@ line = tkchart.Line()
 
 </div> 
 
-<hr>
+---
 
 <div id="display-data"> 
 
@@ -215,7 +215,7 @@ root.mainloop()
 
 https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b00a6f5518 
 
-<hr>
+---
 
 </div> 
 
@@ -251,7 +251,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -292,7 +292,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -330,7 +330,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -356,7 +356,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -399,7 +399,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -432,7 +432,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -463,7 +463,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -505,7 +505,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -565,7 +565,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -614,7 +614,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -643,7 +643,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -671,7 +671,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -701,7 +701,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -734,7 +734,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -765,7 +765,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 
 </div> 
 
-<hr>
+---
 
 <div id="example"> 
 
@@ -795,7 +795,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
  
 <div id="whatsnew"> 
     
-<hr>
+---
     
 <a href="#top">**回到顶部**</a> | <a href="#howtouse">**使用指南**</a> | <a href="#example">**例子**</a> | <a href="#parameter_explanation">**参数说明**</a> 
 
@@ -818,7 +818,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 
 </div>
 
-<hr>
+---
 
 ## 链接 
 
@@ -826,7 +826,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 
 **GitHub.com** : <a href="https://github.com/Thisal-D/tkchart" target="_blank" ><i>tkchart</i></a> 
 
-<hr>
+---
 
 ### 翻译贡献 
 

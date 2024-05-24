@@ -122,6 +122,7 @@ linechart = tkchart.LineChart()
 | place_info                 | Get info about place                     | attribute_name: ``str`` \| "\_\_all\_\_"                                                                                         | ``any``     | 
 | pack_info                  | Get info about pack                      | attribute_name: ``str`` \| "\_\_all\_\_"                                                                                         | ``any``     | 
 | grid_info                  | Get info about grid                      | attribute_name: ``str`` \| "\_\_all\_\_"                                                                                         | ``any``     | 
+| destroy                    | Destroy the chart                        | -                                                                                                                                | ``None``    | 
 
 </div> 
 
@@ -163,6 +164,7 @@ line = tkchart.Line()
 | reset          | reset line object                        | -                                        | ``None``    | 
 | set_visible    | change the visibility of the line        | state: ``bool``                          | ``None``    | 
 | get_visibility | get the visibility of the line           | -                                        | ``bool``    | 
+| destroy        | Destroy the line                         | -                                        | ``None``    | 
 </div> 
 
 --- 

@@ -312,12 +312,12 @@ class LineChart:
 
         self.__y_axis_data_label.configure(bg=self.__bg_color, fg=self.__y_axis_data_font_color)
         for label in self.__x_axis_values_frame.winfo_children():
-            if type(label) == tkinter.Label:
+            if type(label) is tkinter.Label:
                 label.configure(bg=self.__bg_color, fg=self.__x_axis_font_color)
 
         self.__x_axis_data_label.configure(bg=self.__bg_color, fg=self.__x_axis_data_font_color)
         for label in self.__y_axis_values_frame.winfo_children():
-            if type(label) == tkinter.Label:
+            if type(label) is tkinter.Label:
                 label.configure(bg=self.__bg_color, fg=self.__y_axis_font_color)
 
         self.__pointer.configure(bg=self.__pointer_color)
@@ -335,11 +335,11 @@ class LineChart:
         self.__x_axis_data_label.configure(font=self.__data_font_style)
 
         for label in self.__y_axis_values_frame.winfo_children():
-            if type(label) == tkinter.Label:
+            if type(label) is tkinter.Label:
                 label.configure(font=self.__axis_font_style)
 
         for label in self.__x_axis_values_frame.winfo_children():
-            if type(label) == tkinter.Label:
+            if type(label) is tkinter.Label:
                 label.configure(font=self.__axis_font_style)
 
     def __set_pointer_size(self) -> None:
@@ -379,19 +379,18 @@ class LineChart:
         if self.__x_axis_data != "":
             if self.__x_axis_data_position == "top":
                 self.__x_axis_data_label.place(
-                    rely=1,
                     relx=1,
                     x=-self.__x_axis_data_req_width,
-                    y=-self.__x_axis_data_req_height
+                    y=self.__height - self.__x_axis_data_req_height
                 )
             else:
                 self.__x_axis_data_label.place(
                     rely=1,
                     y=-self.__x_axis_data_req_height, relx=0, anchor="n",
                     x=(
-                        self.__const_real_width / 2 + self.__y_axis_data_req_width_space_side +
-                        self.__y_value_req_width_space + self.__axis_size + self.__x_axis_data_req_width_space_top +
-                        self.__x_special_width_space
+                            self.__const_real_width / 2 + self.__y_axis_data_req_width_space_side +
+                            self.__y_value_req_width_space + self.__axis_size + self.__x_axis_data_req_width_space_top +
+                            self.__x_special_width_space
                     )
                 )
 
@@ -409,8 +408,8 @@ class LineChart:
         )
         self.__x_axis_frame.place(
             x=self.__y_value_req_width_space + self.__y_axis_data_req_width_space_side,
-            rely=1,
-            y=-self.__axis_size + -self.__x_value_req_height_space + -self.__x_axis_data_req_height_space_side,
+            y=(self.__height - self.__axis_size + -self.__x_value_req_height_space +
+               -self.__x_axis_data_req_height_space_side),
             width=self.__const_real_width + self.__axis_size + self.__x_space
         )
 
@@ -438,8 +437,7 @@ class LineChart:
         if self.__x_values_frame_place_req:
             self.__x_axis_values_frame.place(
                 x=0,
-                rely=1,
-                y=-self.__x_value_req_height_space + -self.__x_axis_data_req_height_space_side,
+                y=self.__height - self.__x_value_req_height_space + -self.__x_axis_data_req_height_space_side,
                 height=self.__x_value_req_height_space,
                 width=self.__width
             )
@@ -854,7 +852,7 @@ class LineChart:
         """
 
         for widget in self.__output_frame.winfo_children():
-            if type(widget) == tkinter.Frame:
+            if type(widget) is tkinter.Frame:
                 widget.place_forget()
                 widget.destroy()
 
@@ -2084,3 +2082,112 @@ class LineChart:
             }
 
         Validate._invalidCget(attribute_name)
+
+    def __del__(self) -> None:
+        """
+        Destructor to clean up resources and perform necessary cleanup.
+        This method will be called when the object is about to be destroyed.
+        It ensures that all widgets are destroyed and attributes are deleted
+        to aid in garbage collection.
+        """
+        # Destroy widgets
+        self.__main_frame.destroy()
+        self.__x_axis_values_frame.destroy()
+        self.__y_axis_values_frame.destroy()
+        self.__y_axis_data_label.destroy()
+        self.__x_axis_data_label.destroy()
+        self.__output_frame.destroy()
+        self.__output_canvas.destroy()
+        self.__y_axis_frame.destroy()
+        self.__x_axis_frame.destroy()
+        self.__pointer.destroy()
+
+        # Deleting attributes to help with garbage collection
+        del self.__main_frame
+        del self.__x_axis_values_frame
+        del self.__y_axis_values_frame
+        del self.__y_axis_data_label
+        del self.__x_axis_data_label
+        del self.__output_frame
+        del self.__output_canvas
+        del self.__y_axis_frame
+        del self.__x_axis_frame
+        del self.__pointer
+        del self.__master
+        del self.__height
+        del self.__width
+        del self.__axis_size
+        del self.__axis_color
+        del self.__x_axis_point_spacing
+        del self.__x_axis_point_spacing_handle_by
+        del self.__data_font_style
+        del self.__axis_font_style
+        del self.__lines
+        del self.__bg_color
+        del self.__fg_color
+        del self.__y_axis_font_color
+        del self.__y_axis_data_font_color
+        del self.__y_axis_section_color
+        del self.__y_axis_section_style
+        del self.__y_axis_section_style_type
+        del self.__y_axis_section_count
+        del self.__y_axis_label_count
+        del self.__y_axis_data
+        del self.__y_axis_data_position
+        del self.__y_axis_values
+        del self.__y_axis_min_value
+        del self.__y_axis_max_value
+        del self.__y_axis_precision
+        del self.__y_space
+        del self.__x_axis_font_color
+        del self.__x_axis_data_font_color
+        del self.__x_axis_section_color
+        del self.__x_axis_section_style
+        del self.__x_axis_section_style_type
+        del self.__x_axis_section_count
+        del self.__x_axis_label_count
+        del self.__x_axis_display_values_indices
+        del self.__x_labels_values_index_change
+        del self.__x_axis_data
+        del self.__x_axis_data_position
+        del self.__x_axis_values
+        del self.__x_axis_values_handle_by
+        del self.__x_space
+        del self.__pointer_state
+        del self.__pointing_callback_function
+        del self.__pointing_values_precision
+        del self.__pointer_lock
+        del self.__pointer_size
+        del self.__pointer_color
+        del self.__x_values_frame_place_req
+        del self.__y_values_frame_place_req
+        del self.__place_x
+        del self.__real_height
+        del self.__real_width
+        del self.__const_real_height
+        del self.__const_real_width
+        del self.__visibility
+        del self.__place_info_x
+        del self.__place_info_y
+        del self.__place_info_rely
+        del self.__place_info_relx
+        del self.__place_info_anchor
+        del self.__pack_info_pady
+        del self.__pack_info_padx
+        del self.__pack_info_before
+        del self.__pack_info_after
+        del self.__pack_info_side
+        del self.__pack_info_anchor
+        del self.__grid_info_column
+        del self.__grid_info_columnspan
+        del self.__grid_info_padx
+        del self.__grid_info_pady
+        del self.__grid_info_row
+        del self.__grid_info_rowspan
+        del self.__grid_info_sticky
+
+    def destroy(self) -> None:
+        for line in self.__lines:
+            line.destroy()
+
+        self.__del__()

@@ -14,8 +14,8 @@ SIDE: str = "side"
 AUTO: str = "auto"
 
 """
-tkchart: a tool for create live update chart for tkinter guis.
+tkchart: a library for create live update chart for tkinter guis.
 """
 __title__ = "tkchart"
-__version__ = "2.1.2"
+__version__ = "2.1.3"
 __authors__ = ("Thisal Dilmith", "childeyouyu (有语)")

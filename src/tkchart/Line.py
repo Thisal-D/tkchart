@@ -156,7 +156,7 @@ class Line:
         Reset the line.
         """
         self.__reset()
-        self.__master._LineChart__call_reshow_data()
+        self.__master._LineChart__apply_line_configuration()
 
     def set_visible(self, state: bool) -> None:
         """
@@ -168,7 +168,7 @@ class Line:
         Validate._isBool(state, "state")
         if self.__visibility != state:
             self.__visibility = state
-            self.__master._LineChart__call_reshow_data()
+            self.__master._LineChart__apply_line_configuration()
 
     def cget(
             self,
@@ -231,3 +231,37 @@ class Line:
             bool: True if the line is visible, False otherwise.
         """
         return self.__visibility
+
+    
+    def __del__(self) -> None:
+        """Destructor method to delete instance attributes."""
+        del self.__master
+        del self.__color
+        del self.__size
+        del self.__y_end
+        del self.__x_end
+        del self.__data
+        del self.__temp_data
+        del self.__ret_data
+        del self.__visibility
+        del self.__style
+        del self.__style_type
+        del self.__point_highlight
+        del self.__point_highlight_size
+        del self.__point_highlight_color
+        del self.__fill
+        del self.__fill_color
+
+    def destroy(self) -> None:
+        """
+        Removes the instance from its master's line chart and 
+        applies the updated line configuration. Calls the destructor 
+        to clean up resources.
+        """
+        try:
+            self.__master._LineChart__lines.remove(self)
+            self.__master._LineChart__apply_line_configuration()
+        except ValueError:
+            pass  # In case the line is not in the list
+        finally:
+            self.__del__()

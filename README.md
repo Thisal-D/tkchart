@@ -10,7 +10,8 @@ Your support means a lot and inspires me to do better with each update. Thank yo
 
 [![Downloads](https://static.pepy.tech/badge/tkchart)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
-<img src="https://drive.google.com/thumbnail?id=1uZJAjUZPIt79V0FMZ6KpF_x1ln7LFNmg&sz=w180">
+<img src="https://drive.google.com/thumbnail?id=1AxbfzWOvbTbH4uLDgoDgPZqorS6jlBCN&sz=w180">
+
 </div>
 
 **<li>tkchart is a Python library for creating live updating line charts in tkinter.</li>**

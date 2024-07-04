@@ -1,3 +1,11 @@
+## v2.1.4
+
+- ### New Method Added to LineChart Object
+    | Method Name      | Description                                                | Parameters     | Return Type |
+    |------------------|------------------------------------------------------------|----------------|-------------|
+    | `get_line_area` | Get the are of specific line                               | line: `tkchart.Line` | ``float`` | 
+    | `get_lines_area`   | Get the are of all lines                                   | -                    | ``float`` | 
+
 ## v2.1.3
 
 - ### New Method Added to LineChart Object

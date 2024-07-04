@@ -1,17 +1,12 @@
-🌟**If you find this project helpful, your support by starring it would mean a lot! Your feedback motivates me to keep refining and enhancing it further.** 🚀
-
-Your support means a lot and inspires me to do better with each update. Thank you for taking the time to check out this project!🥰
-
 <div align="center">
 
 [![tkchart](https://snyk.io/advisor/python/tkchart/badge.svg)](https://snyk.io/advisor/python/tkchart)
 
-<img src="https://drive.google.com/thumbnail?id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo&sz=w2500" style="width: 100%">
+# tkchart
 
 [![Downloads](https://static.pepy.tech/badge/tkchart)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
-<img src="https://drive.google.com/thumbnail?id=1AxbfzWOvbTbH4uLDgoDgPZqorS6jlBCN&sz=w180">
-
+<img src="https://drive.google.com/thumbnail?id=1YgJhoMequmeKlWmcNo8sgz2RhffPkRVk&sz=w180">
 </div>
 
 **<li>tkchart is a Python library for creating live updating line charts in tkinter.</li>**

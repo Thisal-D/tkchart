@@ -121,8 +121,10 @@ linechart = tkchart.LineChart()
 | cget                       | Get the value of the specified parameter | attribute_name: ``str`` \| "\_\_all\_\_"                                                                                         | ``any``     | 
 | place_info                 | Get info about place                     | attribute_name: ``str`` \| "\_\_all\_\_"                                                                                         | ``any``     | 
 | pack_info                  | Get info about pack                      | attribute_name: ``str`` \| "\_\_all\_\_"                                                                                         | ``any``     | 
-| grid_info                  | Get info about grid                      | attribute_name: ``str`` \| "\_\_all\_\_"                                                                                         | ``any``     | 
-| destroy                    | Destroy the chart                        | -                                                                                                                                | ``None``    | 
+| grid_info                  | Get info about grid                      | attribute_name: ``str`` \| "\_\_all\_\_"                                                                                         | ``any``     |
+| get_line_area               | Get the are of specific line            | line: `tkchart.Line`        | ``float``    | 
+| get_lines_area               | Get the are of all lines               | -                           | ``float``    | 
+| destroy                    | Destroy the chart                        | -                           | ``None``    | 
 
 </div> 
 

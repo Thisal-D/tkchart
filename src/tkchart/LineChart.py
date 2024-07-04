@@ -1960,6 +1960,60 @@ class LineChart:
             return line._Line__visibility
         else:
             Validate._invalidLine(line)
+            
+    def get_lines_area(self):
+        """
+        Get the area of all lines.
+
+        Returns:
+            Area: The area of the lines.
+
+        Raises:
+            ValueError: If the provided line object is not valid or not found in the chart.
+        """
+        
+        total_area = 0
+        for line in self.__lines:
+            total_area += self.get_line_area(line)
+        return total_area
+            
+    def get_line_area(self, line: Line):
+        """
+        Get the area of a specific line.
+
+        Args:
+            line (Line): The Line object for which the area is queried.
+
+        Returns:
+            Area: The area of the line.
+
+        Raises:
+            ValueError: If the provided line object is not valid or not found in the chart.
+        """
+
+        Validate._isValidLine(line, "line")
+        if line not in self.__lines:
+            Validate._invalidLine(line)
+        lines_values = [len(line_._Line__data) for line_ in self.__lines]
+
+        if len(lines_values) > 0:
+            maximum_data = max(lines_values)
+            max_support = int(self.__const_real_width / self.__x_axis_point_spacing) + 1
+           
+            if maximum_data > max_support:
+                line._Line__temp_data = line._Line__data[maximum_data - max_support::]
+            else:
+                line._Line__temp_data = line._Line__data
+                
+        # print(self.__x_axis_point_spacing)
+        total_area = 0
+        for i, data in enumerate(line._Line__temp_data[0: -1]):
+            area = ((data - self.__y_axis_min_value)  + (line._Line__temp_data[i+1] - self.__y_axis_min_value)) * self.__x_axis_point_spacing * 1/2
+            # print("-" * 20)
+            # print(f"(({data - self.__y_axis_min_value}) + ({line._Line__temp_data[i+1] - self.__y_axis_min_value})) * { self.__x_axis_point_spacing} * 1/2 = {area}")
+            total_area += area
+        
+        return total_area
 
     def place_info(
             self,
@@ -2091,7 +2145,11 @@ class LineChart:
         to aid in garbage collection.
         """
         # Destroy widgets
-        self.__main_frame.destroy()
+        try:
+            self.__main_frame.destroy()
+        except Exception as error:
+            return
+        
         self.__x_axis_values_frame.destroy()
         self.__y_axis_values_frame.destroy()
         self.__y_axis_data_label.destroy()

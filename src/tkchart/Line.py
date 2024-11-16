@@ -143,19 +143,29 @@ class Line:
         if changes_req:
             self.__master._LineChart__apply_line_configuration()
 
-    def __reset(self) -> None:
+    def __reset_positions(self) -> None:
         """
         Reset the Line object.
         """
         self.__y_end = 0
         self.__x_end = self.__master._LineChart__x_axis_point_spacing * -1
+        
+    def __clear_data(self) -> None:
         self.__data = []
+        
+    def clear_data(self) -> None:
+        maximum_data = self.__master._LineChart__get_max_data_length_across_lines()
+        max_visible_points = self.__master._LineChart__get_max_visible_data_points()
+        
+        if maximum_data > max_visible_points:
+            self.__data = self.__data[maximum_data - max_visible_points::]
 
     def reset(self) -> None:
         """
         Reset the line.
         """
-        self.__reset()
+        self.__reset_positions()
+        self.__clear_data()
         self.__master._LineChart__apply_line_configuration()
 
     def set_visible(self, state: bool) -> None:

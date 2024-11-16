@@ -1327,6 +1327,40 @@ class LineChart:
 
         for line in self.__lines:
             line._Line__reset()
+            
+    def __get_max_visible_data_points(self) -> int:
+        """
+        Calculate the maximum number of data points that can be displayed 
+        on the chart at the current resolution and axis spacing.
+
+        Returns:
+            int: The maximum number of data points visible on the x-axis.
+        """
+        if len(self.__lines) > 0:
+            # Determine the maximum number of data points based on the available width
+            # and spacing between points on the x-axis.
+            max_visible_points = int(self.__const_real_width / self.__x_axis_point_spacing) + 1
+            return max_visible_points
+
+            
+    def __get_max_data_length_across_lines(self) -> int:
+        """
+        Determine the maximum number of data points in any line within the chart.
+        
+        This is useful for determining how much data is present in the most 
+        populated data series.
+
+        Returns:
+            int: The maximum length of data in any line.
+        """
+        if len(self.__lines) > 0:
+            # Retrieve the number of data points in each line
+            lines_values = [len(line._Line__data) for line in self.__lines]
+            
+            # Find and return the maximum length among all lines
+            max_data_length = max(lines_values)
+            return max_data_length
+
 
     def __reshow_data(self) -> None:
         """
@@ -1336,24 +1370,22 @@ class LineChart:
         shown, resets each line with the latest data, and then displays the data for each line.
         """
 
-        lines_values = [len(line._Line__data) for line in self.__lines]
         self.__reset_chart_info()
 
-        if len(lines_values) > 0:
-            maximum_data = max(lines_values)
-            max_support = int(self.__const_real_width / self.__x_axis_point_spacing) + 1
+        if len(self.__lines) > 0:
+            maximum_data = self.__get_max_data_length_across_lines()
+            max_visible_points = self.__get_max_visible_data_points()
 
             for line in self.__lines:
-                if maximum_data > max_support:
-                    line._Line__temp_data = line._Line__data[maximum_data - max_support::]
+                if maximum_data > max_visible_points:
+                    line._Line__temp_data = line._Line__data[maximum_data - max_visible_points::]
+                    line._Line__data = line._Line__data[:maximum_data - max_visible_points:]
                 else:
                     line._Line__temp_data = line._Line__data
-                line._Line__reset()
+                    line._Line__data = []
+                line._Line__reset_positions()
 
-            lines = self.__lines
-            self.lines = []
-
-            for line in lines:
+            for line in self.__lines:
                 self.show_data(line=line, data=line._Line__temp_data)
 
     def show_data(self, line: Line, data: List[Union[int, float]]) -> None:
@@ -1998,10 +2030,10 @@ class LineChart:
 
         if len(lines_values) > 0:
             maximum_data = max(lines_values)
-            max_support = int(self.__const_real_width / self.__x_axis_point_spacing) + 1
+            max_visible_points = int(self.__const_real_width / self.__x_axis_point_spacing) + 1
            
-            if maximum_data > max_support:
-                line._Line__temp_data = line._Line__data[maximum_data - max_support::]
+            if maximum_data > max_visible_points:
+                line._Line__temp_data = line._Line__data[maximum_data - max_visible_points::]
             else:
                 line._Line__temp_data = line._Line__data
                 

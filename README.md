@@ -2,11 +2,12 @@
 
 [![tkchart](https://snyk.io/advisor/python/tkchart/badge.svg)](https://snyk.io/advisor/python/tkchart)
 
-# tkchart
+# tkchart 
+
+### `v 2.1.5`
 
 [![Downloads](https://static.pepy.tech/badge/tkchart)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
-<img src="https://drive.google.com/thumbnail?id=1YgJhoMequmeKlWmcNo8sgz2RhffPkRVk&sz=w180">
 </div>
 
 **<li>tkchart is a Python library for creating live updating line charts in tkinter.</li>**
@@ -75,8 +76,8 @@
 ### Links
 
 - **Documentation :** [Documents](documentation)
-    - [English doc.](documentation/DOCUMENTATION_EN.md)
-    - [Chinese doc.](documentation/DOCUMENTATION_CN.md)
+    - [English doc.](documentation/DOCUMENTATION_en.md)
+    - [Chinese doc.](documentation/DOCUMENTATION_zh.md)
 - **Python official :** [tkchart](https://pypi.org/project/tkchart/)
 
 ---
@@ -368,8 +369,8 @@
 **Explore customizable features such as colors, fonts, and more in the documentation.**
 
 #### Please refer to the full documentation
-- [**English doc.**](documentation/DOCUMENTATION_EN.md)
-- [**Chinese doc.**](documentation/DOCUMENTATION_CN.md)
+- [**English doc.**](documentation/DOCUMENTATION_en.md)
+- [**Chinese doc.**](documentation/DOCUMENTATION_zh.md)
 
 ---
 

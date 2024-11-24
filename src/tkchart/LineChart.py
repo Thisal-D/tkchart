@@ -1336,13 +1336,11 @@ class LineChart:
         Returns:
             int: The maximum number of data points visible on the x-axis.
         """
-        if len(self.__lines) > 0:
-            # Determine the maximum number of data points based on the available width
-            # and spacing between points on the x-axis.
-            max_visible_points = int(self.__const_real_width / self.__x_axis_point_spacing) + 1
-            return max_visible_points
+        # Determine the maximum number of data points based on the available width
+        # and spacing between points on the x-axis.
+        max_visible_points = int(self.__const_real_width / self.__x_axis_point_spacing) + 1
+        return max_visible_points
 
-            
     def __get_max_data_length_across_lines(self) -> int:
         """
         Determine the maximum number of data points in any line within the chart.
@@ -1360,7 +1358,7 @@ class LineChart:
             # Find and return the maximum length among all lines
             max_data_length = max(lines_values)
             return max_data_length
-
+        return 0
 
     def __reshow_data(self) -> None:
         """
@@ -1372,21 +1370,20 @@ class LineChart:
 
         self.__reset_chart_info()
 
-        if len(self.__lines) > 0:
-            maximum_data = self.__get_max_data_length_across_lines()
-            max_visible_points = self.__get_max_visible_data_points()
+        maximum_data = self.__get_max_data_length_across_lines()
+        max_visible_points = self.__get_max_visible_data_points()
 
-            for line in self.__lines:
-                if maximum_data > max_visible_points:
-                    line._Line__temp_data = line._Line__data[maximum_data - max_visible_points::]
-                    line._Line__data = line._Line__data[:maximum_data - max_visible_points:]
-                else:
-                    line._Line__temp_data = line._Line__data
-                    line._Line__data = []
-                line._Line__reset_positions()
+        for line in self.__lines:
+            if maximum_data > max_visible_points:
+                line._Line__temp_data = line._Line__data[maximum_data - max_visible_points::]
+                line._Line__data = line._Line__data[:maximum_data - max_visible_points:]
+            else:
+                line._Line__temp_data = line._Line__data
+                line._Line__data = []
+            line._Line__reset_positions()
 
-            for line in self.__lines:
-                self.show_data(line=line, data=line._Line__temp_data)
+        for line in self.__lines:
+            self.show_data(line=line, data=line._Line__temp_data)
 
     def show_data(self, line: Line, data: List[Union[int, float]]) -> None:
         """
@@ -1589,11 +1586,12 @@ class LineChart:
                 x_ += self.__x_axis_point_spacing
             return x_
 
-        max_sup = int(self.__const_real_width / self.__x_axis_point_spacing)
-        max_view = max_sup + 1
+        max_view = self.__get_max_visible_data_points()
+        max_sup = max_view - 1
         values = []
+        max_data = self.__get_max_data_length_across_lines()
+        
         try:
-            max_data = max([len(line._Line__data) for line in self.__lines])
             if self.__pointer_lock == "enabled":
                 event_x = round_x(event_.x)
             else:
@@ -1638,6 +1636,39 @@ class LineChart:
                     self.__pointing_callback_function("null", values)
         except:
             pass
+        
+    def clear_data(self) -> None:
+        """
+        Clears the data of all lines within the LineChart object, ensuring the data fits the 
+        maximum visible points allowed for the chart.
+
+        This method calculates the maximum number of data points across all lines and the maximum
+        number of visible data points allowed. If the total data exceeds the visible points limit, 
+        it trims each line's data to retain only the most recent visible data points.
+
+        The method checks the length of the data across all lines and compares it with the maximum 
+        visible data points. If necessary, each line’s data is cropped by removing earlier data 
+        points, retaining only the most recent data within the visible limit.
+
+        Attributes:
+            self.__lines: A list of line objects representing each individual line on the chart.
+        
+        Returns:
+            None: This method modifies the internal state of each line's data but does not return any value.
+
+        Example:
+            chart.clear_data()
+
+        In this example, the data for each line in the chart will be cleared or trimmed based on the 
+        maximum visible data points. Only the most recent data within the allowed visible range is kept.
+        """
+        
+        maximum_data = self.__get_max_data_length_across_lines()
+        max_visible_points = self.__get_max_visible_data_points()
+        
+        for line in self.__lines:
+            if maximum_data > max_visible_points:
+                line._Line__data = line._Line__data[maximum_data - max_visible_points::]
 
     def place(
             self,
@@ -2026,16 +2057,14 @@ class LineChart:
         Validate._isValidLine(line, "line")
         if line not in self.__lines:
             Validate._invalidLine(line)
-        lines_values = [len(line_._Line__data) for line_ in self.__lines]
 
-        if len(lines_values) > 0:
-            maximum_data = max(lines_values)
-            max_visible_points = int(self.__const_real_width / self.__x_axis_point_spacing) + 1
-           
-            if maximum_data > max_visible_points:
-                line._Line__temp_data = line._Line__data[maximum_data - max_visible_points::]
-            else:
-                line._Line__temp_data = line._Line__data
+        maximum_data = self.__get_max_data_length_across_lines()
+        max_visible_points = self.__get_max_visible_data_points()
+        
+        if maximum_data > max_visible_points:
+            line._Line__temp_data = line._Line__data[maximum_data - max_visible_points::]
+        else:
+            line._Line__temp_data = line._Line__data
                 
         # print(self.__x_axis_point_spacing)
         total_area = 0
@@ -2176,6 +2205,7 @@ class LineChart:
         It ensures that all widgets are destroyed and attributes are deleted
         to aid in garbage collection.
         """
+        
         # Destroy widgets
         try:
             self.__main_frame.destroy()
@@ -2277,6 +2307,10 @@ class LineChart:
         del self.__grid_info_sticky
 
     def destroy(self) -> None:
+        """
+        Destroy the chart.
+        """
+        
         for line in self.__lines:
             line.destroy()
 

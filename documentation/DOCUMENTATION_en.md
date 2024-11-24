@@ -8,7 +8,7 @@
 
 <div id="howtouse"> 
 
-<a href="#top">**Back to the Top**</a> | <a href="#example">**Examples**</a> | <a href="#parameter_explanation">**Parameter Explanation**</a> | <a href="../CHANGES_en.MD">**Whats New ?**</a> 
+<a href="#top">**Back to the Top**</a> | <a href="#example">**Examples**</a> | <a href="#parameter_explanation">**Parameter Explanation**</a> | <a href="../CHANGES_en.md">**Whats New ?**</a> 
 
 ### Importing & Installation 
 * Installation 
@@ -223,7 +223,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 
 <div id="parameter_explanation"> 
 
-<a href="#top">**Back to the Top**</a> | <a href="#howtouse">**Usage Guide**</a> | <a href="#example">**Examples**</a> | <a href="../CHANGES_en.MD">**Whats New ?**</a>
+<a href="#top">**Back to the Top**</a> | <a href="#howtouse">**Usage Guide**</a> | <a href="#example">**Examples**</a> | <a href="../CHANGES_en.md">**Whats New ?**</a>
 
 ## Parameter Explanation 
 
@@ -761,7 +761,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 
 <div id="example"> 
 
-<a href="#top">**Back to the Top**</a> | <a href="#howtouse">**Usage Guide**</a> | <a href="#parameter_explanation">**Parameter Explanation**</a> | <a href="../CHANGES_en.MD">**Whats New ?**</a>
+<a href="#top">**Back to the Top**</a> | <a href="#howtouse">**Usage Guide**</a> | <a href="#parameter_explanation">**Parameter Explanation**</a> | <a href="../CHANGES_en.md">**Whats New ?**</a>
 
 ## Examples 
 

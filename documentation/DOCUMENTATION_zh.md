@@ -8,7 +8,7 @@
 
 <div id="howtouse"> 
 
-<a href="#top">**回到顶部**</a> | <a href="#example">**例子**</a> | <a href="#parameter_explanation">**参数说明**</a> | <a href="../CHANGES_zh.MD">**查看新功能**</a> 
+<a href="#top">**回到顶部**</a> | <a href="#example">**例子**</a> | <a href="#parameter_explanation">**参数说明**</a> | <a href="../CHANGES_zh.md">**查看新功能**</a> 
 
 ### 安装和使用 
 * 安装 
@@ -227,7 +227,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 
 <div id="parameter_explanation"> 
 
-<a href="#top">**返回顶部**</a> | <a href="#howtouse">**使用指南**</a> | <a href="#example">**例子**</a> | <a href="../CHANGES_zh.MD">**查看新功能**</a> 
+<a href="#top">**返回顶部**</a> | <a href="#howtouse">**使用指南**</a> | <a href="#example">**例子**</a> | <a href="../CHANGES_zh.md">**查看新功能**</a> 
 
 ## 参数说明 
 
@@ -772,7 +772,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 
 <div id="example"> 
 
-<a href="#top">**回到顶部**</a> | <a href="#howtouse">**使用指南**</a> | <a href="#parameter_explanation">**参数说明**</a> | <a href="../CHANGES_zh.MD">**查看新功能**</a> 
+<a href="#top">**回到顶部**</a> | <a href="#howtouse">**使用指南**</a> | <a href="#parameter_explanation">**参数说明**</a> | <a href="../CHANGES_zh.md">**查看新功能**</a> 
 
 ## [例子](https://github.com/Thisal-D/tkchart/tree/main/template(s))
 

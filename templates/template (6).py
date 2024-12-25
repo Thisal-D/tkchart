@@ -9,7 +9,7 @@ root.configure(bg="#151515")
 
 #creating a chart
 chart = tkchart.LineChart(master=root,
-                          x_axis_values = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+                          x_axis_values = ("100\nS", "200\nS", "300\nS", "400\nS", "500\nS", "600\nS", "700\nS", "800\nS", "900\nS"),
                           y_axis_values = (0,100),
                           y_axis_label_count=10,
                           x_axis_section_count=10,
@@ -25,6 +25,11 @@ chart = tkchart.LineChart(master=root,
                           y_axis_data_font_color="#efefef",
                           y_space=20,
                           x_space=20,
+                          x_axis_data="Seconds\n(s)",
+                          x_axis_data_position="side",
+                          y_axis_data_position="top",
+                          
+                        
                           )         
 chart.pack()
 

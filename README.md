@@ -10,7 +10,7 @@
 
 <img src="https://drive.google.com/thumbnail?id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo&sz=w900">
 
-<img src="https://drive.google.com/thumbnail?id=1YH8qrj3vG2q3Z6d3xa4DUC690bH5IeR-&sz=w180">
+<img src="https://drive.google.com/thumbnail?id=1s4KLDwNsGLOvTHo6Ma_vbriLr8VwXW3N&sz=w180">
 
 </div>
 
@@ -22,7 +22,7 @@
 <br>
 <br>
 
-## tkchart - 1.3.1
+## tkchart - 1.3.3
 
 ### You need to install & import package first
 * installation
@@ -62,6 +62,7 @@ linechart = tkchart.LineChart()
     - x_axis_section_count : ``int``
     - y_axis_label_count : ``int``
     - x_axis_label_count : ``int``
+    - x_axis_display_values_indices : ``list``
     - y_axis_data : ``str | int | float``
     - x_axis_data : ``str | int | float``
     - y_axis_max_value : ``int | float``
@@ -91,17 +92,23 @@ linechart = tkchart.LineChart()
     - y_axis_data_position : ``str``
         - "top"
         - "side"
+    - pointing_callback_function : ``function``
+        - function_name(*args)
+    - pointer_color : ``str``
+    - pointing_values_precision : ``int``
 
 - ##  Methods
-    
+
     - ### configure : ``use to change LineChart attributes``
         Support parameters
+        - width
         - height
         - axis_size
         - y_axis_section_count
         - x_axis_section_count
         - y_axis_label_count
         - x_axis_label_count
+        - x_axis_display_values_indices
         - y_axis_data
         - x_axis_data
         - y_axis_max_value
@@ -122,6 +129,9 @@ linechart = tkchart.LineChart()
         - x_space
         - x_axis_data_position
         - y_axis_data_position
+        - pointing_callback_function
+        - pointer_color
+        - pointing_values_precision
     
     - ### show_data : ``use to display data``
         Support parameters

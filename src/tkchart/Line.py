@@ -1,3 +1,4 @@
+from typing import Union, Tuple
 from .Validate import Validate
 from .FontStyle import FontStyle
 
@@ -7,7 +8,7 @@ class Line():
                color: str = "#909090",
                size: int = 1,
                style: str = "normal", 
-               style_type: tuple[int, int] = (10,5),
+               style_type: Tuple[int, int] = (10,5),
                point_highlight: str = "disabled",
                point_highlight_size: int = 0,
                point_highlight_color: str = "#909090",
@@ -48,7 +49,7 @@ class Line():
                   color: str = None, 
                   size: int = None,
                   style: str = None,
-                  style_type: tuple[int, int] = None,
+                  style_type: Tuple[int, int] = None,
                   point_highlight: str = None,
                   point_highlight_size: int = None,
                   point_highlight_color: str = None,

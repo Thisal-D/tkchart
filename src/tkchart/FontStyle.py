@@ -1,7 +1,7 @@
 class FontStyle:
     def _get_font_style_code(fg_color: str,
                              bg_color: str,
-                             style: str):
+                             style: str) -> str:
         
         colors_data = {"black" : ("30", "40"), 
                        "gray" : ("90", "100"),  
@@ -37,6 +37,6 @@ class FontStyle:
     def _fontStyle(value : str,
                    fg_color : str,
                    bg_color : str,
-                   style : str = "normal"):
+                   style : str = "normal") -> str:
         output_text = FontStyle._get_font_style_code(fg_color, bg_color, style) + value + "\x1b[0m" ; 
         return output_text ;

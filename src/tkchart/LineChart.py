@@ -1,4 +1,5 @@
 import tkinter
+from typing import Union, Tuple, List
 from .Utils import Utils
 from .Validate import Validate
 from .FontStyle import FontStyle
@@ -14,34 +15,34 @@ class LineChart():
                   axis_color: str = "#909090",
                   bg_color: str = "#303030",
                   fg_color: str = "#252525",
-                  data_font_style: tuple[str, int, str] = ("arial", 9, "normal"),
-                  axis_font_style: tuple[str, int, str] = ("arial", 9, "normal"),
+                  data_font_style: Tuple[str, int, str] = ("arial", 9, "normal"),
+                  axis_font_style: Tuple[str, int, str] = ("arial", 9, "normal"),
                   
                   y_axis_precision: int = 1,
                   y_axis_data: any = "Y",
                   y_axis_label_count: int = 5,
-                  y_axis_values: tuple[int | float, int | float] = (None, None),
+                  y_axis_values: Tuple[Union[int, float], Union[int, float]] = (None, None),
                   y_axis_font_color: str = "#909090",
                   y_axis_data_font_color: str = "#909090",
                   y_axis_data_position: str = "top",
                   y_axis_section_count: int = 0,
                   y_axis_section_style: str = "normal",
-                  y_axis_section_style_type: tuple[int, int] = (100, 50),
+                  y_axis_section_style_type: Tuple[int, int] = (100, 50),
                   y_axis_section_color: str = None,
                   
                   x_axis_data: str = "X",
                   x_axis_label_count: int = None,
-                  x_axis_values: tuple[any, ...] = (1, 2, 3, 4, 5),
-                  x_axis_display_values_indices: tuple[int, ...] = None,
+                  x_axis_values: Tuple[any, ...] = (1, 2, 3, 4, 5),
+                  x_axis_display_values_indices: Tuple[int, ...] = None,
                   x_axis_font_color: str = "#909090",
                   x_axis_data_font_color: str = "#cccccc",
                   x_axis_data_position: str = "top",
                   x_axis_section_count: int=0,
                   x_axis_section_style: str = "normal",
-                  x_axis_section_style_type: tuple[int, int] = (100, 50),
+                  x_axis_section_style_type: Tuple[int, int] = (100, 50),
                   x_axis_section_color: str = None,
                   
-                  line_width: int | str = "auto",
+                  line_width: Union[int, str] = "auto",
                   y_space: int = 0, 
                   x_space: int = 0,
                   
@@ -612,37 +613,37 @@ class LineChart():
                   width: int = None,
                   height: int = None,
                   axis_size: int = None,
-                  line_width: int | str = None, 
+                  line_width: Union[int, str] = None, 
                   
                   bg_color: str = None,
                   axis_color: str = None,
                   fg_color: str = None,
-                  data_font_style: tuple[str, int, str] = None,
-                  axis_font_style: tuple[str, int, str] = None,
+                  data_font_style: Tuple[str, int, str] = None,
+                  axis_font_style: Tuple[str, int, str] = None,
             
-                  y_axis_values: int | float=None,
+                  y_axis_values: Union[int, float]=None,
                   y_axis_precision: int = None,
                   y_axis_font_color: str = None,
                   y_axis_data_font_color: str = None,
                   y_axis_section_count: int = None,
                   y_axis_section_color: str = None,
                   y_axis_section_style: str = None,
-                  y_axis_section_style_type: tuple[int, int] = None,
+                  y_axis_section_style_type: Tuple[int, int] = None,
                   y_axis_label_count: int=None,
                   y_axis_data: any = None,
                   y_axis_data_position: str = None,
                   y_space: int = None,
                   
-                  x_axis_values: tuple[any, ...] = None,
+                  x_axis_values: Tuple[any, ...] = None,
                   x_axis_data: any = None,
                   x_axis_font_color: str = None,
                   x_axis_data_font_color: str = None,
                   x_axis_label_count: int = None,
                   x_axis_section_count: int = None,
                   x_axis_section_style: str = None,
-                  x_axis_section_style_type: tuple[int, int] = None,
+                  x_axis_section_style_type: Tuple[int, int] = None,
                   x_axis_section_color: str = None,
-                  x_axis_display_values_indices: tuple[int, ...] = None,
+                  x_axis_display_values_indices: Tuple[int, ...] = None,
                   x_axis_data_position: str = None,
                   x_space: int = None ,
                   
@@ -1040,7 +1041,7 @@ class LineChart():
             self.show_data(line=line, data=line._Line__temp_data)
    
    
-   def show_data(self, line: Line, data: list) -> None:
+   def show_data(self, line: Line, data: List[Union[int, float]]) -> None:
       Validate._isValidLine(line, "line")
       Validate._isValidData(data, "data")
       
@@ -1153,10 +1154,11 @@ class LineChart():
                   if line._Line__point_highlight == "enabled" and line._Line__point_highlight_size > 0 : 
                      highlight_size =  line._Line__point_highlight_size /2 
                      self.__output_canvas.create_oval(line._Line__x_end - highlight_size,
-                                                         line._Line__y_end - highlight_size,
-                                                         line._Line__x_end + highlight_size,
-                                                         line._Line__y_end + highlight_size,
-                                                         fill=line._Line__point_highlight_color
+                                                      line._Line__y_end - highlight_size,
+                                                      line._Line__x_end + highlight_size,
+                                                      line._Line__y_end + highlight_size,
+                                                      fill=line._Line__point_highlight_color,
+                                                      outline=line._Line__point_highlight_color,
                                                       )
             else:
                break
@@ -1228,8 +1230,8 @@ class LineChart():
    def place(self,
              x: int = None,
              y: int = None,
-             rely: int | float = None,
-             relx: int | float = None,
+             rely: Union[int, float] = None,
+             relx: Union[int, float] = None,
              anchor: str = None
              ) -> None: 
       self.__main_frame.place(x=x, y=y, rely=rely, relx=relx, anchor=anchor)

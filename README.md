@@ -15,7 +15,7 @@
 [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart)
 [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
-<img src="https://drive.google.com/thumbnail?id=1OawyuxJnen5SD4JCrJYSwGPGNTMQjSeV&sz=w180">
+<img src="https://drive.google.com/thumbnail?id=1M9PQdneorti9i5lCNzekwsGkIwH62OJk&sz=w180">
 
 </div>
 
@@ -32,7 +32,7 @@
 <br>
 <br>
 
-## tkchart - 1.4.1
+## tkchart - 1.4.2
 
 ### You need to install & import package first
 * installation
@@ -133,7 +133,7 @@ linechart = tkchart.LineChart()
     ## Data Retrieval Configuration
     - pointing_callback_function : ``function``
         - function_name(*args)
-        - function_name(x ,y)
+        - function_name(x: any, y: list)
     - pointer_state : ``str``
         - "enabled"
         - "disabled"
@@ -197,8 +197,6 @@ linechart = tkchart.LineChart()
         - ~~y_axis_max_value~~ : <span style="color:red; font-weight:bold">Removed</span>
         - ~~section_color~~ : <span style="color:red; font-weight:bold">Removed</span>
     
-
-        
     - ### show_data : ``use to display data``
         Support parameters
         - data : ``list``
@@ -223,13 +221,13 @@ linechart = tkchart.LineChart()
         
     - ### grid : ``use to grid LineChart``
         Support parameters
-        - column ``int``
-        - columnspan ``int``
-        - padx ``int``
-        - pady ``int``
-        - row ``int``
-        - rowspan ``int``
-        - sticky ``str``
+        - column : ``int``
+        - columnspan : ``int``
+        - padx : ``int``
+        - pady : ``int``
+        - row : ``int``
+        - rowspan : ``int``
+        - sticky : ``str``
 
     - ### place_forget : ``use to place forget the chart``
     - ### pack_forget : ``use to pack forget the chart``

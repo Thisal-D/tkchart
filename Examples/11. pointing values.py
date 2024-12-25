@@ -7,11 +7,11 @@ root = customtkinter.CTk()
 root.geometry("1048x599+442+239")
 
 
-def func(*args):
-    label.configure(text=args[0])
-    label2.configure(text=args[1])
-    label3.configure(text=args[2])
-    label4.configure(text=args[3])
+def func(x, y):
+    label.configure(text=y[0])
+    label2.configure(text=y[1])
+    label3.configure(text=y[2])
+    label4.configure(text=y[3])
 
     
 linechart = tkchart.LineChart(master=root,
@@ -25,12 +25,13 @@ linechart = tkchart.LineChart(master=root,
                             
                             y_axis_data="GB",
                             x_axis_data="S",
-                            x_axis_values=[x for x in range(1,11,1)],
+                            x_axis_values=tuple([x for x in range(1,11,1)]),
                             x_axis_label_count=10,
-                            y_axis_max_value=1000,
+                            y_axis_values=(0,1000),
                             y_axis_precision=4,
                           
-                            section_color="#404040",
+                            x_axis_section_color="#404040",
+                            y_axis_section_color="#404040",
                             y_axis_font_color="#707070",
                             x_axis_font_color="#707070",
                             x_axis_data_font_color="lightblue",
@@ -54,26 +55,26 @@ linechart.place(x=100, y=10)
 line = tkchart.Line(master=linechart,
                 color="#ff0000",
                 size=1,
-                style="line",
+                style="normal",
                 style_type=(4,10),
                 )
 
 line2 = tkchart.Line(master=linechart,
                 color="#00ff00",
                 size=1,
-                style="line",
+                style="normal",
                 style_type=(4,10))
 
 line3 = tkchart.Line(master=linechart,
                 color="#0000ff",
                 size=1,
-                style="line",
+                style="normal",
                 style_type=(4,10))
 
 line4 = tkchart.Line(master=linechart,
                 color="#ffff00",
                 size=1,
-                style="line",
+                style="normal",
                 style_type=(4,10))
 
 frame = customtkinter.CTkFrame(master=root, width=30, height=30, fg_color="#ff0000")

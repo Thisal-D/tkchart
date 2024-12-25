@@ -16,7 +16,6 @@ linechart = tkchart.LineChart(master=root,
                               
                               width=1000, height=500,
                               axis_size=5,
-                          
                               
                               bg_color="#202020",
                               fg_color="#202020",
@@ -43,14 +42,23 @@ linechart = tkchart.LineChart(master=root,
                               y_axis_precision=3,
                               
                               y_space=20,
-                              x_space=20
+                              x_space=20,
+                              
+                              x_axis_data_position="side",
+                              y_axis_data_position="side",
+                              
+                              x_axis_section_style="dashed",
+                              y_axis_section_style="dashed",
+                              
+                              x_axis_section_style_type=(20,10),
+                              y_axis_section_style_type=(20,10),
                               
                              )
 #place line chart
 linechart.place(x=50, y=50)
 
 #create line 
-line = tkchart.Line(master=linechart, size=2, color="lightblue")
+line = tkchart.Line(master=linechart, size=2, color="lightblue" ,style="dashed", style_type=(10,10))
 
 #display data
 data = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]

@@ -5,10 +5,10 @@ root = customtkinter.CTk()
 root.geometry("1280x720")
 
 # values for chart x axis
-x_axis_values = ['2020 Year', '2021 Year', '2022 Year', '2023 Year', '2024 Year']
+x_axis_values = ('2020 Year', '2021 Year', '2022 Year', '2023 Year', '2024 Year')
 #create line chart
 linechart = tkchart.LineChart(master=root,
-                              y_axis_max_value=1000,
+                              y_axis_values=(0,1000),
                               x_axis_values=x_axis_values,
                               
                               width=1000, height=500,

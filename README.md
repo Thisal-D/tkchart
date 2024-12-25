@@ -1,16 +1,28 @@
 
-<img src="https://drive.google.com/uc?export=view&id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo" style="margin-left: auto;margin-right: auto;display: block; max-width:100%">
-<img src="https://drive.google.com/uc?export=view&id=1YqYcKm0ear9j2NB2BtOlWTvajubi6ZTH" style="margin-left: auto;margin-right: auto;display: block;  max-width:35%">
-<hr>
+<div align="center"><h1> tkchart</h1> </div>
+
+<div align="center">
+<img src="https://drive.google.com/uc?export=view&id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo">
+<img src="https://drive.google.com/uc?export=view&id=1kMVifs_1oLZPyQkX4mHGyPWThbqj8nNU">
+</div>
 
 
-# tkchart - 1.0.5
+### <li>tkchart Library is a Python library that simplifies the process of creating line charts in tkinter and customtkinter GUI applications.</li>
+
+## Examples
+<div align="center"><img src="https://drive.google.com/uc?export=view&id=1F_elYaMgKzVMNLgDjBN6B7P4EX9X43YV"></div>
+
+
+## tkchart - 1.0.6
 <hr>
 <br>
 
-#### you need to import package first
+#### you need to install & import package first
+> installation
+>> pip install tkchart
 
-> import tkchart
+> importing
+>> import tkchart
 
 ## Mainly there are 2 objects. 
 >  - LineChart 
@@ -20,14 +32,12 @@
 > 1. Create LineChart
 > 2. Create Line
 > 3. Display data
-<br>
 
+<br>
+<br>
 
 # 1 . Create LineChart 
 Create a LineChart
-
-   
-
 ### ``linechart = tkchart.LineChart()``
 
 - ##  Attributes & Types
@@ -52,8 +62,8 @@ Create a LineChart
     ``sections_color`` : str<br>
     ``y_values_color`` : str<br>
     ``x_values_color`` : str<br>
-    ``y_data_text_color`` : str<br>
-    ``x_data_text_color`` : str<br>
+    ``y_data_color`` : str<br>
+    ``x_data_color`` : str<br>
     ``bg_color`` : str<br>
     ``chart_color`` : str<br>
     ``bar_color`` : str<br>
@@ -62,6 +72,8 @@ Create a LineChart
     ``x_y_values_font`` : tuple<br>
     ``line_width_auto`` : bool<br>
     ``line_width`` : int<br>
+
+
 
 
 - ##  Methods
@@ -85,8 +97,8 @@ Create a LineChart
     sections_color
     y_values_color
     x_values_color 
-    y_data_text_color 
-    x_data_text_color 
+    y_data_color 
+    x_data_color 
     bg_color
     chart_color 
     bar_color 
@@ -161,39 +173,62 @@ Create a LineChart
 
 ```
 linechart = tkchart.LineChart(master=root,
-                            width=1000, 
-                            height=600,
+                            width=800, 
+                            height=400,
                             bar_size=5
-                            )
+                        )
 ```
-
-![Example Image](https://drive.google.com/uc?export=view&id=10xbpwAUI5vNxfUMM9rUbd4B6va56Zmj6)
-
-
-
+<div align="center"><img src="https://drive.google.com/uc?export=view&id=1BA-C3w22rGLmhMK-aMN9aprntyEytbSO"></div>
+<br>
+<br>
 
 ```
-linechart = tkchart.LineChart(master=root, 
-                            width=1000, 
-                            height=600,
+linechart = tkchart.LineChart(master=root,
+                            width=800, 
+                            height=400,
                             bar_size=5,
-
+                            
+                            
                             y_sections_count=5,
                             x_sections_count=5,
                             y_labels_count=5,
-                            x_labels_count=5
-                            )
+                            x_labels_count=5,
+                        )
 ```
-
-![Example Image](https://drive.google.com/uc?export=view&id=1jt8JeAIU9HqimmCsL-3sodXmjlNYhbYg)
-
-
-
+<div align="center"><img src="https://drive.google.com/uc?export=view&id=1eoJ64dn19Tqpwl5-rev_yW_N8rLMTTIM"></div>
+<br>
+<br>
 
 ```
-linechart = tkchart.LineChart(master=root, width=1000, 
-                            height=600,
+linechart = tkchart.LineChart(master=root,
+                            width=800, 
+                            height=400,
                             bar_size=5,
+                            
+                            
+                            y_sections_count=5,
+                            x_sections_count=5,
+                            y_labels_count=5,
+                            x_labels_count=5,
+                            
+                            y_data="GB",
+                            x_data="S",
+                            x_data_min_max=(20,60),
+                            y_data_max=1000,
+                            x_values_decimals=4,
+                            y_values_decimals=5
+                        )
+```
+<div align="center"><img src="https://drive.google.com/uc?export=view&id=1PzJiQgRmBPUJSdBPu57O9EJLvATt-BLb"></div>
+<br>
+<br>
+
+```
+linechart = tkchart.LineChart(master=root,
+                            width=800, 
+                            height=400,
+                            bar_size=5,
+                            
                             
                             y_sections_count=5,
                             x_sections_count=5,
@@ -206,50 +241,27 @@ linechart = tkchart.LineChart(master=root, width=1000,
                             y_data_max=1000,
                             x_values_decimals=4,
                             y_values_decimals=5,
-                            )
-```
-
-![Example Image](https://drive.google.com/uc?export=view&id=1WOYWlDMJKIF5_HDzocOPdl6oQZJLuY0H)
-
-
-
-
-```
-linechart = tkchart.LineChart(master=root, width=1000, 
-                            height=600,
-                            bar_size=5,
                             
-                            y_sections_count=5,
-                            x_sections_count=5,
-                            y_labels_count=5,
-                            x_labels_count=5,
-                            
-                            y_data="GB",
-                            x_data="S",
-                            x_data_min_max=(20,60),
-                            y_data_max=1000,
-                            x_values_decimals=4,
-                            y_values_decimals=5,
-                            
-                            sections_color="#ffffff",
-                            y_values_color="#ffffff",
-                            x_values_color="#ffffff",
-                            x_data_text_color="#00ffff",
-                            y_data_text_color="#ff00ff",
+                            sections_color="#404040",
+                            y_values_color="#707070",
+                            x_values_color="#707070",
+                            x_data_color="lightblue",
+                            y_data_color="lightblue",
                             bg_color="#202020",
-                            chart_color="#101010",
-                            bar_color="#909090"
+                            chart_color="#202020",
+                            bar_color="#707070"
                             )
 ```
-
-![Example Image](https://drive.google.com/uc?export=view&id=11TMakOOD9XXbrRXGAdxscmPhEeRARXLz)
-
+<div align="center"><img src="https://drive.google.com/uc?export=view&id=1bVgBSVc2SVkwY8B1yaJpoxq0tfv88GGU"></div>
+<br>
+<br>
 
 ```
-linechart = tkchart.LineChart(master=root, 
-                            width=1000, 
-                            height=600,
+linechart = tkchart.LineChart(master=root,
+                            width=800, 
+                            height=400,
                             bar_size=5,
+                            
                             
                             y_sections_count=5,
                             x_sections_count=5,
@@ -263,30 +275,27 @@ linechart = tkchart.LineChart(master=root,
                             x_values_decimals=4,
                             y_values_decimals=5,
                             
-                            sections_color="#505050",
-                            y_values_color="#bbbbbb",
-                            x_values_color="#bbbbbb",
-                            x_data_color="#00ffff",
-                            y_data_color="#ff00ff",
+                            sections_color="#404040",
+                            y_values_color="#707070",
+                            x_values_color="#707070",
+                            x_data_color="lightblue",
+                            y_data_color="lightblue",
                             bg_color="#202020",
-                            chart_color="#101010",
-                            bar_color="#cccccc",
+                            chart_color="#202020",
+                            bar_color="#707070",
                             
                             x_y_data_font = ("Arial", 15,"bold"),
                             x_y_values_font = ("Arial", 10,"bold")
                             )
 ```
-![Example Image](https://drive.google.com/uc?export=view&id=1ZvjEkmt_L-l2Pi1GzdmS9vuMujb1tLH5)
-
-
-
+<div align="center"><img src="https://drive.google.com/uc?export=view&id=1we8KgY7vNk2i05pnDSpzxh7j0lnWyD4c"></div>
+<br>
+<br>
 <br>
 <br>
 
-# 1 . Create Line 
+# 2 . Create Line 
 Create a Line
-
-   
 
 ### ``line = tkchart.Line()``
 
@@ -295,6 +304,8 @@ Create a Line
     ``master`` : tkchart.LineChart<br>
     ``color`` : str<br>
     ``size`` : int<br>
+    ``mode`` : str<br>
+    ``mode_style`` : tuple<br>
 
 
 - ##  Methods
@@ -303,39 +314,37 @@ Create a Line
     ```
     size 
     color 
+    mode
+    mode_style
     ```
 ```
 line = tkchart.Line(master=linechart,
-                color="#ffff00",
-                size=5)
+                color="lightblue",
+                size=2,
+                mode="dash",
+                mode_style=(4,10))
 
 ```
-
-![Example Image](https://drive.google.com/uc?export=view&id=1zPR4mIfZmcP6zyA8Sd2JCmHdgbilv7Fe)
-
-
-
-`` line_width `` <font color="Red" >is not a attributes of Line. Its a attribute of LineChart object..! </font>
-
-
+<div align="center"><img src="https://drive.google.com/uc?export=view&id=1_--eXTjWu5trc9gN_r1h3iq4mZtSZds6"></div>
+<br>
+<br>
 <br>
 <br>
 
-# 1 . Display Data
+# 3 . Display Data
 ```
-import tkinter
 import tkchart
-import random #for get random value
+import customtkinter
 
-#create root 
-root = tkinter.Tk()
-root.minsize(1200,800)
 
-#create LineChart
-linechart = tkchart.LineChart(master=root, 
-                            width=1000, 
+root = customtkinter.CTk()
+root.geometry("1048x599+442+239")
+
+linechart = tkchart.LineChart(master=root,
+                            width=800, 
                             height=400,
                             bar_size=5,
+                            
                             
                             y_sections_count=5,
                             x_sections_count=5,
@@ -349,50 +358,66 @@ linechart = tkchart.LineChart(master=root,
                             x_values_decimals=4,
                             y_values_decimals=5,
                             
-                            sections_color="#707070",
-                            y_values_color="#bbbbbb",
-                            x_values_color="#bbbbbb",
-                            x_data_color="#00ff00",
-                            y_data_color="#00ff00",
+                            sections_color="#404040",
+                            y_values_color="#707070",
+                            x_values_color="#707070",
+                            x_data_color="lightblue",
+                            y_data_color="lightblue",
                             bg_color="#202020",
-                            chart_color="#101010",
-                            bar_color="#cccccc",
+                            chart_color="#202020",
+                            bar_color="#707070",
                             
                             x_y_data_font = ("Arial", 15,"bold"),
-                            x_y_values_font = ("Arial", 10,"bold"),
+                            x_y_values_font = ("Arial", 10,"bold")
                             )
-#place LineChart
-linechart.place(x=50 ,y=150)
 
 
-#Create Line
+linechart.pack(pady=100)
+
+
 line = tkchart.Line(master=linechart,
-                color="#cccccc",
-                size=3)
+                color="lightblue",
+                size=2,
+                mode="dash",
+                mode_style=(4,10))
 
-displayed = 0
-max_support = 50 #60-50
+
+import random
 data = [0,100,200,300,400,500,600,700,800,900,1000]
-start = (20,60)
 def loop():
-    global displayed
-    global start
     linechart.show_data(data=[random.choice(data)], line=line)
-    displayed+=1
-    if displayed>40:
-        start = (start[0]+1,start[1]+1)
-        linechart.configure(x_data_min_max=((start[0],start[1])))
     root.after(250,loop)
 #calling to loop
 loop()
-
 root.mainloop()
 ```
-
 ## output
 ### click to play
-[![Watch the video](https://drive.google.com/uc?export=view&id=1LiXpuSRQpgl6yNe3ZcFCKNNJfWgZEKBc)](https://drive.google.com/file/d/12v_AfcRtgb-yUbPZGifEeeBusG-Q9b_d/view?usp=drive_link)
+> [![Watch the video](https://drive.google.com/uc?export=view&id=1qufx4vqtCjsXwLvcZmbvqxSwJnZEldqZ)](https://drive.google.com/file/d/1qufx4vqtCjsXwLvcZmbvqxSwJnZEldqZ/view?usp=drive_link)
 
-## For more details 
 
-##  Github.com   :   <a href="https://github.com/Thisal-D/tkchart"><i>tkchart<i></a>
+<br>
+<br>
+<br>
+<br>
+
+
+## Examples
+>> 1. <div align="center"><img src="https://drive.google.com/uc?export=view&id=1_fLJaHHxNYf8Hviu_I7HKIst_l2m5_A0"></div>
+
+> 2. <div align="center"><img src="https://drive.google.com/uc?export=view&id=1HoYA0oDPnEW6l7ALNTO8GwPzewXIutU-"></div>
+
+> 3. <div align="center"><img src="https://drive.google.com/uc?export=view&id=1Q5Y8vw4Inh6Ne6WckfBDt_PRYpbgWpiI"></div>
+
+> 4. <div align="center"><img src="https://drive.google.com/uc?export=view&id=10lmTzrQ29Tynx3zjZOHCyW3f5qXdjPMr"></div>
+
+> 5. <div align="center"><img src="https://drive.google.com/uc?export=view&id=1tdo37nq3Hcv2roTOA80qsME9P185F7r1"></div>
+
+> 6. <div align="center"><img src="https://drive.google.com/uc?export=view&id=1_vTP7DIsEdd4gU5hQOYeWF5FVYfilCvG"></div>
+
+
+
+
+
+## go to GitHub
+>  Github.com   :   <a href="https://github.com/Thisal-D/tkchart"><i>tkchart<i></a>

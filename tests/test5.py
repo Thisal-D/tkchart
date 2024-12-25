@@ -71,8 +71,8 @@ def hide_all(state:bool):
 tkinter.Button(text="place_foget", command=place_forget).place(x=100, y=600)
 tkinter.Button(text="place_back", command=place_back).place(x=100, y=630)
 
-tkinter.Button(text="hide(True)", command=lambda :hide_all(True) ).place(x=100, y=660)
-tkinter.Button(text="hide(False)", command=lambda :hide_all(False) ).place(x=100, y=690)
+tkinter.Button(text="hide_all(True)", command=lambda :hide_all(True) ).place(x=100, y=660)
+tkinter.Button(text="hide_all(False)", command=lambda :hide_all(False) ).place(x=100, y=690)
 
 
 root.mainloop()

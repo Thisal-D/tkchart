@@ -42,16 +42,12 @@ data = [[i for i in range(0,201)],
         [i for i in range(601,801)],
         [i for i in range(801,1001)],
         ]
-widths = [400, 600, 800 ,1000 ,1200]
-index = 0;
+
 def loop():
     global index
     for i,line in enumerate(lines):
         chart.show_data(line=line, data=random.choices(data[i],k=1))
-    chart.configure(width=widths[index])
-    index +=1 
-    if index > len(widths)-1:
-        index = 0
+
     root.after(500,loop)
 loop()
 

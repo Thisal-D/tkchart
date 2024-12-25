@@ -7,15 +7,19 @@ from .Line import *
 
 class LineChart():
    def __init__(self, master=None, width=300, height=150,
-                bar_size=2, bar_color="#909090",bg_color="#202020", chart_color="#151515",
+                bar_size=2, bar_color="#909090",bg_color="#202020", 
+                chart_color="#151515",
                 sections_color="#909090",
                 x_values_decimals=1, y_values_decimals=1,
                 y_labels_count=5, x_labels_count=5,
-                y_data="", y_data_max=1, y_sections_count=0, y_values_color="#909090", y_data_color="#909090",
-                x_data="", x_data_min_max=(0,10) ,x_sections_count=0, x_values_color="#909090", x_data_color="#909090",
+                y_data="", y_data_max=1, y_sections_count=0, 
+                y_values_color="#909090", y_data_color="#909090",
+                x_data="", x_data_min_max=(0,10) ,
+                x_sections_count=0, x_values_color="#909090",
+                x_data_color="#909090",
                 x_y_data_font=("arial", 9, "normal"),
                 x_y_values_font=("arial", 9, "normal"),
-                line_width=None, line_width_auto=True, *args):
+                line_width=None, line_width_auto=True, *args)->None:
       
       if master != None:
          self.master = master
@@ -138,7 +142,7 @@ class LineChart():
       else:
          return int(float_val)
    
-   def __set_widget_colors(self):
+   def __set_widget_colors(self)->None:
       self.__y_bar.configure(bg=self.__bar_color)
       self.__x_bar.configure(bg=self.__bar_color)
       self.__y_values.configure(bg=self.__bg_color)
@@ -162,7 +166,7 @@ class LineChart():
          if type(section_frame) == tkinter.Frame:
             section_frame.configure(bg=self.__sections_color)
       
-   def __set_widget_geomatry(self):
+   def __set_widget_geomatry(self)->None:
       self.__main_frame.configure(width=self.width, height=self.height)
       self.__y_bar.configure(width=self.__bar_size)
       self.__x_bar.configure(height=self.__bar_size)
@@ -170,7 +174,7 @@ class LineChart():
       self.__y_values.configure(width=self.__y_value_req_space, height=self.height)
       self.__x_values.configure(height=self.__x_value_req_space, width=self.width)
    
-   def __set_widget_font(self):
+   def __set_widget_font(self)->None:
       self.__y_data_text.configure(font=self.__x_y_data_font)
       self.__x_data_text.configure(font=self.__x_y_data_font)
       
@@ -178,7 +182,7 @@ class LineChart():
          if type(label) == tkinter.Label:
             label.configure(font = self.__x_y_values_font)
    
-   def __set_text(self):
+   def __set_text(self)->None:
       self.__y_data_text.configure(text=self.__y_data)
       
       if self.__y_labels_count>0:
@@ -201,7 +205,7 @@ class LineChart():
       
       
       
-   def __place_widget(self):
+   def __place_widget(self)->None:
       self.__y_data_text.place(x=0, y=0)
       self.__x_data_text.place(rely=1, relx=1, x=-self.__x_data_req_space, y=-self.__y_data_req_space)
       self.__y_bar.place(x=self.__y_value_req_space, y=self.__y_data_req_space, relheight=1, height=-self.__y_data_req_space+-self.__x_value_req_space)
@@ -218,15 +222,12 @@ class LineChart():
       
       
    
-   def __get_line_width(self):
+   def __get_line_width(self)->None:
       if self.__line_width_auto==True:
-         if (self.__x_data_max>self.__x_data_min):
-            self.__line_width = self.__real_width / (self.__x_data_max - self.__x_data_min)
-         else:
-            self.__line_width = self.__real_width / (self.__x_data_min - self.__x_data_max)
-    
-      
-   def __get_required_widget_size(self):
+         self.__line_width = int(self.__real_width / abs(self.__x_data_max - self.__x_data_min))
+         
+         
+   def __get_required_widget_size(self)->None:
       self.__y_data_req_space = RequredHeight(text=self.__y_data, font=self.__x_y_data_font)
       self.__x_data_req_space = RequredWidth(text=self.__x_data, font=self.__x_y_data_font)
       
@@ -235,7 +236,7 @@ class LineChart():
       
       self.__x_value_req_width = RequredWidth(text=self.__add_decimals(self.__x_data_max, self.__x_values_decimals), font=self.__x_y_values_font) 
       
-   def __create_y_labels(self):
+   def __create_y_labels(self)->None:
       if self.__y_labels_count >0:
          self.__y_values.place(x=0, y=1)
          y = self.__y_data_req_space*1.5
@@ -244,12 +245,12 @@ class LineChart():
             
             y += (self.height - (self.__y_data_req_space*1.5 + self.__x_value_req_space + self.__bar_size ) ) / self.__y_labels_count 
    
-   def __destroy_y_labels(self):
+   def __destroy_y_labels(self)->None:
       for y_value in self.__y_values.winfo_children():
          y_value.place_forget()
          y_value.destroy()
          
-   def __create_x_labels(self):
+   def __create_x_labels(self)->None:
       if self.__x_labels_count >0:
          self.__x_values.place(x=0, rely=1, y=-self.__x_value_req_space)
          x = self.width - self.__x_data_req_space*2 - self.__x_value_req_width
@@ -258,25 +259,25 @@ class LineChart():
             x -= (self.width - (self.__x_data_req_space*2 + self.__y_value_req_space + self.__bar_size + self.__x_value_req_width) ) / self.__x_labels_count
             
          
-   def __destroy_x_labels(self):
+   def __destroy_x_labels(self)->None:
       for x_value in self.__x_values.winfo_children():
          x_value.place_forget()
          x_value.destroy()
          
       
-   def __create_y_sections(self):
+   def __create_y_sections(self)->None:
       y = 0
       for i in range(self.__y_sections_count):
          tkinter.Frame(master=self.__output_frame, height=1, width=self.width, bg=self.__sections_color).place(y=y, anchor="w")
          y += (self.height - (self.__y_data_req_space*1.5 + self.__x_value_req_space + self.__bar_size ) ) / self.__y_sections_count 
          
-   def __destroy_y_x_sections(self):
+   def __destroy_y_x_sections(self)->None:
       for widget in self.__output_frame.winfo_children():
          if type(widget) == tkinter.Frame:
             widget.place_forget()
             widget.destroy()
    
-   def __create_x_sections(self):
+   def __create_x_sections(self)->None:
       if self.__x_sections_count != 0:
          x = (self.width - (self.__x_data_req_space*2+self.__y_value_req_space+self.__bar_size + self.__x_value_req_width)  ) / self.__x_sections_count - 1
       for i in range(self.__x_sections_count):
@@ -494,7 +495,7 @@ class LineChart():
          self.__create_x_sections()
 
    
-   def __reset_chart_info(self):
+   def __reset_chart_info(self)->None:
       self.__output.delete("all")
       self.__real_width = self.width - (self.__y_value_req_space+self.__bar_size+self.__x_data_req_space*2+self.__x_value_req_width)
       self.__real_height = self.height - (self.__y_data_req_space+self.__bar_size+self.__x_value_req_space*1.5)
@@ -503,7 +504,12 @@ class LineChart():
       self.__output.configure(height=self.__real_height, width=self.__real_width)
       
       
-   def __re_show_data(self):
+      #print("real width, height : ",self.__real_width ,self.__real_height)
+      #print("line width : ",self.__line_width)
+      
+      
+   def __re_show_data(self)->None:
+      print("__re_show_data")
       lines_values = [len(line._Line__data) for line in  self.__lines]
       if len(lines_values) > 0:
          self.__reset_chart_info()
@@ -524,6 +530,7 @@ class LineChart():
          for line in lines:
             self.show_data(line=line, data=line._Line__temp_data)
    
+   
    def show_data(self, line:Line, data:list)->None:
       re_show_data = False
       if line not in self.__lines:
@@ -538,12 +545,11 @@ class LineChart():
                y_start = line._Line__y_end
       
                line._Line__x_end += self.__line_width
-               line._Line__y_end = (self.__real_height - (self.__real_height/100)*(d/self.__y_data_max*100) + (line._Line__size/2))
+               line._Line__y_end = (self.__real_height - (self.__real_height/100)*(d/self.__y_data_max*100)) # + (line._Line__size/2))
                
                if line._Line__x_end > self.__real_width and self.__real_width < 20000:
                   self.__place_x -= self.__line_width
                   
-
                   self.__output.place(x=self.__place_x,
                                     width=self.__real_width+self.__line_width)
                   
@@ -553,12 +559,168 @@ class LineChart():
                   re_show_data = True
                   break;
                if not re_show_data:
-                  self.__output.create_line(x_start, y_start, line._Line__x_end, line._Line__y_end
+                  if line._Line__mode  == "dash":
+                     dash_width = line._Line__mode_style[0]
+                     space_width = line._Line__mode_style[1]
+                     total_width = dash_width+space_width
+                     real_line_width = ((abs(y_start - line._Line__y_end)**2) + (self.__line_width**2)) ** (1/2)
+
+                     dash_count = real_line_width/total_width
+                     dash_count = (dash_count)
+                     space_count = real_line_width/total_width
+                     space_count = (space_count)
+
+                     dash_space_y_change = (abs(y_start - line._Line__y_end))/ (space_count)
+
+                     dash_y_change  = dash_space_y_change *(dash_width/total_width)
+                     dash_y_change = (dash_y_change)
+
+                     space_y_change  = dash_space_y_change *(space_width/total_width)
+                     space_y_change = (space_y_change)
+ 
+                     dash_x_change = (dash_width**2-dash_y_change**2)**(1/2)
+                     dash_x_change = (dash_x_change)
+                     
+                     space_x_change = (space_width**2-space_y_change**2)**(1/2)
+                     space_x_change = (space_x_change)
+
+                     terminate = False
+                     while (line._Line__x_end>x_start):
+                        x_end = x_start + dash_x_change
+                        if y_start > line._Line__y_end :
+                           to_up = True
+                           to_down = False
+                           y_end = y_start - dash_y_change
+                        else:
+                           y_end = y_start + dash_y_change
+                           to_up = False
+                           to_down = True
+                        
+                        if x_end>line._Line__x_end:
+                           x_end = x_end - (x_end-line._Line__x_end)
+                           terminate = True
+                        if y_end<line._Line__y_end and to_up:
+                           y_end = y_end - (y_end-line._Line__y_end)
+                           terminate = True
+                        if y_end>line._Line__y_end and to_down:
+                           y_end = y_end - (y_end-line._Line__y_end)
+                           terminate = True
+                       
+                        self.__output.create_line(x_start, y_start, x_end, y_end
                                                       ,fill=line._Line__color ,width=line._Line__size)
-               
+                        if terminate:
+                           break
+                        x_start = x_end
+                        y_start = y_end
+                        x_end = x_start + space_x_change
+                        if y_start > line._Line__y_end :
+                           y_end = y_start - space_y_change
+                        else:
+                           y_end = y_start + space_y_change
+                        
+                        if x_end>line._Line__x_end:
+                           x_end = x_end - (x_end-line._Line__x_end)
+                           terminate = True
+                        if y_end<line._Line__y_end and to_up:
+                           y_end = y_end - (y_end-line._Line__y_end)
+                           terminate = True
+                        if y_end>line._Line__y_end and to_down:
+                           y_end = y_end - (y_end-line._Line__y_end)
+                           terminate = True
+
+                        x_start = x_end
+                        y_start = y_end
+                        
+                        if terminate:
+                           break
+
+                  elif  line._Line__mode=="circle":
+                     circle_size = line._Line__mode_style[0]
+                     space_width = line._Line__mode_style[1]
+                     total_width = circle_size+space_width
+                     real_line_width = ((abs(y_start - line._Line__y_end)**2) + (self.__line_width**2)) ** (1/2)
+
+                     circle_count = real_line_width/total_width
+                     circle_count = (circle_count)
+                     space_count = real_line_width/total_width
+                     space_count = (space_count)
+
+                     circle_space_y_change = (abs(y_start - line._Line__y_end))/ (space_count)
+
+                     circle_y_change  = circle_space_y_change *(circle_size/total_width)
+                     circle_y_change = (circle_y_change)
+
+                     space_y_change  = circle_space_y_change *(space_width/total_width)
+                     space_y_change = (space_y_change)
+
+                     circle_x_change = (circle_size**2-circle_y_change**2)**(1/2)
+                     circle_x_change = (circle_x_change)
+                     
+                     space_x_change = (space_width**2-space_y_change**2)**(1/2)
+                     space_x_change = (space_x_change)
+  
+                     terminate = False
+                    
+                     while (line._Line__x_end>x_start):
+                        x_end = x_start + circle_x_change
+                        if y_start > line._Line__y_end :
+                           to_up = True
+                           to_down = False
+                           y_end = y_start - circle_y_change 
+                        else:
+                           y_end = y_start + circle_y_change 
+                           to_up = False
+                           to_down = True
+                           
+                        if x_end>line._Line__x_end:
+                           x_end = x_end - (x_end-line._Line__x_end)
+                           terminate = True
+                        if y_end<=line._Line__y_end and to_up:
+                           y_end = y_end - (y_end-line._Line__y_end)
+                           terminate = True
+                        if y_end>line._Line__y_end and to_down:
+                           y_end = y_end - (y_end-line._Line__y_end)
+                           terminate = True
+                        
+                        self.__output.create_oval(x_start-circle_size/2,
+                                                  y_start-circle_size/2,
+                                                  x_start+circle_size-circle_size/2,
+                                                  y_start+circle_size-circle_size/2,
+                                                  fill=line._Line__color, outline=line._Line__color )
+                        if terminate:
+                           break
+                        x_start = x_end
+                        y_start = y_end
+                        x_end = x_start + space_x_change
+                        if y_start > line._Line__y_end :
+                           y_end = y_start - space_y_change
+                        else:
+                           y_end = y_start + space_y_change
+                        if x_end>line._Line__x_end:
+                           x_end = x_end - (x_end-line._Line__x_end)
+                           terminate = True
+                        if y_end<line._Line__y_end and to_up:
+                           y_end = y_end - (y_end-line._Line__y_end)
+                           terminate = True
+                        if y_end>line._Line__y_end and to_down:
+                           y_end = y_end - (y_end-line._Line__y_end)
+                           terminate = True
+                       
+                        """self.__output.create_line(x_start, y_start, x_end, y_end
+                                                      ,width=line._Line__size)"""
+                        x_start = x_end
+                        y_start = y_end
+                        
+                        if terminate:
+                           break
+
+                  elif line._Line__mode=="line":
+                     self.__output.create_line(x_start, y_start, line._Line__x_end, line._Line__y_end
+                                                      ,fill=line._Line__color ,width=line._Line__size)
+                  
+                  
             else:
                break
-                  
          
          if re_show_data:
             self.__re_show_data()
@@ -573,6 +735,7 @@ class LineChart():
       self.__place_info_relx = relx
       self.__place_info_anchor = anchor
       
+      
    def pack(self, pady=None, padx=None, before=None, after=None,
             side=None, ipadx=None, ipady=None, anchor=None):
       self.__main_frame.pack(pady=pady, padx=padx, before=before, 
@@ -585,6 +748,7 @@ class LineChart():
       self.__pack_info_ipadx = ipadx
       self.__pack_info_ipady = ipady
       self.__pack_info_anchor = anchor
+      
       
    def grid(self, column=None, columnspan=None, ipadx=None, ipady=None,  padx=None,  pady=None, row=None, 
             rowspan=None, sticky=None):
@@ -599,7 +763,6 @@ class LineChart():
       self.__grid_info_row = row
       self.__grid_info_rowspan = rowspan
       self.__grid_info_sticky = sticky
-      
       
    def place_forget(self):
       self.__main_frame.place_forget()
@@ -631,13 +794,13 @@ class LineChart():
       
       
    def hide_all(self,state:bool):
-      if state==True or state == False:
-         if state == True:
-            self.__output.place_forget()
-         self.__force_to_stop_show_data = True
-         while self.___show_data_working :
-               pass
-         for line in self.__lines:
-            line._Line__hide_state = state
-         self.__force_to_stop_show_data = False
-         self.__re_show_data()
+      if state == True:
+         self.__output.place_forget()
+      self.__force_to_stop_show_data = True
+      while self.___show_data_working :
+            pass
+      for line in self.__lines:
+         line._Line__hide_state = state
+      self.__force_to_stop_show_data = False
+      self.__re_show_data()
+      

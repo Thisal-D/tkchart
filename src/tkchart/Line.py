@@ -1,19 +1,26 @@
          
 class Line():
-   def __init__(self ,*arg ,master=None ,color="#ffffff" ,height=1):
+   def __init__(self ,*args ,master=None ,color="#909090" ,size=1):
       try :
-         chart = arg[0]
+         self.__chart = args[0]
       except:
-         chart = master
+         self.__chart = master
 
-      self.line_color = color
-      self.line_height = height
-      self.y_end = 0
-      self.x_end  = chart.chart_line_len*-1
-      self.values = []
+      self.__color = color
+      self.__size = size
+      self.__y_end = 0
+      self.__x_end  = self.__chart._LineChart__line_width* -1
+      self.__data = []
+      self.__temp_data = []
    
-   def configure(self , color=None ,height=None) :
+
+   def configure(self , color=None ,size=None) :
       if color != None:
-         self.line_color = color
-      if height != None:
-         self.line_height = height
+         self.__color = color
+      if size != None:
+         self.__size = size
+   
+   def __reset(self):
+      self.__y_end = 0
+      self.__x_end  = self.__chart._LineChart__line_width* -1
+      self.__data = []

@@ -1,5 +1,7 @@
 <div id="top"></div>
 
+**[Check changes](CHANGES.md)**
+
 [中文说明 README](README_CN.md)
 [Chinese README](README_CN.md)
 
@@ -20,7 +22,7 @@
 
 [![Downloads](https://static.pepy.tech/badge/tkchart)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
-<img src="https://drive.google.com/thumbnail?id=1jOltT5qBvLmKAdSU6zb9wjh3GYa6jRvD&sz=w180">
+<img src="https://drive.google.com/thumbnail?id=1cHrsFILHJ7a2bgMXvk-PWlnLZx1vCnVR&sz=w180">
 
 </div>
 
@@ -133,24 +135,24 @@ linechart = tkchart.LineChart()
 
 ## Methods
 
-| Method            | Description                                        | Supported / Required Parameters                                                                                                  |
-|-------------------|----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| configure         | Change LineChart attributes                        | All attributes except for master                                                                                                 |
-| <a href="#display-data">show_data</a>         | Display data                                       | data: ``list``<br> line: ``tkchart.Line``                                                                                        |
-| place             | Place LineChart                                    | x: ``int``<br>y: ``int``<br>rely: ``float or int``<br>relx: ``float or int``<br>anchor: ``str``                                  |
-| pack              | Pack LineChart                                     | pady: ``int``<br>padx: ``int``<br> before: ``widget``<br> after: ``widget``<br>side: ``str``<br>anchor: ``str``                  |
-| grid              | Grid LineChart                                     | column: ``int``<br>columnspan: ``int``<br>padx: ``int``<br>pady: ``int``<br> row: ``int``<br>rowspan: ``int``<br>sticky: ``str`` |
-| place_forget      | Place forget the chart                             | -                                                                                                                                |
-| pack_forget       | Pack forget the chart                              | -                                                                                                                                |
-| grid_forget       | Grid forget the chart                              | -                                                                                                                                |
-| place_back        | Place chart in the old location after place forget | -                                                                                                                                |
-| pack_back         | Pack chart in the old location after pack forget   | -                                                                                                                                |
-| grid_back         | Grid chart in the old location after grid forget   | -                                                                                                                                |
-| hide_all          | Hide all the lines                                 | state:  ``bool``                                                                                                                 |
-| hide              | hide a specific line                               | line:  ``tkchart.Line``<br> state:  ``bool``                                                                                     |
-| reset             | reset line chart                                   | -                                                                                                                                |
-| cget              | Get the value of the specified parameter.          | attribute_name:  ``str`` \| "\_\_all\_\_"                                                                                        |
-
+| Method              | Description                           | Supported / Required Parameters                    | Return Type |
+|---------------------|---------------------------------------|----------------------------------------------------|-------------|
+| configure           | Change LineChart attributes           | All attributes except for master                   | ``None``        |
+| [show_data](#display-data) | Display data                   | data: ``list``<br> line: ``ctkchart.CTkLine``      | ``None``        |
+| place               | Place LineChart                       | x: ``int``<br>y: ``int``<br>rely: ``float or int``<br>relx: ``float or int``<br>anchor: ``str`` | ``None``        |
+| pack                | Pack LineChart                        | pady: ``int``<br>padx: ``int``<br> before: ``widget``<br> after: ``widget``<br>side: ``str``<br>anchor: ``str`` | ``None`` |
+| grid                | Grid LineChart                        | column: ``int``<br>columnspan: ``int``<br>padx: ``int``<br>pady: ``int``<br> row: ``int``<br>rowspan: ``int``<br>sticky: ``str``| ``None`` |
+| place_forget        | Place forget the chart                | -                                                   | ``None``        |
+| pack_forget         | Pack forget the chart                 | -                                                   | ``None``        |
+| grid_forget         | Grid forget the chart                 | -                                                   | ``None``        |
+| set_lines_visibility | Change the visibility of all the lines | state: ``bool``                                   | ``None``        |
+| set_line_visibility | Change the visibility of a specific line | line:  ``ctkchart.CTkLine``<br> state:  ``bool`` | ``None``        |
+| get_line_visibility | Get the visibility of a specific line | line:  ``ctkchart.CTkLine``                         | ``bool``        |
+| reset               | Reset line chart                      | -                                                   | ``None``        |
+| cget                | Get the value of the specified parameter | attribute_name:  ``str`` \| "\_\_all\_\_"        | ``any``        |
+| place_info          | Get info about place                  | attribute_name: ``str`` \| "\_\_all\_\_"            | ``any``        |
+| pack_info           | Get info about pack                   | attribute_name: ``str`` \| "\_\_all\_\_"            | ``any``        |
+| grid_info           | Get info about grid                   | attribute_name: ``str`` \| "\_\_all\_\_"            | ``any``        |
 
 </div>
 
@@ -186,12 +188,13 @@ line = tkchart.Line()
 
 ## Methods
 
-| Method            | Description                                        | Supported Parameters                     |
-|-------------------|----------------------------------------------------|------------------------------------------|
-| configure         | Change LineChart attributes                        | All attributes except for master         |                                                                
-| cget              | Get the value of the specified parameter.          | attribute_name: ``str`` \| "\_\_all\_\_" |
-| reset             | reset line object                                  | -                                        |
-
+| Method            | Description                                       | Supported Parameters                     | Return Type |
+|-------------------|---------------------------------------------------|------------------------------------------|-------------|
+| configure         | Change LineChart attributes                       | All attributes except for master         | ``None``    |
+| cget              | Get the value of the specified parameter          | attribute_name: ``str`` \| "\_\_all\_\_" | ``any``     |
+| reset             | reset line object                                 | -                                        | ``None``    |
+| set_visible       | change the visibility of the line                 | state: ``bool``                          | ``None``    |
+| get_visibility    | get the visibility of the line                    | -                                        | ``bool``    |
 </div>
 <br>
 <br>

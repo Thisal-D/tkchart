@@ -129,23 +129,24 @@ linechart = tkchart.LineChart()
 
 ## 方法
 
-| 方法               | 描述                                   | 支持的参数 / 必须的参数                                                                                                          |
-| ------------------ | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| configure          | 更改 LineChart（折线图）属性           | 所有属性，除了 master                                                                                                            |
-|<a href="#display-data">show_data</a>          | 显示数据                               | data: ``list``<br> line: ``tkchart.Line``                                                                                        |
-| place              | 放置 (place) 折线图                    | x: ``int``<br>y: ``int``<br>rely: ``float or int``<br>relx: ``float or int``<br>anchor: ``str``                                  |
-| pack               | 放置 (pack) 折线图                     | pady: ``int``<br>padx: ``int``<br> before: ``widget``<br> after: ``widget``<br>side: ``str``<br>anchor: ``str``                  |
-| grid               | 放置 (grid) 折线图                     | column: ``int``<br>columnspan: ``int``<br>padx: ``int``<br>pady: ``int``<br> row: ``int``<br>rowspan: ``int``<br>sticky: ``str`` |
-| place_forget       | Place 忘记折线图                       | -                                                                                                                                |
-| pack_forget        | Pack 忘记折线图                        | -                                                                                                                                |
-| grid_forget        | Grid 忘记折线图                        | -                                                                                                                                |
-| place_back         | Place 忘记位置后重新显示旧位置的折线图 |
-| pack_back          | Pack 忘记位置后重新显示旧位置的折线图  | -                                                                                                                                |
-| grid_back          | Grid 忘记位置后重新显示旧位置的折线图  | -                                                                                                                                |
-| hide_all           | 隐藏所有折线                           | state:  ``bool``                                                                                                                 |
-| hide               | 隐藏特定折线                           | line:  ``tkchart.Line``<br> state:  ``bool``                                                                                     |
-| reset              | 重置折线图                             | -                                                                                                                                |
-| cget               | 获取指定参数的值。                     | attribute_name:  ``str`` \| "\_\_all\_\_"                                                                                       |
+| 方法                    | 描述                               | 支持的参数 / 必须的参数                                          | 返回类型   |
+|-----------------------|-----------------------------------|----------------------------------------------------------------|------------|
+| configure              | 更改 LineChart（折线图）属性       | 所有属性，除了 master                                           | ``None``       |
+| [show_data](#display-data) | 显示数据                       | data: ``list``<br> line: ``chart.Line``                    | ``None``       |
+| place                  | 放置 (place) 折线图                | x: ``int``<br>y: ``int``<br>rely: ``float or int``<br>relx: ``float or int``<br>anchor: ``str`` | ``None``       |
+| pack                   | 放置 (pack) 折线图                 | pady: ``int``<br>padx: ``int``<br> before: ``widget``<br> after: ``widget``<br>side: ``str``<br>anchor: ``str``  | ``None``       |
+| grid                   | 放置 (grid) 折线图                 | column: ``int``<br>columnspan: ``int``<br>padx: ``int``<br>pady: ``int``<br> row: ``int``<br>rowspan: ``int``<br>sticky: ``str`` | ``None``       |
+| place_forget           | Place 忘编号           | -                                                                | ``None``       |
+| pack_forget            | Pack 忘编号            | -                                                                | ``None``       |
+| grid_forget            | Grid 忘编号            | -                                                                | ``None``       |
+| set_lines_visibility   | 更改所有线条的可见性             | state:  ``bool``                                                 | ``None``       |
+| set_line_visibility    | 更改特定行的可见性               | line:  ``tkchart.Line``<br> state:  ``bool``                 | ``None``       |
+| get_line_visibility | 获取特定生产线的可见性 | line:  ``tkchart.Line``                         | ``bool``        |
+| reset                  | 重置折线图                        | -                                                                | ``None``       |
+| cget                   | 获取指定参数的值。                | attribute_name:  ``str`` \| "\_\_all\_\_"                       | ``any``       |
+| place_info             | 获取地点信息                     | attribute_name: ``str`` \| "\_\_all\_\_"                         | ``any``       |
+| pack_info              | 获取有关包装的信息                | attribute_name: ``str`` \| "\_\_all\_\_"                         | ``any``       |
+| grid_info              | 获取网格信息                      | attribute_name: ``str`` \| "\_\_all\_\_"                         | ``any``       |
 
 
 </div>
@@ -164,18 +165,19 @@ line = tkchart.Line()
 
 ## 参数
 
-| 参数名称                                             | 必备参数 / 可选参数 | 描述                         | 数据类型                           | 示例值        |
-| ---------------------------------------------------- | ------------------- | ---------------------------|---------------------------------- | ------------- |
-| master                                               | 必须                | Master                      | ``tkchart.Line``                       | LineChart obj |
-| <a href="#line_color_size">color</a>                 | 可选                | 折线的颜色                   | ``str``                                | "#768df1"     |
-| <a href="#line_color_size">size</a>                  | 可选                | Size of the line            | ``int``                                | 1<=           |
-| <a href="#line_style">style</a>                      | 可选                | 折线风格（直线、虚线、点线）  | ``str`` ("normal", "dashed", "dotted") | "normal"      |
-| <a href="#line_style_type">style_type</a>            | 可选                | 实线与虚线的尺寸             | ``tuple[int, int]``                    | (10, 5),...   |
-| <a href="#point_highlight">point_highlight</a>       | 可选                | 端点高亮状态                 | ``str`` ("enabled", "disabled")        | "disabled"    |
-| <a href="#point_highlight">point_highlight_size</a>  | 可选                | 高亮点的大小                 | ``int``                                | 1<=           |
-| <a href="#point_highlight">point_highlight_color</a> | 可选                | 高亮点的颜色                 | ``str``                                | "#768df1"     |
-| <a href="#fill">fill</a>                             | 可选                | 是否启用填充                 | ``str`` ("enabled", "disabled")        | "disabled"    |
-| <a href="#fill">fill_color</a>                       | 可选                | 填充部分的颜​​色             | ``str``                                | "#5d6db6"     |
+| 参数名称                                    | 必备参数 / 可选参数 | 描述                            | 数据类型                               | 示例值          |
+|-------------------------------------------|---------------------|--------------------------------|----------------------------------------|----------------|
+| master                                    | 必须                | 主控制器                        | ``tkchart.Line``                      | LineChart 对象 |
+| [color](#line_color_size)                 | 可选                | 折线颜色                        | ``str``                                | "#768df1"      |
+| [size](#line_color_size)                  | 可选                | 折线大小                        | ``int``                                | 1<=            |
+| [style](#line_style)                      | 可选                | 折线样式（普通、虚线、点线）     | ``str`` ("normal", "dashed", "dotted")| "normal"       |
+| [style_type](#line_style_type)            | 可选                | 实线与虚线尺寸                    | ``tuple[int, int]``                    | (10, 5) 等     |
+| [point_highlight](#point_highlight)       | 可选                | 端点高亮状态                      | ``str`` ("enabled", "disabled")        | "disabled"     |
+| [point_highlight_size](#point_highlight)  | 可选                | 高亮点大小                        | ``int``                                | 1<=            |
+| [point_highlight_color](#point_highlight) | 可选                | 高亮点颜色                        | ``str``                                | "#768df1"      |
+| [fill](#fill)                             | 可选                | 是否启用填充                      | ``str`` ("enabled", "disabled")        | "disabled"     |
+| [fill_color](#fill)                       | 可选                | 填充颜色                          | ``str``                                | "#5d6db6"      |
+
 
 <br>
 
@@ -256,10 +258,10 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     <img src="https://drive.google.com/thumbnail?id=1UbyQEKDYhZjUI9VttKerpSVc6hZoEfi8&sz=w950" >
     </picture>
 
-     ```
+    ```
     chart = tkchart.LineChart(x_axis_values=(2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025),
-                          y_axis_values=(-100, 100)
-                        )
+                                y_axis_values=(-100, 100)
+                            )
     ```
 
 </div>

@@ -1,5 +1,5 @@
 import tkinter
-from typing import Union, Tuple, List
+from typing import Union, Tuple, List, Literal
 from .Utils import Utils
 from .Line import Line
 from .Validate import Validate
@@ -24,9 +24,9 @@ class LineChart():
                   y_axis_values: Tuple[Union[int, float], Union[int, float]] =  (None, None),
                   y_axis_font_color: str = "#606060",
                   y_axis_data_font_color: str = "#707070",
-                  y_axis_data_position: str = "top",
+                  y_axis_data_position: Literal["top", "side"] = "top",
                   y_axis_section_count: int = 0,
-                  y_axis_section_style: str = "normal",
+                  y_axis_section_style: Literal["normal", "dashed"] = "normal",
                   y_axis_section_style_type: Tuple[int, int] = (100, 50),
                   y_axis_section_color: str = "#2C2C2C",
                   
@@ -36,21 +36,21 @@ class LineChart():
                   x_axis_display_values_indices: Tuple[int, ...] = None,
                   x_axis_font_color: str = "#606060",
                   x_axis_data_font_color: str = "#707070",
-                  x_axis_data_position: str = "top",
+                  x_axis_data_position: Literal["top", "side"] = "top",
                   x_axis_section_count: int = 0,
-                  x_axis_section_style: str = "normal",
+                  x_axis_section_style: Literal["normal", "dashed"] = "normal",
                   x_axis_section_style_type: Tuple[int, int] = (100, 50),
                   x_axis_section_color: str = "#2C2C2C",
                   
-                  x_axis_point_spacing: Union[int, str] = "auto",
+                  x_axis_point_spacing: Union[int, Literal["auto"]] = "auto",
                   y_space: int = 0, 
                   x_space: int = 0,
                   
-                  pointer_state: str = "disabled",
+                  pointer_state: Literal["enabled", "disabled"] = "disabled",
                   pointing_callback_function: callable = None,
                   pointer_color: str = "#606060",
                   pointing_values_precision: int = 1,
-                  pointer_lock: str = "disabled",
+                  pointer_lock: Literal["enabled", "disabled"] = "disabled",
                   pointer_size: int = 1,
                   
                   *args: any,
@@ -188,7 +188,7 @@ class LineChart():
       self.__x_axis_data = str(x_axis_data)
       self.__x_axis_data_position = x_axis_data_position
       self.__x_axis_values = x_axis_values
-      self.__x_axis_values_handle_by = "auto"
+      self.__x_axis_values_handle_by = "label_count"
       self.__x_space = x_space
       self.__force_to_stop_data_showing = False
       self.__is_data_showing_working = False
@@ -198,33 +198,36 @@ class LineChart():
       self.__pointer_lock = pointer_lock
       self.__pointer_size = pointer_size
       self.__pointer_color = pointer_color
+      self.__x_values_frame_place_req = True
+      self.__y_values_frame_place_req = True
       
       self.__place_x = 0
       self.__real_height = 0
       self.__real_width = 0
       self.__const_real_height = 0
       self.__const_real_width = 0
+      self.__visibility = True
       
-      self.__place_info_x = 0
-      self.__place_info_y = 0
-      self.__place_info_rely = 0
-      self.__place_info_relx = 0
-      self.__place_info_anchor = 0
+      self.__place_info_x = None
+      self.__place_info_y = None
+      self.__place_info_rely = None
+      self.__place_info_relx = None
+      self.__place_info_anchor = None
       
-      self.__pack_info_pady = 0
-      self.__pack_info_padx = 0
-      self.__pack_info_before = 0
-      self.__pack_info_after = 0
-      self.__pack_info_side = 0
-      self.__pack_info_anchor = 0
+      self.__pack_info_pady = None
+      self.__pack_info_padx = None
+      self.__pack_info_before = None
+      self.__pack_info_after = None
+      self.__pack_info_side = None
+      self.__pack_info_anchor = None
       
-      self.__grid_info_column = 0
-      self.__grid_info_columnspan = 0
-      self.__grid_info_padx = 0
-      self.__grid_info_pady = 0
-      self.__grid_info_row = 0
-      self.__grid_info_rowspan = 0
-      self.__grid_info_sticky = 0
+      self.__grid_info_column = None
+      self.__grid_info_columnspan = None
+      self.__grid_info_padx = None
+      self.__grid_info_pady = None
+      self.__grid_info_row = None
+      self.__grid_info_rowspan = None
+      self.__grid_info_sticky = None
       
       if self.__x_axis_point_spacing == "auto":
          self.__x_axis_point_spacing_handle_by = "auto"
@@ -234,10 +237,9 @@ class LineChart():
       if  self.__x_axis_display_values_indices != None :
          self.__x_axis_display_values_indices = Utils._sort_tuple(self.__x_axis_display_values_indices)
          self.__x_axis_values_handle_by = "label_indices"
-      elif self.__x_axis_label_count != None:
-         self.__x_axis_values_handle_by = "label_count"
       else:
-         self.__x_axis_values_handle_by = "auto"
+         self.__x_axis_values_handle_by = "label_count"
+    
       
       self.__create_widgets()
       self.__configure_required_widget_size()
@@ -266,16 +268,16 @@ class LineChart():
          y-axis values, x-axis values, y-axis data label, x-axis data label, output frame,
          output canvas, and pointer.
       """
-      
+   
       self.__main_frame = tkinter.Frame(master=self.__master)
-      self.__y_axis_frame = tkinter.Frame(master=self.__main_frame)
-      self.__x_axis_frame = tkinter.Frame(master=self.__main_frame)
       self.__x_axis_values_frame = tkinter.Frame(master=self.__main_frame)
       self.__y_axis_values_frame = tkinter.Frame(master=self.__main_frame)
       self.__y_axis_data_label = tkinter.Label(master=self.__main_frame)
       self.__x_axis_data_label = tkinter.Label(master=self.__main_frame)
       self.__output_frame = tkinter.Frame(master=self.__main_frame)
       self.__output_canvas = tkinter.Canvas(master=self.__output_frame, highlightthickness=0)
+      self.__y_axis_frame = tkinter.Frame(master=self.__main_frame)
+      self.__x_axis_frame = tkinter.Frame(master=self.__main_frame)
       self.__pointer = tkinter.Frame(master=self.__output_canvas)
    
    
@@ -367,21 +369,25 @@ class LineChart():
          y-axis frame, x-axis frame, output frame, output canvas, y-axis values frame, and x-axis values frame,
          based on the specified dimensions and positions.
       """
-   
+      
       self.__main_frame.configure(width=self.__width, height=self.__height)
       
       self.__y_axis_data_label.place_forget()
       self.__x_axis_data_label.place_forget()
-      if self.__y_axis_data_position=="top":
-         self.__y_axis_data_label.place(x=0, y=0)
-      else:
-         self.__y_axis_data_label.place(x=0, y=self.__y_space+self.__y_special_height_space+self.__real_height/2,anchor="w")
-      if self.__x_axis_data_position=="top":
-         self.__x_axis_data_label.place(rely=1, relx=1, x=-self.__x_axis_data_req_width, y=-self.__x_axis_data_req_height)
-      else:
-         self.__x_axis_data_label.place(rely=1, y=-self.__x_axis_data_req_height,relx=0, anchor="n",
-                                  x=(self.__real_width/2)+self.__y_axis_data_req_width_space_side+self.__y_value_req_width_space+self.__axis_size+self.__x_axis_data_req_width_space_top+self.__x_special_width_space)
       
+      if self.__y_axis_data != "":
+         if self.__y_axis_data_position=="top":
+            self.__y_axis_data_label.place(x=0, y=0)
+         else:
+            self.__y_axis_data_label.place(x=0, y=self.__y_space+self.__y_special_height_space+self.__real_height/2,anchor="w")
+            
+      if self.__x_axis_data != "":
+         if self.__x_axis_data_position=="top":
+            self.__x_axis_data_label.place(rely=1, relx=1, x=-self.__x_axis_data_req_width, y=-self.__x_axis_data_req_height)
+         else:
+            self.__x_axis_data_label.place(rely=1, y=-self.__x_axis_data_req_height,relx=0, anchor="n",
+                                    x=(self.__real_width/2)+self.__y_axis_data_req_width_space_side+self.__y_value_req_width_space+self.__axis_size+self.__x_axis_data_req_width_space_top+self.__x_special_width_space)
+         
       self.__y_axis_frame.configure(width=self.__axis_size)
       self.__x_axis_frame.configure(height=self.__axis_size)
       
@@ -400,9 +406,16 @@ class LineChart():
       
       self.__output_canvas.place(y=0, x=0, height=self.__const_real_height, width=self.__const_real_width)
       
-      self.__y_axis_values_frame.place(x=self.__y_axis_data_req_width_space_side, width=self.__y_value_req_width_space, height=self.__height)
-      self.__x_axis_values_frame.place(x=0, rely=1, y=-self.__x_value_req_height_space+-self.__x_axis_data_req_height_space_side, height=self.__x_value_req_height_space, width=self.__width)
-
+      if self.__y_values_frame_place_req:
+         self.__y_axis_values_frame.place(x=self.__y_axis_data_req_width_space_side, width=self.__y_value_req_width_space, height=self.__height)
+      else:
+         self.__y_axis_values_frame.place_forget()
+         
+      if self.__x_values_frame_place_req:   
+         self.__x_axis_values_frame.place(x=0, rely=1, y=-self.__x_value_req_height_space+-self.__x_axis_data_req_height_space_side, height=self.__x_value_req_height_space, width=self.__width)
+      else:
+         self.__x_axis_values_frame.place_forget()
+         
 
    def __configure_x_axis_point_spacing(self) -> None:
       """
@@ -433,30 +446,36 @@ class LineChart():
       self.__x_axis_data_req_width_space_top = 0
       self.__x_axis_data_req_height_space_side = 0
       self.__x_special_width_space = 0
-      
-      self.__x_axis_data_req_height = Utils._RequiredHeight(text=self.__x_axis_data, font=self.__data_font_style)
-      self.__x_axis_data_req_width = Utils._RequiredWidth(text=self.__x_axis_data, font=self.__data_font_style)
-      if self.__x_axis_data_position == "top":
-         self.__x_special_width_space = 15
-         self.__x_axis_data_req_width_space_top = Utils._RequiredWidth(text=self.__x_axis_data, font=self.__data_font_style)
-      else:
-         self.__x_axis_data_req_height_space_side = Utils._RequiredHeight(text=self.__x_axis_data, font=self.__data_font_style)
+      self.__x_axis_data_req_height = 0
+      self.__x_axis_data_req_width = 0
+      if self.__x_axis_data != "":
+         self.__x_axis_data_req_height = Utils._RequiredHeight(text=self.__x_axis_data, font=self.__data_font_style)
+         self.__x_axis_data_req_width = Utils._RequiredWidth(text=self.__x_axis_data, font=self.__data_font_style)
+         if self.__x_axis_data_position == "top":
+            self.__x_special_width_space = 15
+            self.__x_axis_data_req_width_space_top = Utils._RequiredWidth(text=self.__x_axis_data, font=self.__data_font_style)
+         else:
+            self.__x_axis_data_req_height_space_side = Utils._RequiredHeight(text=self.__x_axis_data, font=self.__data_font_style)
       
       self.__y_axis_data_req_height_space_top = 0
       self.__y_axis_data_req_width_space_side = 0
       self.__y_special_height_space = 0
       
+      self.__y_values_frame_place_req = True
+      self.__x_values_frame_place_req = True
       #self.__y_axis_data_req_height = Utils._RequiredHeight(text=self.__y_axis_data, font=self.__data_font_style)
       #self.__y_axis_data_req_width = Utils._RequiredWidth(text=self.__y_axis_data, font=self.__data_font_style)
-      if self.__y_axis_data_position == "top":
-         self.__y_special_height_space = 15
-         self.__y_axis_data_req_height_space_top = Utils._RequiredHeight(text=self.__y_axis_data, font=self.__data_font_style)
-      else:
-         self.__y_axis_data_req_width_space_side = Utils._RequiredWidth(text=self.__y_axis_data[0], font=self.__data_font_style)
-      
+      if self.__y_axis_data != "":
+         if self.__y_axis_data_position == "top":
+            self.__y_special_height_space = 15
+            self.__y_axis_data_req_height_space_top = Utils._RequiredHeight(text=self.__y_axis_data, font=self.__data_font_style)
+         else:
+            self.__y_axis_data_req_width_space_side = Utils._RequiredWidth(text=self.__y_axis_data[0], font=self.__data_font_style)
+         
       if self.__y_axis_label_count == 0:
-         self.__y_value_req_height_space = 1
-         self.__y_value_req_width_space = 1
+         self.__y_value_req_height_space = 0
+         self.__y_value_req_width_space = 0
+         self.__y_values_frame_place_req = False
       else:
          if len(Utils._format_float_with_precision(self.__y_axis_max_value, self.__y_axis_precision)) > len(Utils._format_float_with_precision(self.__y_axis_min_value, self.__y_axis_precision)) :
             y_value_temp = self.__y_axis_max_value
@@ -464,11 +483,22 @@ class LineChart():
             y_value_temp = self.__y_axis_min_value
          self.__y_value_req_height_space = Utils._RequiredHeight(text=Utils._format_float_with_precision(y_value_temp, self.__y_axis_precision), font=self.__axis_font_style)
          self.__y_value_req_width_space = Utils._RequiredWidth(text=Utils._format_float_with_precision(y_value_temp, self.__y_axis_precision), font=self.__axis_font_style)
-         
-      self.__x_value_req_height_space = Utils._RequiredHeight(text=self.__x_axis_values[0], font=self.__axis_font_style)
-      #self.__x_value_req_width_space = RequiredWidth(text=format_float_with_precision(self.__x_axis_data_max, self.__x_values_decimals), font=self.__axis_font_style) 
-      self.__x_value_req_width_space = Utils._get_max_required_label_width(data=self.__x_axis_values, font=self.__axis_font_style)
       
+      
+      self.__x_value_req_width_space = 0
+      self.__x_value_req_height_space = 0
+      if self.__x_axis_label_count == 0 and self.__x_axis_values_handle_by == "label_count" :
+         self.__x_values_frame_place_req = False
+      elif self.__x_axis_values_handle_by == "label_indices" and  (len(self.__x_axis_display_values_indices) == 0):
+         self.__x_values_frame_place_req = False
+      else:
+         self.__x_value_req_height_space = Utils._RequiredHeight(text=self.__x_axis_values[0], font=self.__axis_font_style)
+      #self.__x_value_req_width_space = RequiredWidth(text=format_float_with_precision(self.__x_axis_data_max, self.__x_values_decimals), font=self.__axis_font_style) 
+         self.__x_value_req_width_space = Utils._get_max_required_label_width(data=self.__x_axis_values, font=self.__axis_font_style)
+      
+      if self.__y_value_req_height_space/2 > self.__x_value_req_height_space:
+         self.__x_value_req_height_space = self.__y_value_req_height_space/2
+         
       self.__real_width = self.__width - (self.__y_value_req_width_space+self.__axis_size+self.__x_axis_data_req_width_space_top+self.__y_axis_data_req_width_space_side+\
                                           (self.__x_value_req_width_space/2)+self.__x_special_width_space+self.__x_space)
       
@@ -673,10 +703,7 @@ class LineChart():
       
       if self.__x_axis_values_handle_by == "label_indices" : 
          self.__x_axis_label_count = len(self.__x_axis_values)
-        
-      elif self.__x_axis_values_handle_by=="auto":
-         self.__x_axis_label_count=len(self.__x_axis_values)
-         self.__x_labels_values_index_change = 1
+      
          
       elif self.__x_axis_values_handle_by=="label_count":
          if self.__x_axis_label_count == 0:
@@ -684,8 +711,9 @@ class LineChart():
          x_axis_real_label_count = len(self.__x_axis_values)
          if self.__x_axis_label_count > x_axis_real_label_count:
             self.__x_axis_label_count = x_axis_real_label_count
-         while x_axis_real_label_count%self.__x_axis_label_count != 0:
-            self.__x_axis_label_count+=1
+         else:
+            while x_axis_real_label_count%self.__x_axis_label_count != 0:
+               self.__x_axis_label_count+=1
          self.__x_labels_values_index_change = int(x_axis_real_label_count/self.__x_axis_label_count)
             
             
@@ -756,7 +784,7 @@ class LineChart():
                   width: int = None,
                   height: int = None,
                   axis_size: int = None,
-                  x_axis_point_spacing: Union[int, str] = None, 
+                  x_axis_point_spacing: Union[int, Literal["auto"]] = None, 
                   
                   bg_color: str = None,
                   axis_color: str = None,
@@ -770,11 +798,11 @@ class LineChart():
                   y_axis_data_font_color: str = None,
                   y_axis_section_count: int = None,
                   y_axis_section_color: str = None,
-                  y_axis_section_style: str = None,
+                  y_axis_section_style: Literal["normal", "dashed"] = None,
                   y_axis_section_style_type: Tuple[int, int] = None,
                   y_axis_label_count: int=None,
                   y_axis_data: any = None,
-                  y_axis_data_position: str = None,
+                  y_axis_data_position: Literal["top", "side"] = None,
                   y_space: int = None,
                   
                   x_axis_values: Tuple[any, ...] = None,
@@ -783,17 +811,17 @@ class LineChart():
                   x_axis_data_font_color: str = None,
                   x_axis_label_count: int = None,
                   x_axis_section_count: int = None,
-                  x_axis_section_style: str = None,
+                  x_axis_section_style: Literal["normal", "dashed"] = None,
                   x_axis_section_style_type: Tuple[int, int] = None,
                   x_axis_section_color: str = None,
                   x_axis_display_values_indices: Tuple[int, ...] = None,
-                  x_axis_data_position: str = None,
+                  x_axis_data_position: Literal["top", "side"] = None,
                   x_space: int = None ,
                   
-                  pointer_state: str = None,
+                  pointer_state: Literal["enabled", "disabled"] = None,
                   pointing_values_precision: int = None,
                   pointer_color: str = None, 
-                  pointer_lock: str = None,
+                  pointer_lock: Literal["enabled", "disabled"] = None,
                   pointing_callback_function: callable = None, 
                   pointer_size: int = None
                   ) -> None:  
@@ -1069,6 +1097,8 @@ class LineChart():
          Validate._isValidXAxisLabelCount(x_axis_label_count, "x_axis_label_count")
          self.__x_axis_values_handle_by = "label_count"
          if x_axis_label_count != self.__x_axis_label_count:
+            if x_axis_label_count == 0 or self.__x_axis_label_count == 0:
+               chart_reset_req = True
             self.__x_axis_label_count = x_axis_label_count
             chart_x_labels_change_req = True
             widget_color_change_req = True
@@ -1256,7 +1286,10 @@ class LineChart():
          Args:
             line (Line): The line object to which the data belongs.
             data (List[Union[int, float]]): The list of data points to be displayed.
-
+            
+         Raises:
+            ValueError: If the provided line object is not valid or not found in the chart.
+         
          This method adds the provided data to the line's existing data, adjusts the display of the chart accordingly,
          and shows the data points on the chart. It also handles various styles for displaying the data points,
          such as dashed or dotted lines, and highlights for individual data points.
@@ -1267,10 +1300,11 @@ class LineChart():
       
       re_show_data = False
       if line not in self.__lines:
-         self.__lines.append(line)
+         Validate._invalidLine(line)
+         
       line._Line__data += data
       
-      if line._Line__hide_state != True :
+      if  line._Line__visibility:
          for d in data:
             self.__is_data_showing_working = True
             
@@ -1492,7 +1526,7 @@ class LineChart():
              y: int = None,
              rely: Union[int, float] = None,
              relx: Union[int, float] = None,
-             anchor: str = None
+             anchor: Literal["n", "e", "s", "w", "ne", "nw", "se", "sw", "center"] = None
              ) -> None: 
       """
       Place the widget at a specific position within its parent widget.
@@ -1518,8 +1552,8 @@ class LineChart():
             padx: int = None,
             before: any = None,
             after: any = None,
-            side: str = None,
-            anchor: str = None
+            side: Literal["top", "bottom", "left", "right"] = None,
+            anchor: Literal["n", "e", "s", "w", "ne", "nw", "se", "sw", "center"] = None
             ) -> None:
       """
       Pack the widget into its parent widget.
@@ -1550,7 +1584,7 @@ class LineChart():
             pady: int = None, 
             row: int = None, 
             rowspan: int = None, 
-            sticky: str = None
+            sticky: Literal["n", "e", "s", "w", "ne", "nw", "se", "sw"] = None
             ) -> None:
       """
       Grid the widget into its parent widget.
@@ -1583,7 +1617,11 @@ class LineChart():
       """
       
       self.__main_frame.place_forget()
-      
+      self.__place_info_x = None
+      self.__place_info_y = None
+      self.__place_info_rely = None
+      self.__place_info_relx = None
+      self.__place_info_anchor = None
       
    def pack_forget(self) -> None:
       """
@@ -1591,6 +1629,12 @@ class LineChart():
       """
       
       self.__main_frame.pack_forget()
+      self.__pack_info_pady = None
+      self.__pack_info_padx = None
+      self.__pack_info_before = None
+      self.__pack_info_after = None
+      self.__pack_info_side = None
+      self.__pack_info_anchor = None
       
       
    def grid_forget(self) -> None:
@@ -1599,40 +1643,16 @@ class LineChart():
       """
     
       self.__main_frame.grid_forget()
-      
-      
-   def place_back(self) -> None:
-      """
-      Display the widget in its original place using place geometry manager.
-      """
-      
-      self.__main_frame.place(x=self.__place_info_x, y=self.__place_info_y,
-                              rely=self.__place_info_rely, relx=self.__place_info_relx,
-                              anchor=self.__place_info_anchor)
-      
-      
-   def pack_back(self) -> None:
-      """
-      Display the widget in its original place using pack geometry manager.
-      """
-      
-      self.__main_frame.pack(pady=self.__pack_info_pady, padx=self.__pack_info_padx,
-                             before=self.__pack_info_before, after=self.__pack_info_after,
-                             side=self.__pack_info_side, 
-                             anchor=self.__pack_info_anchor)
-      
-      
-   def grid_back(self) -> None:
-      """
-      Display the widget in its original place using grid geometry manager.
-      """
-      
-      self.__main_frame.grid(column=self.__grid_info_column, columnspan=self.__grid_info_columnspan, 
-                           padx=self.__grid_info_padx,  pady=self.__grid_info_pady,
-                           row=self.__grid_info_row, rowspan=self.__grid_info_rowspan, sticky=self.__grid_info_sticky)
+      self.__grid_info_column = None
+      self.__grid_info_columnspan = None
+      self.__grid_info_padx = None
+      self.__grid_info_pady = None
+      self.__grid_info_row = None
+      self.__grid_info_rowspan = None
+      self.__grid_info_sticky = None
       
    
-   def hide(self, line: Line, state: bool) -> None:
+   def set_line_visibility(self, line: Line, state: bool) -> None:
       """
       Hide or show a specific line.
 
@@ -1643,12 +1663,12 @@ class LineChart():
       
       Validate._isValidLine(line, "line")
       Validate._isBool(state, "state")
-      if line._Line__hide_state != state:
-         line._Line__hide_state = state
+      if line._Line__visibility != state or self.__visibility != state:
+         line._Line__visibility = state
          self.__call_reshow_data()
       
       
-   def hide_all(self, state: bool) -> None:
+   def set_lines_visibility(self, state: bool) -> None:
       """
       Hide or show all lines.
 
@@ -1657,10 +1677,11 @@ class LineChart():
       """
       
       Validate._isBool(state, "state")
-      if state == True:
+      self.__visibility = state
+      if state == False:
          self.__output_canvas.place_forget()
       for line in self.__lines:
-         line._Line__hide_state = state
+         line._Line__visibility = state
       self.__call_reshow_data()
    
    
@@ -1668,6 +1689,7 @@ class LineChart():
       """
       Reset the chart and lines to their initial state.
       """
+      
       self.__reset_chart_info()
       self.__reset_lines_info()
       
@@ -1680,7 +1702,24 @@ class LineChart():
       self.__call_reshow_data()
       
    
-   def cget(self, attribute_name: str) -> any :
+   def cget(self, attribute_name: Literal[
+         "width", "height", "axis_color", "bg_color", "fg_color",
+         "data_font_style", "axis_font_style", "y_axis_precision", 
+         "y_axis_data", "y_axis_label_count", "y_axis_values", 
+         "y_axis_font_color", "y_axis_data_font_color", 
+         "y_axis_data_position", "y_axis_section_count", 
+         "y_axis_section_style", "y_axis_section_style_type", 
+         "y_axis_section_color", "x_axis_data", "x_axis_label_count", 
+         "x_axis_values", "x_axis_display_values_indices", 
+         "x_axis_font_color", "x_axis_data_font_color", 
+         "x_axis_data_position", "x_axis_section_count", 
+         "x_axis_section_style", "x_axis_section_style_type", 
+         "x_axis_section_color", "x_axis_point_spacing", 
+         "y_space", "x_space", "pointer_state", 
+         "pointing_callback_function", "pointer_color", 
+         "pointing_values_precision", "pointer_lock", 
+         "pointer_size", "__all__"
+      ] = "__all__") -> any :
       """
       Get the value of the specified attribute.
 
@@ -1692,6 +1731,8 @@ class LineChart():
             any: The value of the specified attribute.
       """
       
+      if attribute_name == "width": return self.__width
+      if attribute_name == "height": return self.__height
       if attribute_name == "axis_color": return self.__axis_color
       if attribute_name == "bg_color": return self.__bg_color
       if attribute_name == "fg_color": return self.__fg_color
@@ -1731,6 +1772,8 @@ class LineChart():
       
       if attribute_name == "__all__":
          return {
+            "width" : self.__width,
+            "height" : self.__height,
             "axis_color" : self.__axis_color,
             "bg_color" : self.__bg_color,
             "fg_color" : self.__fg_color,
@@ -1769,4 +1812,118 @@ class LineChart():
             "pointer_size" : self.__pointer_size
             }
          
+      Validate._invalidCget(attribute_name)
+   
+   
+   def get_line_visibility(self, line: Line):
+      """
+      Get the visibility state of a specific line.
+
+         Args:
+            line (Line): The Line object for which visibility is queried.
+
+         Returns:
+            bool: True if the line is visible, False otherwise.
+
+         Raises:
+            ValueError: If the provided line object is not valid or not found in the chart.
+      """
+    
+      Validate._isValidLine(line, "line")
+      if line in self.__lines:
+         return line._Line__visibility;
+      else:
+         Validate._invalidLine(line)
+
+      
+   def place_info(self, attribute_name: Literal["x", "y", "relx", "rely", "anchor", "__all__"] = "__all__"):
+      """
+      Get the value of the specified place info.
+
+         Args:
+            attribute_name (str): The name of the attribute to get.
+
+         Returns:
+            any: The value of the specified attribute.
+      """
+      
+      if attribute_name == "x": return self.__place_info_x
+      if attribute_name == "y": return self.__place_info_y
+      if attribute_name == "relx": return self.__place_info_relx
+      if attribute_name == "rely": return self.__place_info_rely
+      if attribute_name == "anchor": return self.__place_info_anchor
+      
+      if attribute_name == "__all__":
+         return {
+            "x": self.__place_info_x,
+            "y": self.__place_info_y,
+            "relx": self.__place_info_relx,
+            "rely": self.__place_info_rely,
+            "anchor": self.__place_info_anchor
+         }
+      
+      Validate._invalidCget(attribute_name)
+      
+
+   def pack_info(self, attribute_name: Literal["padx", "pady", "before", "after", "side", "anchor", "__all__"] = "__all__"):
+      """
+      Get the value of the specified pack info.
+
+         Args:
+            attribute_name (str): The name of the attribute to get.
+
+         Returns:
+            any: The value of the specified attribute.
+      """
+      
+      if attribute_name == "padx": return self.__pack_info_padx
+      if attribute_name == "pady": return self.__pack_info_pady
+      if attribute_name == "before": return self.__pack_info_before
+      if attribute_name == "after": return self.__pack_info_after
+      if attribute_name == "side": return self.__pack_info_side 
+      if attribute_name == "anchor": return self.__pack_info_anchor
+      
+      if attribute_name == "__all__":
+         return {
+            "padx": self.__pack_info_padx,
+            "pady": self.__pack_info_pady,
+            "before": self.__pack_info_before,
+            "after": self.__pack_info_after,
+            "side": self.__pack_info_side,
+            "anchor": self.__pack_info_anchor
+         }
+      
+      Validate._invalidCget(attribute_name)
+      
+      
+   def grid_info(self, attribute_name: Literal["row", "column", "rowspan", "columnspan", "padx", "pady", "sticky", "__all__"] = "__all__"):
+      """
+      Get the value of the specified grid info.
+
+         Args:
+            attribute_name (str): The name of the attribute to get.
+
+         Returns:
+            any: The value of the specified attribute.
+      """
+      
+      if attribute_name == "row": return self.__grid_info_row
+      if attribute_name == "column": return self.__grid_info_column
+      if attribute_name == "rowspan": return self.__grid_info_rowspan
+      if attribute_name == "columnspan": return self.__grid_info_columnspan
+      if attribute_name == "padx": return self.__grid_info_padx
+      if attribute_name == "pady": return self.__grid_info_pady
+      if attribute_name == "sticky": return self.__grid_info_sticky
+      
+      if attribute_name == "__all__":
+         return {
+            "row": self.__grid_info_row,
+            "column": self.__grid_info_column,
+            "rowspan": self.__grid_info_rowspan,
+            "columnspan": self.__grid_info_columnspan,
+            "padx": self.__grid_info_padx,
+            "pady": self.__grid_info_pady,
+            "sticky": self.__grid_info_sticky
+         }
+      
       Validate._invalidCget(attribute_name)

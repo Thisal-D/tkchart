@@ -1,9 +1,11 @@
 <div id="top">
 
+### 🌟 Like what you see? Give us a star! 🚀 Thanks a bunch! 😄
+
+## ***# If you're using customtkinter, I recommend checking out <a href="https://github.com/Thisal-D/ctkchart"> ctkchart </a> for additional features and capabilities.***
+
 ### <a href="#contributing">Contributing to tkchart</a>
 ### <a href="#whatsnew">Whats New ?</a>
-
-# Read Me
 
 <div align="center">
 
@@ -13,11 +15,11 @@
 [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart)
 [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
-<img src="https://drive.google.com/thumbnail?id=1YxLGG88z1EyPR7SUgJhqtmD0uthRYgNp&sz=w180">
+<img src="https://drive.google.com/thumbnail?id=1OawyuxJnen5SD4JCrJYSwGPGNTMQjSeV&sz=w180">
 
 </div>
 
-### <li>tkchart Library is a Python library that simplifies the process of creating line charts in tkinter and customtkinter GUI applications.</li>
+### <li>tkchart Library is a Python library that simplifies the process of creating line charts in tkinter GUI applications.</li>
 
 ## Examples
 
@@ -30,7 +32,7 @@
 <br>
 <br>
 
-## tkchart - 1.4.0
+## tkchart - 1.4.1
 
 ### You need to install & import package first
 * installation
@@ -62,7 +64,7 @@ linechart = tkchart.LineChart()
 ```
 - ##  Attributes & Types & Values
     ## Master Configuration
-    - master : ``tkinter | customtkinter (Frame | Canvas | Tk)``
+    - master : ``tkinter | customtkinter (Frame | Canvas | Tk) | any``
 
     ## Dimensions 
     - width : ``int``
@@ -83,10 +85,10 @@ linechart = tkchart.LineChart()
     - x_axis_display_values_indices : ``tuple[int, ...]``
     - x_axis_data : ``any``
     - y_axis_data : ``any``
-    - x_axis_values : ``tuple(any, ...)`` 
+    - x_axis_values : ``tuple[any, ...]`` 
         - ("2020 Year", "2021 Year", "2022 Year", "2023 Year", "2024 Year")
         - (0.1, 0.2, 0.3, 0.4, 0.5)
-    - y_axis_values : ``tuple(int | float, int | float)``
+    - y_axis_values : ``tuple[int | float, int | float]``
         - (0 ,1000)
         - (-1000, 1000)
     - y_axis_precision : ``int``
@@ -123,10 +125,10 @@ linechart = tkchart.LineChart()
         - "normal"
         - "dashed"
     - y_axis_section_style : ``str``
-    - x_axis_section_style_type : ``tuple(int, int)``
+    - x_axis_section_style_type : ``tuple[int, int]``
         - (50, 10)
         - (10, 10)
-    - y_axis_section_style_type : ``tuple(int, int)``
+    - y_axis_section_style_type : ``tuple[int, int]``
 
     ## Data Retrieval Configuration
     - pointing_callback_function : ``function``
@@ -141,7 +143,7 @@ linechart = tkchart.LineChart()
     
     ## Recent Changes
     -  ~~y_axis_max_value : ``int | float``~~ <span style="color:red; font-weight:bold">Deprecated</span>
-        - replaced with y_axis_values : ``tuple(int | float, int | float)``
+        - replaced with y_axis_values : ``tuple[int | float, int | float]``
 
             **_The y_axis_values parameter is a tuple where the value at index 0 represents the starting value of the Y-axis, and the value at index 1 represents the ending value of the Y-axis._**
 
@@ -199,35 +201,35 @@ linechart = tkchart.LineChart()
         
     - ### show_data : ``use to display data``
         Support parameters
-        - data : ``tuple``
+        - data : ``list``
         - line : ``tkchart.Line``
        
     - ### place : ``use to place LineChart``
         Support parameters
-        - x
-        - y
-        - rely
-        - relx
-        - anchor
+        - x : ``int``
+        - y : ``int``
+        - rely : ``float | int``
+        - relx : ``float | int``
+        - anchor : ``str``
        
     - ### pack : ``use to pack LineChart``
         Support parameters
-        - pady
-        - padx
-        - before
-        - after
-        - side
-        - anchor
+        - pady : ``int``
+        - padx : ``int``
+        - before : ``widget``
+        - after : ``widget``
+        - side : ``str``
+        - anchor : ``str``
         
     - ### grid : ``use to grid LineChart``
         Support parameters
-        - column
-        - columnspan
-        - padx
-        - pady
-        - row
-        - rowspan
-        - sticky
+        - column ``int``
+        - columnspan ``int``
+        - padx ``int``
+        - pady ``int``
+        - row ``int``
+        - rowspan ``int``
+        - sticky ``str``
 
     - ### place_forget : ``use to place forget the chart``
     - ### pack_forget : ``use to pack forget the chart``
@@ -462,7 +464,7 @@ line = tkchart.Line()
         - "normal"
         - "dashed"
         - "dotted"
-    - style_type : ``tuple(int, int)``
+    - style_type : ``tuple[int, int]``
         - (5,10)
         - (10,5)
     - point_highlight: ``str``
@@ -551,7 +553,7 @@ line = tkchart.Line(master=linechart,
 
 data = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
 def loop():
-    linechart.show_data(data=tuple([random.choice(data)]), line=line)
+    linechart.show_data(data=[random.choice(data)], line=line)
     root.after(250, loop)
 loop()
 
@@ -564,10 +566,8 @@ click to play
 https://github.com/Thisal-D/tkchart/assets/93121062/ec29a3f4-7eba-40c5-9f5c-cc7071ff40ff
 
 </div>
-
 <br>
 <hr>
-<br>
 
 ### Examples
 - <div align="center"><img src="https://drive.google.com/thumbnail?id=1_fLJaHHxNYf8Hviu_I7HKIst_l2m5_A0&sz=w900"></div> 
@@ -582,14 +582,12 @@ https://github.com/Thisal-D/tkchart/assets/93121062/ec29a3f4-7eba-40c5-9f5c-cc70
 
 - <div align="center"><img src="https://drive.google.com/thumbnail?id=1_vTP7DIsEdd4gU5hQOYeWF5FVYfilCvG&sz=w900"></div> 
 
-</div>
-
-<hr>
-
+<br>
 </div>
 
 <br>
- 
+<hr>
+
 <div id="contributing">
 
 ### <a href="#whatsnew">Whats New ?</a>
@@ -631,37 +629,44 @@ By contributing, you agree that your contributions will be licensed under the pr
 Thank you for your contribution!
 
 </div>
+<br>
 
-<br>
-<br>
 
 <div id="whatsnew">
+
+<hr>
 
 ### <a href="#contributing">Contributing to tkchart</a>
 ### <a href="#top"> Go to top </a>
 
-# Whats New
 
-Added new parameters to Line object
+# Whats New ?
 
-Try on :
-<a href="https://github.com/Thisal-D/tkchart/blob/main/Tests/Main%20-%20Test.py"> Tests/Main - Test.py </a>
+- Added new parameters to Line object
 
-- point_highlight: ``str``
-- point_highlight_size: ``int`` 
-- point_highlight_color: ``str``
+    - Try on :
 
-:: before
-<div align="center"><img src="https://drive.google.com/thumbnail?id=1gamwp1fyXbwVFUduohPFH5nZydDYBDlZ&sz=w900"></div>
+        <a href="https://github.com/Thisal-D/tkchart/blob/main/Tests/Main%20-%20Test.py"> Tests/Main - Test.py </a>
 
-:: after
-- point_highlight = "enabled"
-- point_highlight_size = 10
-- point_highlight_color = "#00FFFF"
+        - point_highlight: ``str``
+        - point_highlight_size: ``int`` 
+        - point_highlight_color: ``str``
 
-<div align="center"><img src="https://drive.google.com/thumbnail?id=1uhnCAKUHyCFytpxwImWPx0ubwd_4mTxA&sz=w900"></div>
+        :: before
+        <div align="center"><img src="https://drive.google.com/thumbnail?id=1gamwp1fyXbwVFUduohPFH5nZydDYBDlZ&sz=w900"></div>
 
-</div>
+        :: after
+        - point_highlight = "enabled"
+        - point_highlight_size = 10
+        - point_highlight_color = "#00FFFF"
+
+        <div align="center"><img src="https://drive.google.com/thumbnail?id=1uhnCAKUHyCFytpxwImWPx0ubwd_4mTxA&sz=w900"></div>
+
+        </div>
+
+- Enhancements to Error Handling
+
+- Some bug fixes
 
 <br>
 

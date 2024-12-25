@@ -1,5 +1,4 @@
-from .LineChart import *
-from .Line import *
-from .Exceptions import *
+from .LineChart import LineChart
+from .Line import Line
 
-__version__ = "1.4.0"
+__version__ = "1.4.1"

@@ -1,5 +1,4 @@
 import tkinter
-import math
 
 class Utils:
     def _RequiredWidth(text: any, font: str) -> int:

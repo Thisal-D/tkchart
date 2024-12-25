@@ -4,18 +4,23 @@ import random
 
 root = customtkinter.CTk()
 
+
 linechart = tkchart.LineChart(master=root,
-                            width=800, 
-                            height=400,
+                            width=1700, 
+                            height=900,
                             axis_size=5,
                             
-                            y_axis_section_count=5,
-                            x_axis_section_count=5,
-                            y_axis_label_count=5,
+                            y_axis_section_count=10,
+                            
+                            y_axis_label_count=10,
                             
                             y_axis_data="GB",
                             x_axis_data="S",
-                            x_axis_values=[1,2,3,4,5,6,7,8,9,10],
+                            x_axis_values=[x for x in range(2000,2040)],
+                            
+                            x_axis_label_count=10,
+                            x_axis_section_count=2,
+                            
                             y_axis_max_value=1000,
                             y_axis_precision=5,
                             
@@ -31,20 +36,20 @@ linechart = tkchart.LineChart(master=root,
                             data_font_style=("Arial", 15,"bold"),
                             axis_font_style=("Arial", 10,"bold"),
                             
-                            x_space=20,
-                            y_space=20,
+                            x_space=100,
+                            y_space=100,
                             
                             x_axis_data_position="side",
                             y_axis_data_position="size"
                         )
-linechart.pack()
+linechart.place(x=50, y=50)
 
 
 line = tkchart.Line(master=linechart,
                 color="lightblue",
                 size=2,
                 style="dashed",
-                style_type=(4,10))
+                style_type=(10,5))
 
 data = [0,100,200,300,400,500,600,700,800,900,1000]
 def loop():

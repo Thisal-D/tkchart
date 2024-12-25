@@ -1,21 +1,21 @@
-
 <div align="center"><h1> tkchart </h1> </div>
 
 <div align="center">
-<img src="https://drive.google.com/uc?export=view&id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo">
-<img src="https://drive.google.com/uc?export=view&id=1kMVifs_1oLZPyQkX4mHGyPWThbqj8nNU">
+<img src="https://drive.google.com/thumbnail?id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo&sz=w900">
+<img src="https://drive.google.com/thumbnail?id=1yPe45nAGH0KgwQ2e57KubvMLyQkOV7XX&sz=w180">
 </div>
-
 
 ### <li>tkchart Library is a Python library that simplifies the process of creating line charts in tkinter and customtkinter GUI applications.</li>
 
 ## Examples
-<div align="center"><img src="https://drive.google.com/uc?export=view&id=1F_elYaMgKzVMNLgDjBN6B7P4EX9X43YV"></div>
+<div align="center">
+<img src="https://drive.google.com/thumbnail?id=1F_elYaMgKzVMNLgDjBN6B7P4EX9X43YV&sz=w900">
+</div> 
 
 <br>
 <br>
 
-## tkchart - 1.2.0
+## tkchart - 1.3.0
 
 ### You need to install & import package first
 * installation
@@ -38,6 +38,9 @@
 3. Display of data
 <br>
 
+# Attributes
+   <div align="center"><img src="https://drive.google.com/thumbnail?id=1EfsmPk2fCGn4MNZi8RZEKUootrgcDNOU&sz=w900"></div> 
+
 # 1 . Creating a LineChart
  
 ```
@@ -51,10 +54,11 @@ linechart = tkchart.LineChart()
     - y_axis_section_count : ``int``
     - x_axis_section_count : ``int``
     - y_axis_label_count : ``int``
+    - x_axis_label_count : ``int``
     - y_axis_data : ``str | int | float``
     - x_axis_data : ``str | int | float``
     - y_axis_max_value : ``int | float``
-    - x_axis_values : ``List(str | float| str)`` 
+    - x_axis_values : ``List(str | float| int)`` 
         - ["2020 Year", "2021 Year", "2022 Year", "2023 Year", "2024 Year"]
     - y_axis_precision : ``int``
     - section_color : ``str``
@@ -90,6 +94,7 @@ linechart = tkchart.LineChart()
         - y_axis_section_count
         - x_axis_section_count
         - y_axis_label_count
+        - x_axis_label_count
         - y_axis_data
         - x_axis_data
         - y_axis_max_value
@@ -131,7 +136,7 @@ linechart = tkchart.LineChart()
         - before
         - after
         - side
-        - ancho
+        - anchor
         
     - ### grid : ``use to grid LineChart``
         Support parameters
@@ -153,7 +158,7 @@ linechart = tkchart.LineChart()
         Support parameters
         - state : ``bool``
         
-    - ### hide : ``use hide a specific line``
+    - ### hide : ``use to hide a specific line``
         Support parameters
         - line : ``tkchart.Line``
         - state : ``bool``
@@ -168,7 +173,7 @@ linechart = tkchart.LineChart(master=root,
                         )
 ```
 
-<div align="center"><img src="https://drive.google.com/uc?export=view&id=1UnGHJ-tLrki3HegDs7WM1TVUIkMAbWVS"></div>
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1UnGHJ-tLrki3HegDs7WM1TVUIkMAbWVS&sz=w900"></div> 
 <br>
 <br>
 
@@ -183,7 +188,7 @@ linechart = tkchart.LineChart(master=root,
                             y_axis_label_count=5,
                         )
 ```
-<div align="center"><img src="https://drive.google.com/uc?export=view&id=1FPzXc0NVyY50TOKIbBC_bXellnVUTY6l"></div>
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1FPzXc0NVyY50TOKIbBC_bXellnVUTY6l&sz=w900"></div> 
 <br>
 <br>
 
@@ -196,6 +201,7 @@ linechart = tkchart.LineChart(master=root,
                             y_axis_section_count=5,
                             x_axis_section_count=5,
                             y_axis_label_count=5,
+                            x_axis_label_count=10,
                             
                             y_axis_data="GB",
                             x_axis_data="S",
@@ -204,7 +210,7 @@ linechart = tkchart.LineChart(master=root,
                             y_axis_precision=5
                         )
 ```
-<div align="center"><img src="https://drive.google.com/uc?export=view&id=1F8fZdWwA4q-f3cL3Oejvey0rU0yEBF6j"></div>
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1F8fZdWwA4q-f3cL3Oejvey0rU0yEBF6j&sz=w900"></div> 
 <br>
 <br>
 
@@ -217,6 +223,7 @@ linechart = tkchart.LineChart(master=root,
                             y_axis_section_count=5,
                             x_axis_section_count=5,
                             y_axis_label_count=5,
+                            x_axis_label_count=10,
                             
                             y_axis_data="GB",
                             x_axis_data="S",
@@ -234,7 +241,7 @@ linechart = tkchart.LineChart(master=root,
                             axis_color="#707070"
                         )
 ```
-<div align="center"><img src="https://drive.google.com/uc?export=view&id=1A1FAprrNkbWjZAyaoL3NvdPu5RASIq5Q"></div>
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1A1FAprrNkbWjZAyaoL3NvdPu5RASIq5Q&sz=w900"></div> 
 <br>
 <br>
 
@@ -247,6 +254,7 @@ linechart = tkchart.LineChart(master=root,
                             y_axis_section_count=5,
                             x_axis_section_count=5,
                             y_axis_label_count=5,
+                            x_axis_label_count=10,
                             
                             y_axis_data="GB",
                             x_axis_data="S",
@@ -267,7 +275,7 @@ linechart = tkchart.LineChart(master=root,
                             axis_font_style=("Arial", 10,"bold")
                         )
 ```
-<div align="center"><img src="https://drive.google.com/uc?export=view&id=1qIk805dmi9wpBUSv2UmnD7gQFSQB5RPF"></div>
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1qIk805dmi9wpBUSv2UmnD7gQFSQB5RPF&sz=w900"></div> 
 <br>
 <br>
 
@@ -280,6 +288,7 @@ linechart = tkchart.LineChart(master=root,
                             y_axis_section_count=5,
                             x_axis_section_count=5,
                             y_axis_label_count=5,
+                            x_axis_label_count=10,
                             
                             y_axis_data="GB",
                             x_axis_data="S",
@@ -303,7 +312,7 @@ linechart = tkchart.LineChart(master=root,
                             y_space=20
                         )
 ```
-<div align="center"><img src="https://drive.google.com/uc?export=view&id=1W8P7wXlNLymaE0sexSSfltv0fX5t7XXD"></div>
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1W8P7wXlNLymaE0sexSSfltv0fX5t7XXD&sz=w900"></div> 
 <br>
 <br>
 
@@ -316,6 +325,7 @@ linechart = tkchart.LineChart(master=root,
                             y_axis_section_count=5,
                             x_axis_section_count=5,
                             y_axis_label_count=5,
+                            x_axis_label_count=10,
                             
                             y_axis_data="GB",
                             x_axis_data="S",
@@ -344,7 +354,7 @@ linechart = tkchart.LineChart(master=root,
 
 linechart.pack()
 ```
-<div align="center"><img src="https://drive.google.com/uc?export=view&id=1kNoJalW6aLx79wxcmrUaAS_D8XsldL3h"></div>
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1kNoJalW6aLx79wxcmrUaAS_D8XsldL3h&sz=w900"></div> 
 
 
 <br>
@@ -388,7 +398,7 @@ line = tkchart.Line(master=linechart,
                 style_type=(4,10))
 
 ```
-<div align="center"><img src="https://drive.google.com/uc?export=view&id=1PDKdRPfjhzUkAlY-ktFhE70MsYCKeFn5"></div>
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1PDKdRPfjhzUkAlY-ktFhE70MsYCKeFn5&sz=w900"></div> 
 
 <br>
 <hr>
@@ -410,6 +420,7 @@ linechart = tkchart.LineChart(master=root,
                             y_axis_section_count=5,
                             x_axis_section_count=5,
                             y_axis_label_count=5,
+                            x_axis_label_count=10,
                             
                             y_axis_data="GB",
                             x_axis_data="S",
@@ -455,9 +466,7 @@ root.mainloop()
 
 <div align="center">
 
-#### Click to play
-
-[![Watch the video](https://drive.google.com/uc?export=view&id=1PDKdRPfjhzUkAlY-ktFhE70MsYCKeFn5)](https://drive.google.com/file/d/1MYVyu8rRSJ9febuF5vikNpCs_WZxVxKi/view?usp=drive_link)
+https://github.com/Thisal-D/tkchart/assets/93121062/ec29a3f4-7eba-40c5-9f5c-cc7071ff40ff
 
 </div>
 
@@ -466,21 +475,21 @@ root.mainloop()
 <br>
 
 ### Examples
-- <div align="center"><img src="https://drive.google.com/uc?export=view&id=1_fLJaHHxNYf8Hviu_I7HKIst_l2m5_A0"></div>
+- <div align="center"><img src="https://drive.google.com/thumbnail?id=1_fLJaHHxNYf8Hviu_I7HKIst_l2m5_A0&sz=w900"></div> 
 
-- <div align="center"><img src="https://drive.google.com/uc?export=view&id=1HoYA0oDPnEW6l7ALNTO8GwPzewXIutU-"></div>
+- <div align="center"><img src="https://drive.google.com/thumbnail?id=1HoYA0oDPnEW6l7ALNTO8GwPzewXIutU-&sz=w900"></div> 
 
-- <div align="center"><img src="https://drive.google.com/uc?export=view&id=1Q5Y8vw4Inh6Ne6WckfBDt_PRYpbgWpiI"></div>
+- <div align="center"><img src="https://drive.google.com/thumbnail?id=1Q5Y8vw4Inh6Ne6WckfBDt_PRYpbgWpiI&sz=w900"></div> 
 
-- <div align="center"><img src="https://drive.google.com/uc?export=view&id=10lmTzrQ29Tynx3zjZOHCyW3f5qXdjPMr"></div>
+- <div align="center"><img src="https://drive.google.com/thumbnail?id=10lmTzrQ29Tynx3zjZOHCyW3f5qXdjPMr&sz=w900"></div> 
 
-- <div align="center"><img src="https://drive.google.com/uc?export=view&id=1tdo37nq3Hcv2roTOA80qsME9P185F7r1"></div>
+- <div align="center"><img src="https://drive.google.com/thumbnail?id=1tdo37nq3Hcv2roTOA80qsME9P185F7r1&sz=w900"></div> 
 
-- <div align="center"><img src="https://drive.google.com/uc?export=view&id=1_vTP7DIsEdd4gU5hQOYeWF5FVYfilCvG"></div>
+- <div align="center"><img src="https://drive.google.com/thumbnail?id=1_vTP7DIsEdd4gU5hQOYeWF5FVYfilCvG&sz=w900"></div> 
 
 <br>
 <hr>
 <br>
 
 ### go to GitHub
-- #  GitHub.com   :   <a href="https://github.com/Thisal-D/tkchart"><i>tkchart<i></a>
+- #  GitHub.com   :  <a href="https://github.com/Thisal-D/tkchart" target="_blank" ><i>tkchart<i></a>

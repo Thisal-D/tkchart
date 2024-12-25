@@ -1,4 +1,3 @@
-         
 class Line():
    def __init__(self ,*args ,master=None ,color="#909090" ,size=1, style="line", style_type=(10,5)):
       try :

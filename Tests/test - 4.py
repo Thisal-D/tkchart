@@ -9,13 +9,13 @@ root.configure(fg_color="#ffffff")
 
 
 chart = tkchart.LineChart(master=root,
-                          bar_color="#101010", x_values_color="#000000", y_values_color="#000000",
-                          bg_color="#ffffff", chart_color="#ffffff",
+                          axis_color="#202020", x_axis_font_color="#202020", y_axis_font_color="#202020",
+                          bg_color="#ffffff", fg_color="#ffffff",
                           width=900, height=400,
-                          x_data_min_max=(0,10), y_data_max=100)
+                          x_axis_values=[x for x in range(1,11)], y_axis_max_value=100)
 chart.pack(pady=100)
 
-line = tkchart.Line(master=chart, size=2, mode='line', color="#0000ff")
+line = tkchart.Line(master=chart, size=2, style='dashed', style_type=(5,10), color="blue",)
 
 
 data =  [x for  x in range(0,101)]

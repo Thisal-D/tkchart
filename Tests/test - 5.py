@@ -9,15 +9,15 @@ root.configure(fg_color="#100e17")
 
 
 chart = tkchart.LineChart(master=root,
-                          bg_color="#100e17", chart_color="#100e17",
+                          bg_color="#100e17", fg_color="#100e17",
                           width=900, height=400,
-                          x_data_min_max=(0,10), y_data_max=100,
-                          x_sections_count=10, y_sections_count=10,
+                          x_axis_values=[x for x in range(1,11)], y_axis_max_value=100,
+                          x_axis_section_count=10, y_axis_section_count=10,
                           )
 chart.pack(pady=100)
 
-line = tkchart.Line(master=chart, size=3, mode='dash', mode_style=(10,10), color="lightblue",)
-line2 = tkchart.Line(master=chart, size=3, mode='circle', mode_style=(10,10), color="lightgreen",)
+line = tkchart.Line(master=chart, size=3, style='dashed', style_type=(10,10), color="lightblue",)
+line2 = tkchart.Line(master=chart, size=3, style='dotted', style_type=(10,10), color="lightgreen",)
 
 
 data =  [x for  x in range(0,101)]

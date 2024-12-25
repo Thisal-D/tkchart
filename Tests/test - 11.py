@@ -4,8 +4,9 @@ import tkinter
 import random
 root = tkinter.Tk()
 root.geometry("1920x1000")
-chart = tkchart.LineChart(master=root, width=1011, height=600, x_labels_count=20, y_labels_count=20,
-                          x_data_min_max=(0,20), y_data_max=1000, x_sections_count=5, y_sections_count=5)
+chart = tkchart.LineChart(master=root, width=1011, height=600, y_axis_label_count=20,
+                          x_axis_values=[x for x in range(1,21)], y_axis_max_value=1000, x_axis_section_count=5,
+                          y_axis_section_count=5)
 chart.pack()
 
 line1 = tkchart.Line(master=chart ,color="blue", size=3)

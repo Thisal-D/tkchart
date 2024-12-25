@@ -8,7 +8,7 @@ root = customtkinter.CTk()
 root.geometry("1280x720")
 
 # values for chart x axis
-x_axis_values = [1, 2, 3, 4, 5]
+x_axis_values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 #create line chart
 linechart = tkchart.LineChart(master=root,
                               y_axis_max_value=1000,
@@ -36,7 +36,7 @@ linechart = tkchart.LineChart(master=root,
                               
                               x_axis_section_count=10,
                               y_axis_section_count=10,
-                              
+                              x_axis_label_count=5,
                               y_axis_label_count=15,
                               
                               y_axis_precision=3,

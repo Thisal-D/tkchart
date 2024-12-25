@@ -1,5 +1,5 @@
 import tkinter
-import tkchart as tkchart
+import tkchart 
 import random #for get random value
 
 #create root 

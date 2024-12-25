@@ -1,21 +1,28 @@
 <div align="center"><h1> tkchart </h1> </div>
+<div align="center"> 
+   
+[![Downloads](https://static.pepy.tech/badge/tkchart)](https://pepy.tech/project/tkchart)
+[![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart)
+[![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
+</div>
 <div align="center">
+
 <img src="https://drive.google.com/thumbnail?id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo&sz=w900">
-<img src="https://drive.google.com/thumbnail?id=1yPe45nAGH0KgwQ2e57KubvMLyQkOV7XX&sz=w180">
+
+<img src="https://drive.google.com/thumbnail?id=1YH8qrj3vG2q3Z6d3xa4DUC690bH5IeR-&sz=w180">
+
 </div>
 
 ### <li>tkchart Library is a Python library that simplifies the process of creating line charts in tkinter and customtkinter GUI applications.</li>
 
 ## Examples
-<div align="center">
-<img src="https://drive.google.com/thumbnail?id=1F_elYaMgKzVMNLgDjBN6B7P4EX9X43YV&sz=w900">
-</div> 
+<div align="center"><img src="https://drive.google.com/thumbnail?id=1F_elYaMgKzVMNLgDjBN6B7P4EX9X43YV&sz=w900"></div> 
 
 <br>
 <br>
 
-## tkchart - 1.3.0
+## tkchart - 1.3.1
 
 ### You need to install & import package first
 * installation
@@ -162,9 +169,9 @@ linechart = tkchart.LineChart()
         Support parameters
         - line : ``tkchart.Line``
         - state : ``bool``
+    - ### reset : ``use to reset chart``
 
     
-
 ```
 linechart = tkchart.LineChart(master=root,
                             width=800, 
@@ -491,5 +498,8 @@ https://github.com/Thisal-D/tkchart/assets/93121062/ec29a3f4-7eba-40c5-9f5c-cc70
 <hr>
 <br>
 
+### go to PyPi
+- # PyPi.org   :   <a href="https://pypi.org/project/tkchart" target="_blank" ><i>tkchart</i></a>
+
 ### go to GitHub
-- #  GitHub.com   :  <a href="https://github.com/Thisal-D/tkchart" target="_blank" ><i>tkchart<i></a>
+- # GitHub.com   :  <a href="https://github.com/Thisal-D/tkchart" target="_blank" ><i>tkchart</i></a>

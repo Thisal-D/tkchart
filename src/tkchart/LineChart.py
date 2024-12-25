@@ -599,6 +599,9 @@ class LineChart():
       self.__output_canvas.place(y=0, x=0, height=self.__const_real_height, width=self.__const_real_width)
       self.__place_x = 0
       
+   def __reset_lines_info(self):
+      for line in  self.__lines:
+         line._Line__reset()
    
    def __call_to_re_show_data(self):
       self.__force_to_stop_data_showing = True
@@ -820,3 +823,8 @@ class LineChart():
          line._Line__hide_state = state
       self.__force_to_stop_data_showing = False
       self.__re_show_data()
+   
+   def reset(self):
+      self.__reset_chart_info()
+      self.__reset_lines_info()
+      

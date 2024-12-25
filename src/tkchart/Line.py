@@ -12,6 +12,7 @@ class Line():
       self.__x_end  = self.__chart._LineChart__line_width* -1
       self.__data = []
       self.__temp_data = []
+      self.__hide_state = False
    
 
    def configure(self , color=None ,size=None) :

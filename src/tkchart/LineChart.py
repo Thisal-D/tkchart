@@ -87,7 +87,6 @@ class LineChart():
       self.__place_x = 0
       self.__real_height = 0
       self.__real_width = 0
-      self.__chart_hide = False
       
       
       self.__place_info_x = 0
@@ -531,38 +530,39 @@ class LineChart():
          self.__lines.append(line)
       line._Line__data += data
       
-      for d in data:
-         self.___show_data_working = True
-         if not self.__force_to_stop_show_data:
-            x_start = line._Line__x_end
-            y_start = line._Line__y_end
-   
-            line._Line__x_end += self.__line_width
-            line._Line__y_end = (self.__real_height - (self.__real_height/100)*(d/self.__y_data_max*100) + (line._Line__size/2))
-            
-            if line._Line__x_end > self.__real_width and self.__real_width < 20000:
-               self.__place_x -= self.__line_width
+      if line._Line__hide_state != True :
+         for d in data:
+            self.___show_data_working = True
+            if not self.__force_to_stop_show_data:
+               x_start = line._Line__x_end
+               y_start = line._Line__y_end
+      
+               line._Line__x_end += self.__line_width
+               line._Line__y_end = (self.__real_height - (self.__real_height/100)*(d/self.__y_data_max*100) + (line._Line__size/2))
                
-               if not self.__chart_hide:
+               if line._Line__x_end > self.__real_width and self.__real_width < 20000:
+                  self.__place_x -= self.__line_width
+                  
+
                   self.__output.place(x=self.__place_x,
                                     width=self.__real_width+self.__line_width)
+                  
+                  self.__real_width += self.__line_width;
                
-               self.__real_width += self.__line_width;
-            
-            elif self.__real_width > 6000:
-               re_show_data = True
-               break;
-            if not re_show_data:
-               self.__output.create_line(x_start, y_start, line._Line__x_end, line._Line__y_end
-                                                   ,fill=line._Line__color ,width=line._Line__size)
-            
-         else:
-            break
+               elif self.__real_width > 15000:
+                  re_show_data = True
+                  break;
+               if not re_show_data:
+                  self.__output.create_line(x_start, y_start, line._Line__x_end, line._Line__y_end
+                                                      ,fill=line._Line__color ,width=line._Line__size)
                
-      
-      if re_show_data:
-         self.__re_show_data()
-      self.___show_data_working = False
+            else:
+               break
+                  
+         
+         if re_show_data:
+            self.__re_show_data()
+         self.___show_data_working = False
       
       
    def place(self, x=None, y=None, rely=None, relx=None, anchor=None):
@@ -624,10 +624,20 @@ class LineChart():
                            padx=self.__grid_info_padx,  pady=self.__grid_info_pady,
                            row=self.__grid_info_row, rowspan=self.__grid_info_rowspan, sticky=self.__grid_info_sticky)
       
-   def hide(self,state:bool):
-      if state == True:
-         self.__chart_hide = True
-         self.__output.place_forget()
-      elif state == False:
-         self.__chart_hide = False
-         self.__output.place(x=self.__place_x, width=self.__real_width, height=self.__real_height)
+   def hide(self, line:Line, state:bool):
+      if line._Line__hide_state != state:
+         line._Line__hide_state = state
+         self.__re_show_data()
+      
+      
+   def hide_all(self,state:bool):
+      if state==True or state == False:
+         if state == True:
+            self.__output.place_forget()
+         self.__force_to_stop_show_data = True
+         while self.___show_data_working :
+               pass
+         for line in self.__lines:
+            line._Line__hide_state = state
+         self.__force_to_stop_show_data = False
+         self.__re_show_data()

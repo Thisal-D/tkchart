@@ -1,10 +1,10 @@
 import tkinter
-import tkchart as tkchart
+import tkchart
 import random #for get random value
 
 #create root 
 root = tkinter.Tk()
-root.minsize(1200,500)
+root.minsize(1200,800)
 
 #create LineChart
 linechart = tkchart.LineChart(master=root, 
@@ -19,7 +19,7 @@ linechart = tkchart.LineChart(master=root,
                             
                             y_data="GB",
                             x_data="S",
-                            x_data_max=60,
+                            x_data_min_max=(20,60),
                             y_data_max=1000,
                             x_values_decimals=4,
                             y_values_decimals=5,
@@ -35,10 +35,9 @@ linechart = tkchart.LineChart(master=root,
                             
                             x_y_data_font = ("Arial", 15,"bold"),
                             x_y_values_font = ("Arial", 10,"bold"),
-                            
-                            line_width=100)
+                            )
 #place LineChart
-linechart.place(x=50 ,y=50)
+linechart.place(x=50 ,y=150)
 
 
 #Create Line
@@ -46,9 +45,18 @@ line = tkchart.Line(master=linechart,
                 color="#cccccc",
                 size=3)
 
+displayed = 0
+max_support = 50 #60-50
 data = [0,100,200,300,400,500,600,700,800,900,1000]
+start = (20,60)
 def loop():
+    global displayed
+    global start
     linechart.show_data(data=[random.choice(data)], line=line)
+    displayed+=1
+    if displayed>40:
+        start = (start[0]+1,start[1]+1)
+        linechart.configure(x_data_min_max=((start[0],start[1])))
     root.after(250,loop)
 #calling to loop
 loop()

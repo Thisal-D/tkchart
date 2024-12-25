@@ -87,8 +87,8 @@ tk.Button(text="line width to 50",command=linewidth50).place(x=1, y=270)
 tk.Button(text="line width to 100",command=linewidth100).place(x=150, y=270) 
 
 
-
-chart = tkc.LineChart(root)        
+## check this out this
+chart = tkc.LineChart(root ,x_data_min_max=(0,50))        
 chart.place(x=400, y=0)
 
 

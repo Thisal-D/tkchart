@@ -23,23 +23,23 @@
 #  you can configure >>
 
 >attributes
-![Sample image](https://user-images.githubusercontent.com/93121062/205255031-aefc7522-a8ba-44ee-b594-c5d2d7132c93.png?raw=True)
+![Sample image](https://user-images.githubusercontent.com/93121062/233741596-6575f82d-e501-433c-9380-5e3ecf68f853.png?raw=True)
 
 
  ## LineChart Object Configurations
 
 
-> ``` master : master of chart ``` master = frame1 | master = root
+> ``` master : master of chart ``` master = frame1 | master = root | widget
 
-> ```width :  width of chart ```width = 500
+> ```width :  width of chart ```width = 500 | integer or float
 
->```height : height of chart  ``` height = 500
+>```height : height of chart  ``` height = 500 | integer or float
 
 >```sections : show sections of chart  ``` sections = True | sections = False
 
 >```sections_fg : color of sections  ``` sections_fg = "red" | sections_fg = "#ff0000"
 
->```sections_count : no of sections  ``` sections_count = 10
+>```sections_count : no of sections  ``` sections_count = 10 | integer
 
 >```chart_bg : backgroud color of chart ``` chart_bg = "red" | chart_bg = "#ff0000"
 
@@ -47,11 +47,11 @@
 
 >```horizontal_bar_fg : horizontal bar color ``` horizontal_bar_fg = "red" | horizontal_bar_fg = "#ff0000"
 
->```horizontal_bar_size : horizontal bar size ``` horizontal_bar_size = 10
+>```horizontal_bar_size : horizontal bar size ``` horizontal_bar_size = 10 | integer or float
 
 >```vertical_bar_fg : vertical bar color ``` vertical_bar_fg = "red" | vertical_bar_fg = "#ff0000"
 
->```vertical_bar_size : verticak bar size ``` verticak_bar_size = 10
+>```vertical_bar_size : verticak bar size ``` verticak_bar_size = 10 | integer or float
 
 >```text_color : colors of texts in chart ``` text_color = "red" | text_color = "#ff0000"
 
@@ -59,11 +59,14 @@
 
 >```values_labels : show values of labels  ``` values_labels = True | values_labels = False
 
->```values_labels_count : no. of labels  ``` values_labels_count = 10
+>```values_labels_count : no. of labels  ``` values_labels_count = 10 | integer
 
->```chart_line_len : length of chart line``` chart_line_len = 10 
+>```chart_line_len : length of chart line``` chart_line_len = 10 | integer or float
 
->```max_value : maximum display value```  max_value = 1800
+>```max_value : maximum display value```  max_value = 1800 | float or integer value
+
+
+<br>
 
 >configure spaces  \
 >```top_space : ```  top_space = 20 \
@@ -84,6 +87,13 @@
 >```height : height of chart  ``` height = 1 
 
 >```color : color of line  ``` color = "#101010" | color= "black"
+
+>********************************\
+>added new configuration**\
+>******************************\
+>```line_highlight : show circle in corners of chart``` line_highlight=True | line_highlight=False \
+>```line_highlight_size : circle size``` line_highlight_size=10 | line_highlight_size=5 | integer or float\
+>```line_highlight_color : circle color``` line_highlight_color="#ffffff" | line_highlight_color="white" |  string 
 
 
 

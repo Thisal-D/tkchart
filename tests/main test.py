@@ -143,11 +143,11 @@ for x_axis_section_count in range(0, 14, 2):
 row += 1
 ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
 row += 1
-ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Line Width : ").grid(row=row, column=1)
-ctk.CTkButton(master=frame, text="{}".format("Auto"), width=90, height=30, command=lambda : line_chart_configure(line_width="auto")).grid(row=row, column=2, padx=10, pady=2)
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="x xis point spacing : ").grid(row=row, column=1)
+ctk.CTkButton(master=frame, text="{}".format("Auto"), width=90, height=30, command=lambda : line_chart_configure(x_axis_point_spacing="auto")).grid(row=row, column=2, padx=10, pady=2)
 column = 3
-for line_width in range(10, 40, 5):
-    ctk.CTkButton(master=frame, text="{}".format(line_width), width=90, height=30, command=lambda line_width_=line_width: line_chart_configure(line_width=line_width_)).grid(row=row, column=column, padx=10, pady=2)
+for x_axis_point_spacing in range(10, 40, 5):
+    ctk.CTkButton(master=frame, text="{}".format(x_axis_point_spacing), width=90, height=30, command=lambda x_axis_point_spacing_=x_axis_point_spacing: line_chart_configure(x_axis_point_spacing=x_axis_point_spacing_)).grid(row=row, column=column, padx=10, pady=2)
     column += 1
 
 row += 1
@@ -558,6 +558,35 @@ ctk.CTkButton(master=frame, text="{}".format("#FF00FF"), width=90, height=30, co
 column += 1
 ctk.CTkButton(master=frame, text="{}".format("#00FFFF"), width=90, height=30, command=lambda:line_configure(point_highlight_color="#00FFFF")).grid(row=row, column=column, padx=10, pady=2)
 
+
+
+
+row += 1
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
+row += 1
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Fill : ").grid(row=row, column=1)
+column = 2
+ctk.CTkButton(master=frame, text="{}".format("enabled"), width=90, height=30, command=lambda:line_configure(fill="enabled")).grid(row=row, column=column, padx=10, pady=2)
+column += 1
+ctk.CTkButton(master=frame, text="{}".format("disabled"), width=90, height=30, command=lambda:line_configure(fill="disabled")).grid(row=row, column=column, padx=10, pady=2)
+column += 1
+
+
+
+row += 1
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color=("#EEEEEE", "#202020")).grid(row=row, columnspan=9)
+row += 1
+ctk.CTkLabel(text_color=("black", "white"), master=frame, text="Point Hightlight Color : ").grid(row=row, column=1)
+column = 2
+ctk.CTkButton(master=frame, text="{}".format("#FF0000"), width=90, height=30, command=lambda:line_configure(fill_color="#FF0000")).grid(row=row, column=column, padx=10, pady=2)
+column += 1
+ctk.CTkButton(master=frame, text="{}".format("00FF00"), width=90, height=30, command=lambda:line_configure(fill_color="#00FF00")).grid(row=row, column=column, padx=10, pady=2)
+column += 1
+ctk.CTkButton(master=frame, text="{}".format("#0000FF"), width=90, height=30, command=lambda:line_configure(fill_color="#0000FF")).grid(row=row, column=column, padx=10, pady=2)
+column += 1
+ctk.CTkButton(master=frame, text="{}".format("#FF00FF"), width=90, height=30, command=lambda:line_configure(fill_color="#FF00FF")).grid(row=row, column=column, padx=10, pady=2)
+column += 1
+ctk.CTkButton(master=frame, text="{}".format("#00FFFF"), width=90, height=30, command=lambda:line_configure(fill_color="#00FFFF")).grid(row=row, column=column, padx=10, pady=2)
 
 
 root.mainloop()

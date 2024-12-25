@@ -17,6 +17,21 @@ class Line():
                fill_color: str = "#5d6db6",
                *args: any
                ) -> None:
+      """
+      Initialize a Line object.
+
+         Args:
+            master (LineChart): The master object.
+            color (str): The color of the line.
+            size (int): The size/thickness of the line.
+            style (str): The style of the line (e.g., 'normal', 'dashed', 'dotted').
+            style_type (Tuple[int, int]): The style type for dashed or dotted lines.
+            point_highlight (str): Whether point highlighting is enabled or disabled.
+            point_highlight_size (int): The size of points used for highlighting.
+            point_highlight_color (str): The color of points used for highlighting.
+            fill (str): Whether fill for the line is enabled or disabled.
+            fill_color (str): The color of the fill for the line.
+      """
       
       if master == None:
          if len(args) != 0:
@@ -64,51 +79,99 @@ class Line():
                   fill: str = None,
                   fill_color:str = None,
                  ) -> None:
+      """
+      Configure attributes of the Line object.
+
+         Args:
+            color (str): The color of the line.
+            size (int): The size/thickness of the line.
+            style (str): The style of the line (e.g., 'normal', 'dashed', 'dotted').
+            style_type (Tuple[int, int]): The style type for dashed or dotted lines.
+            point_highlight (str): Whether point highlighting is enabled or disabled.
+            point_highlight_size (int): The size of points used for highlighting.
+            point_highlight_color (str): The color of points used for highlighting.
+            fill (str): Whether fill for the line is enabled or disabled.
+            fill_color (str): The color of the fill for the line.
+      """
+      changes_req = False
       
       if color != None:
          Validate._isValidColor(color, "color")
          self.__color = color
+         changes_req = True
          
       if size != None:
          Validate._isInt(size, "size")
          self.__size = size
+         changes_req = True
          
       if style != None:
          Validate._isValidLineStyle(style, "style")
          self.__style = style
+         changes_req = True
          
       if style_type != None:
          Validate._isValidStyleType(style_type, "style_type")
          self.__style_type = style_type
+         changes_req = True
          
       if point_highlight != None:
          Validate._isValidLineHighlight(point_highlight, "point_highlight")
          self.__point_highlight = point_highlight
+         changes_req = True
          
       if point_highlight_size != None:
          Validate._isInt(point_highlight_size, "point_highlight_size")
          self.__point_highlight_size = point_highlight_size
-         
+         changes_req = True
+
       if point_highlight_color != None:
          Validate._isValidColor(point_highlight_color, "point_highlight_color")
          self.__point_highlight_color = point_highlight_color
+         changes_req = True
       
       if fill != None:
          Validate._isValidLineFill(fill, "fill")
          self.__fill = fill
+         changes_req = True
       
       if fill_color != None:
          Validate._isValidColor(fill_color, "fill_color")
          self.__fill_color = fill_color
-         
+         changes_req = True
+      
+      if changes_req:
+         self.__master._LineChart__apply_line_configuration()
+           
    
    def __reset(self) -> None:
+      """
+      Reset the Line object.
+      """
       self.__y_end = 0
       self.__x_end  = self.__master._LineChart__x_axis_point_spacing* -1
       self.__data = []
-      
+
+
+   def reset(self) -> None:
+      """
+      Reset the line.
+      """
+      self.__reset()
+      self.__master._LineChart__call_reshow_data()
+
       
    def cget(self, attribute_name: str) -> any:
+      """
+      Get the value of a Line attribute.
+
+         Args:
+            attribute_name (str): Name of the attribute.
+
+         Returns:
+            any: Value of the attribute.
+      """
+      
       if attribute_name == "master": return self.__master
       if attribute_name == "color": return self.__color
       if attribute_name == "size": return self.__size
@@ -133,3 +196,4 @@ class Line():
          "fill" : self.__fill,
          "fill_color" : self.__fill_color
          }
+      Validate._invalidCget(attribute_name)

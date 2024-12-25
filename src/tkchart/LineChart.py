@@ -55,6 +55,56 @@ class LineChart():
                   
                   *args: any,
                   ) -> None:
+      """
+      Initialize a LineChart object.
+
+      Args:
+         master (any): The master object.
+         width (int): Width of the LineChart widget.
+         height (int): Height of the LineChart widget.
+         axis_size (int): Size/thickness of the axis lines.
+        
+         axis_color (str): Color of the axis lines.
+         bg_color (str): Background color of the LineChart widget.
+         fg_color (str): Foreground color of the LineChart widget.
+         data_font_style (Tuple[str, int, str]): Font style for data labels.
+         axis_font_style (Tuple[str, int, str]): Font style for axis labels.
+         
+         y_axis_precision (int): Precision for y-axis values.
+         y_axis_data (any): Data label for the y-axis.
+         y_axis_label_count (int): Number of y-axis labels.
+         y_axis_values (Tuple[Union[int, float], Union[int, float]]): Range of y-axis values.
+         y_axis_font_color (str): Font color for y-axis labels.
+         y_axis_data_font_color (str): Font color for y-axis data label.
+         y_axis_data_position (str): Position of y-axis data label.
+         y_axis_section_count (int): Number of sections in the y-axis.
+         y_axis_section_style (str): Style of the y-axis sections.
+         y_axis_section_style_type (Tuple[int, int]): Style type for y-axis sections.
+         y_axis_section_color (str): Color of the y-axis sections.
+         
+         x_axis_data (str): Data label for the x-axis.
+         x_axis_label_count (int): Number of x-axis labels.
+         x_axis_values (Tuple[any, ...]): Values for x-axis labels.
+         x_axis_display_values_indices (Tuple[int, ...]): Indices of x-axis values to display.
+         x_axis_font_color (str): Font color for x-axis labels.
+         x_axis_data_font_color (str): Font color for x-axis data label.
+         x_axis_data_position (str): Position of x-axis data label.
+         x_axis_section_count (int): Number of sections in the x-axis.
+         x_axis_section_style (str): Style of the x-axis sections.
+         x_axis_section_style_type (Tuple[int, int]): Style type for x-axis sections.
+         x_axis_section_color (str): Color of the x-axis sections.
+        
+         x_axis_point_spacing (Union[int, str]): Spacing between x-axis points.
+         y_space (int): Space between y-axis and LineChart.
+         x_space (int): Space between x-axis and LineChart.
+         
+         pointer_state (str): State of pointer (enabled/disabled).
+         pointing_callback_function (callable): Callback function for pointing.
+         pointer_color (str): Color of the pointer.
+         pointing_values_precision (int): Precision for pointer values.
+         pointer_lock (str): Lock state of the pointer (enabled/disabled).
+         pointer_size (int): Size of the pointer.
+      """
       
       Validate._isInt(height, "height")
       Validate._isInt(width, "width")
@@ -209,6 +259,14 @@ class LineChart():
       
       
    def __create_widgets(self) -> None:
+      """
+      Create widgets for the LineChart.
+
+         This method initializes the main frame along with frames for the y-axis, x-axis, 
+         y-axis values, x-axis values, y-axis data label, x-axis data label, output frame,
+         output canvas, and pointer.
+      """
+      
       self.__main_frame = tkinter.Frame(master=self.__master)
       self.__y_axis_frame = tkinter.Frame(master=self.__main_frame)
       self.__x_axis_frame = tkinter.Frame(master=self.__main_frame)
@@ -222,6 +280,14 @@ class LineChart():
    
    
    def __set_pointer_state(self) -> None:
+      """
+      Set the state of the pointer.
+
+         This method configures the behavior of the pointer based on its state (enabled or disabled).
+         If the pointer is enabled, it binds events for mouse movement to display pointed values.
+         If the pointer is disabled, it unbinds those events.
+      """
+      
       if self.__pointer_state == "enabled":
          self.__output_canvas.bind("<Leave>",self.__hide_pointer)
          self.__output_canvas.bind("<Motion>",self.__return_pointed_values)
@@ -231,6 +297,14 @@ class LineChart():
    
    
    def __set_widgets_colors(self) -> None:
+      """
+      Set the colors for LineChart widgets.
+
+         This method configures the background and foreground colors for various widgets in the LineChart,
+         including the frames for y-axis, x-axis, y-axis values, x-axis values, main frame, output frame,
+         output canvas, y-axis data label, x-axis data label, and pointer.
+      """
+      
       self.__y_axis_frame.configure(bg=self.__axis_color)
       self.__x_axis_frame.configure(bg=self.__axis_color)
       self.__y_axis_values_frame.configure(bg=self.__bg_color)
@@ -254,6 +328,14 @@ class LineChart():
       
    
    def __set_widgets_fonts(self) -> None:
+      """
+      Set the fonts for LineChart widgets.
+
+         This method configures the font styles for various widgets in the LineChart,
+         including the y-axis data label, x-axis data label, y-axis values labels,
+         and x-axis values labels, using the specified data font style and axis font style.
+      """
+      
       self.__y_axis_data_label.configure(font=self.__data_font_style)
       self.__x_axis_data_label.configure(font=self.__data_font_style)
       
@@ -267,11 +349,25 @@ class LineChart():
 
 
    def __set_pointer_size(self) -> None:
+      """
+      Set the size of the pointer.
+
+         This method adjusts the width and height of the pointer widget based on the specified pointer size.
+      """
+    
       self.__pointer.configure(width=self.__pointer_size)
       self.__pointer.config(height=self.__const_real_height)
       
       
    def __place_widgets(self) -> None:
+      """
+      Place widgets within the LineChart.
+
+         This method handles the placement of various widgets within the LineChart, including the main frame,
+         y-axis frame, x-axis frame, output frame, output canvas, y-axis values frame, and x-axis values frame,
+         based on the specified dimensions and positions.
+      """
+   
       self.__main_frame.configure(width=self.__width, height=self.__height)
       
       self.__y_axis_data_label.place_forget()
@@ -309,6 +405,15 @@ class LineChart():
 
 
    def __configure_x_axis_point_spacing(self) -> None:
+      """
+      Configure the spacing between points on the x-axis.
+
+         This method calculates and sets the spacing between points on the x-axis based on the 
+         specified handle method. If the spacing is handled automatically, it calculates the spacing 
+         based on the real width of the LineChart and the number of x-axis values. If handled manually, 
+         it uses the specified x-axis point spacing value.
+      """
+   
       if self.__x_axis_point_spacing_handle_by== "auto":
          self.__x_axis_point_spacing = (self.__real_width / len(self.__x_axis_values))
       elif self.__x_axis_point_spacing_handle_by== "manual":
@@ -316,6 +421,15 @@ class LineChart():
      
       
    def __configure_required_widget_size(self) -> None:
+      """
+      Configure the required sizes of the LineChart's widgets.
+
+         This method calculates and sets the required sizes for various widgets in the LineChart,
+         such as axis labels, based on the provided data and styling options. It determines the
+         necessary space for displaying the data labels, axis values, and adjusts the real width
+         and height of the LineChart accordingly.
+      """
+    
       self.__x_axis_data_req_width_space_top = 0
       self.__x_axis_data_req_height_space_side = 0
       self.__x_special_width_space = 0
@@ -369,6 +483,16 @@ class LineChart():
       
 
    def __set_x_y_axis_data_texts(self) -> None:
+      """
+      Set the text for the x and y axis data labels.
+
+         This method sets the text for the y-axis data label based on its position. If the position
+         is 'top', the label text is set to the provided y-axis data. Otherwise, if the position is
+         'side', the label text is set as a newline-separated string of the y-axis data elements.
+
+         The text for the x-axis data label is set directly to the provided x-axis data.
+      """
+      
       if self.__y_axis_data_position=="top":
          self.__y_axis_data_label.configure(text=self.__y_axis_data)
       else:
@@ -377,6 +501,17 @@ class LineChart():
    
    
    def __set_y_axis_values(self) -> None:
+      """
+      Set the values for the y-axis labels.
+
+         This method sets the values for the y-axis labels based on the specified label count and the
+         range of values between the maximum and minimum y-axis values. If the y-axis label count is greater
+         than 0, it iterates over the y-axis labels and calculates the value for each label using the
+         formula: maximum y-axis value - ((y-axis value range) / y-axis label count) * index. If the minimum
+         y-axis value is 0 and the index is equal to the y-axis label count, the value is set to 0. The values
+         are formatted with the specified precision before being assigned to the labels.
+      """
+      
       if self.__y_axis_label_count>0:
          for i,label in enumerate(self.__y_axis_values_frame.winfo_children()):
             value = (self.__y_axis_max_value - ((self.__y_axis_values_gap)/self.__y_axis_label_count)*i)
@@ -387,6 +522,16 @@ class LineChart():
             
             
    def __create_y_axis_labels(self) -> None:
+      """
+      Create the y-axis labels.
+
+         This method creates the y-axis labels based on the specified label count. If the y-axis label count is
+         greater than 0, it iterates over the range of label count and creates a tkinter Label for each label.
+         The labels are placed vertically with equal spacing between them. The y-coordinate for each label is
+         calculated based on the initial y-position, the height of each label, additional spacing, and the total
+         height of the plot area divided by the number of labels.
+      """
+    
       if self.__y_axis_label_count>0:
          y = self.__y_axis_data_req_height_space_top+(self.__y_value_req_height_space/2)+self.__y_special_height_space+self.__y_space
          for i in range(self.__y_axis_label_count+1):
@@ -396,12 +541,29 @@ class LineChart():
             
             
    def __destroy_y_axis_labels(self) -> None:
+      """
+      Destroy the y-axis labels.
+
+         This method removes and destroys all existing y-axis labels. It iterates over the children of the
+         y-axis values frame, which contain the y-axis labels, and calls the place_forget() and destroy() methods
+         for each label to remove them from the GUI and release system resources.
+      """
+      
       for y_value in self.__y_axis_values_frame.winfo_children():
          y_value.place_forget()
          y_value.destroy()
          
    
    def __set_x_axis_values_using_label_count(self) -> None:
+      """
+      Set the x-axis values using the label count.
+
+         This method sets the x-axis values using the label count. It iterates over the children of the
+         x-axis values frame, which contain the x-axis labels, and assigns values to each label from the
+         provided x-axis values list in reverse order. The index is decremented by the value of
+         x_labels_values_index_change for each iteration.
+      """
+      
       index = -1
       for label in (self.__x_axis_values_frame.winfo_children()):
          value = self.__x_axis_values[index]
@@ -410,6 +572,14 @@ class LineChart():
          
          
    def __set_x_axis_values_using_indices(self) -> None:
+      """
+      Set the x-axis values using the specified display indices.
+
+         This method sets the x-axis values using the specified display indices. It iterates over the children of the
+         x-axis values frame, which contain the x-axis labels, and assigns values to each label from the
+         provided x-axis values list based on the display indices provided.
+      """
+      
       index = -1
       for label in (self.__x_axis_values_frame.winfo_children()):
          value =  self.__x_axis_values[self.__x_axis_display_values_indices[index]]
@@ -418,6 +588,14 @@ class LineChart():
          
 
    def __create_x_axis_labels_using_label_count(self) -> None:
+      """
+      Create x-axis labels using the specified label count.
+
+         This method creates x-axis labels using the specified label count. It iterates over the range of the label count
+         and places labels inside the x-axis values frame. The labels are evenly spaced across the x-axis based on the
+         provided label count.
+      """
+      
       x = self.__width - self.__x_axis_data_req_width_space_top-(self.__x_value_req_width_space/2)-self.__x_special_width_space - self.__x_space
       for i in range(self.__x_axis_label_count):
          tkinter.Label(master=self.__x_axis_values_frame).place(rely=1, y=-self.__x_value_req_height_space, x=x, anchor="n")
@@ -425,6 +603,14 @@ class LineChart():
          
          
    def __create_x_axis_labels_using_indices(self) -> None:
+      """
+      Create x-axis labels using the specified display indices.
+
+         This method creates x-axis labels using the specified display indices. It iterates over the range of the label count
+         and places labels inside the x-axis values frame. The labels are placed at positions corresponding to the indices
+         specified for display.
+      """
+      
       x = self.__width - self.__x_axis_data_req_width_space_top-(self.__x_value_req_width_space/2)-self.__x_special_width_space - self.__x_space
       for i in range(self.__x_axis_label_count):
          if  (self.__x_axis_label_count-(i+1)) in  self.__x_axis_display_values_indices:
@@ -433,6 +619,14 @@ class LineChart():
          
    
    def __create_x_axis_labels(self) -> None:
+      """
+      Create x-axis labels based on the method specified for handling x-axis values.
+
+         This method creates x-axis labels based on the method specified for handling x-axis values. If the values are to be
+         displayed using label indices, it calls the __create_x_axis_labels_using_indices method. Otherwise, it calls the
+         __create_x_axis_labels_using_label_count method.
+      """
+      
       if self.__x_axis_values_handle_by == "label_indices":
          self.__create_x_axis_labels_using_indices()
       else:
@@ -440,6 +634,14 @@ class LineChart():
       
          
    def __set_x_axis_values(self) -> None:
+      """
+      Set x-axis values based on the method specified for handling x-axis values.
+
+         This method sets x-axis values based on the method specified for handling x-axis values. If the values are to be
+         set using label indices, it calls the __set_x_axis_values_using_indices method. Otherwise, it calls the
+         __set_x_axis_values_using_label_count method.
+      """
+      
       if self.__x_axis_values_handle_by == "label_indices":
          self.__set_x_axis_values_using_indices()
       else:
@@ -447,12 +649,28 @@ class LineChart():
    
    
    def __destroy_x_axis_labels(self) -> None:
+      """
+      Destroy x-axis labels.
+
+         This method destroys all the x-axis labels by iterating through the children of the x-axis values frame,
+         forgetting their placement, and then destroying them.
+      """
+    
       for x_value in self.__x_axis_values_frame.winfo_children():
          x_value.place_forget()
          x_value.destroy()
          
       
    def __configure_x_axis_labels_info(self) -> None:
+      """
+      Configure information for x-axis labels.
+
+         This method determines the count and index change for x-axis labels based on the method used to provide
+         x-axis values. If x-axis values are provided using label indices, it sets the label count to the length
+         of the x-axis values. If x-axis values are handled automatically or by label count, it adjusts the label
+         count and index change accordingly to ensure proper spacing and distribution of labels.
+      """
+      
       if self.__x_axis_values_handle_by == "label_indices" : 
          self.__x_axis_label_count = len(self.__x_axis_values)
         
@@ -472,6 +690,14 @@ class LineChart():
             
             
    def __create_y_axis_sections(self) -> None:
+      """
+      Create sections on the y-axis.
+
+         This method creates sections on the y-axis based on the specified section style. If the section style is 'normal',
+         it creates evenly spaced sections. If the section style is 'dashed', it creates sections with custom width and spacing
+         as specified in the style type tuple.
+      """
+      
       y = 0
       if self.__y_axis_section_style == "normal":
          for i in range(self.__y_axis_section_count):
@@ -489,6 +715,14 @@ class LineChart():
      
          
    def __create_x_axis_sections(self) -> None:
+      """
+      Create sections on the x-axis.
+
+         This method creates sections on the x-axis based on the specified section style. If the section style is 'normal',
+         it creates evenly spaced sections. If the section style is 'dashed', it creates sections with custom height and spacing
+         as specified in the style type tuple.
+      """
+      
       x = self.__const_real_width - 1
       if  self.__x_axis_section_style == "normal":
          for i in range(self.__x_axis_section_count):
@@ -506,6 +740,12 @@ class LineChart():
       
 
    def __destroy_x_y_sections(self) -> None:
+      """
+      Destroy all x-axis and y-axis sections.
+
+         This method destroys all sections created on both the x-axis and y-axis by removing them from the output frame.
+      """
+    
       for widget in self.__output_frame.winfo_children():
          if type(widget) == tkinter.Frame :
             widget.place_forget()
@@ -557,6 +797,55 @@ class LineChart():
                   pointing_callback_function: callable = None, 
                   pointer_size: int = None
                   ) -> None:  
+      
+      """
+      Configures the properties of the chart widget based on the provided arguments.
+      
+         Args:
+            width (int): The width of the chart widget.
+            height (int): The height of the chart widget.
+            axis_size (int): The size of the axis lines.
+            x_axis_point_spacing (Union[int, str]): The spacing between x-axis points.
+            
+            bg_color (str): The background color of the chart.
+            axis_color (str): The color of the axis lines.
+            fg_color (str): The foreground color of the chart.
+            data_font_style (Tuple[str, int, str]): The font style for data labels.
+            axis_font_style (Tuple[str, int, str]): The font style for axis labels.
+            
+            y_axis_values (Union[int, float]): The range of values for the y-axis.
+            y_axis_precision (int): The precision of values on the y-axis.
+            y_axis_font_color (str): The font color of y-axis labels.
+            y_axis_data_font_color (str): The font color of y-axis data labels.
+            y_axis_section_count (int): The number of sections on the y-axis.
+            y_axis_section_color (str): The color of sections on the y-axis.
+            y_axis_section_style (str): The style of sections on the y-axis.
+            y_axis_section_style_type (Tuple[int, int]): The type of style for sections on the y-axis.
+            y_axis_label_count (int): The count of labels on the y-axis.
+            y_axis_data (any): The data for y-axis labels.
+            y_axis_data_position (str): The position of y-axis data labels.
+            y_space (int): The space between y-axis and the chart.
+            
+            x_axis_values (Tuple[any, ...]): The values for the x-axis.
+            x_axis_data (any): The data for x-axis labels.
+            x_axis_font_color (str): The font color of x-axis labels.
+            x_axis_data_font_color (str): The font color of x-axis data labels.
+            x_axis_label_count (int): The count of labels on the x-axis.
+            x_axis_section_count (int): The number of sections on the x-axis.
+            x_axis_section_style (str): The style of sections on the x-axis.
+            x_axis_section_style_type (Tuple[int, int]): The type of style for sections on the x-axis.
+            x_axis_section_color (str): The color of sections on the x-axis.
+            x_axis_display_values_indices (Tuple[int, ...]): The indices of displayed x-axis values.
+            x_axis_data_position (str): The position of x-axis data labels.
+            x_space (int): The space between the x-axis and the chart.
+            
+            pointer_state (str): The state of the pointer. Possible values are "enabled" or "disabled".
+            pointing_values_precision (int): The precision of values displayed by the pointer.
+            pointer_color (str): The color of the pointer.
+            pointer_lock (str): The state of the pointer lock. Possible values are "enable" or "disable".
+            pointing_callback_function (callable): A callback function triggered when the pointer is clicked or moved.
+            pointer_size (int): The size of the pointer.
+      """
          
       chart_reset_req = False
       widget_color_change_req = False
@@ -884,6 +1173,12 @@ class LineChart():
    
    
    def __reset_chart_info(self) -> None:
+      """
+      Reset the chart information and clear the canvas.
+
+         This method deletes all items on the canvas and recalculates the real width and real height of the chart.
+      """
+      
       self.__output_canvas.delete("all")
       self.__real_width = self.__width - (self.__y_value_req_width_space+self.__axis_size+self.__x_axis_data_req_width_space_top+self.__y_axis_data_req_width_space_side+\
                                           (self.__x_value_req_width_space/2)+self.__x_special_width_space+self.__x_space)
@@ -900,11 +1195,24 @@ class LineChart():
       
       
    def __reset_lines_info(self) -> None:
+      """
+      Reset the information for all lines in the chart.
+
+         This method calls the __reset() method for each line object stored in the __lines list.
+      """
+      
       for line in  self.__lines:
          line._Line__reset()
    
    
    def __call_reshow_data(self) -> None:
+      """
+      Call the method to re-show data on the chart.
+
+         This method sets a flag to force the chart to stop data showing, waits until the data showing process is stopped,
+         and then triggers the re-showing of data.
+      """
+
       self.__force_to_stop_data_showing = True
       while  self.__is_data_showing_working:
          pass
@@ -913,10 +1221,17 @@ class LineChart():
       
       
    def __reshow_data(self) -> None:
+      """
+      Re-shows data on the chart.
+
+         This method recalculates the chart info, ensures that the chart can support the maximum amount of data to be shown,
+         resets each line with the latest data, and then displays the data for each line.
+      """
+
       lines_values = [len(line._Line__data) for line in  self.__lines]
-      if len(lines_values) > 0:
-         self.__reset_chart_info()
-         
+      self.__reset_chart_info()
+      
+      if len(lines_values) > 0:   
          maximum_data = max(lines_values)
          max_support = int(self.__const_real_width/self.__x_axis_point_spacing)+1
          
@@ -935,6 +1250,18 @@ class LineChart():
    
    
    def show_data(self, line: Line, data: List[Union[int, float]]) -> None:
+      """
+      Show data on the chart for the given line.
+
+         Args:
+            line (Line): The line object to which the data belongs.
+            data (List[Union[int, float]]): The list of data points to be displayed.
+
+         This method adds the provided data to the line's existing data, adjusts the display of the chart accordingly,
+         and shows the data points on the chart. It also handles various styles for displaying the data points,
+         such as dashed or dotted lines, and highlights for individual data points.
+      """
+      
       Validate._isValidLine(line, "line")
       Validate._isValidData(data, "data")
       
@@ -1078,11 +1405,35 @@ class LineChart():
    
    
    def __hide_pointer(self, event: tkinter.Event) -> None:
+      """
+      Hides the pointer widget from the GUI canvas.
+
+         Args:
+            event (tkinter.Event): The event triggering the pointer hiding.
+      """
+      
       self.__pointer.place_forget()
      
      
-   def __return_pointed_values(self, event: tkinter.Event):
-      def round_x(x):
+   def __return_pointed_values(self, event: tkinter.Event) -> None:
+      """
+      Returns the values pointed by the user's mouse cursor.
+
+         Args:
+            event (tkinter.Event): The mouse event containing cursor position.
+      """
+      
+      def round_x(x) -> Union[int, float]:
+         """
+         Rounds the x-coordinate to the nearest x-axis point spacing.
+
+            Args:
+                  x (float): The x-coordinate to be rounded.
+
+            Returns:
+                  float: The rounded x-coordinate.
+         """
+         
          x_ = (x//self.__x_axis_point_spacing)*self.__x_axis_point_spacing
          if x%self.__x_axis_point_spacing >= self.__x_axis_point_spacing/2:
             x_ += self.__x_axis_point_spacing
@@ -1143,6 +1494,17 @@ class LineChart():
              relx: Union[int, float] = None,
              anchor: str = None
              ) -> None: 
+      """
+      Place the widget at a specific position within its parent widget.
+
+         Args:
+            x (int): The x-coordinate of the upper-left corner of the widget.
+            y (int): The y-coordinate of the upper-left corner of the widget.
+            rely (Union[int, float]): The vertical relative position of the widget, ranging from 0 to 1.
+            relx (Union[int, float]): The horizontal relative position of the widget, ranging from 0 to 1.
+            anchor (str): Specifies which part of the widget is to be placed at the given coordinates.
+      """
+      
       self.__main_frame.place(x=x, y=y, rely=rely, relx=relx, anchor=anchor)
       self.__place_info_x = x
       self.__place_info_y = y
@@ -1159,6 +1521,18 @@ class LineChart():
             side: str = None,
             anchor: str = None
             ) -> None:
+      """
+      Pack the widget into its parent widget.
+
+         Args:
+            pady (int): Vertical padding.
+            padx (int): Horizontal padding.
+            before (any): Widget before which this widget will be packed.
+            after (any): Widget after which this widget will be packed.
+            side (str): Specifies which side of the parent widget to pack against.
+            anchor (str): Specifies where the widget will be placed if the available area is larger than the widget's requested size.
+      """
+      
       self.__main_frame.pack(pady=pady, padx=padx, before=before,
                              after=after, side=side, anchor=anchor)
       self.__pack_info_pady = pady
@@ -1178,6 +1552,19 @@ class LineChart():
             rowspan: int = None, 
             sticky: str = None
             ) -> None:
+      """
+      Grid the widget into its parent widget.
+
+         Args:
+            column (int): The column in which to place the widget.
+            columnspan (int): The number of columns the widget occupies.
+            padx (int): Horizontal padding.
+            pady (int): Vertical padding.
+            row (int): The row in which to place the widget.
+            rowspan (int): The number of rows the widget occupies.
+            sticky (str): Specifies how the widget should be expanded to fill the cell.
+      """
+    
       self.__main_frame.grid(column=column, columnspan=columnspan, 
                              padx=padx, pady=pady, row=row,
                              rowspan=rowspan, sticky=sticky)
@@ -1191,24 +1578,44 @@ class LineChart():
       
       
    def place_forget(self) -> None:
+      """
+      Remove the widget from the grid.
+      """
+      
       self.__main_frame.place_forget()
       
       
    def pack_forget(self) -> None:
+      """
+      Remove the widget from the pack.
+      """
+      
       self.__main_frame.pack_forget()
       
       
    def grid_forget(self) -> None:
+      """
+      Remove the widget from the grid.
+      """
+    
       self.__main_frame.grid_forget()
       
       
    def place_back(self) -> None:
+      """
+      Display the widget in its original place using place geometry manager.
+      """
+      
       self.__main_frame.place(x=self.__place_info_x, y=self.__place_info_y,
                               rely=self.__place_info_rely, relx=self.__place_info_relx,
                               anchor=self.__place_info_anchor)
       
       
    def pack_back(self) -> None:
+      """
+      Display the widget in its original place using pack geometry manager.
+      """
+      
       self.__main_frame.pack(pady=self.__pack_info_pady, padx=self.__pack_info_padx,
                              before=self.__pack_info_before, after=self.__pack_info_after,
                              side=self.__pack_info_side, 
@@ -1216,42 +1623,75 @@ class LineChart():
       
       
    def grid_back(self) -> None:
+      """
+      Display the widget in its original place using grid geometry manager.
+      """
+      
       self.__main_frame.grid(column=self.__grid_info_column, columnspan=self.__grid_info_columnspan, 
                            padx=self.__grid_info_padx,  pady=self.__grid_info_pady,
                            row=self.__grid_info_row, rowspan=self.__grid_info_rowspan, sticky=self.__grid_info_sticky)
       
    
    def hide(self, line: Line, state: bool) -> None:
-      Validate._isValidLine(state, "line")
+      """
+      Hide or show a specific line.
+
+         Args:
+            line (Line): The line object to hide or show.
+            state (bool): The hide/show state of the line.
+      """
+      
+      Validate._isValidLine(line, "line")
       Validate._isBool(state, "state")
       if line._Line__hide_state != state:
          line._Line__hide_state = state
-         self.__reshow_data()
+         self.__call_reshow_data()
       
       
    def hide_all(self, state: bool) -> None:
+      """
+      Hide or show all lines.
+
+         Args:
+            state (bool): The hide/show state of all lines.
+      """
+      
       Validate._isBool(state, "state")
       if state == True:
          self.__output_canvas.place_forget()
-      self.__force_to_stop_data_showing = True
-      while self.__is_data_showing_working :
-            pass
       for line in self.__lines:
          line._Line__hide_state = state
-      self.__force_to_stop_data_showing = False
-      self.__reshow_data()
+      self.__call_reshow_data()
    
    
    def reset(self) -> None:
+      """
+      Reset the chart and lines to their initial state.
+      """
       self.__reset_chart_info()
       self.__reset_lines_info()
       
       
-   def apply_line_changes(self) -> None :
+   def __apply_line_configuration(self) -> None :
+      """
+      Apply changes to the lines and redraw the chart.
+      """
+      
       self.__call_reshow_data()
       
    
    def cget(self, attribute_name: str) -> any :
+      """
+      Get the value of the specified attribute.
+
+         Args:
+            attribute_name (str): The name of the attribute to get.
+            __all__ (str): all the attributes as a dict
+
+         Returns:
+            any: The value of the specified attribute.
+      """
+      
       if attribute_name == "axis_color": return self.__axis_color
       if attribute_name == "bg_color": return self.__bg_color
       if attribute_name == "fg_color": return self.__fg_color
@@ -1328,3 +1768,5 @@ class LineChart():
             "pointer_lock" : self.__pointer_lock,
             "pointer_size" : self.__pointer_size
             }
+         
+      Validate._invalidCget(attribute_name)

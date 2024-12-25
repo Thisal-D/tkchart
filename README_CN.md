@@ -18,7 +18,7 @@
 
 [![Downloads](https://static.pepy.tech/badge/tkchart)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
-<img src="https://drive.google.com/thumbnail?id=1asMd-U3BmmVEl8YpdRssj679n6jRdflC&sz=w180">
+<img src="https://drive.google.com/thumbnail?id=1jOltT5qBvLmKAdSU6zb9wjh3GYa6jRvD&sz=w180">
 
 </div>
 
@@ -145,8 +145,7 @@ linechart = tkchart.LineChart()
 | hide_all           | 隐藏所有折线                           | state:  ``bool``                                                                                                                 |
 | hide               | 隐藏特定折线                           | line:  ``tkchart.Line``<br> state:  ``bool``                                                                                     |
 | reset              | 重置折线图                             | -                                                                                                                                |
-| cget               | 获取指定参数的值。                     | attribute_name:  ``str`` \| "\_\_全部\_\_"                                                                                       |
-| apply_line_changes | 应用对 Line 对象所做的更改。           | -                                                                                                                                |
+| cget               | 获取指定参数的值。                     | attribute_name:  ``str`` \| "\_\_all\_\_"                                                                                       |
 
 
 </div>
@@ -166,11 +165,11 @@ line = tkchart.Line()
 ## 参数
 
 | 参数名称                                             | 必备参数 / 可选参数 | 描述                         | 数据类型                           | 示例值        |
-| ---------------------------------------------------- | ------------------- | ---------------------------- | ---------------------------------- | ------------- |
-| master                                               | 必须                | Master                       | ``tkchart.Line``                       | LineChart obj |
+| ---------------------------------------------------- | ------------------- | ---------------------------|---------------------------------- | ------------- |
+| master                                               | 必须                | Master                      | ``tkchart.Line``                       | LineChart obj |
 | <a href="#line_color_size">color</a>                 | 可选                | 折线的颜色                   | ``str``                                | "#768df1"     |
-| <a href="#line_color_size">size</a>                  | 可选                | Size of the line             | ``int``                                | 1<=           |
-| <a href="#line_style">style</a>                      | 可选                | 折线风格（直线、虚线、点线） | ``str`` ("normal", "dashed", "dotted") | "normal"      |
+| <a href="#line_color_size">size</a>                  | 可选                | Size of the line            | ``int``                                | 1<=           |
+| <a href="#line_style">style</a>                      | 可选                | 折线风格（直线、虚线、点线）  | ``str`` ("normal", "dashed", "dotted") | "normal"      |
 | <a href="#line_style_type">style_type</a>            | 可选                | 实线与虚线的尺寸             | ``tuple[int, int]``                    | (10, 5),...   |
 | <a href="#point_highlight">point_highlight</a>       | 可选                | 端点高亮状态                 | ``str`` ("enabled", "disabled")        | "disabled"    |
 | <a href="#point_highlight">point_highlight_size</a>  | 可选                | 高亮点的大小                 | ``int``                                | 1<=           |
@@ -186,6 +185,8 @@ line = tkchart.Line()
 | --------- | ---------------- | ---------------------------------------- |
 | configure | 更改折线图属性   | 所有属性，除了 master                    |
 | cget      | 获取指定参数的值 | attribute_name: ``str`` \| "\_\_all\_\_" |
+|reset      | 重置线对象       | -                                       |
+
 
 </div>
 <br>

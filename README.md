@@ -20,7 +20,7 @@
 
 [![Downloads](https://static.pepy.tech/badge/tkchart)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
-<img src="https://drive.google.com/thumbnail?id=1asMd-U3BmmVEl8YpdRssj679n6jRdflC&sz=w180">
+<img src="https://drive.google.com/thumbnail?id=1jOltT5qBvLmKAdSU6zb9wjh3GYa6jRvD&sz=w180">
 
 </div>
 
@@ -150,7 +150,6 @@ linechart = tkchart.LineChart()
 | hide              | hide a specific line                               | line:  ``tkchart.Line``<br> state:  ``bool``                                                                                     |
 | reset             | reset line chart                                   | -                                                                                                                                |
 | cget              | Get the value of the specified parameter.          | attribute_name:  ``str`` \| "\_\_all\_\_"                                                                                        |
-|apply_line_changes | Applying changes made to a Line objects.           | -                                                                                                                        
 
 
 </div>
@@ -191,6 +190,7 @@ line = tkchart.Line()
 |-------------------|----------------------------------------------------|------------------------------------------|
 | configure         | Change LineChart attributes                        | All attributes except for master         |                                                                
 | cget              | Get the value of the specified parameter.          | attribute_name: ``str`` \| "\_\_all\_\_" |
+| reset             | reset line object                                  | -                                        |
 
 </div>
 <br>

@@ -1,4 +1,4 @@
-# tkchart - 1.0.1
+# tkchart - 1.0.3
 <hr>
 <br>
 
@@ -61,6 +61,7 @@ Create a LineChart
 - ##  Methods
     
     #### ``1. configure``: use to change LineChart attributes
+    support **kwargs
     ```
     width 
     height 
@@ -131,6 +132,18 @@ Create a LineChart
     row
     rowspan
     sticky
+    ```
+
+    #### ``6. place_forget`` : use to place forget the chart<br>
+    #### ``7. pack_forget`` : use to pack forget the chart<br>
+    #### ``8. grid_forget`` : use to grid forget the chart<br>
+    #### ``9. place_back`` : use to place chart in the old location after place forget<br>
+    #### ``10. pack_back`` : use to pack chart in the old location after pack forget<br>
+    #### ``11. grid_back`` : use to grid chart in the old location after grid forget<br>
+    #### ``12. hide`` : use to hide chart<br>
+    support **kwargs
+    ```
+    state: Bool
     ```
     
 

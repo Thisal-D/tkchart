@@ -1,5 +1,13 @@
 import tkchart
-import customtkinter as ctk
+try:
+    import customtkinter as ctk
+except :
+    try:
+        import os
+        os.system("pip install customtkinter")
+        os.system("pip install customtkinter --upgrade")
+    except:
+        pass
 import random
 
 root = ctk.CTk()

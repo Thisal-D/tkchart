@@ -1,3 +1,7 @@
+<a href="#contributing">Contributing to tkchart</a>
+
+<div id="top">
+
 <div align="center">
 
 <img src="https://drive.google.com/thumbnail?id=16Y00GIKEpmC4t3gAlUv7IJutE4yzFszo&sz=w900">
@@ -6,23 +10,24 @@
 [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart)
 [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
-<img src="https://drive.google.com/thumbnail?id=1kYb8ppvWYRFHWISKEHDmIaFaV91-uPPE&sz=w180">
+<img src="https://drive.google.com/thumbnail?id=16YbIN9EHUsYmElg1wkVRPij8qtBN2V3o&sz=w180">
 
-<div align="center"> 
-   
 </div>
-</div>
-
 
 ### <li>tkchart Library is a Python library that simplifies the process of creating line charts in tkinter and customtkinter GUI applications.</li>
 
 ## Examples
-<div align="center"><img src="https://drive.google.com/thumbnail?id=1F_elYaMgKzVMNLgDjBN6B7P4EX9X43YV&sz=w900"></div> 
+
+<div align="center">
+
+<img src="https://drive.google.com/thumbnail?id=1F_elYaMgKzVMNLgDjBN6B7P4EX9X43YV&sz=w900">
+
+</div>
 
 <br>
 <br>
 
-## tkchart - 1.3.9
+## tkchart - 1.3.12
 
 ### You need to install & import package first
 * installation
@@ -542,12 +547,6 @@ loop()
 root.mainloop()
 ```
 
-<div align="center">
-
-https://github.com/Thisal-D/tkchart/assets/93121062/ec29a3f4-7eba-40c5-9f5c-cc7071ff40ff
-
-</div>
-
 <br>
 <hr>
 <br>
@@ -565,6 +564,8 @@ https://github.com/Thisal-D/tkchart/assets/93121062/ec29a3f4-7eba-40c5-9f5c-cc70
 
 - <div align="center"><img src="https://drive.google.com/thumbnail?id=1_vTP7DIsEdd4gU5hQOYeWF5FVYfilCvG&sz=w900"></div> 
 
+</div>
+
 <br>
 <hr>
 <br>
@@ -574,3 +575,51 @@ https://github.com/Thisal-D/tkchart/assets/93121062/ec29a3f4-7eba-40c5-9f5c-cc70
 
 ### go to GitHub
 - # GitHub.com   :  <a href="https://github.com/Thisal-D/tkchart" target="_blank" ><i>tkchart</i></a>
+
+
+</div>
+<br>
+<br>
+<br>
+<br>
+ 
+
+<div id="contributing">
+<a href="#top"> Go to top </a>
+
+# Contributing to tkchart
+
+Thank you for considering contributing to tkchart! Please follow these guidelines to contribute effectively.
+
+## Getting Started
+
+1. Fork the repository.
+2. Clone your forked repository: `git clone https://github.com/Thisal-D/tkchart.git`
+3. Create a new branch for your changes: `git checkout -b feature-branch`
+
+## Making Changes
+
+1. Make your changes and ensure they follow the project's coding standards.
+2. Test your changes locally.
+3. Commit your changes: `git commit -m "Brief description of your changes"`
+
+## Submitting Changes
+
+1. Push your changes to your forked repository: `git push origin feature-branch`
+2. Create a pull request on the main repository.
+
+## Code of Conduct
+
+Please adhere to the [Code of Conduct](CODE_OF_CONDUCT.md) to maintain a respectful and inclusive community.
+
+## Issues and Discussions
+
+If you encounter issues or have questions, please check the [issue tracker](https://github.com/Thisal-D/tkchart/issues) or start a discussion in the [GitHub Discussions](https://github.com/Thisal-D/tkchart/discussions) section.
+
+## License
+
+By contributing, you agree that your contributions will be licensed under the project's [LICENSE](LICENSE).
+
+Thank you for your contribution!
+
+</div>

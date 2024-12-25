@@ -138,6 +138,16 @@ class Validate:
             raise ValueError(
                 f'''{Validate._var_font(var)} {Validate._error_font("must be 'disabled' or 'enabled'.")}'''
             )
+            
+    def _isValidLineHighlight(value: any, var: str) -> None:
+        Validate._isStr(value, var)
+        if value == "disabled" or value == "enabled":
+            ...
+        else:
+            raise ValueError(
+                f'''{Validate._var_font(var)} {Validate._error_font("must be 'disabled' or 'enabled'.")}'''
+            )
+            
 
     def _isValidYAxisValues(value: any, var: str) -> None:
         Validate._isTuple(value, var)

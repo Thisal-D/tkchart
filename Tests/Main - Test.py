@@ -15,10 +15,11 @@ line_chart = tkchart.LineChart(master=root, fg_color="#101010", bg_color="#10101
                                x_axis_values=x_axis_values, y_axis_values=(0, 1000),
                                x_axis_label_count=20, y_axis_label_count=10,
                                x_axis_section_count=10, y_axis_section_count=10,
-                               y_space=10, x_space=10)
+                               y_space=10, x_space=10, )
 line_chart.pack()
 
-line = tkchart.Line(master=line_chart, style="dashed", style_type=(10,5), size=3, color="lightblue")
+line = tkchart.Line(master=line_chart, style="dashed", style_type=(10,5), size=1, color="lightblue",
+                    point_highlight="enabled", point_highlight_size=5, point_highlight_color="lightblue")
 
 def loop():
     line_chart.show_data(line=line ,data=[random.choice(data)])
@@ -497,6 +498,53 @@ column += 1
 ctk.CTkButton(master=frame, text="{}".format("#FF00FF"), width=90, height=30, command=lambda:line_configure(color="#FF00FF")).grid(row=row, column=column, padx=10, pady=2)
 column += 1
 ctk.CTkButton(master=frame, text="{}".format("#00FFFF"), width=90, height=30, command=lambda:line_configure(color="#00FFFF")).grid(row=row, column=column, padx=10, pady=2)
+
+
+
+row += 1
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+row += 1
+ctk.CTkLabel(master=frame, text="Point Hightlight : ").grid(row=row, column=1)
+column = 2
+ctk.CTkButton(master=frame, text="{}".format("enabled"), width=90, height=30, command=lambda:line_configure(point_highlight="enabled")).grid(row=row, column=column, padx=10, pady=2)
+column += 1
+ctk.CTkButton(master=frame, text="{}".format("disabled"), width=90, height=30, command=lambda:line_configure(point_highlight="disabled")).grid(row=row, column=column, padx=10, pady=2)
+column += 1
+
+
+
+row += 1
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+row += 1
+ctk.CTkLabel(master=frame, text="Point Hightlight Size : ").grid(row=row, column=1)
+column = 2
+ctk.CTkButton(master=frame, text="{}".format("5"), width=90, height=30, command=lambda:line_configure(point_highlight_size=5)).grid(row=row, column=column, padx=10, pady=2)
+column += 1
+ctk.CTkButton(master=frame, text="{}".format("10"), width=90, height=30, command=lambda:line_configure(point_highlight_size=10)).grid(row=row, column=column, padx=10, pady=2)
+column += 1
+ctk.CTkButton(master=frame, text="{}".format("15"), width=90, height=30, command=lambda:line_configure(point_highlight_size=15)).grid(row=row, column=column, padx=10, pady=2)
+column += 1
+ctk.CTkButton(master=frame, text="{}".format("20"), width=90, height=30, command=lambda:line_configure(point_highlight_size=20)).grid(row=row, column=column, padx=10, pady=2)
+column += 1
+ctk.CTkButton(master=frame, text="{}".format("25"), width=90, height=30, command=lambda:line_configure(point_highlight_size=25)).grid(row=row, column=column, padx=10, pady=2)
+
+
+
+row += 1
+ctk.CTkFrame(master=frame ,height=2, width=1000, fg_color="#202020").grid(row=row, columnspan=9)
+row += 1
+ctk.CTkLabel(master=frame, text="Point Hightlight Color : ").grid(row=row, column=1)
+column = 2
+ctk.CTkButton(master=frame, text="{}".format("#FF0000"), width=90, height=30, command=lambda:line_configure(point_highlight_color="#FF0000")).grid(row=row, column=column, padx=10, pady=2)
+column += 1
+ctk.CTkButton(master=frame, text="{}".format("00FF00"), width=90, height=30, command=lambda:line_configure(point_highlight_color="#00FF00")).grid(row=row, column=column, padx=10, pady=2)
+column += 1
+ctk.CTkButton(master=frame, text="{}".format("#0000FF"), width=90, height=30, command=lambda:line_configure(point_highlight_color="#0000FF")).grid(row=row, column=column, padx=10, pady=2)
+column += 1
+ctk.CTkButton(master=frame, text="{}".format("#FF00FF"), width=90, height=30, command=lambda:line_configure(point_highlight_color="#FF00FF")).grid(row=row, column=column, padx=10, pady=2)
+column += 1
+ctk.CTkButton(master=frame, text="{}".format("#00FFFF"), width=90, height=30, command=lambda:line_configure(point_highlight_color="#00FFFF")).grid(row=row, column=column, padx=10, pady=2)
+
 
 
 root.mainloop()

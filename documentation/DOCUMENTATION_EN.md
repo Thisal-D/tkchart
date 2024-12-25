@@ -1,17 +1,14 @@
-<div id="top"></div> 
+<div id="top">
 
-[中文说明 Doc.](DOCUMENTATION_CN.md) | [Chinese Doc.](DOCUMENTATION_CN.md) 
+[中文说明 Doc.](DOCUMENTATION_zh.md) | [Chinese Doc.](DOCUMENTATION_zh.md) 
 
-</div>
-
-<hr> 
+--- 
 
 </div> 
 
 <div id="howtouse"> 
 
-<a href="#top">**Back to the Top**</a> | <a href="#example">**Examples**</a> | <a href="#parameter_explanation">**Parameter Explanation**</a> | <a href="#whatsnew">**Whats New ?**</a> 
-
+<a href="#top">**Back to the Top**</a> | <a href="#example">**Examples**</a> | <a href="#parameter_explanation">**Parameter Explanation**</a> | <a href="../CHANGES_en.md">**Whats New ?**</a> 
 
 ### Importing & Installation 
 * Installation 
@@ -20,13 +17,13 @@ pip install tkchart
 ``` 
 
 * Importing 
-``` 
+``` python
 import tkchart 
 ``` 
 
 <div id="parameter_img"> 
 
-<hr> 
+--- 
 
 ### Parameter Overview 
 
@@ -46,89 +43,93 @@ import tkchart
 2. <a href="#create-line">**Creating a Line**</a> 
 3. <a href="#display-data">**Display of data**</a> 
 
-<hr>  
+---  
 
 <div id="create-line-chart"> 
 
 ## 1 . Creating a Line Chart 
 <a href="#create-line">**Creating a Line**</a> | <a href="#display-data">**Display of data**</a> 
 
-``` 
+``` python
 linechart = tkchart.LineChart() 
 ``` 
 
 ### Parameters 
 
-| Parameter | Required / Optional | Description | Types | Example Value(s) | 
-|-------------------------------|---------------------|-------------------------------------------------------|---------------------------------|-------------------------------------| 
-| master | ***Required*** | Master Widget for LineChart | ``widget`` | widget | 
-| <a href="#x_y_axis_values">y_axis_values</a> | ***Required*** | Minimum and maximum values for y-axis | ``tuple[[int \| float], ...]`` | (-1000, 1000), ... | 
-| <a href="#x_y_axis_values">x_axis_values</a> | ***Required*** | Values for x-axis | ``tuple[any, ...]`` | (1, 2, 3, 4, 5), ... | 
-| width | ***Optional*** | Width of the chart | ``int`` | 300, ... | 
-| height | ***Optional*** | Height of the chart | ``int`` | 100, ... | 
-| <a href="#parameter_img">axis_size</a> | ***Optional*** | Size of the axis | ``int`` | 1<= | 
-| <a href="#parameter_img">axis_color</a> | ***Optional*** | Color of the axis | ``str`` | "#2C2C2C" , "blue", ... | 
-| <a href="#parameter_img">bg_color</a> | ***Optional*** | Background color of the chart | ``str`` | "#191919", ... | 
-| <a href="#parameter_img">fg_color</a> | ***Optional*** | Foreground color of the chart | ``str`` | "#191919", ... | 
-| <a href="#x_y_data">data_font_style</a> | ***Optional*** | Font style for data labels | ``tuple[str, int, str]`` | ("arial", 9, "bold"), ... | 
-| <a href="#x_y_font_style">axis_font_style</a> | ***Optional*** | Font style for axis labels | ``tuple[str, int, str]`` | ("arial", 8, "normal"), ... | 
-| <a href="#x_y_data">x_axis_data</a> | ***Optional*** | Data label for x-axis | ``str`` | "X", ... | 
-| <a href="#x_y_data">y_axis_data</a> | ***Optional*** | Value for y-axi data label | ``any`` | "Y", ... | 
-| <a href="#x_y_data">x_axis_data_font_color</a> | ***Optional*** | Font color for x-axis data label | ``str`` | "#707070", ... | 
-| <a href="#x_y_data">y_axis_data_font_color</a> | ***Optional*** | Font color for y-axis data label | ``str`` | "#707070", ... | 
-| <a href="#data_position">x_axis_data_position</a> | ***Optional*** | Position of x-axis data label | ``str`` ("top", "side") | "top" | 
-| <a href="#data_position">y_axis_data_position</a> | ***Optional*** | Position of y-axis data label | ``str`` ("top", "side") | "top" | 
-| <a href="#x_y_section">x_axis_section_count</a> | ***Optional*** | Number of sections on the x-axis | ``int`` | 0<= | 
-| <a href="#x_y_section">y_axis_section_count</a> | ***Optional*** | Number of sections on the y-axis | ``int`` | 0<= | 
-| <a href="#x_y_label_count">x_axis_label_count</a> | ***Optional*** | Number of x-axis labels | ``int`` | 0<= | 
-| <a href="#x_y_label_count">y_axis_label_count</a> | ***Optional*** | Number of y-axis labels | ``int`` | 1<= | 
-| <a href="#x_y_font_style">x_axis_font_color</a> | ***Optional*** | Font color for x-axis labels | ``str`` | "#606060", ... | 
-| <a href="#x_y_font_style">y_axis_font_color</a> | ***Optional*** | Font color for y-axis labels | ``str`` | "#606060", ... | 
-| <a href="#x_y_section_style">x_axis_section_style</a> | ***Optional*** | Style of sections on the x-axis | ``str`` ("normal", "dashed") | "normal" | 
-| <a href="#x_y_section_style">y_axis_section_style</a> | ***Optional*** | Style of sections on the y-axis | ``str`` ("normal", "dashed") | "normal" | 
-| <a href="#x_y_section_style">x_axis_section_style_type</a> | ***Optional*** | Style type for sections on the x-axis | ``tuple[int, int]`` | (100, 50) , (50,50), ... | 
-| <a href="#x_y_section_style">y_axis_section_style_type</a> | ***Optional*** | Style type for sections on the y-axis | ``tuple[int, int]`` | (100, 50) | 
-| <a href="#x_y_section">x_axis_section_color</a> | ***Optional*** | Color of sections on the x-axis | ``str`` | "#2C2C2C", ... | 
-| <a href="#x_y_section">y_axis_section_color</a> | ***Optional*** | Color of sections on the y-axis | ``str`` | "#2C2C2C" | 
-| <a href="#y_precision">y_axis_precision</a> | ***Optional*** | Precision for y-axis values | ``int`` | 0<= | 
-| <a href="#indices_view">x_axis_display_values_indices</div> | ***Optional*** | Indices of values to display on the x-axis | ``tuple[int, ...]`` | (0, 1, 2, 3, 4, 5), ... | 
-| <a href="#x_axis_point_spacing">x_axis_point_spacing</a> | ***Optional*** | Width of lines | ``int`` \| ``str`` "auto" | "auto" <br> 1<= | 
-| <a href="#parameter_img">x_space</a> | ***Optional*** | Space between x-axis and chart area | ``int`` | 0<= | 
-| <a href="#parameter_img">y_space</a> | ***Optional*** | Space between y-axis and chart area | ``int`` | 0<= | 
-| pointer_state | ***Optional*** | State of the pointer | ``str`` ("enabled", "disabled") | "disabled" | 
-| pointing_callback_function | ***Optional*** | Callback function for pointer | ``callable`` | function(*args) <br> function(x, y) | 
-| pointer_color | ***Optional*** | Color of the pointer | ``str`` | "#606060", ... | 
-| pointing_values_precision | ***Optional*** | Precision for pointing values | ``int`` | 0<= | 
-| pointer_lock | ***Optional*** | State of pointer lock | ``str`` ("enabled", "disabled") | "enabled" | 
-| pointer_size | ***Optional*** | Size of the pointer | ``int`` | 1<= | 
+| Parameter                                                   | Required / Optional | Description                                | Types                           | Example Value(s)                    | 
+|-------------------------------------------------------------|---------------------|--------------------------------------------|---------------------------------|-------------------------------------| 
+| master                                                      | ***Required***      | Master Widget for LineChart                | ``widget``                      | widget                              | 
+| <a href="#x_y_axis_values">y_axis_values</a>                | ***Required***      | Minimum and maximum values for y-axis      | ``tuple[[int \| float], ...]``  | (-1000, 1000), ...                  | 
+| <a href="#x_y_axis_values">x_axis_values</a>                | ***Required***      | Values for x-axis                          | ``tuple[any, ...]``             | (1, 2, 3, 4, 5), ...                | 
+| width                                                       | ***Optional***      | Width of the chart                         | ``int``                         | 300, ...                            | 
+| height                                                      | ***Optional***      | Height of the chart                        | ``int``                         | 100, ...                            | 
+| <a href="#parameter_img">axis_size</a>                      | ***Optional***      | Size of the axis                           | ``int``                         | 1<=                                 | 
+| <a href="#parameter_img">axis_color</a>                     | ***Optional***      | Color of the axis                          | ``str``                         | "#2C2C2C" , "blue", ...             | 
+| <a href="#parameter_img">bg_color</a>                       | ***Optional***      | Background color of the chart              | ``str``                         | "#191919", ...                      | 
+| <a href="#parameter_img">fg_color</a>                       | ***Optional***      | Foreground color of the chart              | ``str``                         | "#191919", ...                      | 
+| <a href="#x_y_data">data_font_style</a>                     | ***Optional***      | Font style for data labels                 | ``tuple[str, int, str]``        | ("arial", 9, "bold"), ...           | 
+| <a href="#x_y_font_style">axis_font_style</a>               | ***Optional***      | Font style for axis labels                 | ``tuple[str, int, str]``        | ("arial", 8, "normal"), ...         | 
+| <a href="#x_y_data">x_axis_data</a>                         | ***Optional***      | Data label for x-axis                      | ``str``                         | "X", ...                            | 
+| <a href="#x_y_data">y_axis_data</a>                         | ***Optional***      | Value for y-axi data label                 | ``any``                         | "Y", ...                            | 
+| <a href="#x_y_data">x_axis_data_font_color</a>              | ***Optional***      | Font color for x-axis data label           | ``str``                         | "#707070", ...                      | 
+| <a href="#x_y_data">y_axis_data_font_color</a>              | ***Optional***      | Font color for y-axis data label           | ``str``                         | "#707070", ...                      | 
+| <a href="#data_position">x_axis_data_position</a>           | ***Optional***      | Position of x-axis data label              | ``str`` ("top", "side")         | "top"                               | 
+| <a href="#data_position">y_axis_data_position</a>           | ***Optional***      | Position of y-axis data label              | ``str`` ("top", "side")         | "top"                               | 
+| <a href="#x_y_section">x_axis_section_count</a>             | ***Optional***      | Number of sections on the x-axis           | ``int``                         | 0<=                                 | 
+| <a href="#x_y_section">y_axis_section_count</a>             | ***Optional***      | Number of sections on the y-axis           | ``int``                         | 0<=                                 | 
+| <a href="#x_y_label_count">x_axis_label_count</a>           | ***Optional***      | Number of x-axis labels                    | ``int``                         | 0<=                                 | 
+| <a href="#x_y_label_count">y_axis_label_count</a>           | ***Optional***      | Number of y-axis labels                    | ``int``                         | 1<=                                 | 
+| <a href="#x_y_font_style">x_axis_font_color</a>             | ***Optional***      | Font color for x-axis labels               | ``str``                         | "#606060", ...                      | 
+| <a href="#x_y_font_style">y_axis_font_color</a>             | ***Optional***      | Font color for y-axis labels               | ``str``                         | "#606060", ...                      | 
+| <a href="#x_y_section_style">x_axis_section_style</a>       | ***Optional***      | Style of sections on the x-axis            | ``str`` ("normal", "dashed")    | "normal"                            | 
+| <a href="#x_y_section_style">y_axis_section_style</a>       | ***Optional***      | Style of sections on the y-axis            | ``str`` ("normal", "dashed")    | "normal"                            | 
+| <a href="#x_y_section_style">x_axis_section_style_type</a>  | ***Optional***      | Style type for sections on the x-axis      | ``tuple[int, int]``             | (100, 50) , (50,50), ...            | 
+| <a href="#x_y_section_style">y_axis_section_style_type</a>  | ***Optional***      | Style type for sections on the y-axis      | ``tuple[int, int]``             | (100, 50)                           | 
+| <a href="#x_y_section">x_axis_section_color</a>             | ***Optional***      | Color of sections on the x-axis            | ``str``                         | "#2C2C2C", ...                      | 
+| <a href="#x_y_section">y_axis_section_color</a>             | ***Optional***      | Color of sections on the y-axis            | ``str``                         | "#2C2C2C"                           | 
+| <a href="#y_precision">y_axis_precision</a>                 | ***Optional***      | Precision for y-axis values                | ``int``                         | 0<=                                 | 
+| <a href="#indices_view">x_axis_display_values_indices</div> | ***Optional***      | Indices of values to display on the x-axis | ``tuple[int, ...]``             | (0, 1, 2, 3, 4, 5), ...             | 
+| <a href="#x_axis_point_spacing">x_axis_point_spacing</a>    | ***Optional***      | Width of lines                             | ``int`` \| ``str`` "auto"       | "auto" <br> 1<=                     | 
+| <a href="#parameter_img">x_space</a>                        | ***Optional***      | Space between x-axis and chart area        | ``int``                         | 0<=                                 | 
+| <a href="#parameter_img">y_space</a>                        | ***Optional***      | Space between y-axis and chart area        | ``int``                         | 0<=                                 | 
+| pointer_state                                               | ***Optional***      | State of the pointer                       | ``str`` ("enabled", "disabled") | "disabled"                          | 
+| pointing_callback_function                                  | ***Optional***      | Callback function for pointer              | ``callable``                    | function(*args) <br> function(x, y) | 
+| pointer_color                                               | ***Optional***      | Color of the pointer                       | ``str``                         | "#606060", ...                      | 
+| pointing_values_precision                                   | ***Optional***      | Precision for pointing values              | ``int``                         | 0<=                                 | 
+| pointer_lock                                                | ***Optional***      | State of pointer lock                      | ``str`` ("enabled", "disabled") | "enabled"                           | 
+| pointer_size                                                | ***Optional***      | Size of the pointer                        | ``int``                         | 1<=                                 | 
 
 
-<hr>  
+---  
 
 ### Methods 
 
-| Method | Description | Supported / Required Parameters | Return Type | 
-|---------------------|---------------------------------------|----------------------------------------------------|-------------| 
-| configure | Change LineChart attributes | All attributes except for master | ``None`` | 
-| [show_data](#display-data) | Display data | data: ``list``<br> line: ``tkchart.Line`` | ``None`` | 
-| place | Place LineChart | x: ``int``<br>y: ``int``<br>rely: ``float or int``<br>relx: ``float or int``<br>anchor: ``str`` | ``None`` | 
-| pack | Pack LineChart | pady: ``int``<br>padx: ``int``<br> before: ``widget``<br> after: ``widget``<br>side: ``str``<br>anchor: ``str`` | ``None`` | 
-| grid | Grid LineChart | column: ``int``<br>columnspan: ``int``<br>padx: ``int``<br>pady: ``int``<br> row: ``int``<br>rowspan: ``int``<br>sticky: ``str``| ``None`` | 
-| place_forget | Place forget the chart | - | ``None`` | 
-| pack_forget | Pack forget the chart | - | ``None`` | 
-| grid_forget | Grid forget the chart | - | ``None`` | 
-| set_lines_visibility | Change the visibility of all the lines | state: ``bool`` | ``None`` | 
-| set_line_visibility | Change the visibility of a specific line | line: ``tkchart.Line``<br> state: ``bool`` | ``None`` | 
-| get_line_visibility | Get the visibility of a specific line | line: ``tkchart.Line`` | ``bool`` | 
-| reset | Reset line chart | - | ``None`` | 
-| cget | Get the value of the specified parameter | attribute_name: ``str`` \| "\_\_all\_\_" | ``any`` | 
-| place_info | Get info about place | attribute_name: ``str`` \| "\_\_all\_\_" | ``any`` | 
-| pack_info | Get info about pack | attribute_name: ``str`` \| "\_\_all\_\_" | ``any`` | 
-| grid_info | Get info about grid | attribute_name: ``str`` \| "\_\_all\_\_" | ``any`` | 
+| Method                     | Description                              | Supported / Required Parameters                                                                                                  | Return Type | 
+|----------------------------|------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|-------------| 
+| configure                  | Change LineChart attributes              | All attributes except for master                                                                                                 | ``None``    | 
+| [show_data](#display-data) | Display data                             | data: ``list``<br> line: ``tkchart.Line``                                                                                        | ``None``    | 
+| place                      | Place LineChart                          | x: ``int``<br>y: ``int``<br>rely: ``float or int``<br>relx: ``float or int``<br>anchor: ``str``                                  | ``None``    | 
+| pack                       | Pack LineChart                           | pady: ``int``<br>padx: ``int``<br> before: ``widget``<br> after: ``widget``<br>side: ``str``<br>anchor: ``str``                  | ``None``    | 
+| grid                       | Grid LineChart                           | column: ``int``<br>columnspan: ``int``<br>padx: ``int``<br>pady: ``int``<br> row: ``int``<br>rowspan: ``int``<br>sticky: ``str`` | ``None``    | 
+| place_forget               | Place forget the chart                   | -                                                                                                                                | ``None``    | 
+| pack_forget                | Pack forget the chart                    | -                                                                                                                                | ``None``    | 
+| grid_forget                | Grid forget the chart                    | -                                                                                                                                | ``None``    | 
+| set_lines_visibility       | Change the visibility of all the lines   | state: ``bool``                                                                                                                  | ``None``    | 
+| set_line_visibility        | Change the visibility of a specific line | line: ``tkchart.Line``<br> state: ``bool``                                                                                       | ``None``    | 
+| get_line_visibility        | Get the visibility of a specific line    | line: ``tkchart.Line``                                                                                                           | ``bool``    | 
+| reset                      | Reset line chart                         | -                                                                                                                                | ``None``    | 
+| cget                       | Get the value of the specified parameter | attribute_name: ``str`` \| "\_\_all\_\_"                                                                                         | ``any``     | 
+| place_info                 | Get info about place                     | attribute_name: ``str`` \| "\_\_all\_\_"                                                                                         | ``any``     | 
+| pack_info                  | Get info about pack                      | attribute_name: ``str`` \| "\_\_all\_\_"                                                                                         | ``any``     | 
+| grid_info                  | Get info about grid                      | attribute_name: ``str`` \| "\_\_all\_\_"                                                                                         | ``any``     |
+| get_line_area               | Get the are of specific line            | line: `tkchart.Line`        | ``float``    | 
+| get_lines_area               | Get the are of all lines               | -                           | ``float``    | 
+| clear_data  | Clears the data for all lines within the chart, ensuring that only the most recent visible data points are retained. If the total data points exceed the maximum visible points, the older data is removed from each line's data. This method ensures that the chart displays only the relevant portion of data based on the maximum visible range.                                                           | -              | ``None``    |  
+| destroy                    | Destroy the chart                        | -                           | ``None``    | 
 
 </div> 
 
-<hr> 
+--- 
 
 <div id="create-line"> 
 
@@ -136,39 +137,41 @@ linechart = tkchart.LineChart()
 
 <a href="#create-line-chart">**Creating a Line Chart**</a> | <a href="#display-data">**Display of data**</a> 
 
-``` 
+``` python
 line = tkchart.Line() 
 ``` 
 
 ### Parameters 
 
-| Parameter Name | Required / Optional | Description | Types | Example Value(s) | 
-|-------------------------|---------------------|--------------------------------|------------------------------------|-------------------| 
-| master | Required | Master of the line | ``tkchart.Line`` | LineChart obj | 
-| <a href="#line_color_size">color</a> | Optional | Color of the line | ``str`` | "#768df1" | 
-| <a href="#line_color_size">size</a> | Optional | Size of the line | ``int`` | 1<= | 
-| <a href="#line_style">style</a> | Optional | Style of the line | ``str`` ("normal", "dashed", "dotted") | "normal" | 
-| <a href="#line_style_type">style_type</a> | Optional | Style type for the line | ``tuple[int, int]`` | (10, 5),... | 
-| <a href="#point_highlight">point_highlight</a> | Optional | State of point highlighting | ``str`` ("enabled", "disabled") | "disabled" | 
-| <a href="#point_highlight">point_highlight_size</a> | Optional | Size of the highlighted point | ``int`` | 1<= | 
-| <a href="#point_highlight">point_highlight_color</a> | Optional | Color of the highlighted point | ``str`` | "#768df1" | 
-| <a href="#fill">fill</a> | Optional | State of filling | ``str`` ("enabled", "disabled") | "disabled" | 
-| <a href="#fill">fill_color</a> | Optional | Color of the fill | ``str`` | "#5d6db6" | 
+| Parameter Name                                       | Required / Optional | Description                    | Types                                  | Example Value(s) | 
+|------------------------------------------------------|---------------------|--------------------------------|----------------------------------------|------------------| 
+| master                                               | Required            | Master of the line             | ``tkchart.Line``                       | LineChart obj    | 
+| <a href="#line_color_size">color</a>                 | Optional            | Color of the line              | ``str``                                | "#768df1"        | 
+| <a href="#line_color_size">size</a>                  | Optional            | Size of the line               | ``int``                                | 1<=              | 
+| <a href="#line_style">style</a>                      | Optional            | Style of the line              | ``str`` ("normal", "dashed", "dotted") | "normal"         | 
+| <a href="#line_style_type">style_type</a>            | Optional            | Style type for the line        | ``tuple[int, int]``                    | (10, 5),...      | 
+| <a href="#point_highlight">point_highlight</a>       | Optional            | State of point highlighting    | ``str`` ("enabled", "disabled")        | "disabled"       | 
+| <a href="#point_highlight">point_highlight_size</a>  | Optional            | Size of the highlighted point  | ``int``                                | 1<=              | 
+| <a href="#point_highlight">point_highlight_color</a> | Optional            | Color of the highlighted point | ``str``                                | "#768df1"        | 
+| <a href="#fill">fill</a>                             | Optional            | State of filling               | ``str`` ("enabled", "disabled")        | "disabled"       | 
+| <a href="#fill">fill_color</a>                       | Optional            | Color of the fill              | ``str``                                | "#5d6db6"        | 
 
-<hr>  
+---  
 
 ### Methods 
 
-| Method | Description | Supported Parameters | Return Type | 
-|-------------------|---------------------------------------------------|------------------------------------------|-------------| 
-| configure | Change LineChart attributes | All attributes except for master | ``None`` | 
-| cget | Get the value of the specified parameter | attribute_name: ``str`` \| "\_\_all\_\_" | ``any`` | 
-| reset | reset line object | - | ``None`` | 
-| set_visible | change the visibility of the line | state: ``bool`` | ``None`` | 
-| get_visibility | get the visibility of the line | - | ``bool`` | 
+| Method         | Description                              | Supported Parameters                     | Return Type | 
+|----------------|------------------------------------------|------------------------------------------|-------------| 
+| configure      | Change LineChart attributes              | All attributes except for master         | ``None``    | 
+| cget           | Get the value of the specified parameter | attribute_name: ``str`` \| "\_\_all\_\_" | ``any``     | 
+| reset          | reset line object                        | -                                        | ``None``    | 
+| set_visible    | change the visibility of the line        | state: ``bool``                          | ``None``    | 
+| get_visibility | get the visibility of the line           | -                                        | ``bool``    | 
+| clear_data     | Clears the data for a specific line, ensuring that only the most recent visible data points are retained. If the line's data exceeds the maximum visible points, the older data is trimmed. This method allows each line to independently clean its data, ensuring it remains within the visible range.                                                           | -              | ``None``    | 
+| destroy        | Destroy the line                         | -                                        | ``None``    | 
 </div> 
 
-<hr> 
+--- 
 
 <div id="display-data"> 
 
@@ -177,9 +180,9 @@ line = tkchart.Line()
 <a href="#create-line-chart">**Creating a Line Chart**</a> | <a href="#create-line">**Creating a Line**</a> 
 
 
-``` 
+``` python
 import tkinter as tk 
-import tkchart 
+import ctkchart 
 import random 
 
 #root 
@@ -187,9 +190,11 @@ root = tk.Tk()
 root.configure(bg="#151515") 
 
 #creating a chart 
-chart = tkchart.LineChart(master=root, 
-x_axis_values = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 
-y_axis_values = (-100,100)) 
+chart = tkchart.LineChart(
+    master=root, 
+    x_axis_values = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 
+    y_axis_values = (-100,100)
+) 
 chart.pack() 
 
 #creating a line 
@@ -198,31 +203,33 @@ line = tkchart.Line(master=chart)
 data = [x for x in range(-100,101)] #values -100 to 100 
 #dipslay data (random) 
 def loop(): 
-chart.show_data(line=line, data=random.choices(data, k=1)) 
-root.after(500, loop) 
+    chart.show_data(line=line, data=random.choices(data, k=1)) 
+    root.after(500, loop) 
 loop() 
 
 root.mainloop() 
 ``` 
+
 <div align="center"> 
 
 https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b00a6f5518 
 
 </div> 
 
+---
+
 </div> 
 
-<hr> 
 
 <div id="parameter_explanation"> 
 
-<a href="#top">**Back to the Top**</a> | <a href="#howtouse">**Usage Guide**</a> | <a href="#example">**Examples**</a> | <a href="#whatsnew">**Whats New ?**</a> 
+<a href="#top">**Back to the Top**</a> | <a href="#howtouse">**Usage Guide**</a> | <a href="#example">**Examples**</a> | <a href="../CHANGES_en.md">**Whats New ?**</a>
 
 ## Parameter Explanation 
 
 <div id="x_y_axis_values"> 
 
-### LineChart 
+### CTkLineChart 
 
 - #### y_axis_values 
     y_axis_values is a tuple that containing two numeric values for the y-axis. The first value (index 0) represents the starting value of the y-axis, and the second value (index 1) represents the end value of the y-axis. This tuple defines the range of values displayed along the y-axis on chart. 
@@ -235,13 +242,14 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     <img src="https://drive.google.com/thumbnail?id=1UbyQEKDYhZjUI9VttKerpSVc6hZoEfi8&sz=w950" > 
     </picture> 
 
-    ``` 
+    ``` python
     chart = tkchart.LineChart(
+        master=any_widget
         x_axis_values=(2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025), 
         y_axis_values=(-100, 100) 
     ) 
     ``` 
-<hr>
+---
 </div> 
 
 <div id="x_y_data"> 
@@ -268,7 +276,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     <img src="https://drive.google.com/thumbnail?id=1m2kBnDRycSviMXO3uTHIzL6Y7S7u1rsC&sz=w1000" > 
     </picture> 
 
-    ``` 
+    ``` python
     chart = tkchart.LineChart(
         master=any_widget, 
         x_axis_values=(2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025), 
@@ -281,7 +289,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -310,8 +318,9 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     <img src="https://drive.google.com/thumbnail?id=1mHgbpbaWQeQE-ykFwIizd_vIdLVSXc5w&sz=w1000" > 
     </picture> 
 
-    ``` 
+    ``` python
     chart = tkchart.LineChart(
+        master=any_widget, 
         x_axis_values=(2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025), 
         y_axis_values=(-100, 100), 
         x_axis_label_count=4, 
@@ -319,7 +328,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
     
-<hr>
+---
 
 </div> 
 
@@ -337,15 +346,16 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     <img src="https://drive.google.com/thumbnail?id=1gN_DhzFPzs-7LTG7-EfeZzjisWDTFYSn&sz=w800" > 
     </picture> 
 
-    ``` 
+    ``` python
     chart = tkchart.LineChart(
+        master=any_widget, 
         x_axis_values=(2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025), 
         y_axis_values=(-100, 100), 
         x_axis_display_values_indices=(1, 4, 7)
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -356,18 +366,18 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     
     supported values: 
     - "top"
-    - "side"
+    - "side" 
 
-    **Note:"top" is the default position** 
+    **Note: "top" is the default position** 
 
 - #### y_axis_data_position 
     The y_axis_data_position parameter determines the position of the x data label. It has two 
     
-    supported values:
+    supported values: 
     - "top"
-    - "side"
+    - "side" 
 
-    **Note: "top" is the default position**<br> 
+    **Note: "top" is the default position**
 
     Choosing between "top" and "side" determines whether the data labels are placed horizontally above the data points or vertically beside them, respectively. This parameter allows you to customize the layout of your chart according to your preferences and available space. 
 
@@ -376,8 +386,9 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     <img src="https://drive.google.com/thumbnail?id=18W70YdLf8f6n1K69GhKP_Es69JF-Va3L&sz=w950" > 
     </picture> 
 
-    ``` 
+    ``` python
     chart = tkchart.LineChart(
+        master=any_widget, 
         x_axis_values=(2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025), 
         y_axis_values=(-100, 100), 
         x_axis_data_position="side", 
@@ -385,7 +396,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -409,8 +420,9 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     <img src="https://drive.google.com/thumbnail?id=1B6e3yf6cPBuQvqpoleIR8syR0_WLmB1x&sz=w950" > 
     </picture> 
 
-    ``` 
+    ``` python
     chart = tkchart.LineChart(
+        master=any_widget, 
         x_axis_values=(2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025), 
         y_axis_values=(-100, 100), 
         y_axis_label_count=12, 
@@ -418,7 +430,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -438,8 +450,9 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     <img src="https://drive.google.com/thumbnail?id=19kfPmQxP9AuDNJuFlM2F3YrDhuF3OnAs&sz=w950" > 
     </picture> 
 
-    ``` 
+    ``` python
     chart = tkchart.LineChart(
+        master=any_widget, 
         x_axis_values=(2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025), 
         y_axis_values=(-100, 100), 
         x_axis_font_color="#00FF00", 
@@ -448,7 +461,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -480,7 +493,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     <img src="https://drive.google.com/thumbnail?id=1GoduMuhlvwayY55QvjEwjwrk8np-8ULL&sz=w1050" > 
     </picture> 
 
-    ``` 
+    ``` python
     chart = tkchart.LineChart(
         master=any_widget, 
         x_axis_section_count=8, 
@@ -490,7 +503,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -520,7 +533,8 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     For example:<br> 
     - If you set x_axis_section_style_type to (20, 10), it means : 
         - The width of each dash is 20 pixels. 
-        - The spacing between dashes is 10 pixels.<br>
+        - The spacing between dashes is 10 pixels.
+        <br>
 
     These values determine the visual appearance of the dashed lines or markers used to represent the sections along the x-axis. Adjusting these values allows you to customize the appearance of the dashed sections according to your preferences or the requirements of your visualization. 
 
@@ -535,7 +549,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     <img src="https://drive.google.com/thumbnail?id=1SOieJLRtMLbIqgqlt-ATRAYRSuOwbrEK&sz=w1050" > 
     </picture> 
 
-    ``` 
+    ``` python
     chart = tkchart.LineChart(
         master=any_widget, 
         x_axis_section_count=8, 
@@ -547,7 +561,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -560,7 +574,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 
     - after configure specific value to x_axis_point_spacing, you can reset value by configure it as "auto" for set default value. 
     <br> 
-        ``` 
+        ```  python
         chart.configure(x_axis_point_spacing = "auto") 
         ``` 
 
@@ -569,7 +583,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     <img src="https://drive.google.com/thumbnail?id=1YZeyRNvsgUKZuLfr8NbqdlKFMWAL9EMf&sz=w720" > 
     </picture> 
 
-    ``` 
+    ``` python
     chart = tkchart.LineChart(
         master=any_widget, 
         x_axis_point_spacing="auto" 
@@ -585,18 +599,18 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 
     When you set the x_axis_point_spacing parameter to a specific value, such as 40, it means that you have manually specified the spacing between points on the x-axis to be 40 units (e.g., pixels). In this case, the chart will use the user-defined spacing of 40 units between each point on the x-axis, regardless of the length of the x_axis_values tuple. 
 
-    ``` 
+    ``` python
     chart = tkchart.LineChart(
         master=any_widget, 
         x_axis_point_spacing=40 
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
-### Line 
+### CTkLine 
 
 <div id="line_color_size"> 
 
@@ -605,7 +619,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 
 - #### size 
     refers to size(thickness) of line.<br> 
-    **Note: 1 is the deafault size** 
+    **Note: 1 is the default size** 
     <br> 
 
     <picture> 
@@ -613,15 +627,13 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     <img src="https://drive.google.com/thumbnail?id=1iFTyIyVJ2C1HhbaYHOyVx9H_F1UHCW8l&sz=w720" > 
     </picture> 
 
-    ``` 
+    ``` python
     line = tkchart.Line(
         master=chart, 
         color="#30ACC7", 
         size=5 
     ) 
     ``` 
-
-<hr>
 
 </div> 
 
@@ -633,7 +645,8 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     - supported styles: 
         - "dashed": When you set style to "dashed", the line is displayed as dashed line. 
         - "dotted": When you set style to "dotted", the line is displayed as dotted line. 
-        - "normal": When you set style to "normal", the line is displayed as solid line.<br> 
+        - "normal": When you set style to "normal", the line is displayed as solid line.
+        <br> 
     **Note: "normal" is the default style.** 
 
     <picture> 
@@ -641,14 +654,14 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     <img src="https://drive.google.com/thumbnail?id=1FRATeOC2GRsv4l5nchVopvtUSmUqR-hW&sz=w1050" > 
     </picture> 
 
-    ``` 
+    ``` python
     line = tkchart.Line(
         master=chart, 
         line_style="dashed" 
     ) 
     ```
     
-<hr>
+---
 
 </div> 
 
@@ -670,7 +683,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     <img src="https://drive.google.com/thumbnail?id=1AK70nKWqZ04frfx90YB6wqzYjEmQoZqF&sz=w720" > 
     </picture> 
 
-    ``` 
+    ``` python
     line = tkchart.Line(
         master=chart, 
         line_style="dashed", 
@@ -678,7 +691,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -702,7 +715,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     <img src="https://drive.google.com/thumbnail?id=1WmHPyqtt6W1DQVtmM0beYE6S800x_Hfh&sz=w1000" > 
     </picture> 
 
-    ``` 
+    ``` python
     line = tkchart.Line(
         master=chart, 
         point_highlight="enabled", 
@@ -711,7 +724,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -732,7 +745,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     <img src="https://drive.google.com/thumbnail?id=1Un5x0Aetoq0LUE6piGPjsCoJt1mpjxCE&sz=w950" > 
     </picture> 
 
-    ``` 
+    ``` python
     line = tkchart.Line(
         master=chart, 
         fill="enabled", 
@@ -740,7 +753,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
     ) 
     ``` 
 
-<hr>
+---
 
 </div> 
 
@@ -748,7 +761,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 
 <div id="example"> 
 
-<a href="#top">**Back to the Top**</a> | <a href="#howtouse">**Usage Guide**</a> | <a href="#parameter_explanation">**Parameter Explanation**</a> | <a href="#whatsnew">**Whats New ?**</a> 
+<a href="#top">**Back to the Top**</a> | <a href="#howtouse">**Usage Guide**</a> | <a href="#parameter_explanation">**Parameter Explanation**</a> | <a href="../CHANGES_en.md">**Whats New ?**</a>
 
 ## Examples 
 
@@ -772,33 +785,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 
 </div> 
 
-<hr> 
-
-<div id="whatsnew"> 
-
-<a href="#top">**Back to the Top**</a> | <a href="#howtouse">**Usage Guide**</a> | <a href="#example">**Examples**</a> | <a href="#parameter_explanation">**Parameter Explanation**</a> 
-
-
-## Whats New ? 
-
-- #### Introduction of New Parameters for Line Object Styling 
-    - Point Highlighting 
-        - <a href="#point_highlight">point_highlight</a>: ``str`` 
-        Specifies whether point highlighting is enabled or disabled. 
-        - <a href="#point_highlight">point_highlight_size</a>: ``int`` 
-        Determines the size of the highlighted points. 
-        - <a href="#point_highlight">point_highlight_color</a>: ``str`` 
-        Sets the color for the highlighted points. 
-
-    - Line Filling 
-        - <a href="#fill">fill</a>: ``str`` 
-        Controls the enablement or disablement of line fill. 
-        - <a href="#fill">fill_color</a>: ``str`` 
-        Specifies the color for line filling. 
-
-</div> 
-
-<hr>
+--- 
 
 ## Links 
 

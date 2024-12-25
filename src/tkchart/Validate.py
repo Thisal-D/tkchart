@@ -133,7 +133,7 @@ class Validate:
                 f'''{Validate._var_font(var)} {Validate._error_font("must be 'normal' or 'dashed'.")}'''
             )
 
-    def _isValidLineWidth(value: any, var: str) -> None:
+    def _isValidXAxisPointSpacing(value: any, var: str) -> None:
         if type(value) == int:
             ...
         elif type(value) == str and value == "auto":
@@ -161,8 +161,21 @@ class Validate:
                 f'''{Validate._var_font(var)} {Validate._error_font("must be 'disabled' or 'enabled'.")}'''
             )
             
+    def _isValidLineFill(value: any, var: str) -> None:
+        Validate._isStr(value, var)
+        if value == "disabled" or value == "enabled":
+            ...
+        else:
+            raise ValueError(
+                f'''{Validate._var_font(var)} {Validate._error_font("must be 'disabled' or 'enabled'.")}'''
+            )
+            
     def _isValidYAxisValues(value: any, var: str) -> None:
         Validate._isTuple(value, var)
+        if value == (None,None):
+            raise ValueError(
+                        f'''{Validate._var_font(var)} {Validate._error_font("must be provide.")}'''
+                    )
         if len(value) == 2:
             if type(value[0]) == int or type(value[0]) == float and type(
                     value[1]) == int or type(value[1]) == float:
@@ -180,6 +193,13 @@ class Validate:
             raise ValueError(
                 f'''{Validate._var_font(var)} {Validate._error_font("length must be two.")}'''
             )
+            
+    def _isValidXAxisValues(value: any, var: str) -> None:
+        if value == (None, "None", None, "None"):
+            raise ValueError(
+                        f'''{Validate._var_font(var)} {Validate._error_font("must be provide.")}'''
+                    )
+        Validate._isTuple(value, "x_axis_values")
 
     def _isValidYAxisMaxValue(value: any, var: str) -> None:
         Validate._isNumeric(value, var)

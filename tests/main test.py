@@ -6,25 +6,30 @@ root = ctk.CTk()
 root.geometry("1900x900")
 
 
-data = ([x for x in range(0,1001)])
-x_axis_values =  tuple([x for x in range(1,21)])
+data = ([x for x in range(-1000,1001)])
+x_axis_values =  tuple([x for x in range(1,31)])
 line_chart = tkchart.LineChart(master=root, fg_color="#101010", bg_color="#101010",
                                width=900, height=350,
                                x_axis_data="X-AXIS", y_axis_data="Y-AXIS",
                                axis_size=1, y_axis_precision=0,
-                               x_axis_values=x_axis_values, y_axis_values=(0, 1000),
+                               x_axis_values=x_axis_values, y_axis_values=(-1000, 1001),
                                x_axis_label_count=20, y_axis_label_count=10,
                                x_axis_section_count=10, y_axis_section_count=10,
                                y_space=10, x_space=10, )
 line_chart.pack()
 
-line = tkchart.Line(master=line_chart, style="dashed", style_type=(10,5), size=1, color="lightblue",
-                    point_highlight="enabled", point_highlight_size=5, point_highlight_color="lightblue")
+line = tkchart.Line(master=line_chart, style="normal", style_type=(10,5), size=2, color="lightblue",
+                    point_highlight="enabled", point_highlight_size=6, fill="enabled", fill_color="#707070",
+                    point_highlight_color="lightblue")
 
 def loop():
     line_chart.show_data(line=line ,data=[random.choice(data)])
     root.after(500, loop)
 loop()
+
+#line_chart.show_data(line=line ,data=[0,200,400,600,800,1000,800,600,400,200])
+#line_chart.show_data(line=line ,data=[0,200,0,600,200,1000,400,600,1000,0])
+
 
 frame = ctk.CTkScrollableFrame(master=root, width=1000, height=900, fg_color=("#FFFFFF","#151515"))
 frame.pack(pady=100)

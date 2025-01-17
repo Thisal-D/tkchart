@@ -1,5 +1,5 @@
 import tkinter
-from typing import Union, List, Tuple, Literal, Any, Callable
+from typing import Union, List, Tuple, Literal, Any, Callable, Dict
 from .Utils import Utils
 from .Line import Line
 from .Validate import Validate
@@ -1670,6 +1670,104 @@ class LineChart:
             if maximum_data > max_visible_points:
                 line._Line__data = line._Line__data[maximum_data - max_visible_points::]
 
+    def get_lines_data(self, start: int = None, end: int = None, step: int = None) -> Dict[Line, Tuple[int]]:
+        """
+        Retrieve data points for all lines within a specified range and step.
+
+        Args:
+            start (int, optional): The starting index for slicing the data. Defaults to None.
+            end (int, optional): The ending index for slicing the data. Defaults to None.
+            step (int, optional): The step size for slicing the data. Defaults to None.
+
+        Returns:
+            Dict[Line, Tuple[int]]: A dictionary where the key is the line object and the value is a tuple of data points
+                                   sliced from the line's data.
+        """
+        
+        lines_data = {}
+        for line in self.__lines:
+            lines_data[line] = tuple(line._Line__data[start: end: step])
+
+        return lines_data
+    
+    def get_line_data(self, line: Line, start: int = None, end: int = None, step: int = None) -> Tuple[int | float]:
+        """
+        Retrieve data points for a specific line within a specified range and step.
+
+        Args:
+            line (Line): The line object whose data should be retrieved.
+            start (int, optional): The starting index for slicing the data. Defaults to None.
+            end (int, optional): The ending index for slicing the data. Defaults to None.
+            step (int, optional): The step size for slicing the data. Defaults to None.
+
+        Returns:
+            Tuple[int | float]: A tuple containing the sliced data points of the specified line.
+
+        Raises:
+            ValueError: If the provided line is not valid or does not exist in `self.__lines`.
+        """
+                
+        Validate._isValidLine(line, "line")
+        if line in self.__lines:
+            return line.get_data(start=start, end=end, step=step)
+        else:
+            Validate._invalidLine(line)
+    
+    def get_x_axis_visible_point_count(self) -> int:
+        """
+        Get the maximum number of data points that can be visible along the X-axis.
+
+        Returns:
+            int: The maximum number of visible data points on the X-axis.
+        """
+        
+        return self.__get_max_visible_data_points()
+    
+    def get_lines_visible_data(self) -> Dict[Line, Tuple[int | float]]:
+        """
+        Retrieve currently visible data points for all lines.
+
+        Determines the visible data points based on the maximum data length across all lines
+        and the maximum number of visible points.
+
+        Returns:
+            Dict[Line, Tuple[int | float]]: A dictionary where the key is the line object 
+                                               and the value is a tuple of visible data points.
+                                               If no data is visible, the value is an empty tuple.
+        """
+        
+        maximum_data = self.__get_max_data_length_across_lines()
+        max_visible_points = self.__get_max_visible_data_points()
+        
+        lines_data = {}
+        
+        for line in self.__lines:
+            if maximum_data > max_visible_points:
+                lines_data[line] = tuple(line._Line__data[maximum_data - max_visible_points::])
+            else:
+                lines_data[line] = tuple(line._Line__data)
+        return lines_data
+    
+    def get_line_visible_data(self, line: Line) -> Tuple[int | float]:
+        """
+        Retrieve currently visible data points for a specific line.
+
+        Args:
+            line (Line): The line object whose visible data should be retrieved.
+
+        Returns:
+            Tuple[int | float]: A tuple containing the visible data points of the specified line.
+
+        Raises:
+            ValueError: If the provided line is not valid or does not exist in `self.__lines`.
+        """
+        
+        Validate._isValidLine(line, "line")
+        if line in self.__lines:
+            return line.get_current_visible_data()
+        else:
+            Validate._invalidLine(line)
+            
     def place(
             self,
             x: int = None,

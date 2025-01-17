@@ -1,13 +1,17 @@
+[![Chinese](https://img.shields.io/badge/Language-中文-red)](README_zh.md)
+
 <div align="center">
 
 [![tkchart](https://snyk.io/advisor/python/tkchart/badge.svg)](https://snyk.io/advisor/python/tkchart)
 
 # tkchart 
 
-### `v 2.1.5`
+[![PyPI version](https://badge.fury.io/py/tkchart.svg)](https://pypi.org/project/tkchart/)
 
-[![Downloads](https://static.pepy.tech/badge/tkchart)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
+[![Downloads](https://static.pepy.tech/badge/tkchart)](https://pepy.tech/project/tkchart) ![Downloads last 6 month](https://static.pepy.tech/personalized-badge/tkchart?period=total&units=international_system&left_color=grey&right_color=BLUE&left_text=downloads%20last%206%20month) [![Downloads](https://static.pepy.tech/badge/tkchart/month)](https://pepy.tech/project/tkchart) [![Downloads](https://static.pepy.tech/badge/tkchart/week)](https://pepy.tech/project/tkchart)
 
+![PyPI - License](https://img.shields.io/badge/license-MIT-blue)
+![LOC](https://tokei.rs/b1/github/Thisal-D/tkchart?category=lines)
 </div>
 
 **<li>tkchart is a Python library for creating live updating line charts in tkinter.</li>**
@@ -21,6 +25,8 @@
 - **Color Customization**: Customize colors to match your application's design or data representation.
 - **Font Customization**: Adjust fonts for text elements to enhance readability.
 - **Dimension Customization**: Customize chart dimensions to fit various display sizes and layouts.
+
+[**Check out what's new | Changes**](CHANGES_en.md)
 
 ---
 

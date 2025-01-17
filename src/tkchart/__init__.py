@@ -17,5 +17,5 @@ AUTO: str = "auto"
 tkchart: a library for create live update chart for tkinter guis.
 """
 __title__ = "tkchart"
-__version__ = "2.1.5"
+__version__ = "2.1.6"
 __authors__ = ("Thisal Dilmith", "childeyouyu (有语)")

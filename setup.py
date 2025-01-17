@@ -2,10 +2,10 @@ from setuptools import setup, find_packages
 
 setup(
     name='tkchart',  # Replace with your package name
-    version='2.1.5',  # Replace with your package version
+    version='2.1.6',  # Replace with your package version
     author='Thisal-D',  # Replace with your name
     author_email='khtdilmith@example.com',  # Replace with your email
-    description='Python library for creating live updating line charts in Tkinter GUIs.',
+    description='Python library for creating live updating line charts in Tkinter.',
     long_description=open('README.md').read(),  # Ensure you have a README.md file
     long_description_content_type='text/markdown',
     url='https://github.com/Thisal-D/tkchart',

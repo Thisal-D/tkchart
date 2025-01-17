@@ -1,6 +1,6 @@
 <div id="top">
 
-[中文说明 Doc.](DOCUMENTATION_zh.md) | [Chinese Doc.](DOCUMENTATION_zh.md) 
+[![Chinese](https://img.shields.io/badge/Language-中文-red)](DOCUMENTATION_zh.md)
 
 --- 
 
@@ -126,6 +126,11 @@ linechart = tkchart.LineChart()
 | get_lines_area               | Get the are of all lines               | -                           | ``float``    | 
 | clear_data  | Clears the data for all lines within the chart, ensuring that only the most recent visible data points are retained. If the total data points exceed the maximum visible points, the older data is removed from each line's data. This method ensures that the chart displays only the relevant portion of data based on the maximum visible range.                                                           | -              | ``None``    |  
 | destroy                    | Destroy the chart                        | -                           | ``None``    | 
+| get_lines_data              | Retrieves data points for all lines within a specified range with an optional step value. | start: `int` <br> end: `int` <br> step: `int` | `Dict[tkchart.Line, Tuple[int]]` |  
+get_line_data               | Retrieves data points for a specific line within a specified range and step. | line: `tkchart.Line` <br> start: `int` <br> end: `int`<br> step: `int` | `Tuple[int \| float]` |  
+| get_x_axis_visible_point_count | Retrieves the maximum number of data points that can be visible along the X-axis. | -                                       | `int` |  
+| get_lines_visible_data      | Retrieves currently visible data points for all lines based on the maximum data length and visible points. | -                                       | `Dict[tkchart.Line, Tuple[int \| float]]` |  
+| get_line_visible_data       | Retrieves currently visible data points for a specific line. | line: `tkchart.Line`                          | `Tuple[int \| float]` |  
 
 </div> 
 
@@ -169,6 +174,9 @@ line = tkchart.Line()
 | get_visibility | get the visibility of the line           | -                                        | ``bool``    | 
 | clear_data     | Clears the data for a specific line, ensuring that only the most recent visible data points are retained. If the line's data exceeds the maximum visible points, the older data is trimmed. This method allows each line to independently clean its data, ensuring it remains within the visible range.                                                           | -              | ``None``    | 
 | destroy        | Destroy the line                         | -                                        | ``None``    | 
+| get_data                   | Retrieves data points from a specified range with an optional step value. If no parameters are given, it returns all available data. | start: `int` <br> end: `int` <br> step: `int` | `Tuple[int \| float]` |  
+| get_current_visible_data    | Returns the currently visible data points based on the maximum data length across all lines and the maximum number of visible points. | -                   | `Tuple[int \| float]` |  
+| get_x_axis_visible_point_count | Retrieves the maximum number of data points that can be visible along the X-axis. | -                   | `int` |  
 </div> 
 
 --- 
@@ -182,7 +190,7 @@ line = tkchart.Line()
 
 ``` python
 import tkinter as tk 
-import ctkchart 
+import tkchart 
 import random 
 
 #root 
@@ -229,7 +237,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 
 <div id="x_y_axis_values"> 
 
-### CTkLineChart 
+### LineChart 
 
 - #### y_axis_values 
     y_axis_values is a tuple that containing two numeric values for the y-axis. The first value (index 0) represents the starting value of the y-axis, and the second value (index 1) represents the end value of the y-axis. This tuple defines the range of values displayed along the y-axis on chart. 
@@ -610,7 +618,7 @@ https://github.com/Thisal-D/tkchart/assets/93121062/64440c23-63e6-4093-b027-21b0
 
 </div> 
 
-### CTkLine 
+### Line 
 
 <div id="line_color_size"> 
 

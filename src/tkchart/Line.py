@@ -3,6 +3,8 @@ from .Validate import Validate
 
 
 class Line:
+    current_usable_id = 1
+    
     def __init__(
             self,
             master: Any = None,
@@ -49,6 +51,10 @@ class Line:
         Validate._isValidLineFill(fill, "fill")
         Validate._isValidColor(fill_color, "fill_color")
 
+        # id (int): The id of the line. need  unique
+        self.__id = Line.current_usable_id
+        Line.current_usable_id += 1
+        
         self.__master = master
         self.__color = color
         self.__size = size
@@ -143,11 +149,15 @@ class Line:
 
         if changes_req:
             self.__master._LineChart__apply_line_configuration()
-
+            
+    def get_id(self) -> int:
+        return self.__id
+    
     def __reset_positions(self) -> None:
         """
         Reset the Line object.
         """
+        
         self.__y_end = 0
         self.__x_end = self.__master._LineChart__x_axis_point_spacing * -1
         
@@ -187,6 +197,53 @@ class Line:
         if maximum_data > max_visible_points:
             self.__data = self.__data[maximum_data - max_visible_points::]
 
+    def get_data(self, start: int = None, end: int = None, step: int = None) -> Tuple[int | float]:
+        """
+        Retrieve data points from the specified range and step.
+
+        Args:
+            start (int, optional): The starting index for slicing the data. Defaults to None.
+            end (int, optional): The ending index for slicing the data. Defaults to None.
+            step (int, optional): The step size for slicing the data. Defaults to None.
+
+        Returns:
+            Tuple[int | float]: A tuple of data points from the specified range and step.
+        """
+        
+        return tuple(self.__data[start: end: step])
+    
+    def get_current_visible_data(self) -> Tuple[int | float]:
+        """
+        Retrieve the currently visible data points.
+
+        Determines visible data points based on the maximum data length across all lines
+        and the maximum number of visible points.
+
+        Returns:
+            Tuple[int | float]: A tuple of currently visible data points.
+                                If no data is visible, an empty tuple is returned.
+        """
+        
+        maximum_data = self.__master._LineChart__get_max_data_length_across_lines()
+        max_visible_points = self.__master._LineChart__get_max_visible_data_points()
+        
+        data = ()
+        if maximum_data > max_visible_points:
+            data = tuple(self.__data[maximum_data - max_visible_points::])
+        else:
+            data = tuple(self.__data)
+        return data
+    
+    def get_x_axis_visible_point_count(self) -> int:
+        """
+        Get the maximum number of data points that can be visible along the X-axis.
+
+        Returns:
+            int: The maximum number of visible data points on the X-axis.
+        """
+        
+        return self.__master.get_x_axis_visible_point_count()    
+    
     def reset(self) -> None:
         """
         Reset the line.
@@ -272,6 +329,7 @@ class Line:
 
     def __del__(self) -> None:
         """Destructor method to delete instance attributes."""
+        del self.__id
         del self.__master
         del self.__color
         del self.__size

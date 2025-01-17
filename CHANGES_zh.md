@@ -1,3 +1,24 @@
+[![Language](https://img.shields.io/badge/Language-English-blue)](CHANGES_en.md)
+
+## v2.1.7  
+
+- ### 新方法添加到 `LineChart` 对象  
+    | 方法名                        | 描述                                                        | 参数                                       | 返回类型      |  
+    |------------------------------|------------------------------------------------------------|------------------------------------------|-----------------|  
+    | `get_lines_data`              | 获取指定范围内所有线条的数据点，可以选择步长值。           | start: `int` <br> end: `int` <br> step: `int` | `Dict[tkchart.Line, Tuple[int]]` |  
+    | `get_line_data`               | 获取指定范围和步长值下某一条线的数据点。                   | line: `tkchart.Line` <br> start: `int` <br> end: `int`<br> step: `int` | `Tuple[int \| float]` |  
+    | `get_x_axis_visible_point_count` | 获取X轴上可见数据点的最大数量。                              | -                                        | `int` |  
+    | `get_lines_visible_data`      | 获取所有线条当前可见的数据点，基于最大数据长度和可见点数。 | -                                        | `Dict[tkchart.Line, Tuple[int \| float]]` |  
+    | `get_line_visible_data`       | 获取某一条线当前可见的数据点。                             | line: `tkchart.Line`                  | `Tuple[int \| float]` |  
+
+- ### 新方法添加到 `Line` 对象  
+    | 方法名                        | 描述                                                        | 参数                                       | 返回类型      |  
+    |------------------------------|------------------------------------------------------------|------------------------------------------|-----------------|  
+    | `get_data`                   | 获取指定范围的数据点，可以选择步长值。如果没有提供参数，将返回所有可用数据。 | start: `int` <br> end: `int` <br> step: `int` | `Tuple[int \| float]` |  
+    | `get_current_visible_data`    | 根据所有线条的最大数据长度和最大可见点数，返回当前可见的数据点。 | -                                        | `Tuple[int \| float]` |  
+    | `get_x_axis_visible_point_count` | 获取X轴上可见数据点的最大数量。                              | -                                        | `int` |  
+
+
 ## v2.1.5
 
 - ### 新增方法到 `LineChart` 对象

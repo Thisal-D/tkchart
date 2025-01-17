@@ -1,7 +1,7 @@
 [![Chinese](https://img.shields.io/badge/Language-中文-red)](CHANGES_zh.md)
 
 
-## v2.1.7  
+## v2.1.6 
 
 - ### New Methods Added to `LineChart` Object  
     | Method Name                  | Description                                                | Parameters                               | Return Type      |  

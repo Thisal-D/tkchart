@@ -1,6 +1,6 @@
 [![Language](https://img.shields.io/badge/Language-English-blue)](CHANGES_en.md)
 
-## v2.1.7  
+## v2.1.6  
 
 - ### 新方法添加到 `LineChart` 对象  
     | 方法名                        | 描述                                                        | 参数                                       | 返回类型      |  

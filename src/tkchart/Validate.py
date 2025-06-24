@@ -7,11 +7,11 @@ class Validate:
 
     @staticmethod
     def _error_font(value: str) -> str:
-        return FontStyle._fontStyle(value, "red", "black", "underline")
+        return FontStyle.apply(value, "red", "black", "underline")
 
     @staticmethod
     def _var_font(value: str) -> str:
-        return FontStyle._fontStyle(value, "green", "black", "italic")
+        return FontStyle.apply(value, "green", "black", "italic")
 
     # --- Basic Type Checkers ---
 

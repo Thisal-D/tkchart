@@ -4,7 +4,6 @@ from .Validate import Validate
 
 class Line:
     current_usable_id = 1
-    
     def __init__(
             self,
             master: Any = None,
@@ -17,7 +16,8 @@ class Line:
             point_highlight_color: str = "#768df1",
             fill: Literal["enabled", "disabled"] = "disabled",
             fill_color: str = "#5d6db6",
-            *args: Any) -> None:
+            *args: Any
+    ) -> None:
         """
         Initialize a Line object.
 
@@ -32,8 +32,11 @@ class Line:
             point_highlight_color (str): The color of points used for highlighting.
             fill (str): Whether fill for the line is enabled or disabled.
             fill_color (str): The color of the fill for the line.
+        
+        Raises:
+            TypeError: If any of the parameters are of an incorrect type.
+            ValueError: If any of the parameters are invalid.
         """
-
         if master is None:
             if len(args) != 0:
                 master = args[0]
@@ -84,7 +87,8 @@ class Line:
             point_highlight_size: int = None,
             point_highlight_color: str = None,
             fill: Literal["enabled", "disabled"] = None,
-            fill_color: str = None) -> None:
+            fill_color: str = None
+    ) -> None:
         """
         Configure attributes of the Line object.
 
@@ -98,8 +102,11 @@ class Line:
             point_highlight_color (str): The color of points used for highlighting.
             fill (str): Whether fill for the line is enabled or disabled.
             fill_color (str): The color of the fill for the line.
-        """
         
+        Raises:
+            TypeError: If any of the parameters are of an incorrect type.
+            ValueError: If any of the parameters are invalid.
+        """
         changes_req = False
 
         if color is not None:
@@ -151,13 +158,18 @@ class Line:
             self.__master._LineChart__apply_line_configuration()
             
     def get_id(self) -> int:
+        """
+        Get the unique identifier of the Line object.
+        
+        Returns:
+            int: The unique identifier of the line.
+        """
         return self.__id
     
     def __reset_positions(self) -> None:
         """
         Reset the Line object.
         """
-        
         self.__y_end = 0
         self.__x_end = self.__master._LineChart__x_axis_point_spacing * -1
         
@@ -183,14 +195,7 @@ class Line:
 
         Returns:
             None: This method modifies the internal state of the data but does not return any value.
-
-        Example:
-            line.clear_data()
-        
-        In this example, the data is cleaned up to ensure that only the most recent visible data 
-        points are kept, improving the rendering performance and reducing memory usage.
         """
-        
         maximum_data = self.__master._LineChart__get_max_data_length_across_lines()
         max_visible_points = self.__master._LineChart__get_max_visible_data_points()
         
@@ -209,7 +214,6 @@ class Line:
         Returns:
             Tuple[int | float]: A tuple of data points from the specified range and step.
         """
-        
         return tuple(self.__data[start: end: step])
     
     def get_current_visible_data(self) -> Tuple[int | float]:
@@ -221,9 +225,8 @@ class Line:
 
         Returns:
             Tuple[int | float]: A tuple of currently visible data points.
-                                If no data is visible, an empty tuple is returned.
+                If no data is visible, an empty tuple is returned.
         """
-        
         maximum_data = self.__master._LineChart__get_max_data_length_across_lines()
         max_visible_points = self.__master._LineChart__get_max_visible_data_points()
         
@@ -241,7 +244,6 @@ class Line:
         Returns:
             int: The maximum number of visible data points on the X-axis.
         """
-        
         return self.__master.get_x_axis_visible_point_count()    
     
     def reset(self) -> None:
@@ -258,8 +260,10 @@ class Line:
 
         Args:
             state (bool): True if the line should be visible, False otherwise.
+            
+        Raises:
+            TypeError: If the state is not a boolean.
         """
-        
         Validate._isBool(state, "state")
         if self.__visibility != state:
             self.__visibility = state
@@ -270,7 +274,9 @@ class Line:
             attribute_name: Literal[
                 "master", "color", "size", "style", "style_type", "point_highlight",
                 "point_highlight_size", "point_highlight_color", "fill", "fill_color",
-                "__all__"]) -> Any:
+                "__all__"
+            ] = "__all__"
+    ) -> Any:
         """
         Get the value of a Line attribute.
 
@@ -279,30 +285,31 @@ class Line:
 
         Returns:
             Any: Value of the attribute.
+            
+        Raises:
+            ValueError: If the attribute name is invalid.
         """
-
         if attribute_name == "master":
             return self.__master
-        if attribute_name == "color":
+        elif attribute_name == "color":
             return self.__color
-        if attribute_name == "size":
+        elif attribute_name == "size":
             return self.__size
-        if attribute_name == "style":
+        elif attribute_name == "style":
             return self.__style
-        if attribute_name == "style_type":
+        elif attribute_name == "style_type":
             return self.__style_type
-        if attribute_name == "point_highlight":
+        elif attribute_name == "point_highlight":
             return self.__point_highlight
-        if attribute_name == "point_highlight_size":
+        elif attribute_name == "point_highlight_size":
             return self.__point_highlight_size
-        if attribute_name == "point_highlight_color":
+        elif attribute_name == "point_highlight_color":
             return self.__point_highlight_color
-        if attribute_name == "fill":
+        elif attribute_name == "fill":
             return self.__fill
-        if attribute_name == "fill_color":
+        elif attribute_name == "fill_color":
             return self.__fill_color
-
-        if attribute_name == "__all__":
+        elif attribute_name == "__all__":
             return {
                 "master": self.__master,
                 "color": self.__color,
@@ -315,8 +322,8 @@ class Line:
                 "fill": self.__fill,
                 "fill_color": self.__fill_color
             }
-
-        Validate._invalidCget(attribute_name)
+        else:
+            Validate._invalidCget(attribute_name)
 
     def get_visibility(self) -> bool:
         """

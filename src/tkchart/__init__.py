@@ -1,21 +1,36 @@
+"""
+tkchart: A library to create live-update charts for Tkinter GUIs.
+"""
+
 from .LineChart import LineChart
 from .Line import Line
 
-ENABLED: str = "enabled"
-DISABLED: str = "disabled"
+# Constants for common string values
+ENABLED = "enabled"
+DISABLED = "disabled"
 
-NORMAL: str = "normal"
-DASHED: str = "dashed"
-DOTTED: str = "dotted"
+NORMAL = "normal"
+DASHED = "dashed"
+DOTTED = "dotted"
 
-TOP: str = "top"
-SIDE: str = "side"
+TOP = "top"
+SIDE = "side"
 
-AUTO: str = "auto"
+AUTO = "auto"
 
-"""
-tkchart: a library for create live update chart for tkinter guis.
-"""
 __title__ = "tkchart"
-__version__ = "2.1.6"
+__version__ = "2.1.7"
 __authors__ = ("Thisal Dilmith", "childeyouyu (有语)")
+
+__all__ = [
+    "LineChart",
+    "Line",
+    "ENABLED",
+    "DISABLED",
+    "NORMAL",
+    "DASHED",
+    "DOTTED",
+    "TOP",
+    "SIDE",
+    "AUTO",
+]

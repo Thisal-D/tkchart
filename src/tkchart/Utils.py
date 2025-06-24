@@ -1,54 +1,58 @@
-import tkinter
-from typing import Union, Tuple, Any
+import tkinter as tk
+from typing import Union, Tuple, Any, List
 
 
 class Utils:
+
     @staticmethod
     def _RequiredWidth(text: Any, font: Tuple[str, int, str]) -> int:
-        label = tkinter.Label(font=font)
-        label.config(text=str(text) + "")
+        """Get the required width of a label for the given text and font."""
+        label = tk.Label(font=font)
+        label.config(text=str(text))
         return label.winfo_reqwidth()
 
     @staticmethod
     def _RequiredHeight(text: Any, font: Tuple[str, int, str]) -> int:
-        label = tkinter.Label(font=font)
-        label.config(text=str(text) + "")
+        """Get the required height of a label for the given text and font."""
+        label = tk.Label(font=font)
+        label.config(text=str(text))
         return label.winfo_reqheight()
 
     @staticmethod
     def _format_float_with_precision(float_val: Union[int, float], decimals: int) -> str:
-        if decimals:
-            float_val = round(float(float_val), decimals)
-            float_val = str(float_val) + ((decimals - len(str(float_val).split(".")[-1])) * "0")
-            return float_val
-        else:
-            return str(int(float_val))
+        """
+        Format a float value with the specified number of decimal places.
+
+        Args:
+            float_val (int | float): The number to format.
+            decimals (int): Number of decimal places to show.
+
+        Returns:
+            str: Formatted number as a string.
+        """
+        if decimals > 0:
+            rounded = round(float(float_val), decimals)
+            integer_part, dot, fraction_part = str(rounded).partition(".")
+            fraction_part = fraction_part.ljust(decimals, "0")
+            return f"{integer_part}.{fraction_part}"
+        return str(int(float_val))
 
     @staticmethod
-    def _get_max_required_label_width(data: Any, font: Tuple[str, int, str]) -> int:
-        max_required_width = 0
-        for d in data:
-            required_width = Utils._RequiredWidth(text=d, font=font)
-            if max_required_width < required_width:
-                max_required_width = required_width
-        return max_required_width
+    def _get_max_required_label_width(data: List[Any], font: Tuple[str, int, str]) -> int:
+        """Return the maximum required label width from a list of data."""
+        return max(Utils._RequiredWidth(text=d, font=font) for d in data)
 
     @staticmethod
-    def _get_max_required_label_height(data: Any, font: Tuple[str, int, str]) -> int:
-        max_required_height = 0
-        for d in data:
-            required_height = Utils._RequiredHeight(text=d, font=font)
-            if max_required_height < required_height:
-                max_required_height = required_height
-        return max_required_height
+    def _get_max_required_label_height(data: List[Any], font: Tuple[str, int, str]) -> int:
+        """Return the maximum required label height from a list of data."""
+        return max(Utils._RequiredHeight(text=d, font=font) for d in data)
 
     @staticmethod
     def _sort_tuple(values: Tuple[int, ...]) -> Tuple[int, ...]:
-        values_list = list(set(values))
-        values_list.sort()
-        return tuple(values_list)
+        """Return a sorted tuple of unique integers."""
+        return tuple(sorted(set(values)))
 
     @staticmethod
     def _toInt(value: Union[int, str]) -> int:
-        # return math.ceil(value)
-        return value
+        """Convert a string or int to int."""
+        return int(value)

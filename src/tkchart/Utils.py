@@ -5,15 +5,33 @@ from typing import Union, Tuple, Any, List
 class Utils:
 
     @staticmethod
-    def _RequiredWidth(text: Any, font: Tuple[str, int, str]) -> int:
-        """Get the required width of a label for the given text and font."""
+    def _required_width(text: Any, font: Tuple[str, int, str]) -> int:
+        """
+        Get the required width of a label to display the given text with the specified font.
+
+        Args:
+            text (Any): Text to measure.
+            font (Tuple[str, int, str]): Font specification (family, size, style).
+
+        Returns:
+            int: Required label width in pixels.
+        """
         label = tk.Label(font=font)
         label.config(text=str(text))
         return label.winfo_reqwidth()
 
     @staticmethod
-    def _RequiredHeight(text: Any, font: Tuple[str, int, str]) -> int:
-        """Get the required height of a label for the given text and font."""
+    def _required_height(text: Any, font: Tuple[str, int, str]) -> int:
+        """
+        Get the required height of a label to display the given text with the specified font.
+
+        Args:
+            text (Any): Text to measure.
+            font (Tuple[str, int, str]): Font specification (family, size, style).
+
+        Returns:
+            int: Required label height in pixels.
+        """
         label = tk.Label(font=font)
         label.config(text=str(text))
         return label.winfo_reqheight()
@@ -21,14 +39,14 @@ class Utils:
     @staticmethod
     def _format_float_with_precision(float_val: Union[int, float], decimals: int) -> str:
         """
-        Format a float value with the specified number of decimal places.
+        Format a float or int value as a string with a specified number of decimal places.
 
         Args:
-            float_val (int | float): The number to format.
-            decimals (int): Number of decimal places to show.
+            float_val (int | float): Number to format.
+            decimals (int): Number of decimal places.
 
         Returns:
-            str: Formatted number as a string.
+            str: Number formatted as a string with exact decimals.
         """
         if decimals > 0:
             rounded = round(float(float_val), decimals)
@@ -39,20 +57,54 @@ class Utils:
 
     @staticmethod
     def _get_max_required_label_width(data: List[Any], font: Tuple[str, int, str]) -> int:
-        """Return the maximum required label width from a list of data."""
-        return max(Utils._RequiredWidth(text=d, font=font) for d in data)
+        """
+        Calculate the maximum label width needed to display all data items with given font.
+
+        Args:
+            data (List[Any]): List of data items to measure.
+            font (Tuple[str, int, str]): Font specification.
+
+        Returns:
+            int: Maximum required label width in pixels.
+        """
+        return max(Utils._required_width(text=d, font=font) for d in data)
 
     @staticmethod
     def _get_max_required_label_height(data: List[Any], font: Tuple[str, int, str]) -> int:
-        """Return the maximum required label height from a list of data."""
-        return max(Utils._RequiredHeight(text=d, font=font) for d in data)
+        """
+        Calculate the maximum label height needed to display all data items with given font.
+
+        Args:
+            data (List[Any]): List of data items to measure.
+            font (Tuple[str, int, str]): Font specification.
+
+        Returns:
+            int: Maximum required label height in pixels.
+        """
+        return max(Utils._required_height(text=d, font=font) for d in data)
 
     @staticmethod
     def _sort_tuple(values: Tuple[int, ...]) -> Tuple[int, ...]:
-        """Return a sorted tuple of unique integers."""
+        """
+        Sort a tuple of integers and remove duplicates.
+
+        Args:
+            values (Tuple[int, ...]): Tuple of integers.
+
+        Returns:
+            Tuple[int, ...]: Sorted tuple with unique integers.
+        """
         return tuple(sorted(set(values)))
 
     @staticmethod
-    def _toInt(value: Union[int, str]) -> int:
-        """Convert a string or int to int."""
+    def _to_int(value: Union[int, str]) -> int:
+        """
+        Convert a string or integer to an integer.
+
+        Args:
+            value (Union[int, str]): Value to convert.
+
+        Returns:
+            int: Converted integer.
+        """
         return int(value)

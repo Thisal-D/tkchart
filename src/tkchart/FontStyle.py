@@ -51,7 +51,7 @@ class FontStyle:
         return f"\x1b[{style_code};{fg_code};{bg_code}m"
 
     @staticmethod
-    def apply(value: str, fg_color: str, bg_color: str, style: str = "normal") -> str:
+    def _apply(value: str, fg_color: str, bg_color: str, style: str = "normal") -> str:
         """
         Apply the font style to the given string.
 

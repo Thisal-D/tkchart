@@ -12,11 +12,13 @@ class LineChart:
         width: int = 700,
         height: int = 400,
         axis_size: int = 1,
+        
         axis_color: str = "#2C2C2C",
         bg_color: str = "#191919",
         fg_color: str = "#191919",
         data_font_style: Tuple[str, int, str] = ("arial", 9, "bold"),
         axis_font_style: Tuple[str, int, str] = ("arial", 8, "normal"),
+        
         y_axis_precision: int = 0,
         y_axis_data: Any = "Y",
         y_axis_label_count: int = 1,
@@ -28,6 +30,7 @@ class LineChart:
         y_axis_section_style: Literal["normal", "dashed"] = "normal",
         y_axis_section_style_type: Tuple[int, int] = (100, 50),
         y_axis_section_color: str = "#2C2C2C",
+        
         x_axis_data: str = "X",
         x_axis_label_count: int = None,
         x_axis_values: Tuple[Any, ...] = (None, "None", None, "None"),
@@ -39,9 +42,11 @@ class LineChart:
         x_axis_section_style: Literal["normal", "dashed"] = "normal",
         x_axis_section_style_type: Tuple[int, int] = (100, 50),
         x_axis_section_color: str = "#2C2C2C",
+        
         x_axis_point_spacing: Union[int, Literal["auto"]] = "auto",
         y_space: int = 0,
         x_space: int = 0,
+        
         pointer_state: Literal["enabled", "disabled"] = "disabled",
         pointing_callback_function: Callable = None,
         pointer_color: str = "#606060",
@@ -50,7 +55,6 @@ class LineChart:
         pointer_size: int = 1,
         *args: Any,
     ) -> None:
-        
         """
         Initialize a LineChart object.
 
@@ -105,43 +109,43 @@ class LineChart:
             TypeError: If any of the parameters are of incorrect type.
             ValueError: If any of the parameters have invalid values.
         """
-        Validate._isInt(height, "height")
-        Validate._isInt(width, "width")
-        Validate._isInt(axis_size, "axis_size")
-        Validate._isInt(y_space, "y_space")
-        Validate._isInt(x_space, "x_space")
-        Validate._isInt(y_axis_precision, "y_axis_precision")
-        Validate._isInt(y_axis_label_count, "y_axis_label_count")
-        Validate._isInt(y_axis_section_count, "y_axis_section_count")
-        Validate._isInt(x_axis_section_count, "x_axis_section_count")
-        Validate._isInt(pointing_values_precision, "pointing_values_precision")
-        Validate._isInt(pointer_size, "pointer_size")
-        Validate._isValidXAxisValues(x_axis_values, "x_axis_values")
-        Validate._isValidYAxisValues(y_axis_values, "y_axis_values")
-        Validate._isValidColor(y_axis_section_color, "y_axis_section_color")
-        Validate._isValidColor(x_axis_section_color, "x_axis_section_color")
-        Validate._isValidColor(axis_color, "axis_color")
-        Validate._isValidColor(bg_color, "bg_color")
-        Validate._isValidColor(fg_color, "fg_color")
-        Validate._isValidColor(y_axis_font_color, "y_axis_font_color")
-        Validate._isValidColor(x_axis_font_color, "x_axis_font_color")
-        Validate._isValidColor(y_axis_data_font_color, "y_axis_data_font_color")
-        Validate._isValidColor(x_axis_data_font_color, "x_axis_data_font_color")
-        Validate._isValidColor(pointer_color, "pointer_color")
-        Validate._isValidFont(data_font_style, "data_font_style")
-        Validate._isValidFont(axis_font_style, "axis_font_style")
-        Validate._isValidDataPostion(y_axis_data_position, "y_axis_data_position")
-        Validate._isValidDataPostion(x_axis_data_position, "x_axis_data_position")
-        Validate._isValidStyleType(y_axis_section_style_type, "y_axis_section_style_type")
-        Validate._isValidStyleType(x_axis_section_style_type, "x_axis_section_style_type")
-        Validate._isValidSectionStyle(y_axis_section_style, "y_axis_section_style")
-        Validate._isValidSectionStyle(x_axis_section_style, "x_axis_section_style")
-        Validate._isValidXAxisPointSpacing(x_axis_point_spacing, "x_axis_point_spacing")
-        Validate._isValidPointerState_Lock(pointer_state, "pointer_state")
-        Validate._isValidPointerState_Lock(pointer_lock, "pointer_lock")
-        Validate._isValidFunction(pointing_callback_function, "pointing_callback_function")
-        Validate._isValidXAxisIndices(x_axis_values, x_axis_display_values_indices, "x_axis_display_values_indices")
-        Validate._isValidXAxisLabelCount(x_axis_label_count, "x_axis_label_count")
+        Validate._is_int(height, "height")
+        Validate._is_int(width, "width")
+        Validate._is_int(axis_size, "axis_size")
+        Validate._is_int(y_space, "y_space")
+        Validate._is_int(x_space, "x_space")
+        Validate._is_int(y_axis_precision, "y_axis_precision")
+        Validate._is_int(y_axis_label_count, "y_axis_label_count")
+        Validate._is_int(y_axis_section_count, "y_axis_section_count")
+        Validate._is_int(x_axis_section_count, "x_axis_section_count")
+        Validate._is_int(pointing_values_precision, "pointing_values_precision")
+        Validate._is_int(pointer_size, "pointer_size")
+        Validate._is_valid_x_axis_values(x_axis_values, "x_axis_values")
+        Validate._is_valid_y_axis_values(y_axis_values, "y_axis_values")
+        Validate._is_valid_color(y_axis_section_color, "y_axis_section_color")
+        Validate._is_valid_color(x_axis_section_color, "x_axis_section_color")
+        Validate._is_valid_color(axis_color, "axis_color")
+        Validate._is_valid_color(bg_color, "bg_color")
+        Validate._is_valid_color(fg_color, "fg_color")
+        Validate._is_valid_color(y_axis_font_color, "y_axis_font_color")
+        Validate._is_valid_color(x_axis_font_color, "x_axis_font_color")
+        Validate._is_valid_color(y_axis_data_font_color, "y_axis_data_font_color")
+        Validate._is_valid_color(x_axis_data_font_color, "x_axis_data_font_color")
+        Validate._is_valid_color(pointer_color, "pointer_color")
+        Validate._is_valid_font(data_font_style, "data_font_style")
+        Validate._is_valid_font(axis_font_style, "axis_font_style")
+        Validate._is_valid_data_position(y_axis_data_position, "y_axis_data_position")
+        Validate._is_valid_data_position(x_axis_data_position, "x_axis_data_position")
+        Validate._is_valid_style_type(y_axis_section_style_type, "y_axis_section_style_type")
+        Validate._is_valid_style_type(x_axis_section_style_type, "x_axis_section_style_type")
+        Validate._is_valid_section_style(y_axis_section_style, "y_axis_section_style")
+        Validate._is_valid_section_style(x_axis_section_style, "x_axis_section_style")
+        Validate._is_valid_x_axis_point_spacing(x_axis_point_spacing, "x_axis_point_spacing")
+        Validate._is_valid_pointer_state_lock(pointer_state, "pointer_state")
+        Validate._is_valid_pointer_state_lock(pointer_lock, "pointer_lock")
+        Validate._is_valid_function(pointing_callback_function, "pointing_callback_function")
+        Validate._is_valid_x_axis_indices(x_axis_values, x_axis_display_values_indices, "x_axis_display_values_indices")
+        Validate._is_valid_x_axis_label_count(x_axis_label_count, "x_axis_label_count")
 
         if master is not None:
             self.__master = master
@@ -466,15 +470,15 @@ class LineChart:
         self.__x_axis_data_req_height = 0
         self.__x_axis_data_req_width = 0
         if self.__x_axis_data != "":
-            self.__x_axis_data_req_height = Utils._RequiredHeight(text=self.__x_axis_data, font=self.__data_font_style)
-            self.__x_axis_data_req_width = Utils._RequiredWidth(text=self.__x_axis_data, font=self.__data_font_style)
+            self.__x_axis_data_req_height = Utils._required_height(text=self.__x_axis_data, font=self.__data_font_style)
+            self.__x_axis_data_req_width = Utils._required_width(text=self.__x_axis_data, font=self.__data_font_style)
             if self.__x_axis_data_position == "top":
                 self.__x_special_width_space = 15
-                self.__x_axis_data_req_width_space_top = Utils._RequiredWidth(
+                self.__x_axis_data_req_width_space_top = Utils._required_width(
                     text=self.__x_axis_data, font=self.__data_font_style
                 )
             else:
-                self.__x_axis_data_req_height_space_side = Utils._RequiredHeight(
+                self.__x_axis_data_req_height_space_side = Utils._required_height(
                     text=self.__x_axis_data, font=self.__data_font_style
                 )
 
@@ -484,16 +488,16 @@ class LineChart:
 
         self.__y_values_frame_place_req = True
         self.__x_values_frame_place_req = True
-        # self.__y_axis_data_req_height = Utils._RequiredHeight(text=self.__y_axis_data, font=self.__data_font_style)
-        # self.__y_axis_data_req_width = Utils._RequiredWidth(text=self.__y_axis_data, font=self.__data_font_style)
+        # self.__y_axis_data_req_height = Utils._required_height(text=self.__y_axis_data, font=self.__data_font_style)
+        # self.__y_axis_data_req_width = Utils._required_width(text=self.__y_axis_data, font=self.__data_font_style)
         if self.__y_axis_data != "":
             if self.__y_axis_data_position == "top":
                 self.__y_special_height_space = 15
-                self.__y_axis_data_req_height_space_top = Utils._RequiredHeight(
+                self.__y_axis_data_req_height_space_top = Utils._required_height(
                     text=self.__y_axis_data, font=self.__data_font_style
                 )
             else:
-                self.__y_axis_data_req_width_space_side = Utils._RequiredWidth(
+                self.__y_axis_data_req_width_space_side = Utils._required_width(
                     text=self.__y_axis_data[0], font=self.__data_font_style
                 )
 
@@ -507,11 +511,11 @@ class LineChart:
                 y_value_temp = self.__y_axis_max_value
             else:
                 y_value_temp = self.__y_axis_min_value
-            self.__y_value_req_height_space = Utils._RequiredHeight(
+            self.__y_value_req_height_space = Utils._required_height(
                 text=Utils._format_float_with_precision(y_value_temp, self.__y_axis_precision),
                 font=self.__axis_font_style
             )
-            self.__y_value_req_width_space = Utils._RequiredWidth(
+            self.__y_value_req_width_space = Utils._required_width(
                 text=Utils._format_float_with_precision(y_value_temp, self.__y_axis_precision),
                 font=self.__axis_font_style
             )
@@ -523,7 +527,7 @@ class LineChart:
         elif self.__x_axis_values_handle_by == "label_indices" and (len(self.__x_axis_display_values_indices) == 0):
             self.__x_values_frame_place_req = False
         else:
-            self.__x_value_req_height_space = Utils._RequiredHeight(
+            self.__x_value_req_height_space = Utils._required_height(
                 text=self.__x_axis_values[0], font=self.__axis_font_style
             )
             # self.__x_value_req_width_space = RequiredWidth(text=format_float_with_precision(self.__x_axis_data_max,
@@ -943,31 +947,31 @@ class LineChart:
         reshow_data_req: bool = False
 
         if width is not None:
-            Validate._isInt(width, "width")
+            Validate._is_int(width, "width")
             if width != self.__width:
                 self.__width = width
                 chart_reset_req = True
 
         if height is not None:
-            Validate._isInt(height, "height")
+            Validate._is_int(height, "height")
             if height != self.__height:
                 self.__height = height
                 chart_reset_req = True
 
         if y_space is not None:
-            Validate._isInt(y_space, "y_space")
+            Validate._is_int(y_space, "y_space")
             if y_space != self.__y_space:
                 self.__y_space = y_space
                 chart_reset_req = True
 
         if x_space is not None:
-            Validate._isInt(x_space, "x_space")
+            Validate._is_int(x_space, "x_space")
             if x_space != self.__x_space:
                 self.__x_space = x_space
                 chart_reset_req = True
 
         if y_axis_values is not None:
-            Validate._isValidYAxisValues(y_axis_values, "y_axis_values")
+            Validate._is_valid_y_axis_values(y_axis_values, "y_axis_values")
             if y_axis_values != self.__y_axis_values:
                 self.__y_axis_values = y_axis_values
                 self.__y_axis_min_value = y_axis_values[0]
@@ -975,13 +979,13 @@ class LineChart:
                 chart_reset_req = True
 
         if axis_size is not None:
-            Validate._isInt(axis_size, "axis_size")
+            Validate._is_int(axis_size, "axis_size")
             if axis_size != self.__axis_size:
                 self.__axis_size = axis_size
                 chart_reset_req = True
 
         if y_axis_precision is not None:
-            Validate._isInt(y_axis_precision, "y_axis_precision")
+            Validate._is_int(y_axis_precision, "y_axis_precision")
             if y_axis_precision != self.__y_axis_precision:
                 self.__y_axis_precision = y_axis_precision
                 chart_reset_req = True
@@ -992,97 +996,97 @@ class LineChart:
                 chart_reset_req = True
 
         if data_font_style is not None:
-            Validate._isValidFont(data_font_style, "data_font_style")
+            Validate._is_valid_font(data_font_style, "data_font_style")
             if data_font_style != self.__data_font_style:
                 self.__data_font_style = data_font_style
                 chart_reset_req = True
 
         if axis_font_style is not None:
-            Validate._isValidFont(axis_font_style, "axis_font_style")
+            Validate._is_valid_font(axis_font_style, "axis_font_style")
             if axis_font_style != self.__axis_font_style:
                 self.__axis_font_style = axis_font_style
                 chart_reset_req = True
 
         if bg_color is not None:
-            Validate._isValidColor(bg_color, "bg_color")
+            Validate._is_valid_color(bg_color, "bg_color")
             if bg_color != self.__bg_color:
                 self.__bg_color = bg_color
                 widget_color_change_req = True
 
         if axis_color is not None:
-            Validate._isValidColor(axis_color, "axis_color")
+            Validate._is_valid_color(axis_color, "axis_color")
             if axis_color != self.__axis_color:
                 self.__axis_color = axis_color
                 widget_color_change_req = True
 
         if fg_color is not None:
-            Validate._isValidColor(fg_color, "fg_color")
+            Validate._is_valid_color(fg_color, "fg_color")
             if fg_color != self.__fg_color:
                 self.__fg_color = fg_color
                 widget_color_change_req = True
 
         if y_axis_font_color is not None:
-            Validate._isValidColor(y_axis_font_color, "y_axis_font_color")
+            Validate._is_valid_color(y_axis_font_color, "y_axis_font_color")
             if y_axis_font_color != self.__y_axis_font_color:
                 self.__y_axis_font_color = y_axis_font_color
                 widget_color_change_req = True
 
         if x_axis_font_color is not None:
-            Validate._isValidColor(x_axis_font_color, "x_axis_font_color")
+            Validate._is_valid_color(x_axis_font_color, "x_axis_font_color")
             if x_axis_font_color != self.__x_axis_font_color:
                 self.__x_axis_font_color = x_axis_font_color
                 widget_color_change_req = True
 
         if y_axis_data_font_color is not None:
-            Validate._isValidColor(y_axis_data_font_color, "y_axis_data_font_color")
+            Validate._is_valid_color(y_axis_data_font_color, "y_axis_data_font_color")
             if y_axis_data_font_color != self.__y_axis_data_font_color:
                 self.__y_axis_data_font_color = y_axis_data_font_color
                 widget_color_change_req = True
 
         if x_axis_data_font_color is not None:
-            Validate._isValidColor(x_axis_data_font_color, "x_axis_data_font_color")
+            Validate._is_valid_color(x_axis_data_font_color, "x_axis_data_font_color")
             if x_axis_data_font_color != self.__x_axis_data_font_color:
                 self.__x_axis_data_font_color = x_axis_data_font_color
                 widget_color_change_req = True
 
         if x_axis_section_color is not None:
-            Validate._isValidColor(x_axis_section_color, "x_axis_section_color")
+            Validate._is_valid_color(x_axis_section_color, "x_axis_section_color")
             if x_axis_section_color != self.__x_axis_section_color:
                 self.__x_axis_section_color = x_axis_section_color
                 chart_sections_color_change_req = True
 
         if y_axis_section_color is not None:
-            Validate._isValidColor(y_axis_section_color, "y_axis_section_color")
+            Validate._is_valid_color(y_axis_section_color, "y_axis_section_color")
             if y_axis_section_color != self.__y_axis_section_color:
                 self.__y_axis_section_color = y_axis_section_color
                 chart_sections_color_change_req = True
 
         if y_axis_section_style is not None:
-            Validate._isValidSectionStyle(y_axis_section_style, "y_axis_section_style")
+            Validate._is_valid_section_style(y_axis_section_style, "y_axis_section_style")
             if y_axis_section_style != self.__y_axis_section_style:
                 self.__y_axis_section_style = y_axis_section_style
                 chart_sections_change_req = True
 
         if x_axis_section_style is not None:
-            Validate._isValidSectionStyle(x_axis_section_style, "x_axis_section_style")
+            Validate._is_valid_section_style(x_axis_section_style, "x_axis_section_style")
             if x_axis_section_style != self.__x_axis_section_style:
                 self.__x_axis_section_style = x_axis_section_style
                 chart_sections_change_req = True
 
         if y_axis_section_style_type is not None:
-            Validate._isValidStyleType(y_axis_section_style_type, "y_axis_section_style_type")
+            Validate._is_valid_style_type(y_axis_section_style_type, "y_axis_section_style_type")
             if y_axis_section_style_type != self.__y_axis_section_style_type:
                 self.__y_axis_section_style_type = y_axis_section_style_type
                 chart_sections_change_req = True
 
         if x_axis_section_style_type is not None:
-            Validate._isValidStyleType(x_axis_section_style_type, "x_axis_section_style_type")
+            Validate._is_valid_style_type(x_axis_section_style_type, "x_axis_section_style_type")
             if x_axis_section_style_type != self.__x_axis_section_style_type:
                 self.__x_axis_section_style_type = x_axis_section_style_type
                 chart_sections_change_req = True
 
         if y_axis_label_count is not None:
-            Validate._isInt(y_axis_label_count, "y_axis_label_count")
+            Validate._is_int(y_axis_label_count, "y_axis_label_count")
             if y_axis_label_count != self.__y_axis_label_count:
                 if y_axis_label_count == 0 or self.__y_axis_label_count == 0:
                     chart_reset_req = True
@@ -1091,25 +1095,25 @@ class LineChart:
                 widget_color_change_req = True
 
         if x_axis_section_count is not None:
-            Validate._isInt(x_axis_section_count, "x_axis_section_count")
+            Validate._is_int(x_axis_section_count, "x_axis_section_count")
             if x_axis_section_count != self.__x_axis_section_count:
                 self.__x_axis_section_count = x_axis_section_count
                 chart_sections_change_req = True
 
         if y_axis_section_count is not None:
-            Validate._isInt(y_axis_section_count, "y_axis_section_count")
+            Validate._is_int(y_axis_section_count, "y_axis_section_count")
             if y_axis_section_count != self.__y_axis_section_count:
                 self.__y_axis_section_count = y_axis_section_count
                 chart_sections_change_req = True
 
         if x_axis_data_position is not None:
-            Validate._isValidDataPostion(x_axis_data_position, "x_axis_data_position")
+            Validate._is_valid_data_position(x_axis_data_position, "x_axis_data_position")
             if x_axis_data_position != self.__x_axis_data_position:
                 self.__x_axis_data_position = x_axis_data_position
                 chart_reset_req = True
 
         if y_axis_data_position is not None:
-            Validate._isValidDataPostion(y_axis_data_position, "y_axis_data_position")
+            Validate._is_valid_data_position(y_axis_data_position, "y_axis_data_position")
             if y_axis_data_position != self.__y_axis_data_position:
                 self.__y_axis_data_position = y_axis_data_position
                 chart_reset_req = True
@@ -1121,16 +1125,16 @@ class LineChart:
 
         if x_axis_values is not None:
             if x_axis_values != self.__x_axis_values:
-                Validate._isValidXAxisValues(x_axis_values, "x_axis_values")
+                Validate._is_valid_x_axis_values(x_axis_values, "x_axis_values")
                 if self.__x_axis_values_handle_by == "label_indices":
                     if x_axis_display_values_indices is not None:
-                        Validate._isValidXAxisIndices(
+                        Validate._is_valid_x_axis_indices(
                             x_axis_values,
                             x_axis_display_values_indices,
                             "x_axis_display_values_indices"
                         )
                     else:
-                        Validate._isValidXAxisIndices(
+                        Validate._is_valid_x_axis_indices(
                             x_axis_values,
                             self.__x_axis_display_values_indices,
                             "x_axis_display_values_indices"
@@ -1147,7 +1151,7 @@ class LineChart:
 
         if x_axis_display_values_indices is not None:
             if x_axis_values is None:
-                Validate._isValidXAxisIndices(
+                Validate._is_valid_x_axis_indices(
                     self.__x_axis_values,
                     x_axis_display_values_indices,
                     "x_axis_display_values_indices"
@@ -1161,7 +1165,7 @@ class LineChart:
                 widget_font_change_req = True
 
         elif x_axis_label_count is not None:
-            Validate._isValidXAxisLabelCount(x_axis_label_count, "x_axis_label_count")
+            Validate._is_valid_x_axis_label_count(x_axis_label_count, "x_axis_label_count")
             self.__x_axis_values_handle_by = "label_count"
             if x_axis_label_count != self.__x_axis_label_count:
                 if x_axis_label_count == 0 or self.__x_axis_label_count == 0:
@@ -1172,34 +1176,34 @@ class LineChart:
                 widget_font_change_req = True
 
         if pointer_color is not None:
-            Validate._isValidColor(pointer_color, "pointer_color")
+            Validate._is_valid_color(pointer_color, "pointer_color")
             self.__pointer_color = pointer_color
             widget_color_change_req = True
 
         if pointing_callback_function is not None:
-            Validate._isValidFunction(pointing_callback_function, "pointing_callback_function")
+            Validate._is_valid_function(pointing_callback_function, "pointing_callback_function")
             self.__pointing_callback_function = pointing_callback_function
 
         if pointing_values_precision is not None:
-            Validate._isInt(pointing_values_precision, "pointing_values_precision")
+            Validate._is_int(pointing_values_precision, "pointing_values_precision")
             self.__pointing_values_precision = pointing_values_precision
 
         if pointer_lock is not None:
-            Validate._isValidPointerState_Lock(pointer_lock, "pointer_lock")
+            Validate._is_valid_pointer_state_lock(pointer_lock, "pointer_lock")
             self.__pointer_lock = pointer_lock
 
         if pointer_state is not None:
-            Validate._isValidPointerState_Lock(pointer_state, "pointer_state")
+            Validate._is_valid_pointer_state_lock(pointer_state, "pointer_state")
             self.__pointer_state = pointer_state
             pointer_state_change_req = True
 
         if pointer_size is not None:
-            Validate._isInt(pointer_size, "pointer_size")
+            Validate._is_int(pointer_size, "pointer_size")
             self.__pointer_size = pointer_size
             pointer_size_change_req = True
 
         if x_axis_point_spacing is not None:
-            Validate._isValidXAxisPointSpacing(x_axis_point_spacing, "x_axis_point_spacing")
+            Validate._is_valid_x_axis_point_spacing(x_axis_point_spacing, "x_axis_point_spacing")
             if x_axis_point_spacing == "auto":
                 if self.__x_axis_point_spacing_handle_by != "auto":
                     self.__x_axis_point_spacing_handle_by = "auto"
@@ -1377,12 +1381,12 @@ class LineChart:
         and shows the data points on the chart. It also handles various styles for displaying the data points,
         such as dashed or dotted lines, and highlights for individual data points.
         """
-        Validate._isValidLine(line, "line")
-        Validate._isValidData(data, "data")
+        Validate._is_valid_line(line, "line")
+        Validate._is_valid_data(data, "data")
 
         re_show_data = False
         if line not in self.__lines:
-            Validate._invalidLine(line)
+            Validate._invalid_line(line)
 
         line._Line__data += data
 
@@ -1673,11 +1677,11 @@ class LineChart:
             ValueError: If the provided line is not valid or does not exist in `self.__lines`.
             TypeError: If the provided line is not an instance of the Line class.
         """
-        Validate._isValidLine(line, "line")
+        Validate._is_valid_line(line, "line")
         if line in self.__lines:
             return line.get_data(start=start, end=end, step=step)
         else:
-            Validate._invalidLine(line)
+            Validate._invalid_line(line)
     
     def get_x_axis_visible_point_count(self) -> int:
         """
@@ -1726,11 +1730,11 @@ class LineChart:
             ValueError: If the provided line is not valid or does not exist in `self.__lines`.
             TypeError: If the provided line is not an instance of the Line class.
         """
-        Validate._isValidLine(line, "line")
+        Validate._is_valid_line(line, "line")
         if line in self.__lines:
             return line.get_current_visible_data()
         else:
-            Validate._invalidLine(line)
+            Validate._invalid_line(line)
             
     def place(
             self,
@@ -1882,8 +1886,8 @@ class LineChart:
             ValueError: If the provided line is invalid or not part of the chart.
             TypeError: If the state is not a boolean.
         """
-        Validate._isValidLine(line, "line")
-        Validate._isBool(state, "state")
+        Validate._is_valid_line(line, "line")
+        Validate._is_bool(state, "state")
         if line._Line__visibility != state or self.__visibility != state:
             line._Line__visibility = state
             self.__reshow_data()
@@ -1898,7 +1902,7 @@ class LineChart:
         Raises:
             TypeError: If the provided state is not a boolean value.
         """
-        Validate._isBool(state, "state")
+        Validate._is_bool(state, "state")
         self.__visibility = state
         if state is False:
             self.__output_canvas.place_forget()
@@ -1950,7 +1954,7 @@ class LineChart:
 
         Returns:
             Any: The value of the requested attribute, or a dictionary of all
-            attributes if "__all__" is passed.
+                attributes if "__all__" is passed.
 
         Raises:
             ValueError: If the given attribute name is not recognized.
@@ -2073,7 +2077,7 @@ class LineChart:
                 "pointer_size": self.__pointer_size
             }
         else:
-            Validate._invalidCget(attribute_name)
+            Validate._invalid_cget(attribute_name)
 
     def get_line_visibility(self, line: Line):
         """
@@ -2086,13 +2090,14 @@ class LineChart:
             bool: True if the line is visible, False otherwise.
 
         Raises:
+            TypeError: If the provided line is not an instance of CTkLine.
             ValueError: If the provided line object is not valid or not found in the chart.
         """
-        Validate._isValidLine(line, "line")
+        Validate._is_valid_line(line, "line")
         if line in self.__lines:
             return line._Line__visibility
         else:
-            Validate._invalidLine(line)
+            Validate._invalid_line(line)
             
     def get_lines_area(self):
         """
@@ -2119,9 +2124,9 @@ class LineChart:
         Raises:
             ValueError: If the provided line object is not valid or not found in the chart.
         """
-        Validate._isValidLine(line, "line")
+        Validate._is_valid_line(line, "line")
         if line not in self.__lines:
-            Validate._invalidLine(line)
+            Validate._invalid_line(line)
 
         maximum_data = self.__get_max_data_length_across_lines()
         max_visible_points = self.__get_max_visible_data_points()
@@ -2145,7 +2150,8 @@ class LineChart:
             self,
             attribute_name: Literal[
                 "x", "y", "relx", "rely", "anchor", "__all__"
-            ] = "__all__") -> Any:
+            ] = "__all__"
+    ) -> Any:
         """
         Get the value of the specified place info.
 
@@ -2158,7 +2164,6 @@ class LineChart:
         Raises:
             ValueError: If the given attribute name is not recognized.
         """
-
         if attribute_name == "x":
             return self.__place_info_x
         elif attribute_name == "y":
@@ -2178,7 +2183,7 @@ class LineChart:
                 "anchor": self.__place_info_anchor
             }
         else:
-            Validate._invalidCget(attribute_name)
+            Validate._invalid_cget(attribute_name)
 
     def pack_info(
             self,
@@ -2221,7 +2226,7 @@ class LineChart:
                 "anchor": self.__pack_info_anchor
             }
         else:
-            Validate._invalidCget(attribute_name)
+            Validate._invalid_cget(attribute_name)
 
     def grid_info(
             self,
@@ -2268,7 +2273,7 @@ class LineChart:
                 "sticky": self.__grid_info_sticky
             }
         else:
-            Validate._invalidCget(attribute_name)
+            Validate._invalid_cget(attribute_name)
 
     def __del__(self) -> None:
         """
@@ -2281,6 +2286,7 @@ class LineChart:
         try:
             self.__main_frame.destroy()
         except Exception as error:
+            print(error)
             return
         
         self.__x_axis_values_frame.destroy()

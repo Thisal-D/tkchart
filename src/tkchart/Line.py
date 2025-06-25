@@ -41,18 +41,18 @@ class Line:
             if len(args) != 0:
                 master = args[0]
             else:
-                Validate._MasterAttNotProvideForLine("master")
+                Validate._master_att_not_provided_for_line("master")
 
-        Validate._isValidLineChart(master, "master")
-        Validate._isValidColor(color, "color")
-        Validate._isInt(size, "size")
-        Validate._isValidLineStyle(style, "style")
-        Validate._isValidStyleType(style_type, "style_type")
-        Validate._isValidLineHighlight(point_highlight, "point_highlight")
-        Validate._isInt(point_highlight_size, "point_highlight_size")
-        Validate._isValidColor(point_highlight_color, "point_highlight_color")
-        Validate._isValidLineFill(fill, "fill")
-        Validate._isValidColor(fill_color, "fill_color")
+        Validate._is_valid_line_chart(master, "master")
+        Validate._is_valid_color(color, "color")
+        Validate._is_int(size, "size")
+        Validate._is_valid_line_style(style, "style")
+        Validate._is_valid_style_type(style_type, "style_type")
+        Validate._is_valid_line_highlight(point_highlight, "point_highlight")
+        Validate._is_int(point_highlight_size, "point_highlight_size")
+        Validate._is_valid_color(point_highlight_color, "point_highlight_color")
+        Validate._is_valid_line_fill(fill, "fill")
+        Validate._is_valid_color(fill_color, "fill_color")
 
         # id (int): The id of the line. need  unique
         self.__id = Line.current_usable_id
@@ -110,47 +110,47 @@ class Line:
         changes_req = False
 
         if color is not None:
-            Validate._isValidColor(color, "color")
+            Validate._is_valid_color(color, "color")
             self.__color = color
             changes_req = True
 
         if size is not None:
-            Validate._isInt(size, "size")
+            Validate._is_int(size, "size")
             self.__size = size
             changes_req = True
 
         if style is not None:
-            Validate._isValidLineStyle(style, "style")
+            Validate._is_valid_line_style(style, "style")
             self.__style = style
             changes_req = True
 
         if style_type is not None:
-            Validate._isValidStyleType(style_type, "style_type")
+            Validate._is_valid_style_type(style_type, "style_type")
             self.__style_type = style_type
             changes_req = True
 
         if point_highlight is not None:
-            Validate._isValidLineHighlight(point_highlight, "point_highlight")
+            Validate._is_valid_line_highlight(point_highlight, "point_highlight")
             self.__point_highlight = point_highlight
             changes_req = True
 
         if point_highlight_size is not None:
-            Validate._isInt(point_highlight_size, "point_highlight_size")
+            Validate._is_int(point_highlight_size, "point_highlight_size")
             self.__point_highlight_size = point_highlight_size
             changes_req = True
 
         if point_highlight_color is not None:
-            Validate._isValidColor(point_highlight_color, "point_highlight_color")
+            Validate._is_valid_color(point_highlight_color, "point_highlight_color")
             self.__point_highlight_color = point_highlight_color
             changes_req = True
 
         if fill is not None:
-            Validate._isValidLineFill(fill, "fill")
+            Validate._is_valid_line_fill(fill, "fill")
             self.__fill = fill
             changes_req = True
 
         if fill_color is not None:
-            Validate._isValidColor(fill_color, "fill_color")
+            Validate._is_valid_color(fill_color, "fill_color")
             self.__fill_color = fill_color
             changes_req = True
 
@@ -230,7 +230,6 @@ class Line:
         maximum_data = self.__master._LineChart__get_max_data_length_across_lines()
         max_visible_points = self.__master._LineChart__get_max_visible_data_points()
         
-        data = ()
         if maximum_data > max_visible_points:
             data = tuple(self.__data[maximum_data - max_visible_points::])
         else:
@@ -264,7 +263,7 @@ class Line:
         Raises:
             TypeError: If the state is not a boolean.
         """
-        Validate._isBool(state, "state")
+        Validate._is_bool(state, "state")
         if self.__visibility != state:
             self.__visibility = state
             self.__master._LineChart__apply_line_configuration()
@@ -323,7 +322,7 @@ class Line:
                 "fill_color": self.__fill_color
             }
         else:
-            Validate._invalidCget(attribute_name)
+            Validate._invalid_cget(attribute_name)
 
     def get_visibility(self) -> bool:
         """
